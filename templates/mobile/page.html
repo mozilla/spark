@@ -1,0 +1,50 @@
+{% extends "mobile/base.html" %}
+
+{% block content %}
+
+	<div id="wrapper">
+	    <div id="header">
+	        {% if body_id not in ['home', 'myspark'] %}
+			<div ontouchstart="" class="back" onclick="history.back()">
+	        </div>
+			{% endif %}
+	        <h1>
+	            {{ pagetitle }}
+	        </h1>
+	    </div> <!-- end header -->
+
+		<div id="content">
+			{% block pagecontent %}{% endblock %}
+		</div> <!-- end content -->
+	
+	</div> <!-- end wrapper -->
+
+	{% if not hide_menu %}
+	<div id="menu-wrapper" class="closed">
+	    <div id="menu" class="closed">
+	        <hr id="menu-hr">
+	        <div id="menu-header" class="closed">
+	            <div id="notifications">13</div>
+	            {{ _('Menu') }}
+	        </div>
+	        <ul>
+	            <li><a href="{{ url('mobile.boost') }}">{{ _('Boost your Spark') }}</a></li>
+	            <li><a href="{{ url('mobile.stats') }}">{{ _('Stats') }}</a></li>
+	            <li><a href="{{ url('mobile.challenges') }}">{{ _('Challenges') }} <span>+2 new</span></a></li>
+	            <li><a href="{{ url('mobile.badges') }}">{{ _('Badges') }} <span>+11 new</span></a></li>
+	            <li><a href="{{ url('mobile.about') }}">{{ _('About Mozilla') }}</a></li>
+	        </ul>
+	        <a href="{{ url('users.mobile_logout') }}" id="logout">{{ _('Do you wanna log out ?') }}</a>
+	    </div>
+	</div> <!-- end menu wrapper -->
+	{% endif %}
+
+{% endblock %}
+
+{% block script %}
+	<script>
+	$(document).ready(function() {
+		initMenu();
+	});
+	</script>
+{% endblock %}

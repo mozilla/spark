@@ -1,0 +1,17 @@
+{% extends "mobile/page.html" %}
+{% set title = _('Spark! Share with a link') %}
+{% set pagetitle = _('Share with a link') %}
+{% set body_id = 'share-link' %}
+{% set scripts = ('menu',) %}
+
+{% block pagecontent %}
+    <p class="section legend">
+        {{ _('Select a link below to start sharing your Spark with friends.') }}
+    </p>
+    <ul id="sharing">
+        <li class="cta"><a href="">{{ _('Share on Twitter') }}</a></li>
+        <li class="cta"><a href="">{{ _('Share on Facebook') }}</a></li>
+        <li class="cta"><a href="">{{ _('Share via SMS') }}</a></li>
+        <li class="cta"><a href="">{{ _('Share via Email') }}</a></li>
+    </ul>
+{% endblock %}

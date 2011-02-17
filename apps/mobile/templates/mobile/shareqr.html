@@ -1,0 +1,18 @@
+{% extends "mobile/page.html" %}
+{% set title = _('Spark! Share your Spark') %}
+{% set pagetitle = _('Share your Spark') %}
+{% set body_id = 'share-QR' %}
+{% set scripts = ('menu',) %}
+
+{% block pagecontent %}
+    <p class="section legend">
+        {{ _('Ready to get your Spark out into the world? Just get your buddy to scan the QR code below or share it with a link.') }}
+    </p>
+    <hr>
+    
+    <img id="qr" src="{{ MEDIA_URL }}img/mobile/qrcode.png" alt="">
+    
+    <hr>
+    <h2 class="cta"><a ontouchstart="" href="{{ url('mobile.sharelink')}}">{{ _('Share with a link') }}</a></h2>
+    <hr>
+{% endblock %}

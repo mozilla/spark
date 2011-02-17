@@ -1,0 +1,19 @@
+{% extends "mobile/page.html" %}
+{% set title = _('Spark! My Spark') %}
+{% set pagetitle = _('My Firefox Spark') %}
+{% set body_id = 'myspark' %}
+{% set scripts = ('menu',) %}
+
+{% block pagecontent %}
+<div id="spark-wrapper" class="fpo">
+    <div id="clipping">
+        <div id="spark">
+
+        </div>
+    </div>
+</div>
+
+<hr class="clear">
+<h2 class="cta"><a ontouchstart="" href="{{ url('mobile.shareqr') }}">{{ _('Share your Spark') }}</a></h2>
+<hr>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "desktop/base.html" %}
+{% set title = _('Access denied') %}
+
+{% block content %}
+<article id="error-page" class="main">
+  <h1>{{ title }}</h1>
+
+  <p>{{ _('You do not have permission to access this page.') }}</p>
+</article>
+{% endblock %}

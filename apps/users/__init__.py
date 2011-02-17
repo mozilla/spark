@@ -1,0 +1,1 @@
+## User registration based on kitsune/apps/users/

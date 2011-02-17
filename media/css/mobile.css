@@ -1,0 +1,733 @@
+/* Spark! by Mozilla */
+
+/*
+YUI CSS reset
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+
+/*
+YUI CSS font
+*/
+body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif;}table{font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
+
+/* Font-face */
+
+@font-face {
+    font-family: 'MgOpenModerna';
+    src:          url('../fonts/mgopenmodernaregular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'MgOpenModerna';
+    src:          url('../fonts/mgopenmodernabold-webfont.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+/*Sticky footer*/
+
+html, body {
+    height: 100%;
+    }
+
+#wrapper {
+    min-height: 100%;
+    }
+
+#content {
+    overflow:auto;
+    padding-bottom:50px;
+	}  /* must be same height as the footer */
+
+#menu-wrapper {
+    position: relative;
+	margin-top: -50px; /* negative value of footer height */
+	height: 50px;
+	clear:both;
+	}
+
+/*Opera Fix*/
+body:before {
+	content:"";
+	height:100%;
+	float:left;
+	width:0;
+	margin-top:-32767px;/
+}
+
+
+/*Common rules*/
+
+html {
+    background:#110f10;
+}
+
+body {
+    font-family:'Helvetica Neue', Helvetica, 'MgOpenModerna', Arial, sans-serif;
+    color:#fff;
+    background:url('../img/mobile/bg.png') repeat top right;
+}
+
+#wrapper {
+    max-width:50em;
+    padding:0 16px 0 16px;
+    margin:0 auto;
+    z-index:2;
+    position:relative;
+    overflow:auto;
+}
+
+#flame-bg {
+    position:absolute;
+    top:0;
+    right:0;
+    width:258px;
+    height:181.33px;
+    z-index:1;
+}
+
+#header {
+    padding-top:12px;
+    border-bottom:3px solid #ffd40d;
+}
+
+h1 {
+    font-weight:bold;
+    padding:16px 8px;
+    font-size:2.26em;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+p {
+    color:#b2b2b2;
+    font-family:"Warnock Pro", Palatino, "Times New Roman", serif;
+    font-size:1.005em;
+    line-height:1.538em;
+}
+
+p a {
+    color:#fcd522;
+}
+
+p.legend {
+    font-style:italic;
+}
+
+p.section {
+    font-size:1.005em;    
+}
+
+p.sans {
+    font-family:'Helvetica Neue', Helvetica, 'MgOpenModerna', Arial, sans-serif;
+}
+
+p.confirmation {
+    color:#fff;
+    font-size:1.13em;
+    font-weight:bold;
+}
+
+h2 {
+    color:#fff;
+    font-size:1.13em;
+    font-weight:bold;
+    line-height:1.538em;
+}
+
+hr {
+    height:1px;
+    background:#404040;
+    border:none;
+    margin:0;
+    padding:0;
+}
+
+div.back {
+    display:block;
+    width:42px;
+    height:42px;
+    margin-left:6px;
+    background:url('../img/mobile/back480.png') no-repeat 0 0;
+    background-size:100%;
+}
+
+div.back:active {
+    background-position:-0px -42px;
+}
+
+.section {
+    padding:18px 8px;    
+}
+
+.section:first-child {
+    border-top:0px;    
+}
+
+button, div.button {
+    font-family:'Helvetica Neue', Helvetica, 'MgOpenModerna', Arial, sans-serif;
+    width:48%;
+    display:block;
+    float:left;
+    text-align:left;
+    font-weight:bold;
+    height:49px;
+    border:0;
+    border-radius:0;
+    font-size:1.13em;
+    color:#000;
+}
+
+button {
+    padding-left:20px;
+}
+
+div.button a {
+    padding-left:20px;
+    display:block;
+    line-height:50px;
+}
+
+.left-button {
+    margin:20px 2% 20px 0px;
+    border-top:1px solid #e7e7e7;
+    background:-moz-linear-gradient(90deg, #c5c5c5, #acacac);
+    background:-webkit-gradient(linear,center top, center bottom, from(#c5c5c5), to(#acacac));
+}
+
+.right-button {
+    border:0;
+    margin:20px 0px 20px 2%;
+    border-top:1px solid #ffe87d;
+    background:-moz-linear-gradient(90deg, #ffd825, #e5bf0c);
+    background:-webkit-gradient(linear,center top, center bottom, from(#ffd825), to(#e5bf0c));
+}
+
+.left-button:active, .left-button:focus {
+    border-top:1px solid #eee;
+    background:-moz-linear-gradient(90deg, #e2e2e2, #d6d6d6);
+    background:-webkit-gradient(linear,center top, center bottom, from(#e2e2e2), to(#d6d6d6));
+}
+
+.right-button:active, .right-button:focus {
+    border-top:1px solid #ffe87d;
+    background:-moz-linear-gradient(90deg, #ffea87, #f1dc7a);
+    background:-webkit-gradient(linear,center top, center bottom, from(#ffea87), to(#f1dc7a));
+}
+
+#menu-wrapper {
+    position:relative;
+    height:50px;
+    overflow:visible;
+    pointer-events:none;
+}
+
+#menu-wrapper.closed {
+    overflow:hidden;
+    pointer-events:none;
+}
+
+#menu {
+    pointer-events:auto;
+    height:500px;
+    width:100%;
+    z-index:10;
+    position:absolute;
+    bottom:0px;
+    background:url('../img/mobile/badge-label-bg.png') repeat;
+}
+
+#menu.closed {
+    bottom:-450px;
+}
+
+#menu.closed, #menu.open {
+    -moz-transition:1s bottom ease;
+}
+
+#menu-header {
+    height:49px;
+    border-top:1px solid #ffe87d;
+    background:url('../img/mobile/menu-button-hd.png') no-repeat 14px -99px, -moz-linear-gradient(90deg, #ffd825, #e5bf0c);
+    background:url('../img/mobile/menu-button-hd.png') no-repeat 14px -99px, -webkit-gradient(linear, center top, center bottom, from(#ffd825), to(#e5bf0c));
+    background-size:28px auto, auto;
+    color:#000;
+    font-weight:bold;
+    line-height:49px;
+    padding-left:53px;
+    font-size:1.13em;
+    box-shadow:0px 1px 2px rgba(0,0,0,0.5), 0px 2px 4px rgba(0,0,0,0.3);
+    pointer-events:auto;
+}
+
+#menu.open #menu-header:active {
+    background:url('../img/mobile/menu-button-hd.png') no-repeat 14px -155px, -moz-linear-gradient(90deg, #ffec92, #f2df86);
+    background-size:28px auto, auto;
+    border-top:1px solid #fff4be;
+}
+
+#menu.closed #menu-header {
+    background:url('../img/mobile/menu-button-hd.png')  no-repeat 14px 9px, -moz-linear-gradient(90deg, #ffd825, #e5bf0c);
+    background-size:28px auto, auto;
+}
+
+#menu.closed #menu-header:active {
+    background:url('../img/mobile/menu-button-hd.png')  no-repeat 14px -50px, -moz-linear-gradient(90deg, #ffec92, #f2df86);
+    background-size:28px auto, auto;
+    border-top:1px solid #fff4be;
+}
+
+#menu-hr {
+    height:3px;
+    background:#c9c9c9;
+    border-top:1px solid #e6e6e6;
+    border-bottom:1px solid #8f8f8f;
+}
+
+#menu ul {
+    margin:16px;
+}
+
+#menu ul li {
+    border-top:1px solid #4d4d4d;
+    border-bottom:1px solid #4d4d4d;
+}
+
+#menu ul li a {
+    display:block;
+    padding:0 8px;
+    margin:2px 0;
+    line-height:64px;
+    font-size:1.13em;
+    font-weight:bold;
+    background:url('../img/mobile/big-arrow.png') no-repeat 95% center;
+}
+
+#menu ul li a:active {
+    background-color:rgba(255,255,255,0.16);
+}
+
+#menu ul li span {
+    color:#b2b2b2;
+    padding-left:0.5em;
+}
+
+#logout {
+    display:block;
+    text-align:center;
+    color:#b2b2b2;
+    font-size:1.13em;
+    line-height:45px;
+}
+
+#logout:active {
+    color:#fff;
+}
+
+#notifications {
+    border-left: 1px solid #d5b31b;
+    float: right;
+    line-height: 37px;
+    margin-top: 5px;
+    padding: 0 26px 0 16px;
+    position:relative;
+    background:url('../img/mobile/notifications-bg.png') no-repeat 39px  center;
+    background-size:auto 16px;
+}
+
+#notifications:before {
+    content:'';
+    border-left: 1px solid #f9da4c;
+    height:100%;
+    left:0px;
+    top:0;
+    position:absolute;
+}
+
+span.error {
+    color:#e32113;
+    display:block;
+    padding:0px 8px 8px 8px;
+    font-weight:bold;
+}
+
+#logout-confirmation {
+    padding:8px 16px;
+    display:none;
+}
+
+#menu p.confirmation {
+    margin-top:12px;
+    margin-bottom:-10px;
+}
+
+/* Get started */
+
+div.input-wrapper {
+    border:1px solid #e9e9e9;
+    background:-moz-linear-gradient(90deg, #e7e7e7, #fefefe);
+    background:-webkit-gradient(linear,center top, center bottom, from(#e7e7e7), to(#fefefe));
+    margin-top:8px;
+    box-shadow:inset 0px 1px 0px #979797, inset 0px 2px 0px #c4c4c4, inset 0px 3px 0px #e3e3e3;
+}
+
+div.input-wrapper.error {
+    background:-moz-linear-gradient(90deg, #d4b6ad, #eccec5);
+    background:-webkit-gradient(linear,center top, center bottom, from(#d4b6ad), to(#eccec5));
+    box-shadow:inset 0px 1px 0px #8d7973, inset 0px 2px 0px #b0968f, inset 0px 3px 0px #c8aca4;
+}
+
+div.input-wrapper:first-child {
+    margin-top:0;
+}
+
+fieldset#account.section {
+    padding-left:0;
+    padding-right:0;
+}
+
+form input[type=text], input[type=email], input[type=password] {
+    display:block;
+    border-radius:0px;
+    -moz-border-radius:0px;
+    -webkit-border-radius:0px;
+    width:100%;
+    color:#666;
+    font-size:1.005em;
+    background:transparent;
+    border:0;
+    height:38px;
+    padding-left:15px;
+}
+
+form.section {
+    padding-left:0;
+    padding-right:0;
+}
+
+fieldset#newsletter {
+    padding:0px 8px;
+}
+
+#custom-cb  {
+    position:relative;
+}
+
+#custom-cb input {
+    position:absolute;
+    left:2px;
+    top:18px;
+    z-index:0;
+}
+
+#custom-cb label {
+    display:block;
+    position:relative;
+    padding-left:30px;
+    cursor:pointer;
+    font-style:normal;
+    background:url('../img/mobile/checkbox.png') no-repeat 0 16px;
+    background-size:18px;
+    width:210px;
+    z-index:1;
+    line-height:48px;
+}
+
+#boost #custom-cb label {
+    width:235px;
+}
+
+#custom-cb input[type=checkbox]:checked + label {
+    background-position:0 -38px;
+}
+
+button {
+    width:48%;
+    display:block;
+    float:left;
+    text-align:left;
+    font-weight:bold;
+    height:49px;
+    border:0;
+    padding-left:20px;
+    border-radius:0;
+    font-size:1.13em;
+    color:#000;
+}
+
+.left-button {
+    margin:20px 2% 20px 0px;
+    border-top:1px solid #e7e7e7;
+    background:-moz-linear-gradient(90deg, #c5c5c5, #acacac);
+    background:-webkit-gradient(linear,center top, center bottom, from(#c5c5c5), to(#acacac));
+}
+
+.right-button {
+    border:0;
+    margin:20px 0px 20px 2%;
+    border-top:1px solid #ffe87d;
+    background:-moz-linear-gradient(90deg, #ffd825, #e5bf0c);
+    background:-webkit-gradient(linear,center top, center bottom, from(#ffd825), to(#e5bf0c));
+}
+
+.left-button:active, .left-button:focus {
+    border-top:1px solid #eee;
+    background:-moz-linear-gradient(90deg, #e2e2e2, #d6d6d6);
+    background:-webkit-gradient(linear,center top, center bottom, from(#e2e2e2), to(#d6d6d6));
+}
+
+.right-button:active {
+    border-top:1px solid #ffe87d;
+    background:-moz-linear-gradient(90deg, #ffea87, #f1dc7a);
+    background:-webkit-gradient(linear,center top, center bottom, from(#ffea87), to(#f1dc7a));
+}
+
+button:active, button:focus {
+    border:0;
+    outline:0;
+}
+
+.cta a {
+    font-size:1.13em;
+    font-weight:bold;
+    display:block;
+    margin:2px 0;
+    line-height:4.959em;
+    padding:0 0 0 8px;
+    background:url('../img/mobile/big-arrow.png') no-repeat center right;
+    background-size:22.848px auto;
+}
+
+.cta a:active {
+    background-color:rgba(255,255,255,0.16);
+}
+
+.cta a:focus, .cta a:active {
+    outline:none;
+}
+
+/* Boost your Spark */
+
+#boost p {
+    font-style:normal;
+}
+
+#boost .section:nth-child(2) {
+    margin-bottom:20px;
+}
+
+/*Badges*/
+
+ul#badge-list {
+    overflow:auto;
+}
+
+li.badge {
+    float:left;
+    height:76px;
+    width:76px;
+    border:2px solid #989898;
+    border-radius:50%;
+    -webkit-border-radius:40px;
+    background:#666;
+    margin-bottom:5.55%;
+}
+
+li.badge:active, li.badge.current {
+    border:2px solid #fff;
+}
+
+li.badge .badge-wrapper {
+    height:72px;
+    width:72px;
+    border:2px solid #000;
+    border-radius:50%;
+    -webkit-border-radius:38px;
+}
+
+#badge-label {
+    clear:both;
+    border-top:1px solid #ffe56e;
+    margin-bottom:4.896em;
+    position:relative;
+}
+
+#badge-label div {
+    background:#ffd40d;
+    padding:1px 2px;
+    margin-bottom:5px;
+}
+
+#badge-label div div {
+    background:#000;
+    padding:1px;
+    border-bottom:1px solid #ffe56e;
+    margin-bottom:0;
+}
+
+#badge-label div div div {
+    background:url('../img/mobile/badge-label-bg.png') repeat;
+    padding:0.993em 1.13em;
+    border-bottom:0;
+    margin-bottom:0;
+}
+
+#badge-label .button-wrapper {
+    padding:0;
+}
+
+#badge-label button {
+    width:100%;
+    border-top:1px solid #ffe87d;
+    background:-moz-linear-gradient(90deg, #ffd825, #e5bf0c);
+    background:-webkit-gradient(linear, center top, center bottom, from(#ffd825), to(#e5bf0c));
+}
+
+#badge-label button:active {
+    background:-moz-linear-gradient(90deg, #ffec92, #f2df86);
+}
+
+#badge-label h2 {
+    text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+}
+
+#badge-label p {
+    color:#999;
+    text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+}
+
+#badge-label img {
+    position:absolute;
+    top:-11px;
+    left:50%;
+    margin-left:-12px;
+}
+
+/* What is Spark */
+
+#whatisspark .section {
+    position:relative;
+}
+
+#whatisspark .arrow {
+    position:absolute;
+    left:50%;
+    margin-left:-10px;
+    top:-4px;
+    height:8px;
+    width:21px;
+    background:url('../img/mobile/down-arrow.png') no-repeat center center;
+    background-size:20px auto;
+}
+
+#about #content {
+    margin-bottom:30px;
+}
+
+/* Log in */
+
+.clear {
+    clear:both;
+}
+
+/* My Spark */
+
+#spark-wrapper.fpo {
+    margin-top:80px;
+}
+
+#myspark #header {
+    margin-top:20px;
+    border-top:3px solid #ffd40d;
+    border-bottom:0px;
+    padding-top:0px;
+}
+
+#myspark #header h1 {
+    padding-top:10px;
+}
+
+div.shape {
+    height:150px;
+    width:300px;
+    margin-bottom:-150px;
+    -moz-transform-origin:center bottom;
+    position:relative;
+    left:0px;
+}
+
+#clipping {
+    height:150px;
+    width:auto;
+    overflow:hidden;
+    margin:0px auto 30px;
+    width:288px;
+}
+
+#spark {
+    position:relative;
+    margin-top:-30px;
+}
+
+/* Home */
+
+#home #header {
+    margin-top:20px;
+    border-top:3px solid #ffd40d;
+    border-bottom:0px;
+    padding-top:0px;
+}
+
+#home #header h1 {
+    padding-top:10px;
+}
+
+#home {
+    background:url('../img/mobile/spark.png') no-repeat center 0;
+    background-size:320px auto;
+}
+
+#static-spark {
+    height:200px;
+}
+
+#home .left-button {
+    border-top:1px solid #ffe87d;
+    background:-moz-linear-gradient(90deg, #ffd825, #e5bf0c);
+    background:-webkit-gradient(linear,center top, center bottom, from(#ffd825), to(#e5bf0c));
+}
+
+#home .left-button:active, #home .left-button:focus {
+    border-top:1px solid #ffe87d;
+    background:-moz-linear-gradient(90deg, #ffea87, #f1dc7a);
+    background:-webkit-gradient(linear,center top, center bottom, from(#ffea87), to(#f1dc7a));
+}
+
+/* Share your Spark */
+
+#qr {
+    height:138px;
+    width:138px;
+    margin:24px auto;
+    display:block;
+}
+
+/* Share with a link */
+
+#sharing li {
+    border-bottom:1px solid #404040;
+    color:#fff;
+    font-weight:bold;
+    font-size:1.13em;
+}
+
+#sharing li:first-child {
+    border-top:1px solid #404040;
+}

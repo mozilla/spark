@@ -1,0 +1,24 @@
+{% extends "users/desktop/base.html" %}
+{% from "macros/errorlist.html" import errorlist %}
+{% set title = _('Change email address') %}
+{% set classes = 'password' %}
+
+{% block content %}
+  <article id="pw-reset" class="main">
+    <h1>{{ title }}</h1>
+    <form method="post" action="">
+      {{ csrf() }}
+      <fieldset>
+        <p class="instruct">
+          {{ _('Your current email address is: ') }} <span id="email">{{ request.user.email }}</span>
+        </p>
+        <ul>
+          {{ form.as_ul()|safe }}
+        </ul>
+      </fieldset>
+      <div class="submit">
+        <input type="submit" value="{{ _('Change my email') }}" />
+      </div>
+    </form>
+  </article>
+{% endblock content %}

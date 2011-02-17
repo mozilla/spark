@@ -1,0 +1,11 @@
+{% extends "mobile/base.html" %}
+{% set title = _('Page Not Found') %}
+
+{% block content %}
+<article id="error-page" class="main">
+  <h1>{{ title }}</h1>
+
+  <p>{% trans %}Sorry, we couldn't find the page you were looking for. Please,
+  try searching our site using the form below.{% endtrans %}</p>
+</article>
+{% endblock %}

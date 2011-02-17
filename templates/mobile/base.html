@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- Language and direction will need to be dynamically inserted depending on UA sniffing -->
+<html lang="{{ LANG }}" dir="{{ DIR }}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1; maximum-scale=1; width=device-width; user-scalable=no">
+	<title>{{ title }}</title>
+	{% block site_css %}
+      {{ css('mobile') }}
+    {% endblock %}
+</head>
+<!-- Language class must be dynamically applied to the body in order to create language-specific CSS rules -->
+<body class="lang-en" id="{{ body_id }}">
+<!-- We could also use real HTML5 tags by using HTML5Shiv . See Boilterplate for more info -->
+	{% block flame %}
+	<img id="flame-bg" src="{{ MEDIA_URL }}img/mobile/flame480.jpg" alt="">
+	{% endblock %}
+	
+	{% block content %}{% endblock %}
+	
+    {{ js('common') }}
+	{% for script in scripts %}
+	{{ js(script) }}
+	{% endfor %}
+	
+{% block script %}{% endblock %}
+  </body>
+</html>

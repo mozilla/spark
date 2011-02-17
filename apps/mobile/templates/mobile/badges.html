@@ -1,0 +1,30 @@
+{% extends "mobile/page.html" %}
+{% set title = _('Spark! Badges') %}
+{% set pagetitle = _('Badges') %}
+{% set body_id = 'badges' %}
+{% set scripts = ('menu', 'badges') %}
+
+{% block pagecontent %}
+    <p class="section legend">
+        {{ _('Keep track of all your completed challenges and share your badges with friends.') }}
+    </p>
+    <hr>
+    <ul ontouchstart="" id="badge-list" class="section" data-count="{{ badges|count }}">
+		{% for badge in badges %}
+        <li class="badge" data-index="{{ loop.index }}">
+            <a href="#"></a>
+            <div class="badge-wrapper">
+            </div>
+        </li>
+		{% endfor %}
+    </ul>
+{% endblock %}
+
+{% block script %}
+	<script>
+	$(document).ready(function() {
+		initMenu();
+		initBadges();
+	});
+	</script>
+{% endblock %}

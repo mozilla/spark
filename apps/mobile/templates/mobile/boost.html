@@ -1,0 +1,30 @@
+{% extends "mobile/page.html" %}
+{% set title = _('Spark! Boost your Spark') %}
+{% set pagetitle = _('Boost your Spark') %}
+{% set body_id = 'boost' %}
+{% set scripts = ('menu',) %}
+
+{% block pagecontent %}
+    <div class="section">
+        <h2>{{ _('Wanna share a few more details?') }}</h2>
+        <p class="sans">
+            {{ _('If you do, you’ll get to unlock even more cool challenges and get to see your Spark transform. Go on, you know you want to!') }}
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>{{ _('P.S.') }}</h2>
+        <p class="sans">
+            {{ _('Don’t worry, we don’t share any details about your information with anyone. Everything you tell us is kept private so you’re in good hands.') }}
+        </p>
+    </div>
+   
+    <hr>
+    <h2 id="disclaimer" class="cta"><a ontouchstart="" href="#">{{ _('Privacy Disclaimer') }}</a></h2>
+    <hr>
+   
+    <div class="buttons-wrapper">
+        <div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Maybe later') }}</a></div>
+        <div class="button right-button"><a href="{{ url('mobile.boost1') }}">{{ _("Let's boost") }}</a></div>
+    </div>
+{% endblock %}

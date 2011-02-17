@@ -1,0 +1,25 @@
+{% extends "mobile/page.html" %}
+{% set title = _('Spark! About Mozilla') %}
+{% set pagetitle = _('About Mozilla') %}
+{% set body_id = 'about' %}
+{% set scripts = ('menu',) %}
+{% set hide_menu = True %}
+
+{% block pagecontent %}
+        <div class="section">
+            <p class="sans">
+				{% trans %}
+                Mozilla is a global, non-profit organization dedicated to making the Web better. 
+				We believe in principle over profit, and that the Internet is a shared public resource to be cared for, 
+				not a commodity to be sold. We work with a worldwide community to create free, open source software 
+				like Mozilla Firefox, and to innovate for the benefit of the individual and the betterment of the Web. 
+				The result is great products built by passionate people and better choices for everyone.
+				For more information, visit <a href="http://www.mozilla.org">www.mozilla.org</a>.
+				{% endtrans %}
+            </p>
+        </div>
+        
+        <hr>
+        <h2 class="cta"><a ontouchstart="" href="{{ url('mobile.legal') }}">{{ _('Legal Stuff') }}</a></h2>
+        <hr>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "mobile/page.html" %}
+{% from "mobile/macros/errorlist.html" import errorlist %}
+{% set title = _('Spark! Log in') %}
+{% set pagetitle = _('Log in') %}
+{% set body_id = 'login' %}
+{% set scripts = ('menu',) %}
+{% set hide_menu = True %}
+
+{% block pagecontent %}
+
+	<div id="content">
+	    <p class="section legend">
+	        {{ _('Welcome back! Ready to keep your Spark going strong? Just fill your deets in to log in.') }}
+	    </p>
+	    <hr>
+		{{ errorlist(form) }}
+	    <form action="" method="post" accept-charset="utf-8">
+			{{ csrf() }}
+	        <fieldset id="account" class="section">
+				
+	            <div class="input-wrapper">
+	                <input tabindex="1" type="text" name="username" value="{{ form.username.data|safe|replace('None','') }}" placeholder="Username" required>
+	            </div>
+	            <div class="input-wrapper">
+	                <input tabindex="2" type="text" name="password" value="" placeholder="Password" required>
+	            </div>
+	        </fieldset>
+	        <hr>
+	        <div class="buttons-wrapper">
+				<div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
+	            <button ontouchstart="" tabindex="3" class="right-button" type="submit">{{ _('Log in') }}</button>
+	        </div>
+	    </form>
+	    <hr class="clear">
+	    <h2 class="cta"><a ontouchstart="" href="#">{{ _('Forgot your password?') }}</a></h2>
+	    <hr>
+	</div> <!-- end content -->
+{% endblock %}
