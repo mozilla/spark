@@ -23,7 +23,7 @@ class BoostStep2Form(forms.Form):
     def __init__(self, user, *args, **kwargs):
         super(BoostStep2Form, self).__init__(*args, **kwargs)
         self.user = user
-        self.parent_user = None
+        self.parent_username = None
 
     def clean(self):
         found = False
@@ -42,11 +42,10 @@ class BoostStep2Form(forms.Form):
 
         parent = self.find_parent_user(identifier)
 
-        # If no corresponding parent user is found and the checkbox is unchecked
         if not parent and not from_website:
             self.identifier_error(IDENTIFIER_NOTFOUND)
-            
-        self.parent_user = parent
+        elif parent:
+            self.parent_username = parent[0].username
         
         return self.cleaned_data
 

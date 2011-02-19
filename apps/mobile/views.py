@@ -1,6 +1,10 @@
 from spark.urlresolvers import reverse
 
+from django.http import HttpResponseRedirect
+
 import jingo
+
+from users.models import User
 
 from .forms import BoostStep2Form
 from .decorators import login_required, logout_required
@@ -24,17 +28,32 @@ def boost1(request):
 
 @login_required
 def boost2(request):
-    """Allows a Spark user to link his account to a parent user."""
+    """ Boost your Spark step 2/2 :
+        Allows a Spark user to link his account to a parent user."""
     if request.method == 'POST':
         form = BoostStep2Form(request.user, request.POST)
         if form.is_valid():
-            parent = form.parent_user
-            return jingo.render(request, 'mobile/boost_step2done.html',
-                                        { 'parent': parent })
+            return jingo.render(request, 'mobile/boost_step2_found.html',
+                                        {'parent': form.parent_username})
     else:
         form = BoostStep2Form(request.user)
     
     return jingo.render(request, 'mobile/boost_step2.html', {'form': form})
+
+
+@login_required
+def boost2_confirm(request):
+    """ Boost your Spark step 2/2 completion. """
+    parent = None
+    username = request.GET.get('parent')
+    
+    if username:
+        parent = User.objects.filter(username=username)
+    
+    if parent:
+        return HttpResponseRedirect(reverse('mobile.home'))
+    else:
+        return jingo.render(request, 'spark/handlers/mobile/400.html', status=400)
 
 
 @login_required
@@ -68,8 +87,8 @@ def sharelink(request):
 
 
 def about(request):
-    return jingo.render(request, 'mobile/about.html', {})
+    return jingo.render(request, 'mobile/about.html')
 
 
 def legal(request):
-    return jingo.render(request, 'mobile/legal.html', {})
+    return jingo.render(request, 'mobile/legal.html')
