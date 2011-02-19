@@ -7,7 +7,6 @@
 {% set hide_menu = True %}
 
 {% block pagecontent %}
-<div id="content">
     <hr>
 	{{ errorlist(form) }}
     <form id="signup" action="" method="post" accept-charset="utf-8">
@@ -39,5 +38,4 @@
             <button ontouchstart="" tabindex="5" class="right-button" type="submit">{{ _('Join') }}</button>
         </div>
     </form>
-</div> <!-- end content -->
 {% endblock %}

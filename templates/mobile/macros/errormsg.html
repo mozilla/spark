@@ -1,0 +1,5 @@
+{% macro error_msg(form) -%}
+	{% if form.errors %}
+		<span class="error">{{ _("Oops! Looks like something's not right.") }}</span>
+	{% endif %}
+{%- endmacro %}

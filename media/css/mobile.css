@@ -351,7 +351,7 @@ div.button a {
     position:absolute;
 }
 
-span.error {
+span.error, ul.errorlist li {
     color:#e32113;
     display:block;
     padding:0px 8px 8px 8px;
@@ -388,7 +388,7 @@ div.input-wrapper:first-child {
     margin-top:0;
 }
 
-fieldset#account.section {
+fieldset#account.section, fieldset#identifier.section {
     padding-left:0;
     padding-right:0;
 }
@@ -412,7 +412,7 @@ form.section {
     padding-right:0;
 }
 
-fieldset#newsletter {
+fieldset#newsletter, fieldset#from-website {
     padding:0px 8px;
 }
 

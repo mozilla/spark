@@ -3,11 +3,6 @@
 	<span class="error">{{ _("Oops! Looks like something's not right.") }}</span>
 	{% endif %}
 	<ul class="errorlist">
-	{% for field in form.visible_fields() %}
-        {% for error in field.errors %}
-          <li>{{ error }}</li>
-        {% endfor %}
-      {% endfor %}
 	{% for error in form.non_field_errors() %}
 	    <li>{{ error }}</li>
 	{% endfor %}

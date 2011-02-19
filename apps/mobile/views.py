@@ -2,6 +2,7 @@ from spark.urlresolvers import reverse
 
 import jingo
 
+from .forms import BoostStep2Form
 from .decorators import login_required, logout_required
 
 
@@ -23,7 +24,17 @@ def boost1(request):
 
 @login_required
 def boost2(request):
-    return jingo.render(request, 'mobile/boost_step2.html', {})
+    """Allows a Spark user to link his account to a parent user."""
+    if request.method == 'POST':
+        form = BoostStep2Form(request.user, request.POST)
+        if form.is_valid():
+            parent = form.parent_user
+            return jingo.render(request, 'mobile/boost_step2done.html',
+                                        { 'parent': parent })
+    else:
+        form = BoostStep2Form(request.user)
+    
+    return jingo.render(request, 'mobile/boost_step2.html', {'form': form})
 
 
 @login_required
