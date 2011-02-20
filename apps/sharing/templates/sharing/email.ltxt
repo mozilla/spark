@@ -1,0 +1,16 @@
+{% load i18n %}{# L10n: This is an email.  Whitespace matters! #}{% blocktrans %}
+Hi,
+
+Wanna help me light up the world?
+
+Iʼm helping to spread Firefox for Mobile across the globe and I wanted to share it with
+you. Help me earn points by accepting my Spark then download Firefox for Mobile on
+your phone. Easy!
+
+Want to play too? Check out {{ domain }} to start your very own Spark, take challenges,
+unlock badges and earn yourself some bragging rights.
+
+Accept my Spark : {{ accept_url }}
+
+Thanks!
+{% endblocktrans %}
