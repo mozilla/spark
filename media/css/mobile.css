@@ -444,6 +444,10 @@ fieldset#newsletter, fieldset#from-website {
     width:235px;
 }
 
+#getstarted #custom-cb label {
+    width:500px;
+}
+
 #custom-cb input[type=checkbox]:checked + label {
     background-position:0 -38px;
 }

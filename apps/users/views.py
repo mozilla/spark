@@ -63,7 +63,7 @@ def register(request):
     """Register a new user."""
     form = handle_register(request)
     if form.is_valid():
-        return jingo.render(request, 'users/mobile/register_done.html')
+        return HttpResponseRedirect(reverse('mobile.home'))
     return jingo.render(request, 'users/mobile/register.html',
                         {'form': form})
 

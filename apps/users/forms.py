@@ -18,6 +18,10 @@ USERNAME_LONG = _lazy(u'Username is too long (%(show_value)s characters). '
                       'It must be %(limit_value)s characters or less.')
 EMAIL_INVALID = _lazy(u'Please enter a valid email address.')
 PASSWD_REQUIRED = _lazy(u'Please enter a valid password.')
+PASSWD_SHORT = _lazy(u'Password is too short '
+                      '(At least %(limit_value)s characters).')
+PASSWD_LONG = _lazy(u'Password is too long '
+                    '(%(limit_value)s characters or less).')
 #PASSWD2_REQUIRED = _lazy(u'Please enter your password twice.')
 
 
@@ -34,10 +38,12 @@ class RegisterForm(forms.ModelForm):
                         'required': USERNAME_REQUIRED,
                         'min_length': USERNAME_SHORT,
                         'max_length': USERNAME_LONG})
-    password = forms.CharField(error_messages={'required': PASSWD_REQUIRED})
-    email = forms.EmailField(error_messages={'invalid': EMAIL_INVALID},
-                             required=False)
-#    password2 = forms.CharField(error_messages={'required': PASSWD2_REQUIRED})
+    password = forms.CharField(error_messages={'required': PASSWD_REQUIRED,
+                                               'min_length': PASSWD_SHORT,
+                                               'max_length': PASSWD_LONG},
+                                               min_length=6, max_length=30)
+    email = forms.EmailField(error_messages={'invalid': EMAIL_INVALID})
+    #password2 = forms.CharField(error_messages={'required': PASSWD2_REQUIRED})
     newsletter = forms.BooleanField(required=False)
 
     class Meta(object):
