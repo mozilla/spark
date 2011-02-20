@@ -214,12 +214,21 @@ INSTALLED_APPS = (
     'users',
     'desktop',
     'mobile',
+    'sharing',
+    'challenges',
 )
+
+# Let Tower know about our additional keywords.
+# DO NOT import an ngettext variant as _lazy.
+TOWER_KEYWORDS = {
+    '_lazy': None,
+}
 
 # Tells the extract script what files to look for L10n in and what function
 # handles the extraction. The Tower library expects this.
 DOMAIN_METHODS = {
     'messages': [
+        ('vendor/**', 'ignore'),
         ('apps/**.py',
             'tower.management.commands.extract.extract_tower_python'),
         ('**/templates/**.html',
