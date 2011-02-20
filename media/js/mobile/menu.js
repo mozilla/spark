@@ -16,7 +16,7 @@ var initMenu = function () {
        $('#logout-confirmation').fadeIn('fast');
     });
     
-    $('#logout-confirmation button.left-button').click(function() {
+    $('#logout-confirmation .left-button').click(function() {
         $('#logout-confirmation').fadeOut('fast');
         $('#menu-content').fadeIn('fast');
     });

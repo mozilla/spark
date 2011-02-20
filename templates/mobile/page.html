@@ -30,28 +30,41 @@
 				{% if num_notifications %}
 	            <div id="notifications">{{ num_notifications }}</div>
 				{% endif %}
+				{# L10n: Name of the mobile navigation menu #}
 	            {{ _('Menu') }}
 	        </div>
-	        <ul>
-	            <li><a href="{{ url('mobile.boost') }}">{{ _('Boost your Spark') }}</a></li>
-	            <li><a href="{{ url('mobile.stats') }}">{{ _('Stats') }}</a></li>
-	            <li><a href="{{ url('mobile.challenges') }}">{{ _('Challenges') }}
-						{% if num_new_challenges %}
-						{# L10n: {n} is the number of recently completed challenges. #}
-						<span>{{ ngettext('+{n} new','+{n} new', num_new_challenges)|f(n=num_new_challenges) }}</span>
-						{% endif %}
-					</a>
-				</li>
-	            <li><a href="{{ url('mobile.badges') }}">{{ _('Badges') }}
-						{% if num_new_badges %}
-						{# L10n: {n} is the number of recently obtained badges. #}
-						<span>{{ ngettext('+{n} new','+{n} new', num_new_badges)|f(n=num_new_badges) }}</span>
-						{% endif %}
-					</a>
-				</li>
-	            <li><a href="{{ url('mobile.about') }}">{{ _('About Mozilla') }}</a></li>
-	        </ul>
-	        <a href="{{ url('users.mobile_logout') }}" id="logout">{{ _('Do you wanna log out?') }}</a>
+			<div id="menu-content">
+		        <ul>
+		            <li><a href="{{ url('mobile.boost') }}">{{ _('Boost your Spark') }}</a></li>
+		            <li><a href="{{ url('mobile.stats') }}">{{ _('Stats') }}</a></li>
+		            <li><a href="{{ url('mobile.challenges') }}">{{ _('Challenges') }}
+							{% if num_new_challenges %}
+							{# L10n: {n} is the number of recently completed challenges. #}
+							<span>{{ ngettext('+{n} new','+{n} new', num_new_challenges)|f(n=num_new_challenges) }}</span>
+							{% endif %}
+						</a>
+					</li>
+		            <li><a href="{{ url('mobile.badges') }}">{{ _('Badges') }}
+							{% if num_new_badges %}
+							{# L10n: {n} is the number of recently obtained badges. #}
+							<span>{{ ngettext('+{n} new','+{n} new', num_new_badges)|f(n=num_new_badges) }}</span>
+							{% endif %}
+						</a>
+					</li>
+		            <li><a href="{{ url('mobile.about') }}">{{ _('About Mozilla') }}</a></li>
+	        
+		        </ul>
+				<a href="#" id="logout">{{ _('Do you wanna log out?') }}</a>
+			</div>
+			<div id="logout-confirmation">
+                <p class="section sans confirmation">
+                    _('Are you sure you want to log out ?')
+                </p>
+                <div class="buttons-wrapper">
+					<div class="button left-button"><a href="#">{{ _('Cancel') }}</a></div>
+					<div class="button right-button"><a href="{{ url('users.mobile_logout') }}">{{ _('Yes') }}</a></div>
+                </div>
+            </div>
 	    </div>
 	</div> <!-- end menu wrapper -->
 	{% endif %}
