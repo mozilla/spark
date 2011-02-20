@@ -70,7 +70,7 @@ class RegisterTestCase(TestCase):
                                      'email': 'newbie@example.com',
                                      'password': 'foo',
                                      'password2': 'foo'}, follow=True)
-        self.assertContains(response, 'already exists')
+        self.assertContains(response, "not right")
 
     def test_duplicate_email(self):
         User.objects.create(username='noob', email='noob@example.com').save()
@@ -79,7 +79,7 @@ class RegisterTestCase(TestCase):
                                      'email': 'noob@example.com',
                                      'password': 'foo',
                                      'password2': 'foo'}, follow=True)
-        self.assertContains(response, 'already exists')
+        self.assertContains(response, "not right")
 
 ## Not sure yet if we need a password2 field
 #    def test_no_match_passwords(self):
