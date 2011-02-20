@@ -76,7 +76,7 @@ class RegisterForm(forms.ModelForm):
 
 
 class EmailConfirmationForm(forms.Form):
-    """This form validates that the user has entered his correct email address."""
+    """This form validates that the user has entered his current email address."""
     email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED,
                                              'invalid': EMAIL_INVALID})
 
@@ -87,9 +87,10 @@ class EmailConfirmationForm(forms.Form):
     def clean_email(self):
         email = self.cleaned_data['email']
         if self.user.email != email:
-            raise forms.ValidationError(_('This is not your current email address.'))
-            
-        return self.cleaned_data['email']
+            # No need to localize this error message because the user won't see it.
+            raise forms.ValidationError('Bad email address')
+
+        return email
 
 
 class EmailChangeForm(forms.Form):
@@ -116,6 +117,40 @@ class EmailChangeForm(forms.Form):
         if User.objects.filter(email=new_email).exists():
             raise forms.ValidationError(_('A user with that email address '
                                           'already exists.'))
-        return self.cleaned_data['new_email']
+        return new_email
 
-## TODO : PasswordChangeForm, PasswordConfirmation
+
+class PasswordChangeForm(forms.Form):
+    """This form requires the current user's correct password 
+       and two matching new password values."""
+    password = forms.CharField(error_messages={'required': PASSWD_CURRENT})
+    new_password = forms.CharField(error_messages={'required': PASSWD_CURRENT,
+                                                   'min_length': PASSWD_SHORT,
+                                                   'max_length': PASSWD_LONG})
+    new_password2 = forms.CharField(error_messages={'required': PASSWD_CURRENT,
+                                                    'min_length': PASSWD_SHORT,
+                                                    'max_length': PASSWD_LONG})
+    
+    def __init__(self, user, *args, **kwargs):
+        super(PasswordChangeForm, self).__init__(*args, **kwargs)
+        self.user = user
+    
+    def clean(self):
+        super(PasswordChangeForm, self).clean()
+        new_password = self.cleaned_data.get('new_password')
+        new_password2 = self.cleaned_data.get('new_password2')
+        if not new_password == new_password2:
+            raise forms.ValidationError(_('Passwords must match.'))
+
+        return self.cleaned_data
+    
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        if not self.user.check_password(password):
+            raise forms.ValidationError(PASSWD_CURRENT)
+        
+        return password
+
+class PasswordConfirmationForm(forms.Form):
+    pass
+
