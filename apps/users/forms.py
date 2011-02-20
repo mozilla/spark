@@ -17,11 +17,13 @@ USERNAME_SHORT = _lazy(u'Username is too short (%(show_value)s characters). '
 USERNAME_LONG = _lazy(u'Username is too long (%(show_value)s characters). '
                       'It must be %(limit_value)s characters or less.')
 EMAIL_INVALID = _lazy(u'Please enter a valid email address.')
+EMAIL_REQUIRED = _lazy(u'Please enter an email address.')
 PASSWD_REQUIRED = _lazy(u'Please enter a valid password.')
 PASSWD_SHORT = _lazy(u'Password is too short '
                       '(At least %(limit_value)s characters).')
 PASSWD_LONG = _lazy(u'Password is too long '
                     '(%(limit_value)s characters or less).')
+PASSWD_CURRENT = _lazy(u'Please enter your current password.')
 #PASSWD2_REQUIRED = _lazy(u'Please enter your password twice.')
 
 
@@ -42,7 +44,8 @@ class RegisterForm(forms.ModelForm):
                                                'min_length': PASSWD_SHORT,
                                                'max_length': PASSWD_LONG},
                                                min_length=6, max_length=30)
-    email = forms.EmailField(error_messages={'invalid': EMAIL_INVALID})
+    email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED,
+                                             'invalid': EMAIL_INVALID})
     #password2 = forms.CharField(error_messages={'required': PASSWD2_REQUIRED})
     newsletter = forms.BooleanField(required=False)
 
@@ -83,11 +86,8 @@ class EmailChangeForm(forms.Form):
     It validates that it's the correct password for the current user and that it is not 
     the current user's email.
     """
-    password = forms.CharField(label=_lazy(u"Password:"),
-                    widget=forms.PasswordInput(render_value=False,
-                                               attrs={'placeholder':_lazy(u'Password')}))
-    new_email = forms.EmailField(label=_lazy(u'New email address:'),
-                    widget=forms.TextInput(attrs={'placeholder':_lazy(u'Email address')}))
+    password = forms.CharField(error_messages={'required': PASSWD_CURRENT})
+    new_email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED})
 
     def __init__(self, user, *args, **kwargs):
         super(EmailChangeForm, self).__init__(*args, **kwargs)
@@ -97,7 +97,7 @@ class EmailChangeForm(forms.Form):
         password = self.cleaned_data['password']
         new_email = self.cleaned_data['new_email']
         if not self.user.check_password(password):
-            raise forms.ValidationError(_('Please enter a correct password.'))
+            raise forms.ValidationError(PASSWD_CURRENT)
         if self.user.email == new_email:
             raise forms.ValidationError(_('This is your current email.'))
         if User.objects.filter(email=new_email).exists():

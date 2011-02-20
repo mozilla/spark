@@ -28,9 +28,9 @@ class RegisterTestCase(TestCase):
         response = self.client.post(reverse('users.mobile_register', locale='en-US'),
                                     {'username': 'newbie',
                                      'email': 'newbie@example.com',
-                                     'password': 'foo',
-                                     'password2': 'foo'}, follow=True)
-        eq_(200, response.status_code)
+                                     'password': 'foobar',
+                                     'password2': 'foobar'})
+        eq_(302, response.status_code)
         u = User.objects.get(username='newbie')
         assert u.password.startswith('sha256')
 
@@ -38,7 +38,7 @@ class RegisterTestCase(TestCase):
         u.save()
         response = self.client.post(reverse('users.mobile_login', locale='en-US'),
                                     {'username': 'newbie',
-                                     'password': 'foo'}, follow=True)
+                                     'password': 'foobar'}, follow=True)
         eq_(200, response.status_code)
         eq_('http://testserver/en-US/m/home', response.redirect_chain[0][0])
 
@@ -68,8 +68,8 @@ class RegisterTestCase(TestCase):
         response = self.client.post(reverse('users.mobile_register', locale='en-US'),
                                     {'username': 'jsocol',
                                      'email': 'newbie@example.com',
-                                     'password': 'foo',
-                                     'password2': 'foo'}, follow=True)
+                                     'password': 'foobar',
+                                     'password2': 'foobar'}, follow=True)
         self.assertContains(response, "not right")
 
     def test_duplicate_email(self):
@@ -77,8 +77,8 @@ class RegisterTestCase(TestCase):
         response = self.client.post(reverse('users.mobile_register', locale='en-US'),
                                     {'username': 'newbie',
                                      'email': 'noob@example.com',
-                                     'password': 'foo',
-                                     'password2': 'foo'}, follow=True)
+                                     'password': 'foobar',
+                                     'password2': 'foobar'}, follow=True)
         self.assertContains(response, "not right")
 
 ## Not sure yet if we need a password2 field
@@ -135,5 +135,5 @@ class ChangeEmailTestCase(TestCase):
                                      'new_email': 'new_email@example.com'})
         eq_(200, response.status_code)
         doc = pq(response.content)
-        eq_('Please enter a correct password.', doc('ul.errorlist').text())
+        eq_('Please enter your current password.', doc('ul.errorlist').text())
         
