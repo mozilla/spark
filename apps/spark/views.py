@@ -3,7 +3,7 @@ import os
 import socket
 import StringIO
 import time
-import re
+
 
 from django import http
 from django.conf import settings
@@ -16,14 +16,12 @@ import celery.task
 import jingo
 
 from spark.urlresolvers import reverse
+from spark.utils import is_mobile_request
 
-def _mobile_request(request):
-    mobile_url = re.compile(r'.+/m/.+')
-    return mobile_url.match(request.path) != None
 
 def handle403(request):
     """A 403 message that looks nicer than the normal Apache forbidden page."""
-    if(_mobile_request(request)):
+    if(is_mobile_request(request)):
         template = 'spark/handlers/mobile/403.html'
     else:
         template = 'spark/handlers/desktop/403.html'
@@ -32,7 +30,7 @@ def handle403(request):
 
 def handle404(request):
     """A handler for 404s."""
-    if(_mobile_request(request)):
+    if(is_mobile_request(request)):
         template = 'spark/handlers/mobile/404.html'
     else:
         template = 'spark/handlers/desktop/404.html'
@@ -41,7 +39,7 @@ def handle404(request):
 
 def handle500(request):
     """A 500 message that looks nicer than the normal Apache error page."""
-    if(_mobile_request(request)):
+    if(is_mobile_request(request)):
         template = 'spark/handlers/mobile/500.html'
     else:
         template = 'spark/handlers/desktop/500.html'

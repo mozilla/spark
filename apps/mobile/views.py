@@ -40,7 +40,6 @@ def boost2(request):
                                         {'parent': form.parent_username})
             else: # User just checked the checkbox
                 return HttpResponseRedirect(reverse('mobile.home'))
-                
     else:
         form = BoostStep2Form(request.user)
     

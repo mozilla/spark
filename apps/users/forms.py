@@ -2,7 +2,6 @@ import re
 
 from django import forms
 from django.conf import settings
-from django.contrib.auth import authenticate, forms as auth_forms
 from django.contrib.auth.models import User
 
 from tower import ugettext as _, ugettext_lazy as _lazy
@@ -65,35 +64,6 @@ class RegisterForm(forms.ModelForm):
     def __init__(self,  request=None, *args, **kwargs):
         super(RegisterForm, self).__init__(request, auto_id='id_for_%s',
                                            *args, **kwargs)
-
-
-class AuthenticationForm(auth_forms.AuthenticationForm):
-    """Overrides the default django form.
-
-    * Doesn't prefill password on validation error.
-    """
-    password = forms.CharField(label=_lazy(u"Password"),
-                               widget=forms.PasswordInput(render_value=False))
-
-    def clean(self):
-        username = self.cleaned_data.get('username')
-        password = self.cleaned_data.get('password')
-
-        if username and password:
-            self.user_cache = authenticate(username=username,
-                                           password=password)
-            if self.user_cache is None:
-                raise forms.ValidationError(
-                            _('Please enter a correct username and password. Note '
-                              'that both fields are case-sensitive.'))
-
-        if self.request:
-            if not self.request.session.test_cookie_worked():
-                raise forms.ValidationError(
-                    _("Your Web browser doesn't appear to have cookies "
-                      "enabled. Cookies are required for logging in."))
-
-        return self.cleaned_data
 
 
 class EmailConfirmationForm(forms.Form):

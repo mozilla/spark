@@ -4,7 +4,8 @@ from functools import wraps
 
 from django.conf import settings
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotAllowed
+from django.http import (HttpResponse, HttpResponseForbidden, HttpResponseRedirect, 
+                         HttpResponseBadRequest, HttpResponseNotAllowed)
 from django.utils.decorators import available_attrs
 from django.utils.http import urlquote
 

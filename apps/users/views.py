@@ -5,7 +5,7 @@ import json
 from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth.forms import (PasswordResetForm, SetPasswordForm,
-                                       PasswordChangeForm)
+                                       PasswordChangeForm, AuthenticationForm)
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.models import Site
@@ -22,7 +22,7 @@ from spark.helpers import url
 from spark.decorators import ssl_required, logout_required, login_required, post_required, json_view
 
 from users.backends import Sha256Backend
-from users.forms import (EmailConfirmationForm, AuthenticationForm, EmailChangeForm)
+from users.forms import (EmailConfirmationForm, EmailChangeForm)
 from users.models import Profile
 from users.utils import handle_login, handle_register
 
@@ -39,10 +39,10 @@ def login(request, mobile=False):
     
     next_url = _clean_next_url(request) or reverse(home_view_name)
     form = handle_login(request)
-
+    
     if request.user.is_authenticated():
         return HttpResponseRedirect(next_url)
-
+    
     return jingo.render(request, login_template,
                         {'form': form, 'next_url': next_url})
 

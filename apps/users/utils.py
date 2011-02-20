@@ -1,13 +1,14 @@
 from django.contrib import auth
 from django.contrib.auth.models import User
 
-from users.forms import RegisterForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
+from users.forms import RegisterForm
 from users.models import Profile
 
-def handle_login(request):
-    auth.logout(request)
 
+def handle_login(request):
     if request.method == 'POST':
+        auth.logout(request)
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             auth.login(request, form.get_user())

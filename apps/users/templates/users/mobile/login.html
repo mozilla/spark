@@ -12,13 +12,15 @@
 	        {{ _('Welcome back! Ready to keep your Spark going strong? Just fill your deets in to log in.') }}
 	    </p>
 	    <hr>
-		{{ errorlist(form) }}
+		{% if form.errors %}
+		<span class="error">{{ _('Oops! Please try again') }}</span>
+		{% endif %}
 	    <form action="" method="post" accept-charset="utf-8">
 			{{ csrf() }}
 	        <fieldset id="account" class="section">
 				
 	            <div class="input-wrapper">
-	                <input tabindex="1" type="text" name="username" value="{{ form.username.data|safe|replace('None','') }}" placeholder="Username" required>
+	                <input tabindex="1" type="text" name="username" value="{{ form.username.data }}" placeholder="Username" required>
 	            </div>
 	            <div class="input-wrapper">
 	                <input tabindex="2" type="text" name="password" value="" placeholder="Password" required>
