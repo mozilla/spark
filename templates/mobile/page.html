@@ -1,4 +1,6 @@
 {% extends "mobile/base.html" %}
+{% set num_new_challenges = 0 %}
+{% set num_new_badges = 11 %}
 
 {% block content %}
 
@@ -30,8 +32,20 @@
 	        <ul>
 	            <li><a href="{{ url('mobile.boost') }}">{{ _('Boost your Spark') }}</a></li>
 	            <li><a href="{{ url('mobile.stats') }}">{{ _('Stats') }}</a></li>
-	            <li><a href="{{ url('mobile.challenges') }}">{{ _('Challenges') }} <span>+2 new</span></a></li>
-	            <li><a href="{{ url('mobile.badges') }}">{{ _('Badges') }} <span>+11 new</span></a></li>
+	            <li><a href="{{ url('mobile.challenges') }}">{{ _('Challenges') }}
+						{% if num_new_challenges > 0 %}
+						{# L10n: {n} is the number of recently completed challenges. #}
+						<span>{{ ngettext('+{n} new','+{n} new', num_new_challenges)|fe(n=num_new_challenges) }}</span>
+						{% endif %}
+					</a>
+				</li>
+	            <li><a href="{{ url('mobile.badges') }}">{{ _('Badges') }}
+						{% if num_new_badges > 0 %}
+						{# L10n: {n} is the number of recently obtained badges. #}
+						<span>{{ ngettext('+{n} new','+{n} new', num_new_badges)|fe(n=num_new_badges) }}</span>
+						{% endif %}
+					</a>
+				</li>
 	            <li><a href="{{ url('mobile.about') }}">{{ _('About Mozilla') }}</a></li>
 	        </ul>
 	        <a href="{{ url('users.mobile_logout') }}" id="logout">{{ _('Do you wanna log out?') }}</a>
