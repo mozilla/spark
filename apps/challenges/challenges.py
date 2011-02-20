@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from tower import ugettext_lazy as _lazy
 
 
@@ -40,7 +42,7 @@ challenges = {
     'lvl5_ch4': _lazy(u'Share with 500 people'),
     'lvl5_ch5': _lazy(u'Share with 1000 people'),
 
-    # EASTER EGGS
+    # Easter eggs
     'ee_ch1': _lazy(u'Non-Android user who shares with three people'),
     'ee_ch2': _lazy(u'Non-Android user who shares with ten people'),
     'ee_ch3': _lazy(u'Share your Spark to 3 continents'),
