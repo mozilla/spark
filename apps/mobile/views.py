@@ -1,13 +1,15 @@
-from spark.urlresolvers import reverse
-
 from django.http import HttpResponseRedirect
 
 import jingo
+
+from spark.urlresolvers import reverse
+from spark.decorators import post_required
 
 from users.models import User
 
 from .forms import BoostStep2Form
 from .decorators import login_required, logout_required
+
 
 
 def home(request):
@@ -33,8 +35,12 @@ def boost2(request):
     if request.method == 'POST':
         form = BoostStep2Form(request.user, request.POST)
         if form.is_valid():
-            return jingo.render(request, 'mobile/boost_step2_found.html',
+            if form.parent_username:
+                return jingo.render(request, 'mobile/boost_step2_found.html',
                                         {'parent': form.parent_username})
+            else: # User just checked the checkbox
+                return HttpResponseRedirect(reverse('mobile.home'))
+                
     else:
         form = BoostStep2Form(request.user)
     
@@ -42,18 +48,16 @@ def boost2(request):
 
 
 @login_required
+@post_required
 def boost2_confirm(request):
     """ Boost your Spark step 2/2 completion. """
-    parent = None
-    username = request.GET.get('parent')
-    
+    username = request.POST.get('parent')
     if username:
-        parent = User.objects.filter(username=username)
+        parent_user = User.objects.filter(username=username) 
+        if parent_user:
+            return HttpResponseRedirect(reverse('mobile.home'))
     
-    if parent:
-        return HttpResponseRedirect(reverse('mobile.home'))
-    else:
-        return jingo.render(request, 'spark/handlers/mobile/400.html', status=400)
+    return jingo.render(request, 'spark/handlers/mobile/400.html', status=400)
 
 
 @login_required

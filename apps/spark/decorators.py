@@ -4,7 +4,7 @@ from functools import wraps
 
 from django.conf import settings
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseForbidden, HttpResponseRedirect, HttpResponseBadRequest, HttpResponseNotAllowed
 from django.utils.decorators import available_attrs
 from django.utils.http import urlquote
 
@@ -97,7 +97,7 @@ def post_required(f):
     @wraps(f)
     def wrapper(request, *args, **kw):
         if request.method != 'POST':
-            return http.HttpResponseNotAllowed(['POST'])
+            return HttpResponseNotAllowed(['POST'])
         else:
             return f(request, *args, **kw)
     return wrapper

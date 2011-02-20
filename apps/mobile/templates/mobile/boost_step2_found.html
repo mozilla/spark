@@ -20,8 +20,12 @@
 		{{ parent }}
     </p>
 </div>
-<div class="buttons-wrapper">
-	<div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Maybe later') }}</a></div>
-	<div class="button right-button"><a href="{{ url('mobile.boost2_confirm')|urlparams(parent=parent) }}">{{ _('Complete') }}</a></div>
-</div>
+<form action="{{ url('mobile.boost2_confirm') }}" method="POST">
+	{{ csrf() }}
+	<input type="hidden" name="parent" value="{{ parent }}">
+	<div class="buttons-wrapper">
+		<div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Maybe later') }}</a></div>
+		<button ontouchstart="" class="right-button" type="submit">{{ _('Complete') }}</button>
+	</div>
+</form>
 {% endblock %}
