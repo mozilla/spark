@@ -282,4 +282,4 @@ class EmailChangeTests(TestCaseBase):
         r = self.client.get(self.url)
         eq_(200, r.status_code)
         doc = pq(r.content)
-        eq_("user118577@nowhere", doc('#email').text())
+        eq_("user118577@nowhere.com", doc('#email').text())

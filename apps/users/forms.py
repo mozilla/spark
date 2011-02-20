@@ -76,8 +76,20 @@ class RegisterForm(forms.ModelForm):
 
 
 class EmailConfirmationForm(forms.Form):
-    """A simple form that requires an email address."""
-    email = forms.EmailField(label=_lazy(u'Email address:'))
+    """This form validates that the user has entered his correct email address."""
+    email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED,
+                                             'invalid': EMAIL_INVALID})
+
+    def __init__(self, user, *args, **kwargs):
+        super(EmailConfirmationForm, self).__init__(*args, **kwargs)
+        self.user = user
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if self.user.email != email:
+            raise forms.ValidationError(_('This is not your current email address.'))
+            
+        return self.cleaned_data['email']
 
 
 class EmailChangeForm(forms.Form):
@@ -87,7 +99,8 @@ class EmailChangeForm(forms.Form):
     the current user's email.
     """
     password = forms.CharField(error_messages={'required': PASSWD_CURRENT})
-    new_email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED})
+    new_email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED,
+                                                 'invalid': EMAIL_INVALID})
 
     def __init__(self, user, *args, **kwargs):
         super(EmailChangeForm, self).__init__(*args, **kwargs)
@@ -99,7 +112,7 @@ class EmailChangeForm(forms.Form):
         if not self.user.check_password(password):
             raise forms.ValidationError(PASSWD_CURRENT)
         if self.user.email == new_email:
-            raise forms.ValidationError(_('This is your current email.'))
+            raise forms.ValidationError(_('This is your current email address.'))
         if User.objects.filter(email=new_email).exists():
             raise forms.ValidationError(_('A user with that email address '
                                           'already exists.'))

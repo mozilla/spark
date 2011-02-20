@@ -109,7 +109,7 @@ class ChangeEmailTestCase(TestCase):
                                      'new_email': user.email})
         eq_(200, response.status_code)
         doc = pq(response.content)
-        eq_('This is your current email.', doc('ul.errorlist').text())
+        eq_('This is your current email address.', doc('ul.errorlist').text())
 
     def test_user_change_email_duplicate(self):
         """Changing to same email shows validation error."""
