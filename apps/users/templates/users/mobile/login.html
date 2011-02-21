@@ -1,5 +1,4 @@
 {% extends "mobile/page.html" %}
-{% from "mobile/macros/errorlist.html" import errorlist %}
 {% set title = _('Spark! Log in') %}
 {% set pagetitle = _('Log in') %}
 {% set body_id = 'login' %}
@@ -7,7 +6,6 @@
 {% set hide_menu = True %}
 
 {% block pagecontent %}
-
 	    <p class="section legend">
 	        {{ _('Welcome back! Ready to keep your Spark going strong? Just fill your deets in to log in.') }}
 	    </p>
@@ -20,10 +18,10 @@
 	        <fieldset id="account" class="section">
 				
 	            <div class="input-wrapper">
-	                <input tabindex="1" type="text" name="username" value="{{ form.username.data }}" placeholder="Username" required>
+	                <input tabindex="1" type="text" name="username" value="{{ form.username.data }}" placeholder="{{ _('Username') }}" required>
 	            </div>
 	            <div class="input-wrapper">
-	                <input tabindex="2" type="text" name="password" value="" placeholder="Password" required>
+	                <input tabindex="2" type="text" name="password" value="" placeholder="{{ _('Password') }}" required>
 	            </div>
 	        </fieldset>
 	        <hr>
@@ -33,6 +31,6 @@
 	        </div>
 	    </form>
 	    <hr class="clear">
-	    <h2 class="cta"><a ontouchstart="" href="#">{{ _('Forgot your password?') }}</a></h2>
+	    <h2 class="cta"><a ontouchstart="" href="{{ url('users.mobile_forgotinfo') }}">{{ _('Forgot your password?') }}</a></h2>
 	    <hr>
 {% endblock %}

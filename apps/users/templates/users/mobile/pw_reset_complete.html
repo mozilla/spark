@@ -1,10 +1,13 @@
 {% extends "mobile/page.html" %}
-{% set title = _('Password successfully reset.') %}
-{% set classes = 'password' %}
+{% set pagetitle = _('Password successfully reset') %}
+{% set body_id = 'forgot-pwd' %}
+{% set hide_menu = True %}
 
-{% block content %}
-  <article id="pw-reset" class="main">
-    <h1>{{ title }}</h1>
-    <p>{{ _('You can now log in.') }}</p>
-  </article>
-{% endblock content %}
+{% block pagecontent %}
+	<p class="section sans">
+		{{ _('You can now log in.') }}
+	</p>
+	<hr>
+	<h2 class="cta"><a ontouchstart="" href="{{ url('users.mobile_login') }}">{{ _('Log in') }}</a></h2>
+	<hr>
+{% endblock %}

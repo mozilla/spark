@@ -26,7 +26,6 @@ desktop_patterns = patterns('',
 
 opts = {'mobile': True}
 mobile_patterns = patterns('',
-    # Login/logout
     url(r'^login$', views.login, opts, name='users.mobile_login'),
     url(r'^logout$', views.logout, opts, name='users.mobile_logout'),
     
@@ -34,8 +33,10 @@ mobile_patterns = patterns('',
     url(r'^register$', views.register, name='users.mobile_register'),
     
     # Forgot password
-    url(r'^pwreset$', views.password_reset, opts,
-                                        name='users.mobile_pw_reset'),
+    url(r'^forgotinfo$', views.password_reset, opts,
+                                        name='users.mobile_forgotinfo'),
+
+    # Password reset
     url(r'^pwreset/(?P<uidb36>[-\w]+)/(?P<token>[-\w]+)$',
                         views.password_reset_confirm, opts,
                                         name='users.mobile_pw_reset_confirm'),

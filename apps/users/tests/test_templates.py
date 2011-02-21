@@ -168,7 +168,7 @@ class PasswordReset(TestCaseBase):
         eq_(0, len(mail.outbox))
     
     def test_bad_email_mobile(self):
-        r = self.client.post(reverse('users.mobile_pw_reset'),
+        r = self.client.post(reverse('users.mobile_forgotinfo'),
                              {'email': 'foo@bar.com'})
         eq_(302, r.status_code)
         eq_('http://testserver/en-US/m/pwresetsent', r['location'])
@@ -177,7 +177,7 @@ class PasswordReset(TestCaseBase):
     @mock.patch_object(Site.objects, 'get_current')
     def test_success(self, get_current):
         get_current.return_value.domain = 'testserver.com'
-        r = self.client.post(reverse('users.mobile_pw_reset'),
+        r = self.client.post(reverse('users.mobile_forgotinfo'),
                              {'email': self.user.email})
         eq_(302, r.status_code)
         eq_('http://testserver/en-US/m/pwresetsent', r['location'])

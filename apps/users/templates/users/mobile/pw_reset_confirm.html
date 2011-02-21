@@ -1,34 +1,38 @@
 {% extends "mobile/page.html" %}
-{% from "macros/errorlist.html" import errorlist %}
-{% set title = _('Password Reset') %}
-{% set classes = 'password' %}
+{% set pagetitle = _('Password reset') if validlink else _('Password reset unsuccessful') %}
+{% set body_id = 'forgot-pwd' %}
+{% set hide_menu = True %}
 
 {% block content %}
-  <article id="pw-reset" class="main">
-    {% if validlink %}
-      <h1>{{ title }}</h1>
-      <form method="post" action="">
-        {{ csrf() }}
-        <fieldset>
-          {{ errorlist(form) }}
-          <ul>
-            <li>
-              <label for="id_new_password1">{{ _('New password') }}</label>
-              {{ form.new_password1|safe }}
-            </li>
-            <li>
-              <label for="id_new_password2">{{ _('Confirm password') }}</label>
-              {{ form.new_password2|safe }}
-            </li>
-          </ul>
-        </fieldset>
-        <div class="submit">
-          <input type="submit" value="{{ _('Update') }}" />
+{% if validlink %}
+<p class="section legend">
+    {{ _('Enter your new password below.') }}
+</p>
+<hr>
+<form action="" method="post" accept-charset="utf-8">
+	{{ csrf() }}
+    <fieldset id="account" class="section">
+        <div class="input-wrapper">
+			<input tabindex="1" type="password" name="new_password1" placeholder="{{ _('New password') }}" required>
         </div>
-      </form>
-    {% else %}
-      <h1>{{ _('Password reset unsuccessful') }}</h1>
-      <p>{{ _('The password reset link was invalid, possibly because it has already been used.  Please request a new password reset.') }}</p>
-    {% endif %}
-  </article>
+		{{ form.new_password1.errors|safe }}
+		<div class="input-wrapper">
+			<input tabindex="2" type="password" name="new_password2" placeholder="{{ _('Confirm password') }}" required>
+        </div>
+		{{ form.new_password2.errors|safe }}
+    </fieldset>
+    <hr>
+    <div class="buttons-wrapper">
+        <div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
+        <button ontouchstart="" tabindex="2" class="right-button" type="submit">{{ _('Update') }}</button>
+    </div>
+</form>
+
+{% else %}
+<p class="section legend">
+{{ _('The password reset link was invalid, possibly because it has already been used.') }}
+</p>
+<hr class="clear">
+<h2 class="cta"><a ontouchstart="" href="{{ url('users.mobile_forgotinfo') }}">{{ _('Request a new password reset') }}</a></h2>
+{% endif %}
 {% endblock content %}

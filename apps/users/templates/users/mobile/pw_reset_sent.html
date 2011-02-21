@@ -1,16 +1,17 @@
 {% extends "mobile/page.html" %}
-{% from "mobile/macros/errorlist.html" import errorlist %}
-{% set title = _('Password Reset') %}
-{% set classes = 'password' %}
+{% set pagetitle = _('Email sent') %}
+{% set body_id = 'forgot-pwd' %}
+{% set hide_menu = True %}
 
-{% block content %}
-  <article id="pw-reset" class="main">
-    <h1>{{ title }}</h1>
-    <p>
-      {% trans %}
-        We've sent an email to any account using this address.
-        Please follow the link in the email to reset your password.
-      {% endtrans %}
-    </p>
-  </article>
-{% endblock content %}
+{% block pagecontent %}
+	<p class="section sans">
+		{% trans %}
+		Youʼre almost there. We just sent you a link to reset your password. Please
+		wait a few moments before it arrives, then follow the instructions to log
+		back in.
+		{% endtrans %}
+	</p>
+	<hr>
+	<h2 class="cta"><a ontouchstart="" href="{{ url('mobile.home') }}">{{ _('Take me home') }}</a></h2>
+	<hr>
+{% endblock %}

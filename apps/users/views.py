@@ -87,7 +87,6 @@ def change_email(request):
                         {'form': form})
 
 
-@post_required
 @json_view
 def password_reset(request, mobile=False):
     """Password reset form.
@@ -167,13 +166,8 @@ def password_reset_confirm(request, uidb36=None, token=None, mobile=False):
 
 def password_reset_complete(request):
     """Password reset complete.
-
-    Based on django.contrib.auth.views. Show a success message.
-
     """
-    form = AuthenticationForm()
-    return jingo.render(request, 'users/mobile/pw_reset_complete.html',
-                        {'form': form})
+    return jingo.render(request, 'users/mobile/pw_reset_complete.html')
 
 
 @login_required

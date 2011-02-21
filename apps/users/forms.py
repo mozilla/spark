@@ -77,7 +77,10 @@ class RegisterForm(forms.ModelForm):
 
 
 class EmailConfirmationForm(forms.Form):
-    """This form validates that the user has entered his current email address."""
+    """This form validates that the user has entered his current email address.
+    
+       It is used by desktop and mobile websites for password recovery.
+    """
     email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED,
                                              'invalid': EMAIL_INVALID})
 
