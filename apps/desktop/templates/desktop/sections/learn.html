@@ -1,0 +1,45 @@
+{% extends "desktop/sections/base.html" %}
+{% set section_id = 'learn' %}
+{% set three_columns = True %}
+
+{% block leftcolumn %}
+	<h3>
+		{{ _('Learn') }}
+		<p>{{ _("Get the latest on Firefox mobile's features") }}</p>
+	</h3>
+{% endblock %}
+
+{% block middlecolumn %}
+	<ul class="features-list">
+		<li class="first">
+			<h4>{{ _('Type less, Browse More') }}</h4>
+			<p>{{ _('Easily browse the web with more swiping and less typing.') }}</p>
+		</li>
+		<li>
+			<h4>{{ _('Customize your Browser') }}</h4>
+			<p>{{ _('Add features to help make your browser your own. Install add-ons directly from your mobile.') }}</p>
+		</li>
+		<li>
+			<h4>{{ _('Stay in Sync') }}</h4>
+			<p>{{ _('Access your history, passwords, bookmarks and even open tabs across all your devices.') }}</p>
+		</li>
+	</ul>
+{% endblock %}
+    
+{% block rightcolumn %}
+	<ul class="features-list">
+		<li class="first">
+			<h4>{{ _('Performance &amp; productivity') }}</h4>
+			<p>{{ _('The mobile Firefox browser is optimized for power and efficiency.') }}</p>
+		</li>
+		<li>
+			<h4>{{ _('Share, find, save') }}</h4>
+			<p>{{ _('Share interesting content with friends in a single tap.') }}</p>
+		</li>
+		<li>
+			<h4>{{ _('Location-aware browsing') }}</h4>
+			<p>{{ _('Save time by letting sites know where you are (opt-in only).') }}</p>
+		</li>
+	</ul>
+	<a href="#" class="button">{{ _('Learn more') }}</a>
+{% endblock %}

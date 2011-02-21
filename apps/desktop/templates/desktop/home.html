@@ -1,249 +1,59 @@
 {% extends "desktop/base.html" %}
-{% set title = _('Spark Firefox Mobile') %}
+{% set title = _('Spark! Home page') %}
+{% set body_id = 'logged-out' %}
 {% set scripts = ('jquery-ui', 'desktop') %}
 
 {% block content %}
-	<div id="masthead" class="">
-	    <a href="#" id="visit-mozilla"></a>
-	    <span id="have-account">{{ _('Already have a Spark?') }} <a href="#" class="popup-trigger">{{ _('Sign in') }} ></a></span>
-		<h1>
-			<img src="{{ MEDIA_URL }}img/firefox-logo.png" alt="Mozilla Firefox">
-	        {{ _('Mozilla') }}
-			<span>{{ _('Firefox Mobile') }}</span>
-		</h1>
-		<ul id="main-menu">
-			<li>{{ _('global spark') }}
-				<span class="subtitle">{{ _('set the world on fire') }}</span>
-			</li>
-			<li>{{ _('learn') }}
-				<span class="subtitle">{{ _('mobile browser features') }}</span>
-			</li>
-			<li>{{ _('download') }}
-				<span class="subtitle">{{ _('the browser') }}</span>
-			</li>
-		</ul>
-	</div>
-	
-	<div id="headline">
-		<h2>
-			{{ _('Spark Firefox Mobile') }}
-		</h2>
-		<h3>{{ _('Ready to light up the world?') }}</h3>
-		<p>{% trans %}Quisque vitae neque ac felis porta pretium sit amet et risus. Maecenas eu sagittis nulla. 
-			Mauris fermentum odio imperdiet urna interdum eu placerat lorem gravida. Aliquam purus turpis, varius quis sollicitudin et, 
-			consectetur vel mauris. Donec nec cursus purus. Vestibulum vel gravida quam. <a href="#download">Get Firefox and start a Spark ></a>{% endtrans %}</p>
-	</div>
+    <div id="container">
+	    <div id="top-bg">
+            
+            <div id="wrapper">
+        	    <div id="masthead">		    
+            		    <a href="http://www.mozilla.com/" id="visit-mozilla"></a>
+            		    <span id="have-account">{{ _('Already have a Spark?') }} <a href="#" class="popup-trigger">{{ _('Sign in >') }}</a></span>
+            			<div id="logo">
+            				<img src="{{ MEDIA_URL }}img/lockup.png" alt="{{ _('Mozilla Firefox') }}">
+            			</div>
+            			<ul id="main-menu">
+            				<li><a href="#global-spark">{{ _('global spark') }}</a>
+            					<span class="subtitle">{{ _('set the world on fire') }}</span>
+            				</li>
+            				<li><a href="#learn">{{ _('learn') }}</a>
+            					<span class="subtitle">{{ _('mobile browser features') }}</span>
+            				</li>
+            				<li><a href="#download">{{ _('get Firefox') }}</a>
+            					<span class="subtitle">{{ _('the browser') }}</span>
+            				</li>
+            			</ul>
+        		</div> <!-- end masthead -->
 
-	<div id="main-content" class="">
+                <div id="headline">
+            			<h1>
+            				{{ _('Firefox Spark') }}
+            			</h1>
+            			<h3>{{ _('Ready to light up the world?') }}</h3>
+            			<p>
+            			    {% trans %}
+            			    To celebrate Firefox going mobile, we created Spark. Spark is a game based on fun sharing challenges. 
+            			    It’s a great way to share the word about Firefox for mobile and have fun doing it. 
+            			    So get Spark, join the Firefox community, take challenges, unlock badges and earn yourself some bragging rights.
+            			    {% endtrans %}
+            			    <a href="#download">{{ _('Get Firefox and start a Spark >') }}</a>
+            			</p>
+        		</div> <!-- end headline -->
 
-		<div id="global-spark" class="section">
-			<div class="column left-column">
-				<h3>
-					{{ _('Global <br>Spark')|safe }}
-					<p>{{ _('Get the lowdown on the latest stats.') }}</p>
-				</h3>
-			</div>
-			<div class="column wide-column">
-				<p><span class="title">Catchy subhead title</span> Share your Firefox spark and add yourself to the visualization. Download the Firefox mobile browser to your Android phone to get started.</p>
-				<a href="#download">{{ _('Download Firefox Mobile to get started') }} ></a>
-			</div>
-			<a href="#" class="button">{{ _('Launch real-time visualization') }}</a>
-			<div id="globalmap">
-			    <!-- Temporary image here -->
-			</div>
-			<div id="list-container">
-				<ul id="random-stats" class="items">
-					<li class="first">
-						<span class="count">138</span>
-						<span class="title">Fun Global Statistic</span>
-						<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
-					</li>
-					<li>
-						<span class="count">138</span>
-						<span class="title">Fun Global Statistic</span>
-						<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
-					</li>
-					<li>
-						<span class="count">138</span>
-						<span class="title">Fun Global Statistic</span>
-						<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
-					</li>
-					<li>
-						<span class="count">138</span>
-						<span class="title">Fun Global Statistic</span>
-						<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
-					</li>
-					<li>
-						<span class="count">138</span>
-						<span class="title">Fun Global Statistic</span>
-						<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
-					</li>
-				</ul>
-			</div>
-			<div id="slider">
-			</div>
-		</div><!-- end global-spark -->
+    			{% include 'desktop/sections/globalspark.html' %}
+    		    {% include 'desktop/sections/learn.html' %}
+    			{% include 'desktop/sections/getfirefox.html' %}
+                {% include 'desktop/sections/about.html' %}
+                
+                {% include 'desktop/footer.html' %}
 
-		<div id="learn" class="section">
-			<div class="column left-column">
-				<h3>
-					{{ _('Learn') }}
-					<p>{{ _("Get the lowdown on Firefox mobile's features.") }}</p>
-				</h3>
-			</div>
-			<div class="column middle-column">
-				<ul class="features-list">
-					<li class="first">
-						<h4>{{ _('Type less, Browse More') }}</h4>
-						<p>{{ _('Easily browse the web with more swiping and less typing.') }}</p>
-					</li>
-					<li>
-						<h4>{{ _('Customize your Browser') }}</h4>
-						<p>{{ _('Add features to help make your browser your own. Install add-ons directly from your mobile.') }}</p>
-					</li>
-					<li>
-						<h4>{{ _('Stay in Sinc') }}</h4>
-						<p>{{ _('Access your history, passwords, bookmarks and even open tabs across all your devices.') }}</p>
-					</li>
-				</ul>
-			</div>
-			<div class="column right-column">
-				<ul class="features-list">
-					<li class="first">
-						<h4>{{ _('Type less, Browse More') }}</h4>
-						<p>{{ _('Easily browse the web with more swiping and less typing.') }}</p>
-					</li>
-					<li>
-						<h4>{{ _('Customize your Browser') }}</h4>
-						<p>{{ _('Add features to help make your browser your own. Install add-ons directly from your mobile.') }}</p>
-					</li>
-					<li>
-						<h4>{{ _('Stay in Sinc') }}</h4>
-						<p>{{ _('Access your history, passwords, bookmarks and even open tabs across all your devices.') }}</p>
-					</li>
-				</ul>
-			
-				<a href="#" class="button">{{ _('Learn more') }}</a>
-			</div>
-		</div><!-- end learn -->
-	
-		<div id="download" class="section">
-			<div class="column left-column">
-				<h3>
-					{{ _('Get Firefox') }}
-					<p>{{ _('Get Firefox on your phone, get the Spark.') }}</p>
-				</h3>
-			</div>
-			<div class="column wide-column">
-	            <div class="sub-section first">
-	                <span class="title">{{ _('System requirements:') }} </span>{{ _('Firefox is available for Android phones (2.0 and above) and the Nokia N900.') }}
-	            </div>
-	            <div class="sub-section">
-	                <img src="{{ MEDIA_URL }}img/qrcode.png" alt="" id="qrcode">
-	                <h4>{{ _('Option 01 / Scan the QR code') }}</h4>
-	                <p>
-	                    {{ _("Scan the QR code to the right with your phone's camera. This will install Firefox on your phone automatically.") }}
-						<small><span class="title">{{ _("What's this?") }}</span> 
-						{{ _('Install a code reader (we suggest searching for "QR reader" in your app store) and scan this code with your QR reader app.') }}</small>
-	                </p>
-	            </div>
-	            <div class="sub-section">
-	                <h4>{{ _("Option 02 / Use your phone's browser") }}</h4>
-	                <p>
-						{% trans download_url='http://firefox.com/m' %}
-	                    Get Firefox by pointing your phone's default browser to <a href="{{ download_url }}">http://firefox.com/m</a>
-						{% endtrans %}
-	                </p>
-	            </div>
-	            <div class="sub-section">
-	                <h4>{{ _('Not an Android or MeeGo user?') }}</h4>
-	                <p>
-	                    {{ _('No problem, try Firefox Home for iPhone (get it FREE from iTunes) <br/>OR just help spread the word about Firefox Mobile to others')|safe }}
-	                </p>
-	            </div>
-			</div>
-		</div><!-- end download -->
-	
-		<div id="about" class="section">
-			<div class="column left-column">
-				<h3>
-					{{ _('About us') }}
-				</h3>
-			</div>
-			<div class="column wide-column">
-	            <p>
-					{% trans %}
-	                <span class="title">The Firefox Mobile browser is created by Mozilla</span>, 
-					a non-profit organization whose mission is to promote openness, 
-					innovation and opportunity on the Web.
-					{% endtrans %}
-	            </p>
-	            <a href="#" class="button">{{ _('More About Mozilla') }}</a>
-			</div>
-		</div><!-- end about -->
-	</div><!-- end main-content -->
-	<div id="footer" class="">
-		<a href="#" class="first">{{ _('Privacy Policy') }}</a>|
-		<a href="#">{{ _('Legal Notices') }}</a>|
-		<a href="#">{{ _('Report Trademark Abuse') }}</a>
-		<p id="license">
-		 {% trans %}
-		 Except where otherwise noted, content of this site is licensed under the<br/>
-		 Creative Commons Attribution Share-Alike License v3.0 or any later version.
-		 {% endtrans %}
-		</p>
-	</div>
+            </div> <!-- end wrapper -->
+        </div> <!-- end top-bg -->
+    </div> <!-- end container -->
 
-	<div id="popup">
-	    <div id="sign-in">
-	        <h3>{{ _('Sign-in') }}</h3>
-	          <p class="legend">{{ _('Welcome back! Ready to keep your Spark going strong? Just fill your deets in to log in.') }}</p>
-	          <hr>
-	          <form action="login" method="post" accept-charset="utf-8">
-	            <fieldset id="account" class="section">
-	                <div class="input-wrapper">
-	                    <input tabindex="1" type="text" name="username" value="" placeholder="Username" required>
-	                </div>
-	                <div class="input-wrapper">
-	                    <input tabindex="2" type="text" name="password" value="" placeholder="Password" required>
-	                </div>
-	            </fieldset>
-	            <div class="buttons-wrapper">
-	                <button ontouchstart="" tabindex="4" class="left-button" type="reset">{{ _('Cancel') }}</button>
-	                <button ontouchstart="" tabindex="3" class="right-button" type="submit">{{ _('Sign in') }}</button>
-	            </div>
-	        </form>
-	        <a id="forgot-password" href="#">{{ _('Forgot your password?') }} ></a>
-	    </div>
-	    <div id="password-recovery">
-	        <h3>{{ _('Forgot password?') }}</h3>
-	        <p class="legend">
-	            {{ _('No problem. Just enter the email address you used to sign up and we’ll send it to you.') }}
-	        </p>
-	        <hr>
-	        <form id="recover" action="login" method="post" accept-charset="utf-8">
-	            <fieldset id="account" class="section">
-	                <span class="error">{{ _('Oops! There was a problem.') }}</span>
-	                <div class="input-wrapper error">
-	                    <input tabindex="1" type="email" name="email" value="" placeholder="Email address">
-	                </div>
-	            </fieldset>
-	            <hr>
-	            <div class="buttons-wrapper">
-	                <button ontouchstart="" tabindex="3" class="left-button" type="reset">{{ _('Cancel') }}</button>
-	                <button ontouchstart="" tabindex="2" class="right-button" type="submit">{{ _('Send') }}</button>
-	            </div>
-	        </form>
-	    </div>
-	    <div id="password-sent">
-	        <h3>{{ _('Password sent') }}</h3>
-	        <p class="legend">
-			  {% trans %}
-	          You’re almost there. We just sent your password to your email address. 
-			  Please wait a few moments before it arrives, then follow the instructions to log back in.
-			  {% endtrans %}
-	        </p>
-	    </div>
-	</div>
-	<div id="mask"></div>
+		{% include 'desktop/popups/home.html' %}
+		<div id="mask"></div>
+	</div> <!-- end wrapper -->
 {% endblock %}

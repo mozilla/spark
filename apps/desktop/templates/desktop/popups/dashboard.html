@@ -1,0 +1,79 @@
+<div id="popup">
+    <div id="change-email">
+        <h3>{{ _('Change Email Address') }}</h3>
+          <p class="legend">{{ _('Please enter the following information') }}</p>
+          <hr>
+          <form method="post" accept-charset="utf-8">
+            <fieldset class="section">
+                <div class="input-wrapper">
+                    <input tabindex="1" type="email" name="current-email" value="" placeholder="{{ _('Current email address') }}" required>
+                </div>
+                <div class="input-wrapper">
+                    <input tabindex="2" type="email" name="new-email" value="" placeholder="{{ _('New email address') }}" required>
+                </div>
+                <div class="input-wrapper">
+                    <input tabindex="3" type="email" name="confirm-new-email" value="" placeholder="{{ _('Confirm new email address') }}" required>
+                </div>
+            </fieldset>
+            <div class="buttons-wrapper">
+                <a class="button left-button">{{ _('Cancel') }}</a>
+                <button tabindex="4" class="right-button" type="submit">{{ _('Change') }}</button>
+            </div>
+        </form>
+    </div>
+    <div id="change-password">
+        <h3>{{ _('Change Password') }}</h3>
+          <p class="legend">{{ _('Please enter the following information') }}</p>
+          <hr>
+          <form method="post" accept-charset="utf-8">
+            <fieldset class="section">
+                <div class="input-wrapper">
+                    <input tabindex="1" type="text" name="current-password" value="" placeholder="{{ _('Current password') }}" required>
+                </div>
+                <div class="input-wrapper">
+                    <input tabindex="2" type="text" name="new-password" value="" placeholder="{{ _('New password') }}" required>
+                </div>
+                <div class="input-wrapper">
+                    <input tabindex="3" type="text" name="confirm-new-password" value="" placeholder="{{ _('Confirm new password') }}" required>
+                </div>
+            </fieldset>
+            <div class="buttons-wrapper">
+                <a class="button left-button">{{ _('Cancel') }}</a>
+                <button tabindex="4" class="right-button" type="submit">{{ _('Change') }}</button>
+            </div>
+        </form>
+    </div>
+    <div id="delete-account">
+        <h3>{{ _('Delete Account') }}</h3>
+        <p class="legend">
+            {% trans %}You're about to permanently delete your Spark account. To proceed, please enter your password below.{% endtrans %}
+        </p>
+        <hr>
+        <form method="post" accept-charset="utf-8">
+            <fieldset class="section">
+                <div class="input-wrapper">
+                    <input tabindex="1" type="email" name="email" value="" placeholder="{{ _('Password') }}">
+                </div>
+            </fieldset>
+            <hr>
+            <div class="buttons-wrapper">
+                <a class="button left-button">{{ _('Cancel') }}</a>
+                <button ontouchstart="" tabindex="2" class="right-button" type="submit">{{ _('Delete account') }}</button>
+            </div>
+        </form>
+    </div>
+    <div id="your-account">
+        <h3>{{ _('Your Account') }}</h3>
+        <div id="account-details" class="sans">
+            <span>{{ _('Logged in as:') }} <span>Foxybarbarian</span></span>
+            <span>{{ _('Email Address:') }} <span>name@gmail.com</span></span>
+            <span>{{ _('Joined Spark:') }} <span>December 31, 2011</span></span>
+        </div>
+        <hr>
+        <a href="#" class="button change-password">{{ _('Change password') }}</a>
+        <a href="#" class="button change-email">{{ _('Change email address') }}</a>
+        <a href="#" class="button delete-account">{{ _('Delete your account') }}</a>
+        <a href="#" class="button grey close">{{ _('Close') }}</a>
+    </div>
+
+</div>

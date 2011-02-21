@@ -11,7 +11,7 @@ def home(request):
     return jingo.render(request, 'desktop/home.html', {})
 
 
-@login_required
+#@login_required
 def dashboard(request):
     return jingo.render(request, 'desktop/dashboard.html', {})
 

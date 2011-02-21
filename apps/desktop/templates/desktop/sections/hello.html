@@ -1,0 +1,18 @@
+<div id="main-info">
+	<h1>
+		{{ _('Firefox Spark') }}
+	</h1>
+	<div id="user-info">
+	    {{ _('Hello, <span id="username">{username}!</span>')|fe(username='FoxyBarbarian') }}
+	    <span id="log-out">
+	        {# L10n: This appears next to: "Hello, {username}!" #}
+	        {{ _('Not you?') }}
+	        <a href="#">{{ _('Log out >') }}</a>
+	    </span>
+	</div>
+	<div id="user-details">
+	    <span id="parent-user">{{ _('Spark started with:') }}<span>Alice123</span></span>
+	    <span id="user-location">{{ _('Home location:') }} <span>Queens, NY, United States</span></span>
+	    <span id="edit-account">{{ _('Edit <a href="#">your account ></a>')|safe }}</span>
+	</div>
+</div><!-- end main-info -->

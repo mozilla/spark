@@ -1,0 +1,62 @@
+{% extends "desktop/sections/base.html" %}
+{% set section_id = 'share' %}
+
+{% block leftcolumn %}
+	<h3>
+		{{ _('Share') }}
+		<p>{{ _('There are 4 ways to get your Spark out into the world.') }}</p>
+	</h3>
+{% endblock %}
+
+{% block widecolumn %}
+    <div class="sub-section first">
+        <span class="title">{{ _('System requirements:') }} </span>
+        {% trans devices_url='http://www.mozilla.com/mobile/platforms/' %}
+        Firefox is available for Android phones (2.0 and above) and the Nokia N900. See the list of <a href="{{ devices_url }}">supported devices</a>.
+        {% endtrans %}
+    </div>
+    <div class="sub-section">
+        <img src="{{ MEDIA_URL }}img/qrcode.png" alt="" id="qrcode">
+        <h4>{{ _('Your personal QR code') }}</h4>
+        <p>
+            {% trans %}
+            Have your friend scan the QR code to the right with their phone’s camera to automatically install Firefox on their phone.
+            {% endtrans %}
+            <small>
+                <span class="title">{{ _("What's this?") }}</span>
+                {% trans %}
+                Install a code reader (we suggest searching for "QR reader" in your app store) and scan this code with your QR reader app.
+                {% endtrans %}
+            </small>
+        </p>
+    </div>
+    <div class="sub-section">
+        <h4>{{ _('Personal link') }}</h4>
+        <p>
+            <a class="button" href="#">{{ _('Copy your URL') }}</a>
+            {% trans share_url='http://firefoxspark.com/m/foxybarbarian/' %}
+            You can rack up your shares by pointing your friends to: <a href="{{ share_url }}">{{ share_url }}</a>
+            {% endtrans %}
+        </p>
+    </div>
+    <div class="sub-section">
+        <h4>{{ _('Social media') }}</h4>
+        <div id="spread-the-word">
+            <a href="#" id="email"></a>
+            <a href="#" id="facebook"></a>
+            <a href="#" id="twitter"></a>
+        </div>
+        <p>
+            {% trans %}
+            Post your personal QR code or URL straight to your favorite social media sites or email it in one quick step.
+            {% endtrans %}
+        </p>
+    </div>
+    <div class="sub-section">
+        <h4>{{ _('QR code poster') }}</h4>
+        <p>
+            <a class="button" href="#">{{ _('Create a poster') }}</a>
+            {{ _('Print your QR code onto a poster.') }}
+        </p>
+    </div>
+{% endblock %}

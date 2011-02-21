@@ -1,0 +1,65 @@
+<div id="popup">
+    <div id="sign-in">
+        <h3>{{ _('Sign in') }}</h3>
+          <p class="legend">{{ _('Welcome back! Ready to keep your Spark going strong? Just fill your deets in to log in.') }}</p>
+          <hr>
+          <form action="login" method="post" accept-charset="utf-8">
+            <fieldset class="section">
+                <div class="input-wrapper">
+                    <input tabindex="1" type="text" name="username" value="" placeholder="{{ _('Username') }}" required>
+                </div>
+                <div class="input-wrapper">
+                    <input tabindex="2" type="text" name="password" value="" placeholder="{{ _('Password') }}" required>
+                </div>
+            </fieldset>
+            <div class="buttons-wrapper">
+                <a class="button left-button">{{ _('Cancel') }}</a>
+                <button ontouchstart="" tabindex="3" class="right-button" type="submit">{{ _('Sign in') }}</button>
+            </div>
+        </form>
+        <a id="forgot-password" href="#">{{ _('Forgot your password? >') }}</a>
+        <p class="download">
+            {% trans download_url='' %}
+            Don’t have Spark yet? <a href="{{ download_url }}">Download</a> Firefox on your Android or 
+            Maemo to get started.
+            {% endtrans %}
+        </p>
+    </div>
+    <div id="password-recovery">
+        <h3>{{ _('Forgot my info') }}</h3>
+        <p class="legend">
+            {% trans %}
+            Enter the email you used to create your 
+            account and we’ll remind you of your 
+            username and password.
+            {% endtrans %}
+        </p>
+        <hr>
+        <form id="recover" method="post" accept-charset="utf-8">
+            <fieldset id="account" class="section">
+                <!-- <span class="error">Oops! There was a problem.</span> -->
+                <div class="input-wrapper"> <!-- add class error to this div to enable red color -->
+                    <input tabindex="1" type="email" name="email" value="" placeholder="{{ _('Email address') }}">
+                </div>
+            </fieldset>
+            <hr>
+            <div class="buttons-wrapper">
+                <a class="button left-button">{{ _('Cancel') }}</a>
+                <button ontouchstart="" tabindex="2" class="right-button" type="submit">{{ _('Send') }}</button>
+            </div>
+        </form>
+    </div>
+    <div id="success">
+        <h3>{{ _('Success!') }}</h3>
+        <p class="legend">
+            {% trans %}
+            Your account details have been sent to your 
+            email address. Please wait a few moments for 
+            it to arrive, then follow the instructions to log 
+            back in.
+            {% endtrans %}
+        </p>
+        <hr>
+        <a href="#" class="button close">{{ _('OK') }}</a>
+    </div>            
+</div>

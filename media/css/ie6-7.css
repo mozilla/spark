@@ -1,0 +1,25 @@
+div.copy .arrow {
+    display:none;
+}
+
+.wrapper .clearfix {
+    padding-bottom:70px;
+}
+
+div.clearfix {
+    clear:both;
+    padding-bottom:1px;
+}
+
+span.challenges-count, div.lock, span.locked-message {
+    margin-top:-60px;
+}
+
+div.back-to-top {
+    clear:both;
+}
+
+#badges-legend span {
+    top:-27px;
+    left:35px;
+}

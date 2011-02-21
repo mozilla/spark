@@ -5,20 +5,30 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 		<title>{{ title }}</title>
+		{{ js('modernizr') }}
 		{% block site_css %}
 	      {{ css('desktop') }}
 	    {% endblock %}
+		<!--[if lte IE 7]>
+		    <link rel="stylesheet" href="css/ie6-7.css">
+		<![endif]-->
+		<!--[if IE 6]>
+	        {{ js('pngfix') }}
+	        <script>
+	          DD_belatedPNG.fix('.png');
+	        </script>
+	    <![endif]-->
 	</head>
 	<!-- Language class must be dynamically applied to the body in order to create language-specific CSS rules -->
-	<body class="lang-en">
+	<body id="{{ body_id }}" class="lang-en {{ body_class }}">
 	<!-- We could also use real HTML5 tags by using HTML5Shiv . See Boilterplate for more info -->
-		<div id="wrapper" class="">
-			{% block content %}{% endblock %}
-		</div>
+		{% block content %}{% endblock %}
 
 		{{ js('common') }}
 		{% for script in scripts %}
 		{{ js(script) }}
 		{% endfor %}
+		
+		{% block script %}{% endblock %}
 	</body>
 </html>
