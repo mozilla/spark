@@ -3,7 +3,7 @@
 {% set body_id = 'forgot-pwd' %}
 {% set hide_menu = True %}
 
-{% block content %}
+{% block pagecontent %}
 {% if validlink %}
 <p class="section legend">
     {{ _('Enter your new password below.') }}
@@ -35,4 +35,4 @@
 <hr class="clear">
 <h2 class="cta"><a ontouchstart="" href="{{ url('users.mobile_forgotinfo') }}">{{ _('Request a new password reset') }}</a></h2>
 {% endif %}
-{% endblock content %}
+{% endblock %}

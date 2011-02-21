@@ -197,14 +197,14 @@ class PasswordReset(TestCaseBase):
                                     args=[self.uidb36, '12-345']))
         eq_(200, r.status_code)
         doc = pq(r.content)
-        eq_('Password reset unsuccessful', doc('article h1').text())
+        eq_('Password reset unsuccessful', doc('#header h1').text())
 
     def test_reset_fail(self):
         url = self._get_mobile_reset_url()
         r = self.client.post(url, {'new_password1': '', 'new_password2': ''})
         eq_(200, r.status_code)
         doc = pq(r.content)
-        eq_(1, len(doc('ul.errorlist')))
+        assert len(doc('ul.errorlist li')) > 0
 
         r = self.client.post(url, {'new_password1': 'one',
                                    'new_password2': 'two'})
