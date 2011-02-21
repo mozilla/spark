@@ -6,25 +6,15 @@
 {% block content %}
     <div id="container">
 	    <div id="top-bg">
-            
+	        
             <div id="wrapper">
-        	    <div id="masthead">		    
-            		    <a href="http://www.mozilla.com/" id="visit-mozilla"></a>
-            		    <span id="have-account">{{ _('Already have a Spark?') }} <a href="#" class="popup-trigger">{{ _('Sign in >') }}</a></span>
-            			<div id="logo">
-            				<img src="{{ MEDIA_URL }}img/lockup.png" alt="{{ _('Mozilla Firefox') }}">
-            			</div>
-            			<ul id="main-menu">
-            				<li><a href="#global-spark">{{ _('global spark') }}</a>
-            					<span class="subtitle">{{ _('set the world on fire') }}</span>
-            				</li>
-            				<li><a href="#learn">{{ _('learn') }}</a>
-            					<span class="subtitle">{{ _('mobile browser features') }}</span>
-            				</li>
-            				<li><a href="#download">{{ _('get Firefox') }}</a>
-            					<span class="subtitle">{{ _('the browser') }}</span>
-            				</li>
-            			</ul>
+        	    <div id="masthead">	    
+        		    <a href="http://www.mozilla.com/" id="visit-mozilla"></a>
+        		    <span id="have-account">{{ _('Already have a Spark?') }} <a href="#" class="popup-trigger">{{ _('Sign in >') }}</a></span>
+        			<div id="logo">
+        				<img src="{{ MEDIA_URL }}img/lockup.png" alt="{{ _('Mozilla Firefox') }}">
+        			</div>
+        			{% include 'desktop/menus/home.html' %}
         		</div> <!-- end masthead -->
 
                 <div id="headline">
@@ -47,13 +37,13 @@
     			{% include 'desktop/sections/getfirefox.html' %}
                 {% include 'desktop/sections/about.html' %}
                 
-                {% include 'desktop/footer.html' %}
+                {% include 'desktop/includes/footer.html' %}
 
             </div> <!-- end wrapper -->
         </div> <!-- end top-bg -->
     </div> <!-- end container -->
 
-		{% include 'desktop/popups/home.html' %}
-		<div id="mask"></div>
-	</div> <!-- end wrapper -->
+    {% include 'desktop/popups/logged-out.html' %}
+	<div id="mask"></div>
+</div> <!-- end wrapper -->
 {% endblock %}

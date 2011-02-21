@@ -1,0 +1,13 @@
+<div id="main-info">
+	<h1>
+		{{ _('Firefox Spark') }}
+	</h1>
+	<div id="user-info">
+	{% include "desktop/includes/hello.html" %}
+	</div>
+	<div id="user-details">
+	    <span id="parent-user">{{ _('Spark started with:') }} <span>Alice123</span></span>
+	    <span id="user-location">{{ _('Home location:') }} <span>Queens, NY, United States</span></span>
+	    <span id="edit-account">{{ _('Edit <a href="#">your account ></a>')|safe }}</span>
+	</div>
+</div><!-- end main-info -->

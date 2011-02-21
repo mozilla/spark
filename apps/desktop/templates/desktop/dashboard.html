@@ -12,19 +12,10 @@
             			<div id="logo">
             				<img src="{{ MEDIA_URL }}img/lockup.png" alt="{{ _('Mozilla Firefox') }}">
             			</div>
-            			<ul id="main-menu">
-            				<li><a href="#stats">{{ _('your Spark') }}</a>
-            				</li>
-            				<li><a href="#challenges">{{ _('challenges') }}</a>
-            				</li>
-            				<li><a href="#share">{{ _('share') }}</a>
-            				</li>
-            				<li><a href="#global-spark">{{ _('global spark') }}</a>
-            				</li>
-            			</ul>
+            			{% include 'desktop/menus/dashboard.html' %}
         		</div> <!-- end masthead -->
 
-                {% include 'desktop/sections/hello.html' %}
+                {% include 'desktop/sections/userinfo.html' %}
                 {% include 'desktop/sections/yourspark.html' %}
                 {% include 'desktop/sections/yourbadges.html' %}
                 {% include 'desktop/sections/challenges.html' %}
@@ -32,7 +23,7 @@
 				{% include 'desktop/sections/globalspark.html' %}
 				{% include 'desktop/sections/about.html' %}
 
-    	        {% include 'desktop/footer.html' %}
+    	        {% include 'desktop/includes/footer.html' %}
             
             </div>
 		</div> <!-- end container -->
@@ -44,5 +35,5 @@
 {% endblock %}
 
 {% block script %}
-{% include 'desktop/dashboard-script.html' %}
+{% include 'desktop/includes/dashboard-script.html' %}
 {% endblock %}

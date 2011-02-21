@@ -155,7 +155,7 @@ MINIFY_BUNDLES = {
             'js/libs/modernizr-1.6.min.js',
         ),
         'pngfix': (
-            'js/libs/DD_belatedPNG_0.0.8a-min.js',
+            'js/libs/DD_belatedPNG_0.0.8a.min.js',
         ),
         'desktop': (
             'js/desktop/main.js',

@@ -8,7 +8,7 @@ import jingo
 
 
 def home(request):
-    return jingo.render(request, 'desktop/home.html', {})
+    return jingo.render(request, 'desktop/home.html', { 'is_homepage': True })
 
 
 #@login_required
@@ -18,7 +18,8 @@ def dashboard(request):
 
 def user(request, username):
     user_profile = get_object_or_404(Profile, user__username=username)
-    return jingo.render(request, 'desktop/user.html', { 'profile': user_profile })
+    return jingo.render(request, 'desktop/user.html', { 'profile': user_profile,
+                                                        'logged_in': request.user.is_authenticated() })
 
 
 @login_required

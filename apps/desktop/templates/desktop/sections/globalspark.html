@@ -1,6 +1,6 @@
 {% extends "desktop/sections/base.html" %}
 {% set section_id = 'global-spark' %}
-{% set hide_backtotop = True if body_id == 'logged-out' else False %}
+{% set hide_backtotop = is_homepage %}
 
 {% block leftcolumn %}
 	<h3>
