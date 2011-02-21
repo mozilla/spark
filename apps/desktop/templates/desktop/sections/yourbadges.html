@@ -1,14 +1,17 @@
 <div id="badges">
     <div class="section-header">
+        {% if is_user_page %}
+        <h3>{{ _('Earned badges') }}</h3>
+        {% else %}
         <h3>{{ _('Your badges') }}</h3>
         <p>
             {{ _('Share your Spark and complete challenges to earn more badges.') }}
         </p>
+        {% endif %}
     </div>
     <ul id="badges-list">
-        <li class="badge new">
+        <li class="badge">
             <div class="badge-icon"></div>
-            <div class="star"></div>
             <div class="badge-popup">
                 <div class="arrow"></div>
                 <div class="badge-copy">
@@ -33,9 +36,15 @@
             </div>
     	</li>
     </ul>
+    {% if not is_user_page %}
     <div id="badges-legend" class="">
         <div id="new-icon"></div>
         {# L10n: Legend next to the new badge notification icon. #}
         <span>{{ _('= new since last login.') }}</span>
     </div>
+    {% else %}
+    <div class="clearfix">
+        <!-- necessary because the above list cannot have an overflow:auto property -->
+    </div>
+    {% endif %}
 </div>

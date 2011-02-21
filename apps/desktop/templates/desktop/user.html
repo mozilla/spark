@@ -1,7 +1,7 @@
 {% extends "desktop/base.html" %}
 {% set title = _('Spark! Dashboard') %}
 {% set body_id = 'personal' %}
-{% set body_class = 'logged-in' if not logged_in else 'logged-out' %}
+{% set body_class = 'logged-in' if logged_in else 'logged-out' %}
 {% set scripts = ('jquery-ui', 'desktop') %}
 
 {% block content %}
@@ -9,7 +9,7 @@
 	        <div id="wrapper">
         	    <div id="masthead">
             		    <a href="http://www.mozilla.com/" id="visit-mozilla"></a>
-            		    {% if not logged_in %}
+            		    {% if logged_in %}
             		    <div class="user-info">
             		    {% include "desktop/includes/hello.html" %}
             		    </div>
@@ -27,11 +27,11 @@
             				{{ _('Firefox Spark') }}
             			</h1>
             			<div id="user-info">
-            			    {{ _("{username}'s Spark")|fe(username='FoxyBarbarian') }}
+            			    {{ _("{username}'s Spark")|f(username='FoxyBarbarian') }}
             			</div>
         		</div>	 <!-- end main-info -->
 
-                {% if logged_in %}
+                {% if not logged_in %}
     			{% include 'desktop/sections/getfirefox.html' %}
     			{% endif %}
     			{% include 'desktop/sections/yourspark.html' %}

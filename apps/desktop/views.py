@@ -13,13 +13,14 @@ def home(request):
 
 #@login_required
 def dashboard(request):
-    return jingo.render(request, 'desktop/dashboard.html', {})
+    return jingo.render(request, 'desktop/dashboard.html', { 'logged_in': True })
 
 
 def user(request, username):
     user_profile = get_object_or_404(Profile, user__username=username)
     return jingo.render(request, 'desktop/user.html', { 'profile': user_profile,
-                                                        'logged_in': request.user.is_authenticated() })
+                                                        'logged_in': request.user.is_authenticated(),
+                                                        'is_user_page': True })
 
 
 @login_required
