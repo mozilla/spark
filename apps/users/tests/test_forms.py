@@ -71,6 +71,17 @@ class PasswordChangeFormTestCase(TestCaseBase):
                                                    'new_password2': 'newpass'})
         assert form.is_valid()
 
-    
-    
-    
+
+class PasswordConfirmationFormTestCase(TestCaseBase):
+    fixtures = ['users.json']
+
+    def setUp(self):
+        self.user = User.objects.get(username='rrosario')
+
+    def test_wrong_password(self):
+        form = PasswordConfirmationForm(self.user, data={'password': 'wrongpass'})
+        assert not form.is_valid()
+        
+    def test_correct_password(self):
+        form = PasswordConfirmationForm(self.user, data={'password': 'testpass'})
+        assert form.is_valid()

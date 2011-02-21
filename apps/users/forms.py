@@ -19,12 +19,13 @@ USERNAME_LONG = _lazy(u'Username is too long (%(show_value)s characters). '
 EMAIL_INVALID = _lazy(u'Please enter a valid email address.')
 EMAIL_REQUIRED = _lazy(u'Please enter an email address.')
 PASSWD_REQUIRED = _lazy(u'Please enter a valid password.')
+#PASSWD2_REQUIRED = _lazy(u'Please enter your password twice.')
 PASSWD_SHORT = _lazy(u'Password is too short '
                       '(At least %(limit_value)s characters).')
 PASSWD_LONG = _lazy(u'Password is too long '
                     '(%(limit_value)s characters or less).')
 PASSWD_CURRENT = _lazy(u'Please enter your current password.')
-#PASSWD2_REQUIRED = _lazy(u'Please enter your password twice.')
+
 
 
 class RegisterForm(forms.ModelForm):
@@ -152,5 +153,17 @@ class PasswordChangeForm(forms.Form):
         return password
 
 class PasswordConfirmationForm(forms.Form):
-    pass
+    """A simple form that requires and validates the current user's password."""
+    password = forms.CharField(error_messages={'required': PASSWD_CURRENT})
+    
+    def __init__(self, user, *args, **kwargs):
+        super(PasswordConfirmationForm, self).__init__(*args, **kwargs)
+        self.user = user
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        if not self.user.check_password(password):
+            raise forms.ValidationError(PASSWD_CURRENT)
+        
+        return password
 
