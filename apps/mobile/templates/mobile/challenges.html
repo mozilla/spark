@@ -5,5 +5,202 @@
 {% set scripts = ('menu',) %}
 
 {% block pagecontent %}
-Challenges
+<ol id="challenges-list">
+    <li>
+        <div class="level">
+            Level 1
+            <span class="challenges-count complete"><span>03</span>/03</span>
+        </div>
+        <ul id="level-details">
+            <li>
+                <div class="challenge">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <div class="level">
+            Level 2
+            <span class="challenges-count"><span>02</span>/05</span>
+        </div>
+        <ul id="level-details">
+            <li>
+                <div class="challenge">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <div class="level locked">
+            Level 3
+            <div class="lock"></div>
+        </div>
+         <ul id="level-details">
+            <li>
+                <div class="challenge">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <div class="level locked">
+            Level 4
+            <div class="lock"></div>
+        </div>
+         <ul id="level-details">
+            <li>
+                <div class="challenge">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+            <li>
+                <div class="challenge complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p class="sans">
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                </div>
+            </li>
+        </ul>
+    </li>
+</ol>
+{% endblock %}
+
+{% block script %}
+	<script>
+    $(document).ready(function() {
+       initMenu(); 
+       
+       // Displays the level details
+	   $('div.level:not(.locked)').click(function() {
+          $(this).parent().toggleClass('open');
+          $(this).next('ul').slideToggle('fast');
+	   });
+	   
+	   // Displays the challenge description
+	   $('div.challenge').click(function() {
+	      $(this).children('p').toggle(); 
+	   });
+	   
+    });
+	</script>
 {% endblock %}

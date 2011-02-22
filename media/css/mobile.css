@@ -735,3 +735,116 @@ div.shape {
 #sharing li:first-child {
     border-top:1px solid #404040;
 }
+
+/*Challenges*/
+
+#challenges-list li {
+    border-bottom:3px solid #ffd40d;
+    font-size:1.507em;
+    font-weight:bold;
+    line-height:2.875em;
+    color:#fff;
+}
+
+#challenges-list li:first-child {
+    border-top:0px;
+}
+
+div.level {
+    padding:0px 8px;
+}
+
+span.challenges-count {
+    float:right;
+    color:#999;
+}
+
+span.challenges-count.complete {
+    color:#ffd40d;
+}
+
+span.challenges-count.complete span {
+    color:inherit;
+}
+
+span.challenges-count span {
+    color:#fff;
+}
+
+.level.locked {
+    color:#808080;
+}
+
+.level.locked .challenges-count {
+    display:none;
+}
+
+div.lock {
+    display:none;
+}
+
+.level.locked div.lock {
+    display:block;
+    width:33px;
+    height:33px;
+    float:right;
+    background:url('../img/mobile/lock.png') no-repeat 0 0;
+    background-size:100%;
+    margin-top:13px;
+}
+
+li.open div.level {
+    border-bottom:1px solid #403c3c;
+}
+
+div.level:hover {
+    cursor:pointer;
+}
+
+#level-details {
+    display:none;
+}
+
+#level-details li {
+    margin-top:0;
+    font-size:75%;
+    line-height:3.278em;
+    border-top:0px;
+    border-bottom:1px solid #403c3c;
+    font-weight:normal;
+    padding:2px 0;
+}
+
+div.challenge {
+    padding:0px 6px;
+}
+
+div.challenge:active {
+    background:rgba(255,255,255,0.16);
+}
+
+div.challenge span.title {
+    font-weight:bold;
+}
+
+div.challenge p {
+    color:#999;
+    margin:-12px 0 0 0;
+    display:none;
+    font-size:88.88%;
+    padding:0 0 12px 34px;
+}
+
+div.challenge .checkbox {
+    float:left;
+    height:24px;
+    width:24px;
+    background:url('../img/mobile/checkbox480.png') no-repeat 0px 0px;
+    margin:12px 10px 0 0;
+    background-size:24px auto;
+}
+
+div.challenge.complete .checkbox {
+    background:url('../img/mobile/checkbox480.png') no-repeat 0px -27px;
+    background-size:26px auto;
+}
