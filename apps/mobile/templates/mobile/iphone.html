@@ -1,0 +1,77 @@
+{% extends "mobile/page.html" %}
+{% set title = _('Spark! Home') %}
+{% set pagetitle = _('Firefox Spark') %}
+{% set body_id = 'home' %}
+{% set body_class = 'non-ff' %}
+{% set stylesheets = ('non-firefox',) %}
+{% set hide_menu = True %}
+
+{% block flame %}{% endblock %}
+
+{% block pagecontent %}
+    <div id="static-spark">
+    
+    </div>
+    <p class="section sans">
+        {% trans %}
+        Oh no! Firefox for Mobile isnʼt available for your phone. Too sad. But the good news is
+        you can still get Firefox Home for iPhone and share the Firefox Spark. Yay!
+        {% endtrans %}
+    </p>
+    <a href="#" class="button" ountouchstart="">{{ _('Share the Spark') }}</a>
+
+    <hr>
+    <div class="section">
+        <h2>{{ _('Firefox Home') }}</h2>
+        <p class="sans">
+            {% trans %}
+            With Firefox Home you can access your Firefox history, bookmarks and open tabs on
+            your iPhone. Check out how it works below.
+            {% endtrans %}
+        </p>
+    </div>
+    <a href="#" class="button" ountouchstart="">{{ _('Get Firefox Home') }}</a>
+
+    <hr>
+    <div class="section">
+        <h2>{{ _('Learn') }}</h2>
+        <h3>{{ _('On the go?') }}</h3>
+        <p class="sans">
+            {{ _('Have instant access to the list of tabs you have open on your desktop.') }}
+        </p>
+        <h3>{{ _('Type Less') }}</h3>
+        <p class="sans">
+            {{ _('Just tap your bookmarks to get to your favorite websites.') }}
+        </p>
+        <h3>{{ _('Search') }}</h3>
+        <p class="sans">
+            {{ _('Start typing and the Awesome Bar takes you straight to your fave sites.') }}
+        </p>
+    </div>
+    <a href="#" class="button" ountouchstart="">{{ _('Learn more') }}</a>
+
+    <hr>
+    <div class="section">
+        <h2>{{ _('About Us') }}</h2>
+        <p class="sans">
+            {{ _('The Firefox Mobile browser is created by Mozilla, a non-profit organization whose
+            mission is to promote openness, innovation and opportunity on the Web.') }}
+        </p>
+    </div>
+    <a href="#" class="button" ountouchstart="">{{ _('About Mozilla') }}</a>
+
+    <div id="non-ff-links">
+        <a href="#">{{ _('Privacy Policy') }}</a>
+        <a href="#">{{ _('Legal Notices') }}</a>
+        <a class="last" href="#">{{ _('Report Trademark Abuse') }}</a>
+    </div>
+
+    <p class="license sans">
+        {% trans %}
+        Except where otherwise noted, content on 
+        this site is licensed under the Creative 
+        Commons Attribution Share-Alike License 
+        v3.0 or any later version.
+        {% endtrans %}
+    </p>
+{% endblock %}

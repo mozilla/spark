@@ -95,3 +95,12 @@ def about(request):
 
 def legal(request):
     return jingo.render(request, 'mobile/legal.html')
+
+def iphone(request):
+    return jingo.render(request, 'mobile/iphone.html')
+
+def non_android(request):
+    return jingo.render(request, 'mobile/non_firefox.html', {'non_android': True})
+
+def non_firefox(request):
+    return jingo.render(request, 'mobile/non_firefox.html')

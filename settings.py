@@ -142,6 +142,9 @@ MINIFY_BUNDLES = {
         ),
         'mobile': (
             'css/mobile.css',
+        ),
+        'non-firefox': (
+            'css/non-firefox.css',
         )
     },
     'js': {
