@@ -34,7 +34,7 @@ badges = {
     'lvl3_ch3': _lazy(u'TBD'),
     # L10n: Badge title for challenge: "Complete 3 shares in a single 12-hour period"
     'lvl3_ch4': _lazy(u'TBD'),
-    # L10n: Badge title for challenge: "Create a chain by having someone you’ve shared with share with someone else"
+    # L10n: Badge title for challenge: "Create a chain by having someone you've shared with share with someone else"
     'lvl3_ch5': _lazy(u'Chain Reaction'),
     # L10n: Badge title for challenge: "Complete 20 shares"
     'lvl3_ch6': _lazy(u'XX Sparks'),

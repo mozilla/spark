@@ -24,7 +24,7 @@ challenges = {
     'lvl3_ch2': _lazy(u'Share with someone via a printed flyer'),
     'lvl3_ch3': _lazy(u'Share with someone new on a different continent'),
     'lvl3_ch4': _lazy(u'Complete 3 shares in a single 12-hour period'),
-    'lvl3_ch5': _lazy(u'Create a chain by having someone you’ve shared with share with someone else'),
+    'lvl3_ch5': _lazy(u"Create a chain by having someone you've shared with share with someone else"),
     'lvl3_ch6': _lazy(u'Complete 20 shares'),
 
     # Level 4
