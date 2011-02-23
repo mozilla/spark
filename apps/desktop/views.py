@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import get_object_or_404
 
 from spark.decorators import login_required
@@ -13,14 +15,18 @@ def home(request):
 
 #@login_required
 def dashboard(request):
-    return jingo.render(request, 'desktop/dashboard.html', { 'logged_in': True })
+    d = datetime(2011, 2, 18)
+    return jingo.render(request, 'desktop/dashboard.html', { 'logged_in': True,
+                                                             'most_recent_share': d })
 
 
 def user(request, username):
+    d = datetime(2011, 2, 18)
     user_profile = get_object_or_404(Profile, user__username=username)
     return jingo.render(request, 'desktop/user.html', { 'profile': user_profile,
                                                         'logged_in': request.user.is_authenticated(),
-                                                        'is_user_page': True })
+                                                        'is_user_page': True,
+                                                        'most_recent_share': d })
 
 
 def visualization(request, ):

@@ -58,7 +58,7 @@
             <span class="label">{{ _('length of activation') }}</span>
         </div>
         <div id="most-recent">
-            <span class="count">3 hours ago</span>
+            <span class="count">{{ most_recent_share|timesince }}</span>
             <span class="label">{{ _('most recent share') }}</span>
         </div>
     </div>
