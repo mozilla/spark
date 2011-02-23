@@ -23,6 +23,10 @@ def user(request, username):
                                                         'is_user_page': True })
 
 
+def visualization(request, ):
+    return jingo.render(request, 'desktop/visualization.html', {})
+
+
 @login_required
 def ajax_pwchange(request):
     return jingo.render(request, 'desktop/home.html', {})

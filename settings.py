@@ -143,6 +143,9 @@ MINIFY_BUNDLES = {
         'mobile': (
             'css/mobile.css',
         ),
+        'visualization': (
+            'css/visualization.css',
+        ),
         'non-firefox': (
             'css/non-firefox.css',
         )
@@ -162,6 +165,9 @@ MINIFY_BUNDLES = {
         ),
         'desktop': (
             'js/desktop/main.js',
+        ),
+        'visualization': (
+            'js/desktop/visualization.js',
         ),
         'menu': (
             'js/mobile/menu.js',

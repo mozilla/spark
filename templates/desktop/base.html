@@ -9,6 +9,9 @@
 		{% block site_css %}
 	      {{ css('desktop') }}
 	    {% endblock %}
+	    {% for stylesheet in stylesheets %}
+        {{ css(stylesheet) }}
+        {% endfor %}
 		<!--[if lte IE 7]>
 		    <link rel="stylesheet" href="css/ie6-7.css">
 		<![endif]-->
