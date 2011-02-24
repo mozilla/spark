@@ -1,5 +1,4 @@
 {% extends "mobile/page.html" %}
-{% set title = _('Spark! Home') %}
 {% set pagetitle = _('Firefox Spark') %}
 {% set body_id = 'home' %}
 {% set body_class = 'non-ff' %}
@@ -7,6 +6,7 @@
 {% set hide_menu = True %}
 
 {% block flame %}{% endblock %}
+{% block title %}{{ pagetitle }}{% endblock %}
 
 {% block pagecontent %}
     <div id="static-spark">

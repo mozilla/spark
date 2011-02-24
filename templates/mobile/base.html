@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="initial-scale=1; maximum-scale=1; width=device-width; user-scalable=no">
-	<title>{{ title }}</title>
+	<title>{% block title %}{{ pagetitle }} | {# L10n: Campaign name. #}{{ _('Firefox Spark') }}{% endblock %}</title>
 	{% block site_css %}
       {{ css('mobile') }}
     {% endblock %}
