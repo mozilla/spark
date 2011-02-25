@@ -1,12 +1,12 @@
 {% extends "mobile/page.html" %}
-{% set pagetitle = _('Log in') %}
+{% set pagetitle = _('Sign in') %}
 {% set body_id = 'login' %}
 {% set scripts = ('menu',) %}
 {% set hide_menu = True %}
 
 {% block pagecontent %}
 	    <p class="section legend">
-	        {{ _('Welcome back! Ready to keep your Spark going strong? Just fill your deets in to log in.') }}
+	        {{ _('Welcome back! Ready to keep your Spark going strong? Just fill your details in below.') }}
 	    </p>
 	    <hr>
 		{% if form.errors %}
@@ -26,7 +26,7 @@
 	        <hr>
 	        <div class="buttons-wrapper">
 				<div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
-	            <button ontouchstart="" tabindex="3" class="right-button" type="submit">{{ _('Log in') }}</button>
+	            <button ontouchstart="" tabindex="3" class="right-button" type="submit">{{ _('Sign in') }}</button>
 	        </div>
 	    </form>
 	    <hr class="clear">
