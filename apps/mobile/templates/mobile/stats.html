@@ -4,5 +4,25 @@
 {% set scripts = ('menu',) %}
 
 {% block pagecontent %}
-Stats
+    <p class="section legend">
+    {{ _("Check out what's happening worldwide.") }}
+    </p>
+    <hr>
+    <p class="sectin sans">
+    439,203
+    {# L10n: Global statistic representing the total number of Spark shares. #}
+    {{ _('Total Sparks') }}
+    
+    97
+    {# L10n: Global statistic representing the total number of countries where Sparks have been shared. #}
+    {{ _('Countries Sparked') }}
+    
+    6
+    {# L10n: Global statistic representing the total number of continents where Sparks have been shared. #}
+    {{ _('Continents Sparked') }}
+
+    8,135
+    {# L10n: Global statistic representing the total number of Spark badges unlocked by all players. #}
+    {{ _('Badges Unlocked') }}
+    </p>
 {% endblock %}
