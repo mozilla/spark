@@ -20,7 +20,7 @@
 	{{ csrf() }}
     <fieldset id="identifier" class="section">
         <div class="input-wrapper">
-            <input tabindex="1" type="text" name="identifier" value="{{ form.identifier.data }}" placeholder="Username or Email address">
+            <input tabindex="1" type="text" name="identifier" value="{{ form.identifier.data }}" placeholder="{{ _('Username or Email address') }}">
         </div>
 		{{ form.identifier.errors|safe }}
     </fieldset>
