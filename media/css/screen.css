@@ -39,7 +39,7 @@ html {
 
 #wrapper {
 	width:950px;
-	padding-left:35px;
+    margin:0 auto;
 }
 
 div.section {
@@ -293,6 +293,10 @@ ul#main-menu {
 	color:#ffd40d;
 	font-size:4.615em;
 	font-weight:bold;
+}
+
+#headline h1 span {
+    font-size:60%;
 }
 
 #headline h3 {
@@ -680,14 +684,14 @@ span.error {
 }
 /*Backgrounds*/
 
-#flame-bg {
-    background:url('../img/flame-bg.jpg');
+#spark-bg {
+    background:url('../img/top-spark.jpg') no-repeat center 0;
     height:438px;
-    width:624px;
+    width:100%;
     position:absolute;
     top:0;
-    right:-330px;
-    z-index:0;
+    left:0;
+    z-index:-1;
 }
 
 #dashboard #container {
@@ -695,7 +699,7 @@ span.error {
 }
 
 #logged-out #top-bg {
-    background:url('../img/top-bg.jpg') no-repeat 0 0;
+    background:url('../img/top-gradient.png') no-repeat 0 0;
 }
 
 #logged-out #container {
