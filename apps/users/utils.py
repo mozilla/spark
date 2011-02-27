@@ -1,8 +1,7 @@
 from django.contrib import auth
 from django.contrib.auth.models import User
 
-from django.contrib.auth.forms import AuthenticationForm
-from users.forms import RegisterForm
+from users.forms import RegisterForm, AuthenticationForm
 from users.models import Profile
 
 

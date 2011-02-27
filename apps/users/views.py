@@ -9,7 +9,8 @@ from django.contrib.auth.forms import (PasswordResetForm, SetPasswordForm,
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.models import Site
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import (HttpResponse, HttpResponseRedirect, HttpResponseBadRequest, 
+                         Http404)
 from django.views.decorators.http import require_http_methods, require_GET
 from django.shortcuts import get_object_or_404
 from django.utils.http import base36_to_int
@@ -28,7 +29,9 @@ from users.models import Profile
 from users.utils import handle_login, handle_register
 
 
+
 @ssl_required
+@json_view
 def login(request, mobile=False):
     """Try to log the user in."""
     form = handle_login(request)
@@ -42,13 +45,15 @@ def login(request, mobile=False):
         return jingo.render(request, 'users/mobile/login.html',
                             {'form': form, 'next_url': next_url})
     else: # ajax login
-        if request.method == POST and request.is_ajax():
-            if request.user.is_authenticated():
-                return {'success': True}
+        if request.method == 'POST' and request.is_ajax():
+            if not form.is_valid():
+                return {'status': 'error',
+                        'errors': dict(form.errors.iteritems())}
             else:
-                return {'success': False}
-                
-        return jingo.render(request, 'spark/handlers/mobile/400.html', status=400)
+                return {'status': 'success',
+                        'next': reverse('desktop.dashboard')}
+
+        return HttpResponseBadRequest()
 
 
 @ssl_required
