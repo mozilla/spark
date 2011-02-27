@@ -165,6 +165,8 @@ MINIFY_BUNDLES = {
         ),
         'desktop': (
             'js/desktop/main.js',
+            'js/libs/jquery.form.js',
+            'js/desktop/popups.js',
         ),
         'visualization': (
             'js/desktop/visualization.js',
@@ -259,9 +261,9 @@ DOMAIN_METHODS = {
 
     ## Use this if you have localizable JS files:
     #'javascript': [
-        # Make sure that this won't pull in strings from external libraries you
-        # may use.
-    #    ('media/js/**.js', 'javascript'),
+    #    # We can't say **.js because that would dive into any libraries.
+    #    ('media/js/desktop/*.js', 'javascript'),
+    #    ('media/js/mobile/*.js', 'javascript'),
     #],
 }
 

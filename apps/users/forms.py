@@ -3,6 +3,7 @@ import re
 from django import forms
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, forms as auth_forms
 
 from tower import ugettext as _, ugettext_lazy as _lazy
 
@@ -69,6 +70,32 @@ class RegisterForm(forms.ModelForm):
     def __init__(self,  request=None, *args, **kwargs):
         super(RegisterForm, self).__init__(request, auto_id='id_for_%s',
                                            *args, **kwargs)
+
+
+class AuthenticationForm(auth_forms.AuthenticationForm):
+    """ Redefines AuthenticationForm to provide a new error message
+        when authentication has failed. 
+    """
+    def clean(self):
+       username = self.cleaned_data.get('username')
+       password = self.cleaned_data.get('password')
+
+       if username and password:
+           self.user_cache = authenticate(username=username,
+                                          password=password)
+           if self.user_cache is None:
+               raise forms.ValidationError(
+                   _("Oops! Your username or password doesn't match our records. Please try again."))
+           elif not self.user_cache.is_active:
+               raise forms.ValidationError(_('This account is inactive.'))
+
+       if self.request:
+           if not self.request.session.test_cookie_worked():
+               raise forms.ValidationError(
+                   _("Your Web browser doesn't appear to have cookies "
+                     "enabled. Cookies are required for logging in."))
+
+       return self.cleaned_data
 
 
 class EmailConfirmationForm(forms.Form):
