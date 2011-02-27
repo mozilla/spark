@@ -12,9 +12,9 @@
 	    {% for stylesheet in stylesheets %}
         {{ css(stylesheet) }}
         {% endfor %}
-		<!--[if lte IE 7]>
-		    <link rel="stylesheet" href="/media/css/ie6-7.css">
-		<![endif]-->
+        <!--[if lte IE 7]>
+            <link rel="stylesheet" href="{{ MEDIA_URL }}css/ie6-7.css">
+        <![endif]-->
 		<!--[if IE 6]>
 	        {{ js('pngfix') }}
 	        <script>
