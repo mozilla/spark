@@ -137,7 +137,6 @@ def JINJA_CONFIG():
 MINIFY_BUNDLES = {
     'css': {
         'desktop': (
-            'css/ie6-7.css',
             'css/screen.css',
         ),
         'mobile': (
