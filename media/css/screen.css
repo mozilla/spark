@@ -322,6 +322,10 @@ ul#main-menu {
     line-height:1.5em;
 }
 
+#global-spark .wide-column p {
+    min-height:70px;
+}
+
 #globalmap {
 	clear:both;
 	height:480px;
