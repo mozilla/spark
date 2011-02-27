@@ -9,8 +9,12 @@
 
 {% block widecolumn %}
     <p>
-    	{% trans %}<span class="title">The Firefox Mobile browser is created by Mozilla</span>, a non-profit organization 
-		whose mission is to promote openness, innovation and opportunity on the Web.{% endtrans %}
+    	{% trans mozilla_url='http://www.mozilla.org' %}
+    	Mozilla is a global, non-profit organization dedicated to making the Web better. 
+    	We believe in principle over profit, and that the Internet is a shared public resource to be cared for, not a commodity to be sold. 
+    	We work with a worldwide community to create free, open source software like Mozilla Firefox, and to innovate for the benefit of the individual and the betterment of the Web. 
+    	The result is great products built by passionate people and better choices for everyone. For more information, visit <a href="{{ mozilla_url }}">www.mozilla.org</a>
+    	{% endtrans %}
     </p>
     <a href="#" class="button">{{ _('More About Mozilla') }}</a>
 {% endblock %}

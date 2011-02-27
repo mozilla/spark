@@ -6,11 +6,11 @@
 {% block content %}
     <div id="container">
 	    <div id="top-bg">
-	        
+	        <div id="spark-bg"></div>
             <div id="wrapper">
         	    <div id="masthead">	    
         		    <a href="http://www.mozilla.com/" id="visit-mozilla"></a>
-        		    <span id="have-account">{{ _('Already have a Spark?') }} <a href="#" class="popup-trigger">{{ _('Sign in >') }}</a></span>
+        		    <span id="have-account">{{ _('Already got Spark?') }} <a href="#" class="popup-trigger">{{ _('Sign in >') }}</a></span>
         			<div id="logo">
         				<img src="{{ MEDIA_URL }}img/lockup.png" alt="{{ _('Mozilla Firefox') }}">
         			</div>
@@ -19,14 +19,13 @@
 
                 <div id="headline">
             			<h1>
-            				{{ _('Firefox Spark') }}
+            				{{ _('Spark') }} <span>{{ _('powered by Firefox for mobile') }}</span>
             			</h1>
             			<h3>{{ _('Ready to light up the world?') }}</h3>
             			<p>
             			    {% trans %}
-            			    To celebrate Firefox going mobile, we created Spark. Spark is a game based on fun sharing challenges. 
-            			    It's a great way to share the word about Firefox for mobile and have fun doing it. 
-            			    So get Spark, join the Firefox community, take challenges, unlock badges and earn yourself some bragging rights.
+            			    To celebrate Mozilla Firefox going mobile, we've created Spark, a game that challenges you to share with friends to help the flame of the open Web glow bright. 
+            			    So get Spark, take challenges, unlock badges and support Mozilla's mission for a better Web in the process. All good stuff!
             			    {% endtrans %}
             			    <a href="#download">{{ _('Get Firefox and start a Spark >') }}</a>
             			</p>

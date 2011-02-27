@@ -17,6 +17,7 @@ span.challenges-count, div.lock, span.locked-message {
 
 div.back-to-top {
     clear:both;
+    padding-bottom:1px;
 }
 
 #badges-legend span {

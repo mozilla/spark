@@ -4,8 +4,8 @@
 
 {% block leftcolumn %}
 	<h3>
-		{{ _('Get Firefox') }}
-		<p>{{ _('Get Firefox on your phone, get the Spark.') }}</p>
+		{{ _('Download') }}
+		<p>{{ _('Get Firefox on your phone.') }}</p>
 	</h3>
 {% endblock %}
 
@@ -20,11 +20,11 @@
         <img src="{{ MEDIA_URL }}img/qrcode.png" alt="" id="qrcode">
         <h4>{{ _('Option 01 / Scan the QR code') }}</h4>
         <p>
-            {% trans %}Scan the QR code to the right with your phone's camera. This will install Firefox on your phone automatically.{% endtrans %}
+            {% trans %}Scan the QR code to the right with your phone's camera to automatically install Firefox on your phone.{% endtrans %}
             <small>
                 <span class="title">{{ _("What's this?") }}</span>
                 {% trans %}
-                Install a code reader (we suggest searching for "QR reader" in your app store) and scan this code with your QR reader app.
+                Install a code reader (we suggest searching for "QR reader" in the Android Market) and scan this code with your QR reader app.
                 {% endtrans %}
             </small>
         </p>
@@ -33,7 +33,7 @@
         <h4>{{ _("Option 02 / Use your phone's browser") }}</h4>
         <p>
             {% trans download_url='http://firefox.com/m/', link_text='Firefox.com/m' %}
-            Get Firefox by pointing your phone's default browser to <a href="{{ download_url }}">{{ link_text }}</a>
+            Point your browser to <a href="{{ download_url }}">{{ link_text }}</a>  and download it from there.
             {% endtrans %}
         </p>
     </div>
@@ -46,7 +46,7 @@
         </p>
     </div>
     <div class="sub-section">
-        <h4>{{ _('Not an Android or MeeGo user?') }}</h4>
+        <h4>{{ _('Not an Android or Maemo user?') }}</h4>
         <div id="spread-the-word">
             <a href="#" id="email"></a>
             <a href="#" id="facebook"></a>
@@ -54,8 +54,8 @@
         </div>
         <p>
             {% trans %}
-            No problem, try Firefox Home for iPhone (get it FREE from iTunes) <br/>
-            OR just help spread the word about Firefox Mobile to others
+            No problems, try Firefox Home for iPhone (get it FREE from iTunes) <br/>
+            OR just help spread the word about Firefox for mobile to others
             {% endtrans %}
         </p>
     </div>

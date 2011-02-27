@@ -5,19 +5,20 @@
 {% block leftcolumn %}
 	<h3>
         {{ _('Global <br>Spark')|safe }}
-		<p>{{ _('Get the lowdown on the latest stats.') }}</p>
+		<p>{{ _('Get the latest stats.') }}</p>
 	</h3>
 {% endblock %}
 
 {% block widecolumn %}
 	<p>
 	    {# L10n: Global Spark visualization description #}
-	    {% trans %}
+	    {% trans download_url='#download' %}
 	    <span class="title">See the Sparks fly.</span>
-	    Here's whats going on in the rest of the world. Start sharing your spark, get your stats on the map and be a part of something bigger.
+	    Here’s what’s going on in the rest of the world. 
+	    Start sharing your Spark, get your stats on the map and be a part some something big. 
+	    Download <a href="{{ download_url }}">Firefox 4 for Android</a> to get started.
 	    {% endtrans %}
 	</p>
-	<a href="#download">{{ _('Download Firefox Mobile to get started >') }}</a>
 {% endblock %}
 
 {% block belowsection %}
@@ -33,17 +34,17 @@
 		</li>
 		<li>
 			<span class="count">138</span>
-			<span class="title">Fun Global Statistic</span>
+			<span class="title">{{ _('Countries Sparked') }}</span>
 			<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
 		</li>
 		<li>
 			<span class="count">138</span>
-			<span class="title">Fun Global Statistic</span>
+			<span class="title">{{ _('Continents Sparked') }}</span>
 			<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
 		</li>
 		<li>
 			<span class="count">138</span>
-			<span class="title">Fun Global Statistic</span>
+			<span class="title">{{ _('Badges Unlocked') }}</span>
 			<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
 		</li>
 	</ul>
