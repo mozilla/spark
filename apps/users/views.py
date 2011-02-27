@@ -19,7 +19,8 @@ import jingo
 from spark.urlresolvers import reverse
 from spark.helpers import url
 
-from spark.decorators import ssl_required, logout_required, login_required, post_required, json_view
+from spark.decorators import (ssl_required, logout_required, login_required, 
+                              post_required, json_view, ajax_required)
 
 from users.backends import Sha256Backend
 from users.forms import (EmailConfirmationForm, EmailChangeForm)
@@ -30,21 +31,24 @@ from users.utils import handle_login, handle_register
 @ssl_required
 def login(request, mobile=False):
     """Try to log the user in."""
-    if mobile:
-        home_view_name = 'mobile.home'
-        login_template = 'users/mobile/login.html'
-    else:
-        home_view_name = 'desktop.home'
-        login_template = 'users/desktop/login.html'
-    
-    next_url = _clean_next_url(request) or reverse(home_view_name)
     form = handle_login(request)
     
-    if request.user.is_authenticated():
-        return HttpResponseRedirect(next_url)
-    
-    return jingo.render(request, login_template,
-                        {'form': form, 'next_url': next_url})
+    if mobile:
+        next_url = _clean_next_url(request) or reverse('mobile.home')
+        
+        if request.user.is_authenticated():
+            return HttpResponseRedirect(next_url)
+
+        return jingo.render(request, 'users/mobile/login.html',
+                            {'form': form, 'next_url': next_url})
+    else: # ajax login
+        if request.method == POST and request.is_ajax():
+            if request.user.is_authenticated():
+                return {'success': True}
+            else:
+                return {'success': False}
+                
+        return jingo.render(request, 'spark/handlers/mobile/400.html', status=400)
 
 
 @ssl_required
@@ -69,22 +73,17 @@ def register(request):
 
 
 @login_required
-@require_http_methods(['GET', 'POST'])
+@post_required
+@ajax_required
+@json_view
 def change_email(request):
-    """Change user's email."""
-    if request.method == 'POST':
-        form = EmailChangeForm(request.user, request.POST)
-        u = request.user
-        if form.is_valid() and u.email != form.cleaned_data['new_email']:
-            
-            return jingo.render(request,
-                                'users/desktop/change_email_done.html',
-                                {'new_email': form.cleaned_data['new_email']})
-    else:
-        form = EmailChangeForm(request.user,
-                               initial={'email': request.user.email})
-    return jingo.render(request, 'users/desktop/change_email.html',
-                        {'form': form})
+    """Change user's email"""
+    form = EmailChangeForm(request.user, request.POST)
+    u = request.user
+    if form.is_valid() and u.email != form.cleaned_data['new_email']:
+        return {'new_email': form.cleaned_data['new_email']}
+        
+    return {'email': request.user.email}
 
 
 @json_view
