@@ -3,9 +3,9 @@
 	<a href="#">{{ _('Legal Notices') }}</a>|
 	<a href="#">{{ _('Report Trademark Abuse') }}</a>
 	<p id="license">
-	{% trans %}
-	Except where otherwise noted, content of this site is licensed under the<br/>
-	Creative Commons Attribution Share-Alike License v3.0 or any later version.
+	{% trans noted_url='http://www.mozilla.com/en-US/about/legal.html#site', license_url='http://creativecommons.org/licenses/by-sa/3.0/' %}
+	Except where otherwise <a href="{{ noted_url }}">noted</a>, content of this site is licensed under the
+	<a href="{{ license_url }}">Creative Commons Attribution Share-Alike License v3.0</a> or any later version.
 	{% endtrans %}
 	</p>
 </div>

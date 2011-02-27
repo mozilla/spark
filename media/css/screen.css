@@ -488,6 +488,11 @@ div.sub-section h4 {
     color:#666;
     text-align:right;
     line-height:1.6em;
+    max-width:430px;
+}
+
+#license a {
+    margin:0;
 }
 
 /*Sign-in popup*/
