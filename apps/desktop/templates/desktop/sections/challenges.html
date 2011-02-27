@@ -1,0 +1,180 @@
+{% extends "desktop/sections/base.html" %}
+{% set section_id = 'challenges' %}
+
+{% block leftcolumn %}
+	<h3>
+		{{ _('Challenges') }}
+		<p>{{ _("Check out which levels you've conquered and which are still waiting for you.") }}</p>
+	</h3>
+{% endblock %}
+
+{% block widecolumn %}
+    <ol id="challenges-list">
+        <li>
+            <div class="level">
+                <div class="arrow"></div>
+                Level 1
+                <span class="challenges-count complete"><span>03</span>/03</span>
+            </div>
+            <ul id="level-details">
+                <li>
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li>
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li>
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li>
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="level">
+                <div class="arrow"></div>
+                Level 2
+                <span class="challenges-count"><span>02</span>/05</span>
+            </div>
+            <ul id="level-details">
+                <li>
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li>
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li class="complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li class="complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <div class="level">
+                <div class="arrow"></div>
+                Level 3
+                <span class="challenges-count"><span>02</span>/04</span>
+            </div>
+             <ul id="level-details">
+                <li>
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li>
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li class="complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li class="complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+            </ul>
+        </li>
+        <li class="last">
+            <div class="level locked">
+                <div class="arrow"></div>
+                Level 4
+                <span class="challenges-count"><span>01</span>/03</span>
+                <div class="lock"></div>
+                <span class="locked-message">Complete 6 more challenges in level 3 to unlock.</span>
+            </div>
+             <ul id="level-details">
+                <li>
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li>
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li class="complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+                <li class="complete">
+                    <div class="checkbox"></div>
+                    <span class="title">Lorem ipsum dolor</span>
+                    <p>
+                        Donec ut accumsan lectus. Phasellus et nisl a est fringilla ullamcorper.
+                    </p>
+                    <div class="badge-icon"></div>
+                </li>
+            </ul>
+        </li>
+    </ol>
+{% endblock %}

@@ -28,8 +28,8 @@ class RegisterTestCase(TestCase):
         response = self.client.post(reverse('users.mobile_register', locale='en-US'),
                                     {'username': 'newbie',
                                      'email': 'newbie@example.com',
-                                     'password': 'foobar',
-                                     'password2': 'foobar'})
+                                     'password': 'foobarbaz',
+                                     'password2': 'foobarbaz'})
         eq_(302, response.status_code)
         u = User.objects.get(username='newbie')
         assert u.password.startswith('sha256')
@@ -38,7 +38,7 @@ class RegisterTestCase(TestCase):
         u.save()
         response = self.client.post(reverse('users.mobile_login', locale='en-US'),
                                     {'username': 'newbie',
-                                     'password': 'foobar'}, follow=True)
+                                     'password': 'foobarbaz'}, follow=True)
         eq_(200, response.status_code)
         eq_('http://testserver/en-US/m/home', response.redirect_chain[0][0])
 
@@ -68,8 +68,8 @@ class RegisterTestCase(TestCase):
         response = self.client.post(reverse('users.mobile_register', locale='en-US'),
                                     {'username': 'jsocol',
                                      'email': 'newbie@example.com',
-                                     'password': 'foobar',
-                                     'password2': 'foobar'}, follow=True)
+                                     'password': 'foobarbaz',
+                                     'password2': 'foobarbaz'}, follow=True)
         self.assertContains(response, "not right")
 
     def test_duplicate_email(self):
@@ -77,18 +77,18 @@ class RegisterTestCase(TestCase):
         response = self.client.post(reverse('users.mobile_register', locale='en-US'),
                                     {'username': 'newbie',
                                      'email': 'noob@example.com',
-                                     'password': 'foobar',
-                                     'password2': 'foobar'}, follow=True)
+                                     'password': 'foobarbaz',
+                                     'password2': 'foobarbaz'}, follow=True)
         self.assertContains(response, "not right")
 
-## Not sure yet if we need a password2 field
-#    def test_no_match_passwords(self):
-#        response = self.client.post(reverse('users.register', locale='en-US'),
-#                                    {'username': 'newbie',
-#                                     'email': 'newbie@example.com',
-#                                     'password': 'foo',
-#                                     'password2': 'bar'}, follow=True)
-#        self.assertContains(response, 'must match')
+
+    def test_no_match_passwords(self):
+        response = self.client.post(reverse('users.mobile_register', locale='en-US'),
+                                    {'username': 'newbie',
+                                     'email': 'newbie@example.com',
+                                     'password': 'foobarbaz',
+                                     'password2': 'barfoobaz'}, follow=True)
+        self.assertContains(response, 'do not match')
 
 
 class ChangeEmailTestCase(TestCase):

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from tower import ugettext_lazy as _lazy
+from tower import ugettext_lazy as _lazy, ungettext
 
 
 challenges = {
@@ -24,7 +24,7 @@ challenges = {
     'lvl3_ch2': _lazy(u'Share with someone via a printed flyer'),
     'lvl3_ch3': _lazy(u'Share with someone new on a different continent'),
     'lvl3_ch4': _lazy(u'Complete 3 shares in a single 12-hour period'),
-    'lvl3_ch5': _lazy(u'Create a chain by having someone you’ve shared with share with someone else'),
+    'lvl3_ch5': _lazy(u"Create a chain by having someone you've shared with share with someone else"),
     'lvl3_ch6': _lazy(u'Complete 20 shares'),
 
     # Level 4
@@ -63,3 +63,11 @@ challenges = {
     'ee_ch18': _lazy(u'Share to or from Brazil'),
     'ee_ch19': _lazy(u'Person with the most shares'),
 }
+
+
+def get_locked_legend(count, level):
+    # L10n: Legend associated to a locked challenge. Example: "Complete 4 more challenges in level 3 to unlock."
+    msg = ungettext('Complete %(count)d more challenge in level %(level)d to unlock.',
+                    'Complete %(count)d more challenges in level %(level)d to unlock.', count)
+    
+    return msg % {'count': count, 'level': level}

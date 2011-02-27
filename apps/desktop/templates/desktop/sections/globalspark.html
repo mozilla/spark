@@ -1,0 +1,50 @@
+{% extends "desktop/sections/base.html" %}
+{% set section_id = 'global-spark' %}
+{% set hide_backtotop = is_homepage %}
+
+{% block leftcolumn %}
+	<h3>
+        {{ _('Global <br>Spark')|safe }}
+		<p>{{ _('Get the lowdown on the latest stats.') }}</p>
+	</h3>
+{% endblock %}
+
+{% block widecolumn %}
+	<p>
+	    {# L10n: Global Spark visualization description #}
+	    {% trans %}
+	    <span class="title">See the Sparks fly.</span>
+	    Here's whats going on in the rest of the world. Start sharing your spark, get your stats on the map and be a part of something bigger.
+	    {% endtrans %}
+	</p>
+	<a href="#download">{{ _('Download Firefox Mobile to get started >') }}</a>
+{% endblock %}
+
+{% block belowsection %}
+	<a href="{{ url('desktop.visualization') }}" class="button">{{ _('Launch real-time visualization') }}</a>
+	<div id="globalmap">
+	    <!-- Temporary image here -->
+	</div>
+	<ul id="random-stats" class="items">
+		<li class="first">
+			<span class="count">472,976</span>
+			<span class="title">{{ _('Total Sparks') }}</span>
+			<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
+		</li>
+		<li>
+			<span class="count">138</span>
+			<span class="title">Fun Global Statistic</span>
+			<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
+		</li>
+		<li>
+			<span class="count">138</span>
+			<span class="title">Fun Global Statistic</span>
+			<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
+		</li>
+		<li>
+			<span class="count">138</span>
+			<span class="title">Fun Global Statistic</span>
+			<p>Lorem ipsum dolor sit amet sic non ummy sed lacus.</p>
+		</li>
+	</ul>
+{% endblock %}

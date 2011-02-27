@@ -1,0 +1,50 @@
+<div id="badges">
+    <div class="section-header">
+        {% if is_user_page %}
+        <h3>{{ _('Earned badges') }}</h3>
+        {% else %}
+        <h3>{{ _('Your badges') }}</h3>
+        <p>
+            {{ _('Share your Spark and complete challenges to earn more badges.') }}
+        </p>
+        {% endif %}
+    </div>
+    <ul id="badges-list">
+        <li class="badge">
+            <div class="badge-icon"></div>
+            <div class="badge-popup">
+                <div class="arrow"></div>
+                <div class="badge-copy">
+                    <h4>Lorem Ipsum Dolor Sit</h4>
+                    {# L10n: Followed by the date when the badge was obtained. #}
+                    <span class="unlock-date">{{ _('earned on:') }} 3/1/11, 04:17:32pm</span>
+                    <p>
+                        Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. 
+                        Vivamus nisl tellus, ultrices vel fringilla in, digni ssim nec erat.
+                        Proin vitae velit neque. Maecenas ligula nisl, pulvinar sed fringilla innisl.
+                    </p>
+                </div>
+                <div class="badge-img">
+                    <img src="{{ MEDIA_URL }}img/large-badge.png" alt="">
+                </div>
+                <div class="badge-sharing">
+                    <span>{{ _('share this!') }}</span>
+                    <a href="#" class="email"></a>
+                    <a href="#" class="facebook"></a>
+                    <a href="#" class="twitter"></a>
+                </div>
+            </div>
+    	</li>
+    </ul>
+    {% if not is_user_page %}
+    <div id="badges-legend" class="">
+        <div id="new-icon"></div>
+        {# L10n: Legend next to the new badge notification icon. #}
+        <span>{{ _('= new since last login.') }}</span>
+    </div>
+    {% else %}
+    <div class="clearfix">
+        <!-- necessary because the above list cannot have an overflow:auto property -->
+    </div>
+    {% endif %}
+</div>

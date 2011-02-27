@@ -1,6 +1,5 @@
 {% extends "mobile/page.html" %}
 {% from "mobile/macros/errorlist.html" import errorlist %}
-{% set title = _('Spark! Get Started') %}
 {% set pagetitle = _('Get Started') %}
 {% set body_id = 'getstarted' %}
 {% set scripts = ('menu',) %}
@@ -23,8 +22,11 @@
                 <input tabindex="2" type="password" name="password" value="" placeholder="{{ _('Password') }}" required>
             </div>
 			{{ form.password.errors|safe }}
+			<div class="input-wrapper">
+                <input tabindex="2" type="password" name="password2" value="" placeholder="{{ _('Confirm Password') }}" required>
+            </div>
+			{{ form.password2.errors|safe }}
             <div class="input-wrapper">
-				
                 <input tabindex="3" type="email" name="email" value="{{ form.email.data|safe|replace('None','') }}" placeholder="{{ _('Email address') }}" required>
             </div>
 			{{ form.email.errors|safe }}

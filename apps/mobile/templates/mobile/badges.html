@@ -1,5 +1,4 @@
 {% extends "mobile/page.html" %}
-{% set title = _('Spark! Badges') %}
 {% set pagetitle = _('Badges') %}
 {% set body_id = 'badges' %}
 {% set scripts = ('menu', 'badges') %}
@@ -18,6 +17,21 @@
         </li>
 		{% endfor %}
     </ul>
+    
+    <li id="badge-label-tmpl" style="display:none">
+        <div>
+            <div>
+                <div>
+                    <img src="{{ MEDIA_URL }}/img/mobile/badge-label-arrow.png">
+                    <h2></h2>
+                    <p class="sans"></p>
+                </div>
+            </div>
+        </div>
+        <div class="button-wrapper">
+            <button untouchstart="">{{ _('Share This') }}</button>
+        </div>
+    </li>
 {% endblock %}
 
 {% block script %}

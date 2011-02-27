@@ -19,11 +19,9 @@ USERNAME_LONG = _lazy(u'Username is too long (%(show_value)s characters). '
 EMAIL_INVALID = _lazy(u'Please enter a valid email address.')
 EMAIL_REQUIRED = _lazy(u'Please enter an email address.')
 PASSWD_REQUIRED = _lazy(u'Please enter a valid password.')
-#PASSWD2_REQUIRED = _lazy(u'Please enter your password twice.')
+PASSWD2_REQUIRED = _lazy(u'Please enter your password twice.')
 PASSWD_SHORT = _lazy(u'Password is too short '
                       '(At least %(limit_value)s characters).')
-PASSWD_LONG = _lazy(u'Password is too long '
-                    '(%(limit_value)s characters or less).')
 PASSWD_CURRENT = _lazy(u'Please enter your current password.')
 
 
@@ -42,33 +40,30 @@ class RegisterForm(forms.ModelForm):
                         'min_length': USERNAME_SHORT,
                         'max_length': USERNAME_LONG})
     password = forms.CharField(error_messages={'required': PASSWD_REQUIRED,
-                                               'min_length': PASSWD_SHORT,
-                                               'max_length': PASSWD_LONG},
-                                               min_length=6, max_length=30)
+                                               'min_length': PASSWD_SHORT},
+                                               min_length=8)
+    password2 = forms.CharField(error_messages={'required': PASSWD2_REQUIRED})
     email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED,
                                              'invalid': EMAIL_INVALID})
-    #password2 = forms.CharField(error_messages={'required': PASSWD2_REQUIRED})
     newsletter = forms.BooleanField(required=False)
 
     class Meta(object):
         model = User
-        #fields = ('username', 'password', 'password2', 'email')
-        fields = ('username', 'password', 'email')
+        fields = ('username', 'password', 'password2', 'email')
 
     def clean(self):
         super(RegisterForm, self).clean()
         password = self.cleaned_data.get('password')
-        #password2 = self.cleaned_data.get('password2')
-        #if not password == password2:
-        #    raise forms.ValidationError(_('Passwords must match.'))
+        password2 = self.cleaned_data.get('password2')
+        if not password == password2:
+            raise forms.ValidationError(_('Passwords do not match.'))
 
         return self.cleaned_data
 
     def clean_email(self):
         email = self.cleaned_data['email']
         if email and User.objects.filter(email=email).exists():
-            raise forms.ValidationError(_('A user with that email address '
-                                          'already exists.'))
+            raise forms.ValidationError(_('Username already in use.'))
         return email
 
     def __init__(self,  request=None, *args, **kwargs):
@@ -129,11 +124,9 @@ class PasswordChangeForm(forms.Form):
        and two matching new password values."""
     password = forms.CharField(error_messages={'required': PASSWD_CURRENT})
     new_password = forms.CharField(error_messages={'required': PASSWD_CURRENT,
-                                                   'min_length': PASSWD_SHORT,
-                                                   'max_length': PASSWD_LONG})
+                                                   'min_length': PASSWD_SHORT})
     new_password2 = forms.CharField(error_messages={'required': PASSWD_CURRENT,
-                                                    'min_length': PASSWD_SHORT,
-                                                    'max_length': PASSWD_LONG})
+                                                    'min_length': PASSWD_SHORT})
     
     def __init__(self, user, *args, **kwargs):
         super(PasswordChangeForm, self).__init__(*args, **kwargs)

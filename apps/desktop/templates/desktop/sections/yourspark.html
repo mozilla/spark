@@ -1,0 +1,75 @@
+<div id="stats">
+{% if is_user_page %}
+    {% if not logged_in %}
+    {% include "desktop/includes/backtotop.html" %}
+    {% endif %}
+    <div class="column">
+        <div class="section-header">
+            <h3>{{ _('Spark Stats') }}</h3>
+            <p>
+                {{ _("Check out {username}'s progress.")|f(username='FoxyBarbarian') }}
+            </p>
+        </div>
+{% else %}
+    {% if not logged_in %}
+    {% include "desktop/includes/backtotop.html" %}
+    {% endif %}
+    <div class="section-header">
+        <h3>{{ _('Your Spark') }}</h3>
+        <p>
+            {{ _('Watch your Spark transform every time you share it. Check out its progress below.') }}
+        </p>
+    </div>
+    <div class="column">
+{% endif %}
+        <div id="spark-graphic">
+            <img src="{{ MEDIA_URL }}img/your-spark.png">
+        </div>
+        <p class="legend">
+            {{ _('Log in with your Firefox Mobile browser for more stats and to view your Spark in 3D.') }}
+        </p>
+    </div>
+    <div id="user-stats" class="column">
+        <div id="total-shares">
+            <span class="count">52</span>
+            <span class="label">{{ _('total shares') }}</span>
+        </div>
+        <div id="longest-chain">
+            <span class="count">4</span>
+            <span class="label">{{ _('longest chain') }}</span>
+        </div>
+        <div id="activation">
+            <div id="days">
+                <span class="upper-label">{{ _('days') }}</span>
+                <span class="count">08 :</span>
+            </div>
+            <div id="hours">
+                <span class="upper-label">{{ _('hours') }}</span>
+                <span class="count">11 :</span>
+            </div>
+            <div id="minutes">
+                <span class="upper-label">{{ _('minutes') }}</span>
+                <span class="count">23 :</span>
+            </div>
+            <div id="seconds">
+                <span class="upper-label">{{ _('seconds') }}</span>
+                <span class="count">45</span>
+            </div>
+            <span class="label">{{ _('length of activation') }}</span>
+        </div>
+        <div id="most-recent">
+            <span class="count">{{ most_recent_share|timesince }}</span>
+            <span class="label">{{ _('most recent share') }}</span>
+        </div>
+    </div>
+    <div id="graphs" class="column last">
+        <div id="share-history">
+            <img src="{{ MEDIA_URL }}img/graph1.png">
+            <span class="label">{{ _('your shares over time') }}</span>
+        </div>
+        <div id="sparked-countries">
+            <img src="{{ MEDIA_URL }}img/graph2.png">
+            <span class="label">{{ _("countries you've Sparked") }}</span>
+        </div>
+    </div>
+</div> <!-- end stats -->

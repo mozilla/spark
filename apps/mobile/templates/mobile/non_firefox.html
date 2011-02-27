@@ -1,0 +1,87 @@
+{% extends "mobile/page.html" %}
+{% set pagetitle = _('Firefox Spark') %}
+{% set body_id = 'home' %}
+{% set body_class = 'non-ff' %}
+{% set stylesheets = ('non-firefox',) %}
+{% set hide_menu = True %}
+
+{% block flame %}{% endblock %}
+{% block title %}{{ pagetitle }}{% endblock %}
+
+{% block pagecontent %}
+    <div id="static-spark">
+    
+    </div>
+    {% if non_android %}
+    <p class="section sans">
+        {% trans %}
+        Oops! You haven't downloaded 
+        Firefox for Mobile yet. Get it now and 
+        start a Spark.
+        {% endtrans %}
+    </p>
+    <a href="#" class="button" ountouchstart="">{{ ('Get Firefox for Mobile') }}</a>
+    {% else %}
+    <p class="section sans">
+        {% trans %}
+        Oh no! Firefox for Mobile isn't 
+        available for your phone. Too sad. But 
+        the good news is you can still get 
+        Firefox for your desktop computer and 
+        share the Firefox Spark. Yay!
+        {% endtrans %}
+    </p>
+    <a href="#" class="button" ountouchstart="">{{ _('Share the Spark') }}</a>
+    {% endif %}
+
+    <hr>
+    <div class="section">
+        <h2>{{ ('Meet Firefox') }}</h2>
+        <p class="sans">
+            {{ ('Here are just a few of the amazing things Firefox has to offer:') }}
+        </p>
+        <h3>{{ ('Awesome Bar') }}</h3>
+        <p class="sans">
+            {{ ('Start typing to find the sites you love in seconds.') }}
+        </p>
+        <h3>{{ ('Private Browsing') }}</h3>
+        <p class="sans">
+            {{ ('Surf the web without leaving a single trace.') }}
+        </p>
+        <h3>{{ ('One-Click Bookmarking') }}</h3>
+        <p class="sans">
+            {{ ('Bookmark, search and organize Web sites quickly and easily.') }}
+        </p>
+    </div>
+    <a href="#" class="button" ountouchstart="">{{ ('Learn more') }}</a>
+
+    <hr>
+    <div class="section">
+        <h2>{{ ('About Us') }}</h2>
+        <p class="sans">
+            {% trans %}
+            The Firefox Mobile browser is created 
+            by Mozilla, a non-profit organization 
+            whose mission is to promote 
+            openness, innovation and opportunity 
+            on the Web.
+            {% endtrans %}
+        </p>
+    </div>
+    <a href="#" class="button" ountouchstart="">{{ ('About Mozilla') }}</a>
+
+    <div id="non-ff-links">
+        <a href="#">{{ ('Privacy Policy') }}</a>
+        <a href="#">{{ ('Legal Notices') }}</a>
+        <a class="last" href="#">{{ ('Report Trademark Abuse') }}</a>
+    </div>
+
+    <p class="license sans">
+        {% trans %}
+        Except where otherwise noted, content on 
+        this site is licensed under the Creative 
+        Commons Attribution Share-Alike License 
+        v3.0 or any later version.
+        {% endtrans %}
+    </p>
+{% endblock %}

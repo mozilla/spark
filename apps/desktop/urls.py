@@ -8,7 +8,8 @@ urlpatterns = patterns('',
     url(r'^home$', views.home, name='desktop.home'),
     url(r'^dashboard$', views.dashboard, name='desktop.dashboard'),
     url(r'^user/(?P<username>[\w\d]+)$', views.user, name='desktop.user'),
-
+    url(r'^global$', views.visualization, name='desktop.visualization'),
+    
     url(r'^pwchange', views.ajax_pwchange, name='desktop.pwchange'),
     url(r'^delaccount', views.ajax_delaccount, name='desktop.delaccount'),
 )

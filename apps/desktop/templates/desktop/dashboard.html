@@ -1,4 +1,39 @@
-{% extends "base.html" %}
+{% extends "desktop/base.html" %}
+{% set title = _('Dashboard') %}
+{% set body_id = 'dashboard' %}
+{% set scripts = ('jquery-ui', 'desktop') %}
+
 {% block content %}
-Dashboard
+	    <div id="container">
+            <div id="wrapper">
+    
+        	    <div id="masthead" class="wrapper">		    
+            		    <a href="http://www.mozilla.com/" id="visit-mozilla"></a>
+            			<div id="logo">
+            				<img src="{{ MEDIA_URL }}img/lockup.png" alt="{{ _('Mozilla Firefox') }}">
+            			</div>
+            			{% include 'desktop/menus/dashboard.html' %}
+        		</div> <!-- end masthead -->
+
+                {% include 'desktop/sections/userinfo.html' %}
+                {% include 'desktop/sections/yourspark.html' %}
+                {% include 'desktop/sections/yourbadges.html' %}
+                {% include 'desktop/sections/challenges.html' %}
+    			{% include 'desktop/sections/share.html' %}
+				{% include 'desktop/sections/globalspark.html' %}
+				{% include 'desktop/sections/about.html' %}
+
+    	        {% include 'desktop/includes/footer.html' %}
+            
+            </div>
+		</div> <!-- end container -->
+
+    	{% include 'desktop/popups/dashboard.html' %}
+
+		<div id="mask"></div>
+	</div> <!-- end wrapper -->
+{% endblock %}
+
+{% block script %}
+{% include 'desktop/includes/dashboard-script.html' %}
 {% endblock %}

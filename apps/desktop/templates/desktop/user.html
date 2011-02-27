@@ -1,4 +1,55 @@
-{% extends "base.html" %}
+{% extends "desktop/base.html" %}
+{% set title = _("{username}'s Spark")|f(username='FoxyBarbarian') %}
+{% set body_id = 'personal' %}
+{% set body_class = 'logged-in' if logged_in else 'logged-out' %}
+{% set scripts = ('jquery-ui', 'desktop') %}
+
 {% block content %}
-{{ user.username }}'s Spark page
+	    <div id="container">
+	        <div id="wrapper">
+        	    <div id="masthead">
+            		    <a href="http://www.mozilla.com/" id="visit-mozilla"></a>
+            		    {% if logged_in %}
+            		    <div class="user-info">
+            		    {% include "desktop/includes/hello.html" %}
+            		    </div>
+                        {% else %}
+                        <span id="have-account">{{ _('Already have a Spark?') }} <a href="#" class="popup-trigger">{{ _('Sign in >') }}</a></span>
+                        {% endif %}
+            			<div id="logo">
+            				<img src="{{ MEDIA_URL }}img/lockup.png" alt="{{ _('Mozilla Firefox') }}">
+            			</div>
+            			{% include "desktop/menus/user.html" %}
+        		</div> <!-- end masthead -->
+
+                <div id="main-info">
+            			<h1>
+            				{{ _('Firefox Spark') }}
+            			</h1>
+            			<div id="user-info">
+            			    {{ title }}
+            			</div>
+        		</div>	 <!-- end main-info -->
+
+                {% if not logged_in %}
+    			{% include 'desktop/sections/getfirefox.html' %}
+    			{% endif %}
+    			{% include 'desktop/sections/yourspark.html' %}
+                {% include 'desktop/sections/yourbadges.html' %}
+                {% include 'desktop/sections/globalspark.html' %}
+    			{% include 'desktop/sections/about.html' %}
+    			
+    			{% include 'desktop/includes/footer.html' %}
+	
+            </div> <!-- end wrapper -->
+		</div><!-- end container -->
+
+        {% include 'desktop/popups/logged-out.html' %}
+
+		<div id="mask"></div>
+	</div> <!-- end wrapper -->
+{% endblock %}
+
+{% block script %}
+{% include 'desktop/includes/dashboard-script.html' %}
 {% endblock %}

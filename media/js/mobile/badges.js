@@ -35,13 +35,17 @@ var initBadges = function() {
         if(currentBadgeElement) {
             currentBadgeElement.className += " current";
         }
-        $badgeInfo = $('<li id=\"badge-label\"><div><div><div><img src="/media/img/mobile/badge-label-arrow.png" alt=""><h2>This is a badge title</h2><p class="sans">In hac habitasse platea dictumst. Nam pulv inar, odio sed rhoncus suscipit, sem diam ultrices maurism lorem.</p></div></div></div><div class="button-wrapper"><button untouchstart="">Share This</button></div></li>');
+        
+        $badgeInfo = $('#badge-label-tmpl').clone();
+        $badgeInfo.attr('id', 'badge-label');
+        $badgeInfo.find('h2').text("This is badge #"+i);
+        $badgeInfo.find('p').text("In hac habitasse platea dictumst. Nam pulv inar, odio sed rhoncus suscipit, sem diam ultrices maurism lorem.");
+        
         if(viewportHeight > viewportWidth) {
             $lastBadge.after($badgeInfo.css('marginLeft', portraitMargin).fadeIn(500));
         } else {
             $lastBadge.after($badgeInfo.css('marginLeft', landscapeMargin).fadeIn(500));
         }
-        
         positionBadgeArrow(i, nb);
     };
 

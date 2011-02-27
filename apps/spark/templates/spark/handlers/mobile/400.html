@@ -1,11 +1,10 @@
 {% extends "mobile/page.html" %}
-{% set title = _('Spark! Error') %}
 {% set pagetitle = _('Oops, your request was unsuccessful') %}
 
 {% block pagecontent %}
 <div class="section">
     <p>{% trans %}
 	We couldn't perform your request. Perhaps because the action is no 
-	longer applicable or you tried to perform an invalid action{% endtrans %}</p>
+	longer applicable or you tried to perform an invalid action.{% endtrans %}</p>
 </div>
 {% endblock %}

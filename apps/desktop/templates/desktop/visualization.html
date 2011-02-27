@@ -1,0 +1,72 @@
+{% extends "desktop/base.html" %}
+{% set title = _('Global Visualizer') %}
+{% set body_id = 'visualizer' %}
+{% set scripts = ('jquery-ui', 'desktop', 'visualization') %}
+{% set stylesheets = ('visualization',) %}
+
+{% block content %}
+	<div id="wrapper">
+		<div id="masthead">
+			<h1>
+				{{ _('Spark Firefox Mobile') }} <span>{{ _('Global Visualizer') }}</span>
+			</h1>
+			<ul id="main-menu">
+				<li>{{ _('Show your shares') }}
+					<span><a id="sign-in" href="#">{{ _('Sign in first >') }}</a></span>
+				</li>
+				<li>{{ _('Focus on location') }}
+					<span>
+                        <form action="">
+                            <select id="cities-list" name="cities">
+                                <option value="Paris">Paris</option>
+                                <option value="Berlin">Berlin</option>
+                                <option value="London">London</option>
+
+                                <option value="Tokyo">Tokyo</option>
+                            </select>
+                        </form>
+					    <!-- <input type="text" name="cities" id="cities-list" placeholder="Everywhere" list="cities-list">
+                           <datalist id="cities-list">
+                                  <option value="Paris"></option>
+                                  <option value="Berlin"></option>
+                                  <option value="San Fransisco"></option>
+                                  <option value="New York"></option>
+                                  <option value="Tokyo"></option>
+                                  <option value="London"></option>
+                           </datalist> -->
+					</span>
+				</li>
+			</ul>
+		</div> <!-- end masthead -->
+
+	    <div id="timelapse">
+	       <div id="dates">
+	           <span id="start-date">03.01.11 00:00:00</span>
+	           <span id="current-date">03.14.11 07:14:03</span>
+	       </div>
+	       <div id="time-wrapper">
+               <span id="current-time">03.05.11 10:27:44</span>
+	       </div>
+	       <span id="play">{{ _('Play timelapse') }}</span>
+	    </div>
+	
+		<div id="content">
+		    <div id="loading"></div>
+        </div>
+        <div id="cities">
+            <img id="cities" src="img/cities.svg" alt="">
+        </div>
+        <!-- <div id="tooltip">
+           <div id="tooltip-arrow"></div>
+        </div> -->
+	    
+		<div id="zoom-wrapper">
+		    <div id="zoom-out" class="off"></div>
+		  	<div id="zoom"></div>
+		    <div id="zoom-in"></div>
+		</div>
+		
+		<img src="{{ MEDIA_URL }}img/spinner.gif" class="preload">
+		
+	</div> <!-- end wrapper -->
+{% endblock %}

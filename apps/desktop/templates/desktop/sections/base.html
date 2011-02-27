@@ -1,0 +1,21 @@
+<div id="{{ section_id }}" class="section">
+    {% if not hide_backtotop %}
+    {% include "desktop/includes/backtotop.html" %}
+    {% endif %}
+    <div class="column left-column">
+	    {% block leftcolumn %}{% endblock %}
+	</div>
+    {% if three_columns %}
+    	<div class="column middle-column">
+    	    {% block middlecolumn %}{% endblock %}
+    	</div>
+    	<div class="column right-column">
+    	    {% block rightcolumn %}{% endblock %}
+    	</div>
+	{% else %}
+    	<div class="column wide-column">
+    	    {% block widecolumn %}{% endblock %}
+    	</div>
+	{% endif %}
+	{% block belowsection %}{% endblock %}
+</div>

@@ -1,0 +1,19 @@
+<script type="text/javascript">
+$(function() {
+   var $popups = $('div.badge-popup');
+   
+   // Show the badge popup when a badge is clicked and hides all others
+   $('div.badge-icon').click(function() {
+          // alert($(this).children().length);
+      $(this).parent().siblings().children('div.badge-popup').hide();
+         $(this).siblings('div.badge-popup').fadeToggle(200);
+   });
+   
+   // Displays the level details
+   $('div.level:not(.locked)').click(function() {
+         $(this).parent().toggleClass('open');
+         $(this).next('ul').slideToggle('fast');
+   });
+   
+});
+</script>

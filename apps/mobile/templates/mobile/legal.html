@@ -1,28 +1,27 @@
 {% extends "mobile/page.html" %}
-{% set title = _('Spark! Legal') %}
-{% set pagetitle = _('Legal') %}
+{% set pagetitle = _('Legal stuff') %}
 {% set body_id = 'legal' %}
 {% set scripts = ('menu',) %}
 {% set hide_menu = True %}
 
 {% block pagecontent %}
     <p class="section sans">
-            Quisque commodo hendrerit lorem quis egestas. Maecenas quis tortor arcu. Vivamus rutrum nunc non neque consectetur quis placerat neque lobortis. Nam vestibulum, arcu sodales feugiat consectetur, nisl orci bibendum elit, eu euismod magna sapien..
+        {{ _('We hope you like Firefox 4 for Android and enjoy the Spark game.') }}
     </p>
     <p class="section sans">
-            Quisque commodo hendrerit lorem quis 
-            egestas. Maecenas quis tortor arcu. Vivamus 
-            rutrum nunc non neque consectetur quis 
-            placerat neque lobortis. Nam vestibulum, arcu 
-            sodales feugiat consectetur, nisl orci bibendum 
-            elit, eu euismod magna sapien..
+        {{ _('To learn more about your rights and our privacy practices see the following:') }}
     </p>
     <p class="section sans">
-            Quisque commodo hendrerit lorem quis 
-            egestas. Maecenas quis tortor arcu. Vivamus 
-            rutrum nunc non neque consectetur quis 
-            placerat neque lobortis. Nam vestibulum, arcu 
-            sodales feugiat consectetur, nisl orci bibendum 
-            elit, eu euismod magna sapien..
+        <ul>
+            <li><a href="http://www.mozilla.com/en-US/m/privacy.html">{{ _('Mozilla Firefox Privacy Policy') }}</a></li>
+            <li><a href="about:rights">{{ _('Mozilla Firefox: About your license rights') }}</a></li>
+            <li><a href="http://www.mozilla.com/en-US/about/legal.html">{{ _('Mozilla websites Legal Notices') }}</a></li>
+        </ul>
+    </p>
+    <p class="section sans">
+        {{ _("To learn how Firefox's geolocation capabilities protect your personal information, please review our privacy policy.") }}
+    </p>
+    <p class="section sans">
+        {{ _('Mozilla Firefox Spark content is licensed under the Creative Commons Attribution Share-Alike License v3.0 or any later version.') }}
     </p>
 {% endblock %}

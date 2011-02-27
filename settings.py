@@ -137,10 +137,17 @@ def JINJA_CONFIG():
 MINIFY_BUNDLES = {
     'css': {
         'desktop': (
-            'css/desktop.css',
+            'css/ie6-7.css',
+            'css/screen.css',
         ),
         'mobile': (
             'css/mobile.css',
+        ),
+        'visualization': (
+            'css/visualization.css',
+        ),
+        'non-firefox': (
+            'css/non-firefox.css',
         )
     },
     'js': {
@@ -150,8 +157,17 @@ MINIFY_BUNDLES = {
         'jquery-ui': (
             'js/libs/jquery-ui-1.8.9.custom.min.js',
         ),
+        'modernizr': (
+            'js/libs/modernizr-1.6.min.js',
+        ),
+        'pngfix': (
+            'js/libs/DD_belatedPNG_0.0.8a.min.js',
+        ),
         'desktop': (
             'js/desktop/main.js',
+        ),
+        'visualization': (
+            'js/desktop/visualization.js',
         ),
         'menu': (
             'js/mobile/menu.js',

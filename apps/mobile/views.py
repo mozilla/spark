@@ -25,7 +25,13 @@ def boost(request):
 
 @login_required
 def boost1(request):
-    return jingo.render(request, 'mobile/boost_step1.html', {})
+    data = {}
+    if request.method == 'POST':
+        if('next' in request.POST):
+            return HttpResponseRedirect(reverse('mobile.boost2'))
+        data.update({'geolocation': 'success'})
+        
+    return jingo.render(request, 'mobile/boost_step1.html', data)
 
 
 @login_required
@@ -95,3 +101,12 @@ def about(request):
 
 def legal(request):
     return jingo.render(request, 'mobile/legal.html')
+
+def iphone(request):
+    return jingo.render(request, 'mobile/iphone.html')
+
+def non_android(request):
+    return jingo.render(request, 'mobile/non_firefox.html', {'non_android': True})
+
+def non_firefox(request):
+    return jingo.render(request, 'mobile/non_firefox.html')

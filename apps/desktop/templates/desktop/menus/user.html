@@ -1,0 +1,19 @@
+<ul id="main-menu">
+    {% if logged_in %}
+	<li><a href="#download">{{ _('your Spark') }}</a>
+		<span class="subtitle">{{ _('your dashboard') }}</span>
+	</li>
+    {% else %}
+	<li><a href="#download">{{ _('get Firefox') }}</a>
+	    {# L10n: Subtitle of the "get Firefox" menu option. #}
+		<span class="subtitle">{{ _('on your phone') }}</span>
+	</li>
+    {% endif %}
+	<li><a href="#stats">{{ _('stats') }}</a>
+        {# L10n: Subtitle of the "stats" menu option. #}
+		<span class="subtitle">{{ _('check progress') }}</span>
+	</li>
+	<li><a href="#global-spark">{{ _('global spark') }}</a>
+		<span class="subtitle">{{ _('see the latest stats') }}</span>
+	</li>
+</ul>

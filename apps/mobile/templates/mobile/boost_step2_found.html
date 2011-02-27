@@ -1,5 +1,4 @@
 {% extends "mobile/page.html" %}
-{% set title = _('Spark! Boost your Spark') %}
 {% set pagetitle = _('Boost your Spark') %}
 {% set body_id = 'boost' %}
 {% set scripts = ('menu',) %}
@@ -16,7 +15,7 @@
     </p>
 
 	<p class="sans">
-		Your spark was started by:
+		{{ _('Your spark was started by:') }}<br>
 		{{ parent }}
     </p>
 </div>
