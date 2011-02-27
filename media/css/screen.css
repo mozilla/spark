@@ -299,6 +299,10 @@ ul#main-menu {
     font-size:60%;
 }
 
+#main-info h1 span {
+    font-size:50%;
+}
+
 #headline h3 {
     color:#df731b;
     font-size:1.846em;
@@ -629,7 +633,7 @@ div.input-wrapper:first-child {
     margin-top:0;
 }
 
-#popup input[type=text], input[type=email] {
+#popup input[type=text], input[type=email], input[type=password] {
     display:block;
     border-radius:0px;
     -moz-border-radius:0px;
