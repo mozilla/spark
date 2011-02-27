@@ -15,15 +15,6 @@
     {% if non_android %}
     <p class="section sans">
         {% trans %}
-        Oops! You haven't downloaded 
-        Firefox for Mobile yet. Get it now and 
-        start a Spark.
-        {% endtrans %}
-    </p>
-    <a href="#" class="button" ountouchstart="">{{ ('Get Firefox for Mobile') }}</a>
-    {% else %}
-    <p class="section sans">
-        {% trans %}
         Oh no! Firefox for Mobile isn't 
         available for your phone. Too sad. But 
         the good news is you can still get 
@@ -32,6 +23,15 @@
         {% endtrans %}
     </p>
     <a href="#" class="button" ountouchstart="">{{ _('Share the Spark') }}</a>
+    {% else %}
+    <p class="section sans">
+        {% trans %}
+        Oops! You haven't downloaded 
+        Firefox for Mobile yet. Get it now and 
+        start a Spark.
+        {% endtrans %}
+    </p>
+    <a href="#" class="button" ountouchstart="">{{ ('Get Firefox for Mobile') }}</a>
     {% endif %}
 
     <hr>
