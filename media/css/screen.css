@@ -39,7 +39,7 @@ html {
 
 #wrapper {
 	width:950px;
-	padding-left:35px;
+    margin:0 auto;
 }
 
 div.section {
@@ -188,7 +188,7 @@ h3 p {
 	font-style:italic;
 	font-weight:normal;
 	font-size:0.444em;
-	font-family:Georgia, Times, serif;
+	font-family:'Warnock Pro', 'Times New Roman', serif;
 	line-height:1.8em;
 }
 
@@ -295,6 +295,10 @@ ul#main-menu {
 	font-weight:bold;
 }
 
+#headline h1 span {
+    font-size:60%;
+}
+
 #headline h3 {
     color:#df731b;
     font-size:1.846em;
@@ -316,6 +320,10 @@ ul#main-menu {
 #global-spark .wide-column {
     font-size:1.231em;
     line-height:1.5em;
+}
+
+#global-spark .wide-column p {
+    min-height:70px;
 }
 
 #globalmap {
@@ -484,6 +492,11 @@ div.sub-section h4 {
     color:#666;
     text-align:right;
     line-height:1.6em;
+    max-width:430px;
+}
+
+#license a {
+    margin:0;
 }
 
 /*Sign-in popup*/
@@ -680,14 +693,14 @@ span.error {
 }
 /*Backgrounds*/
 
-#flame-bg {
-    background:url('../img/flame-bg.jpg');
+#spark-bg {
+    background:url('../img/top-spark.jpg') no-repeat center 0;
     height:438px;
-    width:624px;
+    width:100%;
     position:absolute;
     top:0;
-    right:-330px;
-    z-index:0;
+    left:0;
+    z-index:-1;
 }
 
 #dashboard #container {
@@ -695,7 +708,7 @@ span.error {
 }
 
 #logged-out #top-bg {
-    background:url('../img/top-bg.jpg') no-repeat 0 0;
+    background:url('../img/top-gradient.png') no-repeat 0 0;
 }
 
 #logged-out #container {
