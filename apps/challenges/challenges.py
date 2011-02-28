@@ -17,7 +17,7 @@ challenges = {
     # L10n: Keep the value of 100 even if 'miles' must be localized to kilometers.
     'lvl2_ch5': _lazy(u'Share with someone new who lives over 100 miles away'),
     'lvl2_ch6': _lazy(u'Share with someone new in a different country'),
-    'lvl2_ch7': _lazy(u'Complete 10 shares'),
+    'lvl2_ch7': _lazy(u'Complete 13 shares'),
 
     # Level 3
     'lvl3_ch1': _lazy(u'Share with someone between 6am and 10am (Local time for the recipient.)'),

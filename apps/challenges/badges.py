@@ -41,7 +41,7 @@ badges = {
     'lvl2_ch6': [_lazy(u'Long Distance Relationship'),
     # L10n: Description for "Long Distance Relationship" badge
                 _lazy(u'Congrats! You shared with someone new in a different country!')],
-    # L10n: Badge title for challenge: "Complete 10 shares"
+    # L10n: Badge title for challenge: "Complete 13 shares"
     'lvl2_ch7': [_lazy(u"Baker's Dozen"),
     # L10n: Description for "Baker's Dozen" badge
                 _lazy(u'You shared your Spark 13 times! Welcome to the club!')],
