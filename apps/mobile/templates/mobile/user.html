@@ -1,0 +1,27 @@
+{% extends "mobile/page.html" %}
+{% set pagetitle = _('Firefox Spark') %}
+{% set body_id = 'user-share' %}
+{% set scripts = ('menu',) %}
+{% set hide_menu = True %}
+
+{#  #}
+
+{% block flame %}{% endblock %}
+
+{% block pagecontent %}
+
+<span>{{ _("{username}'s Spark")|f(username='FoxyBarbarian') }}</span>
+<div id="static-spark">
+    
+</div>
+<p class="section sans">
+    {{ _('Wanna help spread Firefox 4 for Android around the world? Take challenges, unlock badges and earn yourself some bragging rights.') }}
+</p>
+<hr>
+<h2 class="cta"><a ontouchstart="" href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></h2>
+<hr>
+<div class="buttons-wrapper">
+    <a href="{{ url('users.mobile_register') }}"><button ontouchstart="" class="left-button">{{ _('Join') }}</button></a>
+    <a href="{{ url('users.mobile_login') }}"><button ontouchstart="" class="right-button">{{ _('Sign in') }}</button></a>
+</div>
+{% endblock %}
