@@ -2,7 +2,7 @@
 Hi!
 
 I wanted to let you know (not in a bragging way...okay, maybe a little) I just unlocked the Spark {{ badge_name }} badge. 
-Wanna check out all my badges? Just click the link below to view them and if you haven’t already, join in the fun and start your spark with mine.
+Wanna check out all my badges? Just click the link below to view them and if you haven't already, join in the fun and start your spark with mine.
 
 View badges : {{ badges_url }}
 View Spark : {{ spark_url }}
