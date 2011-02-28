@@ -110,3 +110,6 @@ def non_android(request):
 
 def non_firefox(request):
     return jingo.render(request, 'mobile/non_firefox.html')
+
+def user(request):
+    return jingo.render(request, 'mobile/user.html')
