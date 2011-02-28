@@ -21,6 +21,33 @@
 	          DD_belatedPNG.fix('.png');
 	        </script>
 	    <![endif]-->
+	    
+	    
+    {% if LANG != 'en-US' %}
+	    <style>
+    
+	    .back-to-top .copy {
+        {# L10n: DO NOT LOCALIZE! Controls width of ^ Back To Top ^ link. Value is a percentage. Adjust the value so that the string fits on one line only. Examples: 20 or 35 or 40. #}
+        {% if _('custom-css-back-to-top-width') and _('custom-css-back-to-top-width') != 'custom-css-back-to-top-width' %}
+            width: {{ _('custom-css-back-to-top-width') }}%;
+        {% endif %}
+        }
+    
+	    .left-line, .right-line {
+        {# L10n: DO NOT LOCALIZE! Controls width of lines surrounding ^ Back To Top ^ link. Value is a percentage. This value should be equal to: (100 - custom-css-back-to-top-width) / 2  #}
+        {% if _('custom-css-back-to-top-lines-width') and _('custom-css-back-to-top-lines-width') != 'custom-css-back-to-top-lines-width' %}
+            width: {{ _('custom-css-back-to-top-lines-width') }}%;
+        {% endif %}
+        }
+    
+	    {# L10n: DO NOT LOCALIZE! You can use this string to put custom CSS rules to fix any design issues. https://developer.mozilla.org/en/css #}
+        {% if _('custom-css') and _('custom-css') != 'custom-css' %}
+            {{ _('custom-css') }}
+        {% endif %}
+        
+        </style>
+    {% endif %}
+	    
 	</head>
 	<!-- Language class must be dynamically applied to the body in order to create language-specific CSS rules -->
 	<body id="{{ body_id }}" class="lang-en {{ body_class }}">
