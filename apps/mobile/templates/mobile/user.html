@@ -4,24 +4,108 @@
 {% set scripts = ('menu',) %}
 {% set hide_menu = True %}
 
-{#  #}
-
 {% block flame %}{% endblock %}
 
 {% block pagecontent %}
-
-<span>{{ _("{username}'s Spark")|f(username='FoxyBarbarian') }}</span>
-<div id="static-spark">
+    <div id="static-spark">
     
-</div>
-<p class="section sans">
-    {{ _('Wanna help spread Firefox 4 for Android around the world? Take challenges, unlock badges and earn yourself some bragging rights.') }}
-</p>
-<hr>
-<h2 class="cta"><a ontouchstart="" href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></h2>
-<hr>
-<div class="buttons-wrapper">
-    <a href="{{ url('users.mobile_register') }}"><button ontouchstart="" class="left-button">{{ _('Join') }}</button></a>
-    <a href="{{ url('users.mobile_login') }}"><button ontouchstart="" class="right-button">{{ _('Sign in') }}</button></a>
-</div>
+    </div>
+    <p class="section sans">
+        <span>{{ _('{username}')|f(username='FoxyBarbarian') }}</span>
+    
+        {{ ngettext('shared to <span>{n} person</span>',
+                    'shared to <span>{n} people</span>', num_people)|fe(n=num_people) }}
+        {{ ngettext('in <span>{n} country</span> around the world.',
+                    'in <span>{n} different countries</span> around the world.', num_countries)|fe(n=num_countries) }}
+        {{ ngettext('And, they unlocked <span>{n} cool badge</span> in the process.',
+                    'And, they unlocked <span>{n} cool badges</span> in the process.', num_badges)|fe(n=num_badges) }}
+    
+        {{ _('How far will your Spark go?') }}
+    
+        {# L10n: {n} is the number of recently completed challenges. #}
+    </p>
+
+    {#  Compatible phone, non-firefox #}
+    <p class="section sans">
+        {{ _("Don't have a spark yet? Get Firefox 4 for Android then start a spark.") }}
+    </p>
+    <div class="buttons-wrapper">
+        <a href="#"><button ontouchstart="">{{ _('Get Firefox 4 for Android') }}</button></a>
+    </div>
+
+    {#  Compatible phone, viewing with Firefox, logged-out #}
+    <hr>
+    <h2 class="cta"><a ontouchstart="" href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></h2>
+    <hr>
+    <div class="buttons-wrapper">
+        <a href="{{ url('users.mobile_register') }}"><button ontouchstart="" class="left-button">{{ _('Start a spark') }}</button></a>
+        <a href="{{ url('users.mobile_login') }}"><button ontouchstart="" class="right-button">{{ _('Sign in') }}</button></a>
+    </div>
+
+    {#  Compatible phone, viewing with Firefox, logged-in #}
+    <div class="buttons-wrapper">
+        <a href="#"><button ontouchstart="">{{ _('Go to My Spark') }}</button></a>
+    </div>
+
+    {#  Incompatible phone #}
+    <p class="section sans">
+        {{ _("Aww, too bad your phone isn’t compatible. Want to help light up the world anyway?") }}
+    </p>
+    <div class="buttons-wrapper">
+        <a href="#"><button ontouchstart="">{{ _('Share a spark') }}</button></a>
+    </div>
+
+    <hr>
+     <div class="section">
+         <h2>{{ ('Meet Firefox 4 for desktop') }}</h2>
+         <p class="sans">
+             {{ ('Here are just a few of the amazing things Firefox has to offer:') }}
+         </p>
+         <h3>{{ ('A fresh new look') }}</h3>
+         <p class="sans">
+             {{ ('A new user interface lets Web content take center stage.') }}
+         </p>
+         <h3>{{ ('Blazing speed') }}</h3>
+         <p class="sans">
+             {{ ('Huge performance gains make Firefox 4 almost six times faster than Firefox 3.6.') }}
+         </p>
+         <h3>{{ ('Stay in Sync') }}</h3>
+         <p class="sans">
+             {{ ('Synchronize your Firefox history, bookmarks, tabs and passwords across multiple devices.') }}
+         </p>
+         <h3>{{ ('Customize your browser') }}</h3>
+         <p class="sans">
+             {{ ('Add features and functionality to customize Firefox exactly the way you like.') }}
+         </p>
+     </div>
+     <a href="#" class="button" ountouchstart="">{{ ('Learn more') }}</a>
+
+     <hr>
+     <div class="section">
+         <h2>{{ ('About Us') }}</h2>
+         <p class="sans">
+             {% trans mozilla_url='http://www.mozilla.org' %}
+             Mozilla is a global, non-profit organization dedicated to making the Web better. 
+             We believe in principle over profit, and that the Internet is a shared public resource to be cared for, not a commodity to be sold. 
+             We work with a worldwide community to create free, open source software like Mozilla Firefox, and to innovate for the benefit of the individual and the betterment of the Web. 
+             The result is great products built by passionate people and better choices for everyone. For more information, visit <a href="{{ mozilla_url }}">www.mozilla.org</a>.
+             {% endtrans %}
+         </p>
+     </div>
+     <a href="#" class="button" ountouchstart="">{{ ('Learn more') }}</a>
+
+     <div id="non-ff-links">
+         <a href="#">{{ ('Privacy Policy') }}</a>
+         <a href="#">{{ ('Legal Notices') }}</a>
+         <a class="last" href="#">{{ ('Report Trademark Abuse') }}</a>
+     </div>
+
+     <p class="license sans">
+         {% trans %}
+         Except where otherwise noted, content on 
+         this site is licensed under the Creative 
+         Commons Attribution Share-Alike License 
+         v3.0 or any later version.
+         {% endtrans %}
+     </p>
 {% endblock %}

@@ -848,3 +848,9 @@ div.challenge.complete .checkbox {
     background:url('../img/mobile/checkbox480.png') no-repeat 0px -27px;
     background-size:26px auto;
 }
+
+/*User-share*/
+
+#user-share .section span {
+    color:#fff;
+}
