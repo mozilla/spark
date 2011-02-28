@@ -29,9 +29,7 @@
     <p class="section sans">
         {{ _("Don't have a spark yet? Get Firefox 4 for Android then start a spark.") }}
     </p>
-    <div class="buttons-wrapper">
-        <a href="#"><button ontouchstart="">{{ _('Get Firefox 4 for Android') }}</button></a>
-    </div>
+        <a href="#" class="button">{{ _('Get Firefox 4 for Android') }}</a>
 
     {#  Compatible phone, viewing with Firefox, logged-out #}
     <hr>
@@ -43,18 +41,15 @@
     </div>
 
     {#  Compatible phone, viewing with Firefox, logged-in #}
-    <div class="buttons-wrapper">
-        <a href="#"><button ontouchstart="">{{ _('Go to My Spark') }}</button></a>
-    </div>
+    <a href="#" class="button">{{ _('Go to My Spark') }}</a>
 
     {#  Incompatible phone #}
     <p class="section sans">
         {{ _("Aww, too bad your phone isn’t compatible. Want to help light up the world anyway?") }}
     </p>
-    <div class="buttons-wrapper">
-        <a href="#"><button ontouchstart="">{{ _('Share a spark') }}</button></a>
-    </div>
+    <a href="#" class="button">{{ _('Share a spark') }}</a>
 
+    {#  The rest is for everyone #}
     <hr>
      <div class="section">
          <h2>{{ ('Meet Firefox 4 for desktop') }}</h2>
