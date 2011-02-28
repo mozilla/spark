@@ -121,4 +121,6 @@ def non_firefox(request):
 
 
 def user(request):
-    return jingo.render(request, 'mobile/user.html')
+    return jingo.render(request, 'mobile/user.html', {'num_people': 8, 
+                                                      'num_countries': 5,
+                                                      'num_badges': 9})
