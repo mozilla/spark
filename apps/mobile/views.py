@@ -95,6 +95,11 @@ def sharelink(request):
     return jingo.render(request, 'mobile/sharelink.html', {})
 
 
+@login_required
+def sharebadge(request):
+    return jingo.render(request, 'mobile/sharebadge.html', {})
+
+
 def about(request):
     return jingo.render(request, 'mobile/about.html')
 
@@ -102,14 +107,18 @@ def about(request):
 def legal(request):
     return jingo.render(request, 'mobile/legal.html')
 
+
 def iphone(request):
     return jingo.render(request, 'mobile/iphone.html')
+
 
 def non_android(request):
     return jingo.render(request, 'mobile/non_firefox.html', {'non_android': True})
 
+
 def non_firefox(request):
     return jingo.render(request, 'mobile/non_firefox.html')
+
 
 def user(request):
     return jingo.render(request, 'mobile/user.html')

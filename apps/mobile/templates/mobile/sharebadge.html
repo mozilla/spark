@@ -1,0 +1,16 @@
+{% extends "mobile/page.html" %}
+{% set pagetitle = _('Share my badge') %}
+{% set body_id = 'share-badge' %}
+{% set scripts = ('menu',) %}
+
+{% block pagecontent %}
+    <p class="section legend">
+        {{ _('Share your cool badge with others by clicking a link below.') }}
+    </p>
+    <ul id="sharing">
+        <li class="cta"><a href="">{{ _('Share on Twitter') }}</a></li>
+        <li class="cta"><a href="">{{ _('Share on Facebook') }}</a></li>
+        <li class="cta"><a href="">{{ _('Share via SMS') }}</a></li>
+        <li class="cta"><a href="">{{ _('Share via Email') }}</a></li>
+    </ul>
+{% endblock %}
