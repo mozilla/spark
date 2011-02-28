@@ -12,7 +12,7 @@ challenges = {
     # Level 2
     'lvl2_ch1': _lazy(u'Obtain a share from Facebook'),
     'lvl2_ch2': _lazy(u'Obtain a share from Twitter'),
-    'lvl2_ch3': _lazy(u'Log in on both your phone and your desktop web browser'),
+    'lvl2_ch3': _lazy(u'Sign in on both your phone and your desktop Web browser'),
     'lvl2_ch4': _lazy(u'Complete a face-to-face share via the QR code on your phone'),
     # L10n: Keep the value of 100 even if 'miles' must be localized to kilometers.
     'lvl2_ch5': _lazy(u'Share with someone new who lives over 100 miles away'),
@@ -66,8 +66,8 @@ challenges = {
 
 
 def get_locked_legend(count, level):
-    # L10n: Legend associated to a locked challenge. Example: "Complete 4 more challenges in level 3 to unlock."
-    msg = ungettext('Complete %(count)d more challenge in level %(level)d to unlock.',
-                    'Complete %(count)d more challenges in level %(level)d to unlock.', count)
-    
+    # L10n: Legend associated to a locked challenge. Example: "You must complete at least 1 challenge in Level 1 to unlock this level."
+    msg = ungettext('You must complete at least %(count)d challenge in Level %(level)d to unlock this level.',
+                    'You must complete at least %(count)d challenges in Level %(level)d to unlock this level.', count)
+
     return msg % {'count': count, 'level': level}
