@@ -23,6 +23,9 @@
             <input tabindex="1" type="text" name="identifier" value="{{ form.identifier.data }}" placeholder="{{ _('Username/email address') }}">
         </div>
 		{{ form.identifier.errors|safe }}
+		{% trans policy_url='http://www.mozilla.com/m/privacy.html' %}
+		Email address is only used to connect to you. See our <a href="{{ policy_url }}">Privacy Policy.</a>
+		{% endtrans %}
     </fieldset>
     <hr>
     <fieldset id="from-website">

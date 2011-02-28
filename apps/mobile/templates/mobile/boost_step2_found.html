@@ -14,16 +14,23 @@
 		{% endtrans %}
     </p>
 
+    {% if no_parent %}
+    <p class="sans">
+		{{ _('Congrats! You started a new Spark.') }}
+    </p>
+    {% else %}
 	<p class="sans">
-		{{ _('Your spark was started by:') }}<br>
+		{{ _('Your Spark was started by:') }}<br>
 		{{ parent }}
     </p>
+    {% endif %}
+
 </div>
 <form action="{{ url('mobile.boost2_confirm') }}" method="POST">
 	{{ csrf() }}
 	<input type="hidden" name="parent" value="{{ parent }}">
 	<div class="buttons-wrapper">
-		<div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Maybe later') }}</a></div>
+		<div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
 		<button ontouchstart="" class="right-button" type="submit">{{ _('Complete') }}</button>
 	</div>
 </form>
