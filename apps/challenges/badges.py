@@ -24,7 +24,7 @@ badges = {
     # L10n: Badge title for challenge: "Obtain a share from Twitter"
     'lvl2_ch2': [_lazy(u'Twitter Treat'),
     # L10n: Description for "Twitter Treat" badge
-                _lazy(u'You got a spark from Twitter. Now that’s something to tweet about!')],
+                _lazy(u"You got a spark from Twitter. Now that's something to tweet about!")],
     # L10n: Badge title for challenge: "Sign in on both your phone and your desktop Web browser"
     'lvl2_ch3': [_lazy(u'Multi-Spark'),
     # L10n: Description for "Multi-Spark" badge
@@ -85,7 +85,7 @@ badges = {
     # L10n: Description for "Euroflame" badge
                 _lazy(u"You're so cultured! Sharing to 5 different E.U. countries? Amazing!")],
     # L10n: Badge title for challenge: "Complete 6 shares within a single 12-hour period"
-    'lvl4_ch4': [_lazy(u'Super Übershare'),
+    'lvl4_ch4': [_lazy(u'Super &Uuml;bershare'),
     # L10n: Description for "Super Übershare" badge
                 _lazy(u'6 shares in 12 hours? You rockstar!')],
     # L10n: Badge title for challenge: "Complete 2 or more shares in a single hour"
@@ -159,9 +159,9 @@ badges = {
     # L10n: Description for "Island Hopper" badge
                 _lazy(u'You shared to an island. Cool, man!')],
     # L10n: Badge title for challenge: "Share your Spark to someone in a French-speaking country"
-    'ee_ch11': [_lazy(u'Vive La Lumière'),
+    'ee_ch11': [_lazy(u'Vive La Lumi&egrave;re'),
     # L10n: Description for "Vive La Lumière" badge
-                _lazy(u'Ohh la la! Someone shared their Spark to a French-speaking country. Très bon!')],
+                _lazy(u'Ohh la la! Someone shared their Spark to a French-speaking country. Tr&egrave;s bon!')],
     # L10n: Badge title for challenge: "Share with someone roughly on the other side of the globe"
     'ee_ch12': [_lazy(u'Earth Sandwich'),
     # L10n: Description for "Earth Sandwich" badge
