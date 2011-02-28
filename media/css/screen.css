@@ -218,6 +218,11 @@ a:active {
     color:#ffd40d;
 }
 
+a:active, a:focus {
+    border:0px;
+    outline:0px;
+}
+
 /* Masthead */
 
 #masthead {
