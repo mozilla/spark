@@ -244,6 +244,10 @@ TOWER_KEYWORDS = {
 # Tells the extract script what files to look for L10n in and what function
 # handles the extraction. The Tower library expects this.
 DOMAIN_METHODS = {
+    'geo': [
+        ('lib/geo/**.py',
+            'tower.management.commands.extract.extract_tower_python'),
+    ],
     'messages': [
         ('vendor/**', 'ignore'),
         ('apps/**.py',
@@ -265,6 +269,8 @@ DOMAIN_METHODS = {
     #    ('media/js/mobile/*.js', 'javascript'),
     #],
 }
+
+STANDALONE_DOMAINS = ['messages', 'geo']
 
 # Path to Java. Used for compress_assets.
 JAVA_BIN = '/usr/bin/java'
