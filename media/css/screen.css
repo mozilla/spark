@@ -106,39 +106,29 @@ a.button:hover {
     cursor:pointer;
 }
 
-div.back-to-top {
+.back-to-top {
     margin-bottom:70px;
     color:#403c3c;
 }
 
-div.back-to-top div {
+.back-to-top div {
     float:left;
 }
 
-div.back-to-top div div {
+.back-to-top div div {
     float:none;
 }
 
-div.left-line, div.right-line {
+.left-line, .right-line {
     border-top:1px solid #403c3c;
     position:relative;
     top:11px;
-    /* L10N NOTICE
-    The width of this element should be adjusted depending on the language.
-    --------left-line------------- div.copy ----------right-line---------- must have an total added width of 100%
-    Use Firebug to determine the appropriate values.
-    */
     width:40%;
 }
 
-div.back-to-top .copy {
+.back-to-top .copy {
     text-align:center;
     font-size:1.231em;
-    /* L10N NOTICE 
-    The width of this element should be adjusted depending on the language.
-    --------left-line------------- div.copy ----------right-line---------- must have an total added width of 100%
-    Use Firebug to determine the appropriate values.
-    */
     width:20%;
 }
 
