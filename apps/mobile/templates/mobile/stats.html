@@ -7,22 +7,29 @@
     <p class="section legend">
     {{ _("Check out what's happening worldwide.") }}
     </p>
-    <hr>
-    <p class="sectin sans">
-    439,203
-    {# L10n: Global statistic representing the total number of Spark shares. #}
-    {{ _('Total Sparks') }}
+    <ul>
+        <li>
+        439,203
+        {# L10n: Global statistic representing the total number of Spark shares. #}
+        <span>{{ _('Total Sparks') }}</span>
+        </li>
+        
+        <li>
+        97
+        {# L10n: Global statistic representing the total number of countries where Sparks have been shared. #}
+        <span>{{ _('Countries Sparked') }}</span>
+        </li>
     
-    97
-    {# L10n: Global statistic representing the total number of countries where Sparks have been shared. #}
-    {{ _('Countries Sparked') }}
-    
-    6
-    {# L10n: Global statistic representing the total number of continents where Sparks have been shared. #}
-    {{ _('Continents Sparked') }}
+        <li>
+        6
+        {# L10n: Global statistic representing the total number of continents where Sparks have been shared. #}
+        <span>{{ _('Continents Sparked') }}</span>
+        </li>
 
-    8,135
-    {# L10n: Global statistic representing the total number of Spark badges unlocked by all players. #}
-    {{ _('Badges Unlocked') }}
-    </p>
+        <li>
+        8,135
+        {# L10n: Global statistic representing the total number of Spark badges unlocked by all players. #}
+        <span>{{ _('Badges Unlocked') }}</span>
+        </li>
+    </ul>
 {% endblock %}

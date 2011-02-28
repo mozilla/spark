@@ -854,3 +854,25 @@ div.challenge.complete .checkbox {
 #user-share .section span {
     color:#fff;
 }
+
+/*Stats*/
+
+#stats ul {
+    font-weight:bold;
+}
+
+#stats li {
+    border-bottom:1px solid #404040;
+    padding:18px 9px;
+    font-size:2.26em;
+}
+
+#stats li:first-child {
+    border-top:1px solid #404040;
+}
+
+#stats li span {
+    display:block;
+    color:#ffd40d;
+    font-size:0.445em;
+}
