@@ -222,6 +222,31 @@ div.button a {
     background:-webkit-gradient(linear,center top, center bottom, from(#ffea87), to(#f1dc7a));
 }
 
+a.button {
+    display:block;
+    border-top:1px solid #ffe670;
+    background:-moz-linear-gradient(90deg, #ffdd2f, #ffd908);
+    background:-webkit-gradient(linear, center top, center bottom, from(#ffdd2f), to(#ffd908));
+    line-height:48px;
+    color:#000;
+    font-size:1.13em;
+    font-weight:bold;
+    padding-left:12px;
+    margin-bottom:18px;
+}
+
+a.button:active {
+    border-top:1px solid #feed9b;
+    background:#fee779;
+    color:#000;
+}
+
+p.license {
+    color:#808080;
+    font-size:0.878em;
+    margin-top:18px;
+}
+
 #menu-wrapper {
     position:relative;
     height:50px;
@@ -851,6 +876,64 @@ div.challenge.complete .checkbox {
 
 /*User-share*/
 
+#user-share #header h2 {
+    font-weight:bold;
+    color:#ffda0e;
+    padding-left:8px;
+    margin-top:-1.2em;
+}
+
 #user-share .section span {
     color:#fff;
+}
+
+/*Stats*/
+
+#stats-list {
+    font-weight:bold;
+}
+
+#stats-list li {
+    border-bottom:1px solid #404040;
+    padding:18px 9px;
+    font-size:2.26em;
+}
+
+#stats-list li:first-child {
+    border-top:1px solid #404040;
+}
+
+#stats-list li span {
+    display:block;
+    color:#ffd40d;
+    font-size:0.445em;
+}
+
+/*non-ff*/
+.non-ff h2 {
+    font-size:2.26em;
+    color:#ffd40d;
+}
+
+.non-ff h3 {
+    font-size:1.13em;
+    font-weight:bold;
+}
+
+.non-ff p {
+    line-height:150%;
+    padding-bottom:18px;
+}
+
+#non-ff-links a {
+    display:block;
+    border-top:1px solid #404040;
+    font-size:1.13em;
+    font-weight:bold;
+    color:#ffd40d;
+    line-height:48px;
+}
+
+#non-ff-links a.last {
+    border-bottom:1px solid #404040;
 }
