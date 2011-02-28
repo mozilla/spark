@@ -857,21 +857,21 @@ div.challenge.complete .checkbox {
 
 /*Stats*/
 
-#stats ul {
+#stats-list {
     font-weight:bold;
 }
 
-#stats li {
+#stats-list li {
     border-bottom:1px solid #404040;
     padding:18px 9px;
     font-size:2.26em;
 }
 
-#stats li:first-child {
+#stats-list li:first-child {
     border-top:1px solid #404040;
 }
 
-#stats li span {
+#stats-list li span {
     display:block;
     color:#ffd40d;
     font-size:0.445em;
