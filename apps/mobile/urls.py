@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     url(r'^boost1$', views.boost1, name='mobile.boost1'),
     url(r'^boost2$', views.boost2, name='mobile.boost2'),
     url(r'^boost2_confirm$', views.boost2_confirm, name='mobile.boost2_confirm'),
-    
+    url(r'^user$', views.user, name='mobile.user'),
     url(r'^iphone$', views.iphone, name='mobile.home_iphone'),
     url(r'^non-android$', views.non_android, name='mobile.home_non_android'),
     url(r'^non-ff$', views.non_firefox, name='mobile.home_non_firefox'),

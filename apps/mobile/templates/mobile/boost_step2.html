@@ -20,7 +20,7 @@
 	{{ csrf() }}
     <fieldset id="identifier" class="section">
         <div class="input-wrapper">
-            <input tabindex="1" type="text" name="identifier" value="{{ form.identifier.data }}" placeholder="{{ _('Username or Email address') }}">
+            <input tabindex="1" type="text" name="identifier" value="{{ form.identifier.data }}" placeholder="{{ _('Username/email address') }}">
         </div>
 		{{ form.identifier.errors|safe }}
     </fieldset>
@@ -28,7 +28,7 @@
     <fieldset id="from-website">
 	    <p id="custom-cb" class="sans">
 	        <input tabindex="2" id="from-website-cb" type="checkbox" name="from_website">
-	        <label ontouchstart="" for="from-website-cb">{{ _('I started a new Spark from Firefox.com') }}</label>
+	        <label ontouchstart="" for="from-website-cb">{{ _('I started a new Spark on my own.') }}</label>
 	    </p>
     </fieldset>
     <hr>

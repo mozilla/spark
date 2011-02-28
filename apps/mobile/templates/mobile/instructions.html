@@ -7,8 +7,8 @@
 {% block pagecontent %}
     <p class="section legend">
 		{% trans %}
-        Good question. Spark is a game based on sharing challenges. The more you share your Spark with others, 
-		the more challenges you'll unlock and the more badges you'll earn.
+        Ready to light up the world? To celebrate Mozilla Firefox going mobile, we've created Spark, a game that challenges you to share with friends to help the flame of the open Web glow bright. 
+        So get Spark, take challenges, unlock badges and support Mozilla's mission for a better Web in the process. All good stuff!
 		{% endtrans %}
     </p>
 
@@ -16,7 +16,7 @@
     <div class="section">
         <h2>{{ _('How it works') }}</h2>
         <p class="sans">
-            {{ _('Each player starts with their own Spark.') }}
+            {{ _('Each player starts with their own spark.') }}
         </p>
     </div>
     
@@ -28,11 +28,19 @@
         </p>
     </div>
     
-    <hr> <!-- Fennec inexplicably refuses to display this line in portrait mode -->
+    <hr>
     <div class="section">
         <div class="arrow"></div>
         <p class="sans">
-            {{ _("There are X levels of sharing challenges to get through, and for each challenge you complete, you'll earn yourself a sweet little badge.") }}
+            {{ _("There are 4 levels of sharing challenges to get through, and for each challenge you complete, you'll earn yourself a sweet little badge.") }}
+        </p>
+    </div>
+    
+    <hr>
+    <div class="section">
+        <div class="arrow"></div>
+        <p class="sans">
+            {{ _('So do you have what it takes to light up the world? Then get to it!') }}
         </p>
     </div>
 {% endblock %}

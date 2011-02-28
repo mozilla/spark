@@ -682,18 +682,18 @@ div.shape {
 
 /* Home */
 
-#home #header {
+#home #header, #user-share #header {
     margin-top:20px;
     border-top:3px solid #ffd40d;
     border-bottom:0px;
     padding-top:0px;
 }
 
-#home #header h1 {
+#home #header h1, #user-share #header h1 {
     padding-top:10px;
 }
 
-#home {
+#home, #user-share {
     background:url('../img/mobile/spark.png') no-repeat center 0;
     background-size:320px auto;
 }
@@ -702,13 +702,13 @@ div.shape {
     height:200px;
 }
 
-#home .left-button {
+#home .left-button, #user-share .left-button {
     border-top:1px solid #ffe87d;
     background:-moz-linear-gradient(90deg, #ffd825, #e5bf0c);
     background:-webkit-gradient(linear,center top, center bottom, from(#ffd825), to(#e5bf0c));
 }
 
-#home .left-button:active, #home .left-button:focus {
+#home .left-button:active, #home .left-button:focus, #user-share .left-button:active, #user-share .left-button:focus {
     border-top:1px solid #ffe87d;
     background:-moz-linear-gradient(90deg, #ffea87, #f1dc7a);
     background:-webkit-gradient(linear,center top, center bottom, from(#ffea87), to(#f1dc7a));
@@ -847,4 +847,10 @@ div.challenge .checkbox {
 div.challenge.complete .checkbox {
     background:url('../img/mobile/checkbox480.png') no-repeat 0px -27px;
     background-size:26px auto;
+}
+
+/*User-share*/
+
+#user-share .section span {
+    color:#fff;
 }
