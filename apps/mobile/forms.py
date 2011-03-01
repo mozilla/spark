@@ -8,14 +8,14 @@ from users.models import User
 
 IDENTIFIER_REQUIRED = _lazy(u'Please enter a username or email address.')
 IDENTIFIER_NOTFOUND = _lazy(u'The username or email address you entered was not found.')
-IDENTIFIER_SELF = _lazy(u'Did you really send a Spark to yourself?')
+IDENTIFIER_SELF = _lazy(u'Did you really send a spark to yourself?')
 
 class BoostStep2Form(forms.Form):
     """ This form requires that one of its two fields be filled :
     
         - an identifier (username or email address) of the user who shared Spark with them.
         or
-        - a checkbox meaning that the user got a Spark on their own.
+        - a checkbox meaning that the user got a spark on their own.
     """
     identifier = forms.CharField(required=False)
     from_website = forms.BooleanField(required=False)
