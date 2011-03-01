@@ -27,11 +27,11 @@ $(document).ready(function() {
                 updateCurrentTime();
                 updateTimelapse();
             }, 30);
-            $('#play').html('Pause timelapse');
         } else {
             clearInterval(playTimelapse);
-            $('#play').html('Play timelapse');
         }
+        $('#play').toggle();
+        $('#pause').toggle();
     };
 
     // Sets the dimensions of the mask
@@ -128,6 +128,9 @@ $(document).ready(function() {
     
     // Triggers the play/pause and toggles the corresponding strings
     $('#play').click(function() { 
+        togglePlay();
+    });
+    $('#pause').click(function() { 
         togglePlay();
     });
     

@@ -3,12 +3,15 @@
 {% set body_id = 'visualizer' %}
 {% set scripts = ('jquery-ui', 'desktop', 'visualization') %}
 {% set stylesheets = ('visualization',) %}
+{% set user_shares = _("{username}'s shares")|f(username='FoxyBarbarian') %}
+{% set everyone = _("Show everyone's shares") %}
 
 {% block content %}
 	<div id="wrapper">
 		<div id="masthead">
 			<h1>
-				{{ _('Spark Firefox Mobile') }} <span>{{ _('Global Visualizer') }}</span>
+				{{ _('Spark') }} <span>{{ _('powered by Firefox for mobile') }}</span><br>
+		        <span>{{ _('Global Visualizer') }}</span>
 			</h1>
 			<ul id="main-menu">
 				<li>{{ _('Show your shares') }}
@@ -49,8 +52,9 @@
                <span id="current-time">03.05.11 10:27:44</span>
 	       </div>
 	       <span id="play">{{ _('Play time-lapse') }}</span>
+	       <span id="pause">{{ _('Pause time-lapse') }}</span>
 	    </div>
-	
+	    
 		<div id="content">
 		    <div id="loading"></div>
         </div>

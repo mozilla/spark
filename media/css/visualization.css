@@ -112,7 +112,7 @@ div.ui-slider-range {
     top:3px;
 }
 
-#play {
+#play, #pause {
     color: #ffd909;
     display: block;
     font-size: 1.3em;
@@ -120,8 +120,12 @@ div.ui-slider-range {
     margin-top: 10px;
 }
 
-#play:hover {
+#play:hover, #pause:hover {
     cursor:pointer;
+}
+
+#pause {
+    display: none;
 }
 
 #masthead, #timelapse {
