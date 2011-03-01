@@ -4,7 +4,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-		<title>{{ title }} | {# L10n: Campaign name. #}{{ _('Firefox Spark') }}</title>
+		{# L10n: Page title pattern for <title> tag. #}
+		<title>{{ _('{title} | Spark powered by Firefox for mobile')|f(title=title) }}</title>
 		{{ js('modernizr') }}
 		{% block site_css %}
 	      {{ css('desktop') }}
