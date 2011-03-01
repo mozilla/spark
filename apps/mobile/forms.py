@@ -8,7 +8,7 @@ from users.models import User
 
 IDENTIFIER_REQUIRED = _lazy(u'Please enter a username or email address.')
 IDENTIFIER_NOTFOUND = _lazy(u'The username or email address you entered was not found.')
-IDENTIFIER_SELF = _lazy(u'Did you really send a spark to yourself?')
+IDENTIFIER_SELF = _lazy(u"Oops! Sorry, you can't share a spark with yourself.")
 
 class BoostStep2Form(forms.Form):
     """ This form requires that one of its two fields be filled :
