@@ -26,8 +26,8 @@ badges = {
     # L10n: Description for "Twitter Treat" badge
                 _lazy(u"You got a spark from Twitter. Now that's something to tweet about!")],
     # L10n: Badge title for challenge: "Sign in on both your phone and your desktop Web browser"
-    'lvl2_ch3': [_lazy(u'Multi-Spark'),
-    # L10n: Description for "Multi-Spark" badge
+    'lvl2_ch3': [_lazy(u'Multi-sparker'),
+    # L10n: Description for "Multi-sparker" badge
                 _lazy(u'Looks like someone double-dipped and signed in via their phone and desktop. Score!')],
     # L10n: Badge title for challenge: "Complete a face-to-face share via the QR code on your phone"
     'lvl2_ch4': [_lazy(u'Face Off'),
@@ -77,8 +77,8 @@ badges = {
     # L10n: Description for "Night Shift" badge
                 _lazy(u'Sharing sparks between 2 and 4 am? Way to go!')],
     # L10n: Badge title for challenge: "Share your Spark to 8 different U.S. states"
-    'lvl4_ch2': [_lazy(u'Octo-Sparker'),
-    # L10n: Description for "Octo-Sparker" badge
+    'lvl4_ch2': [_lazy(u'Octo-sparker'),
+    # L10n: Description for "Octo-sparker" badge
                 _lazy(u'You shared your Spark to 8 different U.S. states. Good work!')],
     # L10n: Badge title for challenge: "Share your Spark to 5 different E.U. countries"
     'lvl4_ch3': [_lazy(u'Euroflame'),
@@ -89,8 +89,8 @@ badges = {
     # L10n: Description for "Super Übershare" badge
                 _lazy(u'6 shares in 12 hours? You rockstar!')],
     # L10n: Badge title for challenge: "Complete 2 or more shares in a single hour"
-    'lvl4_ch5': [_lazy(u'2 In 1'),
-    # L10n: Description for "2 In 1" badge
+    'lvl4_ch5': [_lazy(u'2 in 1'),
+    # L10n: Description for "2 in 1" badge
                 _lazy(u'You shared 2 or more times in 1 single hour! Well done!')],
     # L10n: Badge title for challenge: "Complete 40 shares"
     'lvl4_ch6': [_lazy(u'XL Sparks'),
@@ -123,8 +123,8 @@ badges = {
     # L10n: Description for "Trifecta" badge
                _lazy(u'You shared the Spark with 3 people! Nice one!')],
     # L10n: Badge title for challenge: "Non-Android user who shares with ten people"
-    'ee_ch2': [_lazy(u"You're A Dime"),
-    # L10n: Description for "You're A Dime" badge
+    'ee_ch2': [_lazy(u"You're a Dime"),
+    # L10n: Description for "You're a Dime" badge
                _lazy(u'10 shares? Way to root for us!')],
     # L10n: Badge title for challenge: "Share your Spark to 3 continents"
     'ee_ch3': [_lazy(u'Backpacker'),
@@ -159,8 +159,8 @@ badges = {
     # L10n: Description for "Island Hopper" badge
                 _lazy(u'You shared to an island. Cool, man!')],
     # L10n: Badge title for challenge: "Share your Spark to someone in a French-speaking country"
-    'ee_ch11': [_lazy(u'Vive La Lumi&egrave;re'),
-    # L10n: Description for "Vive La Lumière" badge
+    'ee_ch11': [_lazy(u'Vive la Lumi&egrave;re'),
+    # L10n: Description for "Vive la Lumière" badge
                 _lazy(u'Ohh la la! Someone shared their Spark to a French-speaking country. Tr&egrave;s bon!')],
     # L10n: Badge title for challenge: "Share with someone roughly on the other side of the globe"
     'ee_ch12': [_lazy(u'Earth Sandwich'),
@@ -171,8 +171,8 @@ badges = {
     # L10n: Description for "Pan Americano" badge
                 _lazy(u'Your Spark crossed the border between North & South America! Ariba!')],
     # L10n: Badge title for challenge: "Share to a country with a desert in it"
-    'ee_ch14': [_lazy(u'Feel The Heat'),
-    # L10n: Description for "Feel The Heat" badge
+    'ee_ch14': [_lazy(u'Feel the Heat'),
+    # L10n: Description for "Feel the Heat" badge
                 _lazy(u'You shared your Spark to a country with a desert! Well done!')],
     # L10n: Badge title for challenge: "Share to a friend in each of the original 13 US states"
     'ee_ch15': [_lazy(u'The Colonial'),
@@ -191,7 +191,7 @@ badges = {
     # L10n: Description for "The Amazon" badge
                 _lazy(u'Ola! Looks like someone did a little sharing to or from Brazil. Nice!')],
     # L10n: Badge title for challenge: "Person with the most shares"
-    'ee_ch19': [_lazy(u'Spark Hall Of Famer'),
-    # L10n: Description for "Spark Hall Of Famer" badge
+    'ee_ch19': [_lazy(u'Spark Hall of Famer'),
+    # L10n: Description for "Spark Hall of Famer" badge
                 _lazy(u'Most shares earns you this much coveted badge. Welcome to the Spark Hall of Fame. Congratulations!')],
 }
