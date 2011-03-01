@@ -6,7 +6,7 @@
           <form method="post" accept-charset="utf-8">
             <fieldset class="section">
                 <div class="input-wrapper">
-                    <input tabindex="1" type="email" name="current-email" value="" placeholder="{{ _('Current email address') }}" required>
+                    <input tabindex="1" type="password" name="current-email" value="" placeholder="{{ _('Current password') }}" required>
                 </div>
                 <div class="input-wrapper">
                     <input tabindex="2" type="email" name="new-email" value="" placeholder="{{ _('New email address') }}" required>
@@ -18,7 +18,7 @@
             <div class="buttons-wrapper">
                 <a class="button left-button">{{ _('Cancel') }}</a>
                 {# L10n: Button that submits the email address change form. #}
-                <button tabindex="4" class="right-button" type="submit">{{ _('Change') }}</button>
+                <button tabindex="4" class="right-button" type="submit">{{ _('Change email address') }}</button>
             </div>
         </form>
     </div>
@@ -41,7 +41,7 @@
             <div class="buttons-wrapper">
                 <a class="button left-button">{{ _('Cancel') }}</a>
                 {# L10n: Button that submits the password change form. #}
-                <button tabindex="4" class="right-button" type="submit">{{ _('Change') }}</button>
+                <button tabindex="4" class="right-button" type="submit">{{ _('Change password') }}</button>
             </div>
         </form>
     </div>
