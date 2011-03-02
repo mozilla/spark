@@ -18,7 +18,7 @@ h1 span {
 
 ul#main-menu {
 	float:right;
-	margin-top:-65px;
+	margin-top:-63px;
 }
 
 #main-menu li {
@@ -28,7 +28,7 @@ ul#main-menu {
 	width:230px;
 	border-top:3px solid #ffda05;
 	margin-left:10px;
-	padding-top:10px;
+	padding-top:8px;
 	font-size:1.231em;
 }
 
