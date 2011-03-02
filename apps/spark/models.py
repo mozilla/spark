@@ -17,10 +17,6 @@ class ModelBase(models.Model):
 
 class Continent(models.Model):
     code = models.CharField(max_length=2, primary_key=True)
-    name = models.CharField(max_length=128)
-
-    class Meta:
-        ordering = ('name',)
 
     def __unicode__(self):
         return self.name
@@ -28,17 +24,13 @@ class Continent(models.Model):
 
 class Country(models.Model):
     iso = models.CharField(max_length=2, primary_key=True)
-    name = models.CharField(max_length=128)
-    full_name = models.CharField(max_length=255)
     continent = models.ForeignKey(Continent, null=True)
-    iso3 = models.CharField(max_length=3)
-    number = models.CharField(max_length=3)
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('iso',)
 
     def __unicode__(self):
-        return self.name
+        return self.iso
 
 
 class City(ModelBase):
