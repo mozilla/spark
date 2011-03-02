@@ -23,21 +23,26 @@
             </div>
 			{{ form.password.errors|safe }}
 			<div class="input-wrapper">
-                <input tabindex="2" type="password" name="password2" value="" placeholder="{{ _('Please confirm password') }}" required>
+                <input tabindex="3" type="password" name="password2" value="" placeholder="{{ _('Please confirm password') }}" required>
             </div>
 			{{ form.password2.errors|safe }}
             <div class="input-wrapper">
-                <input tabindex="3" type="email" name="email" value="{{ form.email.data|safe|replace('None','') }}" placeholder="{{ _('Email address') }}" required>
+                <input tabindex="4" type="email" name="email" value="{{ form.email.data|safe|replace('None','') }}" placeholder="{{ _('Email address') }}" required>
             </div>
 			{{ form.email.errors|safe }}
         </fieldset>
         <hr>
         <fieldset id="newsletter">
                 <p id="custom-cb" class="sans">
-                    <input tabindex="4" id="newsletter-cb" type="checkbox" name="newsletter" value="{{ form.newsletter.data }}">
+                    <input tabindex="5" id="newsletter-cb" type="checkbox" name="newsletter">
                     <label ontouchstart="" for="newsletter-cb">{{ _("I'd like to subscribe to monthly updates and keep up-to-date with Mozilla news.") }}</label>
                 </p>
 				{{ form.newsletter.errors|safe }}
+				<p id="custom-cb" class="sans">
+                    <input tabindex="6" id="spark-newsletter-cb" type="checkbox" name="spark_newsletter">
+                    <label ontouchstart="" for="spark-newsletter-cb">{{ _("Send me updates about Spark.") }}</label>
+                </p>
+				{{ form.spark_newsletter.errors|safe }}
         </fieldset>
 
 		<hr>

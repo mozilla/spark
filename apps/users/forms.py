@@ -47,6 +47,7 @@ class RegisterForm(forms.ModelForm):
     email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED,
                                              'invalid': EMAIL_INVALID})
     newsletter = forms.BooleanField(required=False)
+    spark_newsletter = forms.BooleanField(required=False)
 
     class Meta(object):
         model = User
@@ -64,7 +65,7 @@ class RegisterForm(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data['email']
         if email and User.objects.filter(email=email).exists():
-            raise forms.ValidationError(_('Username already in use.'))
+            raise forms.ValidationError(_('Email address already in use.'))
         return email
 
     def __init__(self,  request=None, *args, **kwargs):

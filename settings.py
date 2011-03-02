@@ -229,6 +229,9 @@ INSTALLED_APPS = (
     # We need this so the jsi18n view will pick up our locale directory.
     ROOT_PACKAGE,
 
+    # Newsletter
+    'responsys',
+
     # Spark apps
     'spark',
     'users',
@@ -299,3 +302,8 @@ DEFAULT_FROM_EMAIL = 'test@localhost.spark'
 
 # Profile Model retrieved via user.get_profile()
 AUTH_PROFILE_MODULE = 'users.Profile'
+
+# Responsys
+RESPONSYS_ID = '<insert responsys key here>'
+MOZILLA_CAMPAIGN = 'MOZILLA_AND_YOU'
+SPARK_CAMPAIGN = 'SPARK_2011'

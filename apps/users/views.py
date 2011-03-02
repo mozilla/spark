@@ -28,6 +28,14 @@ from users.forms import (EmailConfirmationForm, EmailChangeForm)
 from users.models import Profile
 from users.utils import handle_login, handle_register
 
+try:
+    if True == settings.CELERY_ENABLED:
+        from responsys import responsys_async as responsys
+    else:
+        from responsys import responsys
+except AttributeError:
+    from responsys import responsys
+
 
 
 @ssl_required
@@ -72,6 +80,20 @@ def register(request):
     """Register a new user."""
     form = handle_register(request)
     if form.is_valid():
+        data = form.cleaned_data
+        optins = []
+        if data['newsletter']:
+            optins.append(settings.MOZILLA_CAMPAIGN)
+        if data['spark_newsletter']:
+            optins.append(settings.SPARK_CAMPAIGN)
+        
+        if len(optins) > 0:
+            status= responsys.subscribe(optins,
+                                        data['email'],
+                                        'html',
+                                        responsys.make_source_url(request),
+                                        request.locale)
+        
         return HttpResponseRedirect(reverse('mobile.home'))
     return jingo.render(request, 'users/mobile/register.html',
                         {'form': form})
