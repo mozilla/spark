@@ -138,47 +138,47 @@
         "pk": 1,
         "model": "users.usernode",
         "fields": {
-            "rght": 5,
-            "parent": 2,
-            "level": 3,
-            "lft": 4,
-            "user": 1,
-            "tree_id": 4
-        }
-    }, 
-    {
-        "pk": 2,
-        "model": "users.usernode",
-        "fields": {
-            "rght": 6,
-            "parent": 3,
-            "level": 2,
-            "lft": 3,
-            "user": 2,
-            "tree_id": 4
-        }
-    }, 
-    {
-        "pk": 3,
-        "model": "users.usernode",
-        "fields": {
-            "rght": 7,
-            "parent": 4,
-            "level": 1,
-            "lft": 2,
-            "user": 3,
-            "tree_id": 4
-        }
-    }, 
-    {
-        "pk": 4,
-        "model": "users.usernode",
-        "fields": {
             "rght": 8,
             "parent": null,
             "level": 0,
             "lft": 1,
             "user": 4,
+            "tree_id": 4
+        }
+    },
+    {
+        "pk": 2,
+        "model": "users.usernode",
+        "fields": {
+            "rght": 7,
+            "parent": 1,
+            "level": 1,
+            "lft": 2,
+            "user": 3,
+            "tree_id": 4
+        }
+    },
+    {
+        "pk": 3,
+        "model": "users.usernode",
+        "fields": {
+            "rght": 6,
+            "parent": 2,
+            "level": 2,
+            "lft": 3,
+            "user": 2,
+            "tree_id": 4
+        }
+    },
+    {
+        "pk": 4,
+        "model": "users.usernode",
+        "fields": {
+            "rght": 5,
+            "parent": 3,
+            "level": 3,
+            "lft": 4,
+            "user": 1,
             "tree_id": 4
         }
     }
