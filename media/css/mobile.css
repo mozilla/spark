@@ -549,6 +549,8 @@ button:active, button:focus {
 
 .cta a:focus, .cta a:active {
     outline:none;
+    border:none;
+    text-decoration:none;
 }
 
 /* Boost your Spark */
@@ -999,7 +1001,7 @@ div.challenge.complete .checkbox {
     padding-bottom:18px;
 }
 
-#non-ff-links a {
+.legal-links a {
     display:block;
     border-top:1px solid #404040;
     font-size:1.13em;
@@ -1008,6 +1010,6 @@ div.challenge.complete .checkbox {
     line-height:48px;
 }
 
-#non-ff-links a.last {
+.legal-links a.last {
     border-bottom:1px solid #404040;
 }
