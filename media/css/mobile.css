@@ -427,7 +427,7 @@ form input[type=text], input[type=email], input[type=password] {
     border-radius:0px;
     -moz-border-radius:0px;
     -webkit-border-radius:0px;
-    width:100%;
+    width:97%;
     color:#666;
     font-size:1.005em;
     background:transparent;
@@ -583,7 +583,7 @@ button:active, button:focus {
 
 #boost .cta a {
     line-height:1.6em;
-    padding:1.2em 0 1.2em 8px;
+    padding:1.2em 2em 1.2em 8px;
 }
 
 /*Badges*/
