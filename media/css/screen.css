@@ -1203,6 +1203,21 @@ div.level:hover {
     background:url('../img/personal-gradients.png') no-repeat 0 0;
 }
 
+#remember {
+    float:right;
+    display:block;
+    margin-top:-50px;
+    padding:25px 16px;
+    background:#ffd40d;
+    color:#000;
+    font-size:1.846em;
+    width:558px;
+}
+
+#remember span {
+    font-weight:bold;
+}
+
 /* Personal Page - logged in */
 
 .logged-in .user-info {
