@@ -7,7 +7,7 @@
 {% block flame %}{% endblock %}
 
 {% block pagecontent %}
-    <span id="remember">{{ _('Remember {username} when you boost your Spark!')|f(username='FoxyBarbarian') }}</span>
+    <span id="remember">{{ _('Remember <span>{username}</span> when you boost your Spark!')|fe(username='FoxyBarbarian') }}</span>
     <div id="static-spark">
     
     </div>
