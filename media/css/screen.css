@@ -1193,6 +1193,8 @@ div.level:hover {
 
 #personal #main-info {
     border-bottom:1px solid #403C3C;
+    overflow:auto;
+    padding:15px 0;
 }
 
 #personal #download {
@@ -1206,12 +1208,13 @@ div.level:hover {
 #remember {
     float:right;
     display:block;
-    margin-top:-50px;
-    padding:25px 16px;
+    margin-top:-90px;
+    padding:20px 16px;
     background:#ffd40d;
     color:#000;
-    font-size:1.846em;
-    width:558px;
+    font-size:1.385em;
+    width:390px;
+    line-height:1.6em;
 }
 
 #remember span {
