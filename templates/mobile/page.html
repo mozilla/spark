@@ -25,7 +25,7 @@
 	
 	</div> <!-- end wrapper -->
 
-	{% if not hide_menu %}
+	{% if user.is_authenticated() and not hide_menu %}
 	<div id="menu-wrapper" class="closed">
 	    <div id="menu" class="closed">
 	        <div id="menu-hr"></div>
@@ -37,8 +37,11 @@
 	            {{ _('Menu') }}
 	        </div>
 			<div id="menu-content">
-		        <ul>
+		        <ul>    
+		            {% set profile = user.get_profile() %}
+		            {% if not profile.boost1_completed or not profile.boost2_completed %}
 		            <li><a href="{{ url('mobile.boost') }}">{{ _('Boost your Spark') }}</a></li>
+		            {% endif %}
 		            <li><a href="{{ url('mobile.stats') }}">{{ _('Stats') }}</a></li>
 		            <li><a href="{{ url('mobile.challenges') }}">{{ _('Challenges') }}
 							{% if num_new_challenges %}
