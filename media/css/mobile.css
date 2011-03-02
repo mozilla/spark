@@ -577,6 +577,11 @@ button:active, button:focus {
     color:#fff;
 }
 
+#boost .cta a {
+    line-height:1.6em;
+    padding:1.2em 0 1.2em 8px;
+}
+
 /*Badges*/
 
 ul#badge-list {
