@@ -752,7 +752,7 @@ div.shape {
     padding-top:10px;
 }
 
-#home, #user-share {
+#home {
     background:url('../img/mobile/spark.png') no-repeat center 0;
     background-size:320px auto;
 }
@@ -910,6 +910,11 @@ div.challenge.complete .checkbox {
 
 /*User-share*/
 
+#user-share {
+    background:url('../img/mobile/spark.png') no-repeat center 45px;
+    background-size:320px auto;
+}
+
 #user-share #header h2 {
     font-weight:bold;
     color:#ffda0e;
@@ -919,6 +924,17 @@ div.challenge.complete .checkbox {
 
 #user-share .section span {
     color:#fff;
+}
+
+#remember {
+    color:#df731b;
+    padding-left:8px;
+    display:block;
+    max-width:70%;
+}
+
+#remember span {
+    font-weight:bold;
 }
 
 /*Stats*/
