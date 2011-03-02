@@ -4,12 +4,14 @@ from django.core.validators import validate_email
 from tower import ugettext as _, ugettext_lazy as _lazy
 
 from users.models import User
+from users.utils import is_direct_child_of, is_part_of_chain_started_by
 
 
 IDENTIFIER_REQUIRED = _lazy(u'Please enter a username or email address.')
 IDENTIFIER_NOTFOUND = _lazy(u'The username or email address you entered was not found.')
 IDENTIFIER_SELF = _lazy(u"Oops! Sorry, you can't share a spark with yourself.")
-
+DIRECT_CHILD = _lazy(u"This user's Spark is already connected to yours.")
+PART_OF_A_CHAIN = _lazy(u'This user is already part of a sharing chain that you started.')
 
 
 class BoostStep1Form(forms.Form):
@@ -51,11 +53,21 @@ class BoostStep2Form(forms.Form):
             return self.cleaned_data
 
         parent = self.find_parent_user(identifier)
-
+        
         if not parent and not from_website:
             self.identifier_error(IDENTIFIER_NOTFOUND)
         elif parent:
             self.parent_username = parent[0].username
+            
+            # parent is already a direct child of self.user
+            if is_direct_child_of(parent[0], self.user):
+                self.identifier_error(DIRECT_CHILD)
+                return self.cleaned_data
+            
+            # parent is already part of a sharing chain that self.user started
+            if is_part_of_chain_started_by(parent[0], self.user):
+                self.identifier_error(PART_OF_A_CHAIN)
+                return self.cleaned_data
         
         return self.cleaned_data
 

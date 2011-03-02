@@ -27,7 +27,7 @@ class UserNode(MPTTModel):
     Represents a user in the Spark sharing hierarchy.
     This model is mainly used for calculating chains of shares.
     """
-    user = models.OneToOneField(User, related_name='node')
+    user = models.OneToOneField(User, related_name='node', db_index=True)
     parent = models.ForeignKey('self', default=None, blank=True, null=True,
                                 related_name='children')
 

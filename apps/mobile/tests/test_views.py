@@ -89,14 +89,14 @@ class BoostStep2TestCase(TestCase):
     
     def test_find_by_email_address(self):
         self.client.login(username='bob', password='testpass')
-        response = self.client.post(self.url, {'identifier': 'franck'})
+        response = self.client.post(self.url, {'identifier': 'mario@test.com'})
         eq_(200, response.status_code)
         self.assertContains(response, 'boost2-result')
         self._assert_result_contains('Your Spark was started by', response)
 
     def test_find_by_username(self):
         self.client.login(username='bob', password='testpass')
-        response = self.client.post(self.url, {'identifier': 'franck@test.com'})
+        response = self.client.post(self.url, {'identifier': 'mario'})
         eq_(200, response.status_code)
         self.assertContains(response, 'boost2-result')
         self._assert_result_contains('Your Spark was started by', response)
@@ -112,13 +112,25 @@ class BoostStep2TestCase(TestCase):
         self.client.login(username='bob', password='testpass')
         response = self.client.post(self.url, {'identifier': 'bob'})
         eq_(200, response.status_code)
-        self._assert_error_eq(unicode(forms.IDENTIFIER_SELF), response)        
+        self._assert_error_eq(unicode(forms.IDENTIFIER_SELF), response)
     
     def test_identifier_notfound(self):
         self.client.login(username='bob', password='testpass')
         response = self.client.post(self.url, {'identifier': 'unknown_username'})
         eq_(200, response.status_code)
         self._assert_error_eq(unicode(forms.IDENTIFIER_NOTFOUND), response)
+    
+    def test_invalid_relationship_direct_child(self):
+        self.client.login(username='bob', password='testpass')
+        response = self.client.post(self.url, {'identifier': 'franck'})
+        eq_(200, response.status_code)
+        self._assert_error_eq(unicode(forms.DIRECT_CHILD), response)
+    
+    def test_invalid_relationship_part_of_a_chain(self):
+        self.client.login(username='batman', password='testpass')
+        response = self.client.post(self.url, {'identifier': 'bob'})
+        eq_(200, response.status_code)
+        self._assert_error_eq(unicode(forms.PART_OF_A_CHAIN), response)
 
 
 class BoostStep2ConfirmationTestCase(TestCase):

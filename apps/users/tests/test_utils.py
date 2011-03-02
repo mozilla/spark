@@ -3,7 +3,8 @@ from nose.tools import eq_
 from spark.tests import TestCase
 
 from users.models import User, UserNode
-from users.utils import user_node, create_relationship
+from users.utils import (user_node, create_relationship, is_direct_child_of,
+                         is_part_of_chain_started_by)
 
 
 class UtilsCase(TestCase):
@@ -25,8 +26,8 @@ class UtilsCase(TestCase):
         eq_(node, user.node)
 
     def test_create_relationship(self):
-        child = User.objects.get(username='bob')
-        eq_(None, child.node.parent)
+        child = User(username='new_user')
+        child.save()
         
         parent = User.objects.get(username='john')
         created = create_relationship(parent, child)
@@ -43,3 +44,22 @@ class UtilsCase(TestCase):
         
         created = create_relationship(parent, child)
         eq_(False, created)
+
+    def test_is_direct_child(self):
+        parent = User.objects.get(username='bob')
+        child = User.objects.get(username='franck')
+        
+        eq_(True, is_direct_child_of(child, parent))
+    
+    def test_is_not_direct_child(self):
+        parent = User.objects.get(username='batman')
+        child = User.objects.get(username='franck')
+
+        eq_(False, is_direct_child_of(child, parent))
+
+    def test_part_of_chain(self):
+        parent = User.objects.get(username='batman')
+        child = User.objects.get(username='franck')
+        
+        eq_(True, is_part_of_chain_started_by(child, parent))
+

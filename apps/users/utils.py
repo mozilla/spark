@@ -66,3 +66,29 @@ def create_relationship(parent, child):
     return False
 
 
+def is_direct_child_of(user, parent):
+    """Returns whether user the direct child of parent in the user tree."""
+    try:
+        parent_node = UserNode.objects.get(user=parent)
+        for child in parent_node.get_children():
+            if child.user == user:
+                return True
+    except UserNode.DoesNotExist:
+        pass
+    
+    return False
+
+
+def is_part_of_chain_started_by(user, parent):
+    """Returns whether user is part of a sharing chain started by parent in the user tree."""
+    try:
+        parent_node = UserNode.objects.get(user=parent)
+        for descendant in parent_node.get_descendants():
+            if descendant.user == user:
+                return True
+    except UserNode.DoesNotExist:
+        pass
+    
+    return False
+
+

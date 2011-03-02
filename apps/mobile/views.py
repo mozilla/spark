@@ -14,9 +14,6 @@ from .decorators import login_required, logout_required
 from tower import ugettext_lazy as _lazy
 
 
-DIRECT_CHILD = _lazy(u"This user's Spark is already connected to yours.")
-PART_OF_A_CHAIN = _lazy(u'This user is already part of a sharing chain that you started.')
-
 
 def home(request):
     if request.user.is_authenticated():

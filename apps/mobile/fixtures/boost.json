@@ -54,6 +54,42 @@
         }
     },
     {
+        "pk": 4,
+        "model": "auth.user",
+        "fields": {
+            "username": "batman",
+            "first_name": "",
+            "last_name": "",
+            "is_active": 1,
+            "is_superuser": 0,
+            "is_staff": 0,
+            "last_login": "2011-01-15 08:10:36",
+            "groups": [],
+            "user_permissions": [],
+            "password": "sha1$d0fcb$661bd5197214051ed4de6da4ecdabe17f5549c7c",
+            "email": "batman@test.com",
+            "date_joined": "2011-01-15 08:10:36"
+        }
+    },
+    {
+        "pk": 5,
+        "model": "auth.user",
+        "fields": {
+            "username": "mario",
+            "first_name": "",
+            "last_name": "",
+            "is_active": 1,
+            "is_superuser": 0,
+            "is_staff": 0,
+            "last_login": "2011-01-15 08:10:36",
+            "groups": [],
+            "user_permissions": [],
+            "password": "sha1$d0fcb$661bd5197214051ed4de6da4ecdabe17f5549c7c",
+            "email": "mario@test.com",
+            "date_joined": "2011-01-15 08:10:36"
+        }
+    },
+    {
         "pk": 1,
         "model": "users.profile",
         "fields": {
@@ -81,27 +117,69 @@
         }
     },
     {
-        "pk": 1, 
-        "model": "users.usernode", 
+        "pk": 4,
+        "model": "users.profile",
         "fields": {
-            "rght": 3, 
-            "parent": 2, 
-            "level": 1, 
-            "lft": 2, 
-            "user": 1, 
-            "tree_id": 2
+            "user": 4,
+            "boost1_completed": 0,
+            "boost2_completed": 0
+        }
+    },
+    {
+        "pk": 5,
+        "model": "users.profile",
+        "fields": {
+            "user": 5,
+            "boost1_completed": 0,
+            "boost2_completed": 0
+        }
+    },
+    {
+        "pk": 1,
+        "model": "users.usernode",
+        "fields": {
+            "rght": 5,
+            "parent": 2,
+            "level": 3,
+            "lft": 4,
+            "user": 1,
+            "tree_id": 4
         }
     }, 
     {
         "pk": 2,
         "model": "users.usernode",
         "fields": {
-            "rght": 4,
+            "rght": 6,
+            "parent": 3,
+            "level": 2,
+            "lft": 3,
+            "user": 2,
+            "tree_id": 4
+        }
+    }, 
+    {
+        "pk": 3,
+        "model": "users.usernode",
+        "fields": {
+            "rght": 7,
+            "parent": 4,
+            "level": 1,
+            "lft": 2,
+            "user": 3,
+            "tree_id": 4
+        }
+    }, 
+    {
+        "pk": 4,
+        "model": "users.usernode",
+        "fields": {
+            "rght": 8,
             "parent": null,
             "level": 0,
             "lft": 1,
-            "user": 2,
-            "tree_id": 2
+            "user": 4,
+            "tree_id": 4
         }
     }
 ]
