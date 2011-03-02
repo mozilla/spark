@@ -175,6 +175,9 @@ MINIFY_BUNDLES = {
         ),
         'badges': (
             'js/mobile/badges.js',
+        ),
+        'geolocation': (
+            'js/mobile/geolocation.js',
         )
     }
 }

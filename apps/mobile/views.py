@@ -35,11 +35,13 @@ def boost1(request):
         form = BoostStep1Form(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            profile.lat = data['lat']
-            profile.long = data['long']
+            profile.latitude = data['lat']
+            profile.longitude = data['long']
             #profile.city = data['city']
+            profile.boost1_completed = True
             profile.save()
-            data.update({'geolocation': 'success'})
+            data.update({'geolocation': 'success',
+                         'geo_result': '%s, %s' % (data['city'], data['country'])})
         else:
             data.update({'geolocation': 'error'})
         

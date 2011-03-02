@@ -1,7 +1,7 @@
 {% extends "mobile/page.html" %}
 {% set pagetitle = _('Boost your Spark') %}
 {% set body_id = 'boost' %}
-{% set scripts = ('menu',) %}
+{% set scripts = ('menu', 'geolocation') %}
 
 {% block pagecontent %}
 <div class="section">
@@ -23,7 +23,7 @@
     <div id="your-location">
         {# L10n: Placed before the location where the user has been geolocated. #}
         {{ _('Your location') }}
-        <span>San Francisco, CA</span>
+        <span>{{ geo_result }}</span>
     </div>
 </div>
 {% elif geolocation == 'error' %}
@@ -46,49 +46,11 @@
         {% elif geolocation == 'success' %}
         <input type="hidden" name="next" value="1">
         <div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
-        <div class="button right-button" id="nextstep"><a href="#">{{ _('Next step') }}</a></div>
+        <div class="button right-button"><a href="{{ url('mobile.boost2') }}">{{ _('Next step') }}</a></div>
     	{% else %}
     	<div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
         <div class="button right-button" id="geolocate"><a href="#">{{ _('Try again') }}</a></div>
         {% endif %}
     </div>
 </form>
-{% endblock %}
-
-{% block script %}
-<script>
-$(document).ready(function() {
-	var process = function(info) {
-	    alert('hop');
-		console.log(info.timestamp);
-		console.log(info.coords.latitude);
-		console.log(info.coords.longitude);
-		console.log(info.address.city);
-		console.log(info.address.countryCode);
-		console.log(info.address.country);
-		
-		var data = {}
-		if(info.coords) {
-		    $('#lat').attr('value', info.coords.latitude);
-		    $('#long').attr('value', info.coords.longitude);
-		}
-		if(info.address) {
-		    $('#city').attr('value', info.address.city);
-		    $('#country-code').attr('value', info.address.countryCode);
-		    $('#country').attr('value', info.address.country);
-		}
-		
-		$('form').submit();
-	}
-	
-	var geolocateMe = function() {
-    	navigator.geolocation.getCurrentPosition(process);
-    }
-    
-    $('#geolocate').click(geolocateMe);
-    $('#nextstep').click(function() {
-        window.location.replace({{ url('mobile.boost2') }});
-    });
-});
-</script>
 {% endblock %}
