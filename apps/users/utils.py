@@ -1,8 +1,10 @@
 from django.contrib import auth
 from django.contrib.auth.models import User
 
+from mptt.exceptions import InvalidMove
+
 from users.forms import RegisterForm, AuthenticationForm
-from users.models import Profile
+from users.models import Profile, UserNode
 
 
 def handle_login(request):
@@ -35,3 +37,32 @@ def handle_register(request):
             Profile.objects.create(user=new_user)
         return form
     return RegisterForm()
+
+
+def user_node(user):
+    """Retrieves or creates a node in the user tree for this user."""
+    try:
+        user_node = user.node
+    except UserNode.DoesNotExist:
+        user_node = UserNode(user=user)
+        user_node.save()
+    
+    return user_node
+
+
+def create_relationship(parent, child):
+    """Creates a parent-child relationship between two users."""
+    child_node = user_node(child)
+    parent_node = user_node(parent)
+    
+    if user_node and parent_node:
+        try:
+            child_node.parent = parent_node
+            child_node.save()
+            return True
+        except InvalidMove:
+            pass
+    
+    return False
+
+

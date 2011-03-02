@@ -28,7 +28,11 @@
 </div>
 <form action="{{ url('mobile.boost2_confirm') }}" method="POST">
 	{{ csrf() }}
+	{% if no_parent %}
+	<input type="hidden" name="no_parent" value="1">
+	{% else %}
 	<input type="hidden" name="parent" value="{{ parent }}">
+	{% endif %}
 	<div class="buttons-wrapper">
 		<div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
 		<button ontouchstart="" class="right-button" type="submit">{{ _('Complete') }}</button>

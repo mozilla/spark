@@ -5,7 +5,8 @@ import jingo
 from spark.urlresolvers import reverse
 from spark.decorators import post_required
 
-from users.models import User
+from users.models import User, UserNode
+from users.utils import create_relationship
 
 from .forms import BoostStep1Form, BoostStep2Form
 from .decorators import login_required, logout_required
@@ -59,7 +60,7 @@ def boost1(request):
 @login_required
 def boost2(request):
     """ Boost your Spark step 2/2 :
-        Allows a Spark user to link his account to a parent user."""
+        Allows a Spark user to find a parent user by username or email address."""
     profile = request.user.get_profile()
 
     if profile.boost2_completed:
@@ -84,11 +85,28 @@ def boost2(request):
 @login_required
 @post_required
 def boost2_confirm(request):
-    """ Boost your Spark step 2/2 completion. """
+    """ Boost your Spark step 2/2 confirmation.
+        This view saves the parent-child relationship in the user tree.
+    """
     username = request.POST.get('parent')
-    if username:
-        parent_user = User.objects.filter(username=username) 
-        if parent_user:
+    no_parent = request.POST.get('no_parent')
+    if username or no_parent:
+        error = False
+        if not no_parent:
+            try:
+                parent = User.objects.get(username=username)
+                created = create_relationship(parent, request.user)
+                if not created:
+                    error = True
+            except User.DoesNotExist:
+                error = True
+        else:
+            pass #TODO: save as a flag in user profile?
+        
+        if not error:
+            profile = request.user.get_profile()
+            profile.boost2_completed = True
+            profile.save()
             return HttpResponseRedirect(reverse('mobile.home'))
     
     return jingo.render(request, 'spark/handlers/mobile/400.html', status=400)

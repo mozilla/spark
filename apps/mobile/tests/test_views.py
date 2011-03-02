@@ -1,10 +1,14 @@
 from django.conf import settings
+from django.http import HttpResponseRedirect
 
 from nose.tools import eq_
 from pyquery import PyQuery as pq
 
 from spark.tests import TestCase, LocalizingClient
 from spark.urlresolvers import reverse
+
+from mobile import forms
+from users.models import User
 
 
 class BoostTestCase(TestCase):
@@ -72,6 +76,12 @@ class BoostStep2TestCase(TestCase):
         print doc('#boost2-result').text()
         assert message in doc('#boost2-result').text()
     
+    def _assert_error_eq(self, error_message, response):
+        doc = pq(response.content)
+        error = doc('ul.errorlist li')
+        eq_(1, len(error))
+        eq_(error_message, error.text())
+    
     def test_user_has_already_completed_boost2(self):
         self.client.login(username='franck', password='testpass')
         response = self.client.post(self.url, {'identifier': 'bob'})
@@ -98,8 +108,53 @@ class BoostStep2TestCase(TestCase):
         self.assertContains(response, 'boost2-result')
         self._assert_result_contains('Congrats! You started a new Spark', response)
     
-    #def test_share_with_yourself(self):
+    def test_share_with_yourself(self):
+        self.client.login(username='bob', password='testpass')
+        response = self.client.post(self.url, {'identifier': 'bob'})
+        eq_(200, response.status_code)
+        self._assert_error_eq(unicode(forms.IDENTIFIER_SELF), response)        
     
-    #def test_unknown_identifier(self):
+    def test_identifier_notfound(self):
+        self.client.login(username='bob', password='testpass')
+        response = self.client.post(self.url, {'identifier': 'unknown_username'})
+        eq_(200, response.status_code)
+        self._assert_error_eq(unicode(forms.IDENTIFIER_NOTFOUND), response)
 
+
+class BoostStep2ConfirmationTestCase(TestCase):
+    fixtures = ['boost.json']
+
+    def setUp(self):
+        self.client = LocalizingClient()
+        self.url = reverse('mobile.boost2_confirm')
+
+    def test_invalid_request(self):
+        self.client.login(username='bob', password='testpass')
+        response = self.client.post(self.url, {'wrong_data': 'test'})
+        eq_(400, response.status_code)
+
+    def test_invalid_parent(self):
+        self.client.login(username='bob', password='testpass')
+        response = self.client.post(self.url, {'parent': 'franck'})
+        eq_(400, response.status_code)
+        
+    def test_relationship_created(self):
+        self.client.login(username='bob', password='testpass')
+        response = self.client.post(self.url, {'parent': 'john'})
+        assert isinstance(response, HttpResponseRedirect)
+        eq_('http://testserver/en-US%s' % reverse('mobile.home'), response['location'])
+        
+        bob = User.objects.get(username='bob')
+        john = User.objects.get(username='john')
+        eq_(bob.node.parent, john.node)
+        eq_(True, bob.get_profile().boost2_completed)
+
+    def test_no_parent_confirm(self):
+        self.client.login(username='john', password='testpass')
+        response = self.client.post(self.url, {'no_parent': True})
+        assert isinstance(response, HttpResponseRedirect)
+        eq_('http://testserver/en-US%s' % reverse('mobile.home'), response['location'])
+        
+        profile = User.objects.get(username='john').get_profile()
+        eq_(True, profile.boost2_completed)
 
