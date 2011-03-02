@@ -247,6 +247,8 @@ TOWER_KEYWORDS = {
     '_lazy': None,
 }
 
+TOWER_ADD_HEADERS = True
+
 # Tells the extract script what files to look for L10n in and what function
 # handles the extraction. The Tower library expects this.
 DOMAIN_METHODS = {
