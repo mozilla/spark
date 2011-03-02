@@ -315,9 +315,9 @@ p.license {
 
 #menu-hr {
     height:3px;
-    background:#c9c9c9;
-    border-top:1px solid #e6e6e6;
-    border-bottom:1px solid #8f8f8f;
+    background:#dfdfdf;
+    box-shadow:inset 0 -1px 1px #888888;
+    -webkit-box-shadow:inset 0 -1px 1px #888888;
 }
 
 #menu ul {
@@ -477,7 +477,7 @@ fieldset#newsletter, fieldset#from-website {
     width:500px;
 }
 
-#custom-cb input[type=checkbox]:checked + label {
+#custom-cb input[type='checkbox']:checked + label {
     background-position:0 -38px;
 }
 
