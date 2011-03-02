@@ -299,17 +299,20 @@ p.license {
 
 #menu.open #menu-header:active {
     background:url('../img/mobile/menu-button-hd.png') no-repeat 14px -155px, -moz-linear-gradient(90deg, #ffec92, #f2df86);
+    background:url('../img/mobile/menu-button-hd.png') no-repeat 14px -155px, -webkit-gradient(linear, center top, center bottom, from(#ffec92), to(#f2df86));
     background-size:28px auto, auto;
     border-top:1px solid #fff4be;
 }
 
 #menu.closed #menu-header {
     background:url('../img/mobile/menu-button-hd.png')  no-repeat 14px 9px, -moz-linear-gradient(90deg, #ffd825, #e5bf0c);
+    background:url('../img/mobile/menu-button-hd.png')  no-repeat 14px 9px, -webkit-gradient(linear, center top, center bottom, from(#ffd825), to(#e5bf0c));
     background-size:28px auto, auto;
 }
 
 #menu.closed #menu-header:active {
     background:url('../img/mobile/menu-button-hd.png')  no-repeat 14px -50px, -moz-linear-gradient(90deg, #ffec92, #f2df86);
+    background:url('../img/mobile/menu-button-hd.png')  no-repeat 14px -50px, -webkit-gradient(linear, center top, center bottom, from(#ffec92), to(#f2df86));
     background-size:28px auto, auto;
     border-top:1px solid #fff4be;
 }
