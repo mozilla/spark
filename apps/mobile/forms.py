@@ -10,6 +10,16 @@ IDENTIFIER_REQUIRED = _lazy(u'Please enter a username or email address.')
 IDENTIFIER_NOTFOUND = _lazy(u'The username or email address you entered was not found.')
 IDENTIFIER_SELF = _lazy(u"Oops! Sorry, you can't share a spark with yourself.")
 
+
+
+class BoostStep1Form(forms.Form):
+    lat = forms.DecimalField()
+    long = forms.DecimalField()
+    city = forms.CharField()
+    country_code = forms.CharField(min_length=2, max_length=2)
+    country = forms.CharField()
+
+
 class BoostStep2Form(forms.Form):
     """ This form requires that one of its two fields be filled :
     

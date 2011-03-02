@@ -15,6 +15,8 @@ class Profile(models.Model):
     latitude = models.FloatField(blank=True, null=True)
     longitude = models.FloatField(blank=True, null=True)
     city = models.ForeignKey(City, null=True)
+    boost1_completed = models.BooleanField(default=False)
+    boost2_completed = models.BooleanField(default=False)
 
     def __unicode__(self):
         return unicode(self.user)

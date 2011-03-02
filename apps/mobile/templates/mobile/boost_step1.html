@@ -19,33 +19,76 @@
 
 {% if geolocation == 'success' %}
 <div id="location-result">
-{# L10n: Placed before the location where the user has been geolocated. #}
     <div id="checkmark"></div>
     <div id="your-location">
+        {# L10n: Placed before the location where the user has been geolocated. #}
         {{ _('Your location') }}
         <span>San Francisco, CA</span>
     </div>
 </div>
-{% elif geolocation == 'failure' %}
-<p>
-{{ _("Sorry, we couldn't determine your location.") }}
-</p>
+{% elif geolocation == 'error' %}
+<ul class='errorlist'>
+    <li>{{ _("Sorry, we couldn't determine your location.") }}</li>
+</ul>
 {% endif %}
 
 <form action="" method="post" accept-charset="utf-8">
 	{{ csrf() }}
+	<input type="hidden" id="lat" name="lat" value="">
+	<input type="hidden" id="long" name="long" value="">
+	<input type="hidden" id="city" name="city" value="">
+	<input type="hidden" id="country-code" name="country_code" value="">
+	<input type="hidden" id="country" name="country" value="">
     <div class="buttons-wrapper">
         {% if not geolocation %}
         <div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Maybe later') }}</a></div>
-        <button ontouchstart="" tabindex="3" class="right-button" type="submit">{{ _('Locate me') }}</button>
+        <div class="button right-button" id="geolocate"><a href="#">{{ _('Locate me') }}</a></div>
         {% elif geolocation == 'success' %}
         <input type="hidden" name="next" value="1">
         <div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
-        <button ontouchstart="" tabindex="3" class="right-button" type="submit">{{ _('Next step') }}</button>
+        <div class="button right-button" id="nextstep"><a href="#">{{ _('Next step') }}</a></div>
     	{% else %}
     	<div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
-        <button ontouchstart="" tabindex="3" class="right-button" type="submit">{{ _('Try again') }}</button>
+        <div class="button right-button" id="geolocate"><a href="#">{{ _('Try again') }}</a></div>
         {% endif %}
     </div>
 </form>
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function() {
+	var process = function(info) {
+	    alert('hop');
+		console.log(info.timestamp);
+		console.log(info.coords.latitude);
+		console.log(info.coords.longitude);
+		console.log(info.address.city);
+		console.log(info.address.countryCode);
+		console.log(info.address.country);
+		
+		var data = {}
+		if(info.coords) {
+		    $('#lat').attr('value', info.coords.latitude);
+		    $('#long').attr('value', info.coords.longitude);
+		}
+		if(info.address) {
+		    $('#city').attr('value', info.address.city);
+		    $('#country-code').attr('value', info.address.countryCode);
+		    $('#country').attr('value', info.address.country);
+		}
+		
+		$('form').submit();
+	}
+	
+	var geolocateMe = function() {
+    	navigator.geolocation.getCurrentPosition(process);
+    }
+    
+    $('#geolocate').click(geolocateMe);
+    $('#nextstep').click(function() {
+        window.location.replace({{ url('mobile.boost2') }});
+    });
+});
+</script>
 {% endblock %}

@@ -7,7 +7,7 @@ from spark.decorators import post_required
 
 from users.models import User
 
-from .forms import BoostStep2Form
+from .forms import BoostStep1Form, BoostStep2Form
 from .decorators import login_required, logout_required
 
 
@@ -25,11 +25,23 @@ def boost(request):
 
 @login_required
 def boost1(request):
+    profile = request.user.get_profile()
+    
+    if profile.boost1_completed:
+        return HttpResponseRedirect(reverse('mobile.boost2'))
+    
     data = {}
     if request.method == 'POST':
-        if('next' in request.POST):
-            return HttpResponseRedirect(reverse('mobile.boost2'))
-        data.update({'geolocation': 'success'})
+        form = BoostStep1Form(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            profile.lat = data['lat']
+            profile.long = data['long']
+            #profile.city = data['city']
+            profile.save()
+            data.update({'geolocation': 'success'})
+        else:
+            data.update({'geolocation': 'error'})
         
     return jingo.render(request, 'mobile/boost_step1.html', data)
 
