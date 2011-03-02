@@ -20,11 +20,19 @@ def home(request):
 
 @login_required
 def boost(request):
-    return jingo.render(request, 'mobile/boost.html', {})
+    profile = request.user.get_profile()
+
+    # 'Boost your Spark' is not available once both steps have been completed
+    if profile.boost2_completed and profile.boost1_completed:
+        return HttpResponseRedirect(reverse('mobile.home'))
+
+    return jingo.render(request, 'mobile/boost.html')
 
 
 @login_required
 def boost1(request):
+    """ Boost your Spark step 1/2 :
+        Allows a Spark user to be geolocated by the application."""
     profile = request.user.get_profile()
     
     if profile.boost1_completed:
@@ -52,14 +60,21 @@ def boost1(request):
 def boost2(request):
     """ Boost your Spark step 2/2 :
         Allows a Spark user to link his account to a parent user."""
+    profile = request.user.get_profile()
+
+    if profile.boost2_completed:
+        return HttpResponseRedirect(reverse('mobile.boost2'))
+
     if request.method == 'POST':
         form = BoostStep2Form(request.user, request.POST)
         if form.is_valid():
+            data = {}
             if form.parent_username:
-                return jingo.render(request, 'mobile/boost_step2_found.html',
-                                        {'parent': form.parent_username})
-            else: # User just checked the checkbox
-                return HttpResponseRedirect(reverse('mobile.home'))
+                data.update({'parent': form.parent_username})
+            else: # User just checked the 'I started a new Spark on my own' box
+                data.update({'no_parent': True})
+            
+            return jingo.render(request, 'mobile/boost_step2_found.html', data)
     else:
         form = BoostStep2Form(request.user)
     

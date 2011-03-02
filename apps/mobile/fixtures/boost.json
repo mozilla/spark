@@ -41,7 +41,7 @@
         "fields": {
             "user": 1,
             "boost1_completed": 1,
-            "boost2_completed": 0
+            "boost2_completed": 1
         }
     },
     {
