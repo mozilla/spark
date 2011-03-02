@@ -552,6 +552,31 @@ button:active, button:focus {
     margin-bottom:20px;
 }
 
+#location-result {
+    padding:20px 0;
+    border-top:1px solid #404040;
+    border-bottom:1px solid #404040;
+}
+
+#checkmark {
+    height:50px;
+    background:url('../img/mobile/checkmark.png') no-repeat 15px center rgba(119,225,24,0.5);
+    margin-bottom:20px;
+    background-size:22px auto;
+}
+
+#your-location {
+    font-size:1.005em;
+    font-weight:bold;
+    color:#b2b2b2;
+}
+
+#your-location span {
+    display:block;
+    font-size:125%;
+    color:#fff;
+}
+
 /*Badges*/
 
 ul#badge-list {

@@ -18,10 +18,14 @@
 {% endif %}
 
 {% if geolocation == 'success' %}
-<p>
+<div id="location-result">
 {# L10n: Placed before the location where the user has been geolocated. #}
-{{ _('Your location') }}<br>San Francisco, CA
-</p>
+    <div id="checkmark"></div>
+    <div id="your-location">
+        {{ _('Your location') }}
+        <span>San Francisco, CA</span>
+    </div>
+</div>
 {% elif geolocation == 'failure' %}
 <p>
 {{ _("Sorry, we couldn't determine your location.") }}
