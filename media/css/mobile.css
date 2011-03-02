@@ -178,7 +178,6 @@ button, div.button {
     float:left;
     text-align:left;
     font-weight:bold;
-    height:49px;
     border:0;
     border-radius:0;
     font-size:1.13em;
@@ -187,6 +186,11 @@ button, div.button {
 
 button {
     padding-left:20px;
+    height:49px;
+}
+
+div.button {
+    height:48px;
 }
 
 div.button a {
@@ -195,7 +199,7 @@ div.button a {
     line-height:50px;
 }
 
-.left-button {
+.left-button, .button.left-button {
     margin:20px 2% 20px 0px;
     border-top:1px solid #e7e7e7;
     background:-moz-linear-gradient(90deg, #c5c5c5, #acacac);
