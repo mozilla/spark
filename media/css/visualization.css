@@ -7,16 +7,18 @@
 h1 {
 	color:#ffda09;
 	font-weight:bold;
-	font-size:1.5em;
+	font-size:1.846em;
 }
 
 h1 span {
 	color:#db5c2b;
+	font-size:;
+	font-size:75%;
 }
 
 ul#main-menu {
 	float:right;
-	margin-top:-25px;
+	margin-top:-65px;
 }
 
 #main-menu li {
@@ -27,11 +29,13 @@ ul#main-menu {
 	border-top:3px solid #ffda05;
 	margin-left:10px;
 	padding-top:10px;
+	font-size:1.231em;
 }
 
 #main-menu li span {
 	display:block;
 	line-height:2em;
+	font-size:inherit;
 }
 
 #main-menu a {
@@ -78,7 +82,6 @@ ul#main-menu {
     padding-top:30px;
     color:#fff;
     font-weight:normal;
-    font-size:0.85em;
 }
 
 #dates {
@@ -112,12 +115,14 @@ div.ui-slider-range {
     top:3px;
 }
 
+#play-pause {
+    margin-top:10px;
+}
+
 #play, #pause {
     color: #ffd909;
-    display: block;
-    font-size: 1.3em;
+    font-size: 1.385em;
     font-weight: bold;
-    margin-top: 10px;
 }
 
 #play:hover, #pause:hover {
@@ -269,7 +274,7 @@ a.ui-slider-handle:active, a.ui-slider-handle:focus {
 }
 
 #cities-list {
-    width:100%;
+    width:103%;
     border-radius:4px;
     -moz-border-radius:4px;
     -webkit-border-radius:4px;
@@ -279,6 +284,12 @@ a.ui-slider-handle:active, a.ui-slider-handle:focus {
     font-size:0.688em;
     font-weight:normal;
     padding:7px 5px;
+    margin:8px 0 0 -3%;
+    height:31px;
+}
+
+#cities-list option {
+padding:5px 10px;
 }
 
 #current-time {
@@ -286,7 +297,7 @@ a.ui-slider-handle:active, a.ui-slider-handle:focus {
     position:absolute;
     top:4px;
     margin-left:15px;
-    font-size:14px;
+    font-size:1.077em;
     color:#ffd40d;
 }
 
