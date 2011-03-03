@@ -7,6 +7,7 @@ from tower import ugettext_lazy as _lazy
 from mptt.models import MPTTModel
 
 from spark.models import City
+from challenges.models import Challenge
 
 
 class Profile(models.Model):
@@ -17,6 +18,7 @@ class Profile(models.Model):
     city = models.ForeignKey(City, null=True)
     boost1_completed = models.BooleanField(default=False)
     boost2_completed = models.BooleanField(default=False)
+    challenges = models.ManyToManyField(Challenge)
 
     def __unicode__(self):
         return unicode(self.user)
