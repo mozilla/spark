@@ -5,16 +5,16 @@ from tower import ugettext_lazy as _lazy
 
 badges = {
     # L10n: Badge title for challenge: "Share your Spark with one other person"
-    'lvl1_ch1': [_lazy(u'The Sparkist'),
-    # L10n: Description for "The Sparkist" badge
+    'lvl1_ch1': [_lazy(u'The Ember'),
+    # L10n: Description for "The Ember" badge
                 _lazy(u'Congrats on your first share!')],
     # L10n: Badge title for challenge: "Add your location"
-    'lvl1_ch2': [_lazy(u'Local Time'),
-    # L10n: Description for "Local Time" badge
+    'lvl1_ch2': [_lazy(u'On Location'),
+    # L10n: Description for "On Location" badge
                 _lazy(u'You added your location. Nice one!')],
     # L10n: Badge title for challenge: "Tell us where you got your Spark"
-    'lvl1_ch3': [_lazy(u'Turf Teller'),
-    # L10n: Description for "Turf Teller" badge
+    'lvl1_ch3': [_lazy(u'Parent Trap'),
+    # L10n: Description for "Parent Trap" badge
                 _lazy(u'You told us where you got your Spark from. Kudos to you!')],
 
     # L10n: Badge title for challenge: "Obtain a share from Facebook"
@@ -51,8 +51,8 @@ badges = {
     # L10n: Description for "Dawn Patrol" badge
                 _lazy(u'Anyone up and sharing sparks between 6am and 10am surely deserves this badge.')],
     # L10n: Badge title for challenge: "Share with someone via a printed flyer"
-    'lvl3_ch2': [_lazy(u'Postal Service'),
-    # L10n: Description for "Postal Service" badge
+    'lvl3_ch2': [_lazy(u'Street Team'),
+    # L10n: Description for "Street Team" badge
                 _lazy(u'Nice! You shared your Spark via a flyer.')],
     # L10n: Badge title for challenge: "Share with someone new on a different continent"
     'lvl3_ch3': [_lazy(u'Continental Crown'),
@@ -85,12 +85,12 @@ badges = {
     # L10n: Description for "Euroflame" badge
                 _lazy(u"You're so cultured! Sharing to 5 different E.U. countries? Amazing!")],
     # L10n: Badge title for challenge: "Complete 6 shares within a single 12-hour period"
-    'lvl4_ch4': [_lazy(u'Super &Uuml;bershare'),
-    # L10n: Description for "Super Übershare" badge
+    'lvl4_ch4': [_lazy(u'Optimal Velocity'),
+    # L10n: Description for "Optimal Velocity" badge
                 _lazy(u'6 shares in 12 hours? You rockstar!')],
     # L10n: Badge title for challenge: "Complete 2 or more shares in a single hour"
-    'lvl4_ch5': [_lazy(u'2 in 1'),
-    # L10n: Description for "2 in 1" badge
+    'lvl4_ch5': [_lazy(u'Speed Spark'),
+    # L10n: Description for "Speed Spark" badge
                 _lazy(u'You shared 2 or more times in 1 single hour! Well done!')],
     # L10n: Badge title for challenge: "Complete 40 shares"
     'lvl4_ch6': [_lazy(u'XL Sparks'),
