@@ -178,6 +178,9 @@ MINIFY_BUNDLES = {
         ),
         'geolocation': (
             'js/mobile/geolocation.js',
+        ),
+        'customforms': (
+            'js/mobile/customforms.js',
         )
     }
 }

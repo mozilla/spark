@@ -2,7 +2,7 @@
 {% from "mobile/macros/errorlist.html" import errorlist %}
 {% set pagetitle = _('Get Started') %}
 {% set body_id = 'getstarted' %}
-{% set scripts = ('menu',) %}
+{% set scripts = ('menu', 'customforms') %}
 {% set hide_menu = True %}
 
 {% block pagecontent %}
@@ -33,13 +33,13 @@
         </fieldset>
         <hr>
         <fieldset id="newsletter">
-                <p id="custom-cb" class="sans">
-                    <input tabindex="5" id="newsletter-cb" type="checkbox" name="newsletter">
+                <p class="sans">
+                    <input tabindex="5" id="newsletter-cb" type="checkbox" name="newsletter" class="styled">
                     <label ontouchstart="" for="newsletter-cb">{{ _("I'd like to subscribe to monthly updates and keep up-to-date with Mozilla news.") }}</label>
                 </p>
 				{{ form.newsletter.errors|safe }}
-				<p id="custom-cb" class="sans">
-                    <input tabindex="6" id="spark-newsletter-cb" type="checkbox" name="spark_newsletter">
+				<p class="sans">
+                    <input tabindex="6" id="spark-newsletter-cb" type="checkbox" name="spark_newsletter" class="styled">
                     <label ontouchstart="" for="spark-newsletter-cb">{{ _("Send me updates about Spark.") }}</label>
                 </p>
 				{{ form.spark_newsletter.errors|safe }}

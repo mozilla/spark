@@ -450,40 +450,26 @@ fieldset#newsletter, fieldset#from-website {
     padding:0px 8px;
 }
 
-#custom-cb  {
+.checkbox {
+    width: 24px;
+    height: 24px;
+    padding: 0 15px 0 0;
+    background: url('../img/mobile/checkbox.png') no-repeat;
+    display: block;
+    clear: left;
+    float: left;
+    background-size:24px auto;
     position:relative;
+    top:13px;
 }
 
-#custom-cb input {
-    position:absolute;
-    left:2px;
-    top:18px;
-    z-index:0;
-}
-
-#custom-cb label {
-    display:block;
-    position:relative;
-    padding-left:30px;
-    cursor:pointer;
+#newsletter label {
     font-style:normal;
-    background:url('../img/mobile/checkbox.png') no-repeat 0 16px;
-    background-size:18px;
-    width:210px;
-    z-index:1;
     line-height:48px;
 }
 
-#boost #custom-cb label {
+#boost label {
     width:235px;
-}
-
-#getstarted #custom-cb label {
-    width:500px;
-}
-
-#custom-cb input[type='checkbox']:checked + label {
-    background-position:0 -38px;
 }
 
 button {
@@ -924,13 +910,13 @@ div.challenge .checkbox {
     float:left;
     height:24px;
     width:24px;
-    background:url('../img/mobile/checkbox480.png') no-repeat 0px 0px;
+    background:url('../img/mobile/checkbox.png') no-repeat 0px 0px;
     margin:12px 10px 0 0;
     background-size:24px auto;
 }
 
 div.challenge.complete .checkbox {
-    background:url('../img/mobile/checkbox480.png') no-repeat 0px -27px;
+    background:url('../img/mobile/checkbox.png') no-repeat 0px -27px;
     background-size:26px auto;
 }
 
