@@ -46,14 +46,14 @@
 		            <li><a href="{{ url('mobile.challenges') }}">{{ _('Challenges') }}
 							{% if num_new_challenges %}
 							{# L10n: {n} is the number of recently completed challenges. #}
-							<span>{{ ngettext('+{n} new','+{n} new', num_new_challenges)|f(n=num_new_challenges) }}</span>
+							<span>{{ ungettext('+{n} new','+{n} new', num_new_challenges, "new_challenges")|f(n=num_new_challenges) }}</span>
 							{% endif %}
 						</a>
 					</li>
 		            <li><a href="{{ url('mobile.badges') }}">{{ _('Badges') }}
 							{% if num_new_badges %}
 							{# L10n: {n} is the number of recently obtained badges. #}
-							<span>{{ ngettext('+{n} new','+{n} new', num_new_badges)|f(n=num_new_badges) }}</span>
+							<span>{{ ungettext('+{n} new','+{n} new', num_new_badges, "new_badges")|f(n=num_new_badges) }}</span>
 							{% endif %}
 						</a>
 					</li>

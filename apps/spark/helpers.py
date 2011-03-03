@@ -7,9 +7,14 @@ from django.utils.http import urlencode
 
 from jingo import register
 import jinja2
-from tower import ungettext
+from tower import ungettext as _ungettext
 
 from .urlresolvers import reverse
+
+
+@register.function
+def ungettext(singular, plural, number, context=None):
+    return _ungettext(singular, plural, number, context)
 
 @register.function
 def url(viewname, *args, **kwargs):

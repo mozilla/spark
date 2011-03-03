@@ -19,7 +19,7 @@
         {{ ngettext('<span>{username}</span> shared to <span>{n} person</span> {countries_part}',
                     '<span>{username}</span> shared to <span>{n} people</span> {countries_part}', num_people)|fe(n=num_people, username='FoxyBarbarian', countries_part=countries_part) }}
 
-        {# L10n: 'they' means the user who unlocked these badges. #}
+        {# L10n: 'they' is referring to the user who shared to {n} people in the previous string. #}
         {{ ngettext('And, they unlocked <span>{n} cool badge</span> in the process.',
                     'And, they unlocked <span>{n} cool badges</span> in the process.', num_badges)|fe(n=num_badges) }}
     
