@@ -207,8 +207,7 @@ div.button a {
     background:-webkit-gradient(linear,center top, center bottom, from(#c5c5c5), to(#acacac));
 }
 
-.right-button {
-    border:0;
+.right-button, .button.right-button {
     margin:20px 0px 20px 2%;
     border-top:1px solid #ffe87d;
     background:-moz-linear-gradient(90deg, #ffd825, #e5bf0c);
@@ -446,7 +445,7 @@ form.section {
     padding-right:0;
 }
 
-fieldset#newsletter, fieldset#from-website {
+#newsletter, #from-website {
     padding:0px 8px;
 }
 
@@ -463,54 +462,13 @@ fieldset#newsletter, fieldset#from-website {
     top:13px;
 }
 
-#newsletter label {
+#newsletter label, #from-website label {
     font-style:normal;
     line-height:48px;
 }
 
 #boost label {
     width:235px;
-}
-
-button {
-    width:48%;
-    display:block;
-    float:left;
-    text-align:left;
-    font-weight:bold;
-    height:49px;
-    border:0;
-    padding-left:20px;
-    border-radius:0;
-    font-size:1.13em;
-    color:#000;
-}
-
-.left-button {
-    margin:20px 2% 20px 0px;
-    border-top:1px solid #e7e7e7;
-    background:-moz-linear-gradient(90deg, #c5c5c5, #acacac);
-    background:-webkit-gradient(linear,center top, center bottom, from(#c5c5c5), to(#acacac));
-}
-
-.right-button {
-    border:0;
-    margin:20px 0px 20px 2%;
-    border-top:1px solid #ffe87d;
-    background:-moz-linear-gradient(90deg, #ffd825, #e5bf0c);
-    background:-webkit-gradient(linear,center top, center bottom, from(#ffd825), to(#e5bf0c));
-}
-
-.left-button:active, .left-button:focus {
-    border-top:1px solid #eee;
-    background:-moz-linear-gradient(90deg, #e2e2e2, #d6d6d6);
-    background:-webkit-gradient(linear,center top, center bottom, from(#e2e2e2), to(#d6d6d6));
-}
-
-.right-button:active {
-    border-top:1px solid #ffe87d;
-    background:-moz-linear-gradient(90deg, #ffea87, #f1dc7a);
-    background:-webkit-gradient(linear,center top, center bottom, from(#ffea87), to(#f1dc7a));
 }
 
 button:active, button:focus {
