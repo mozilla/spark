@@ -864,7 +864,7 @@ div.challenge p {
     padding:0 0 12px 34px;
 }
 
-div.challenge .checkbox {
+div.challenge .check {
     float:left;
     height:24px;
     width:24px;
@@ -873,7 +873,7 @@ div.challenge .checkbox {
     background-size:24px auto;
 }
 
-div.challenge.complete .checkbox {
+div.challenge.complete .check {
     background:url('../img/mobile/checkbox.png') no-repeat 0px -27px;
     background-size:26px auto;
 }
