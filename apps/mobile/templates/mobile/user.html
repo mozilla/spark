@@ -78,11 +78,11 @@
      <div class="section">
          <h2>{{ _('About Us') }}</h2>
          <p class="sans">
-             {% trans mozilla_url='http://www.mozilla.org' %}
+             {% trans mozilla_url='http://www.mozilla.org', pretty_link='www.mozilla.org' %}
              Mozilla is a global, non-profit organization dedicated to making the Web better. 
              We believe in principle over profit, and that the Internet is a shared public resource to be cared for, not a commodity to be sold. 
              We work with a worldwide community to create free, open source software like Mozilla Firefox, and to innovate for the benefit of the individual and the betterment of the Web. 
-             The result is great products built by passionate people and better choices for everyone. For more information, visit <a href="{{ mozilla_url }}">www.mozilla.org</a>.
+             The result is great products built by passionate people and better choices for everyone. For more information, visit <a href="{{ mozilla_url }}">{{ pretty_link }}</a>.
              {% endtrans %}
          </p>
      </div>

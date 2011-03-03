@@ -1,4 +1,5 @@
 {% extends "desktop/base.html" %}
+{# L10n: User page title. This page gives details about the Spark of a specific user. #}
 {% set title = _("{username}'s Spark")|f(username='FoxyBarbarian') %}
 {% set body_id = 'personal' %}
 {% set body_class = 'logged-in' if logged_in else 'logged-out' %}
@@ -29,6 +30,7 @@
             			<div id="user-info">
             			    {{ title }}
             			</div>
+            			{# L10n: This is an incentive for new users to remember the username of the person who shared their Spark with them. #}
             			<span id="remember">{{ _('Remember <span>{username}</span> when you get Firefox for mobile and boost your Spark.')|fe(username='FoxyBarbarian') }}</span>
         		</div>	 <!-- end main-info -->
 

@@ -67,9 +67,9 @@
     <div id="your-account">
         <h3>{{ _('Your Account') }}</h3>
         <div id="account-details" class="sans">
-            <span>{{ _('Logged in as:') }} <span>Foxybarbarian</span></span>
-            <span>{{ _('Email Address:') }} <span>name@gmail.com</span></span>
-            <span>{{ _('Joined Spark:') }} <span>December 31, 2011</span></span>
+            <span>{{ _('Logged in as: <span>{username}</span>')|fe(username='Foxybarbarian') }}</span>
+            <span>{{ _('Email Address: <span>{email}</span>')|fe(email='name@gmail.com') }}</span>
+            <span>{{ _('Joined Spark: <span>{date_joined}</span>')|fe(date_joined='December 31, 2011') }}</span>
         </div>
         <hr>
         <a href="#" class="button change-password">{{ _('Change password') }}</a>
