@@ -42,4 +42,29 @@ $(document).ready(function() {
 	    };
 	
     $loginForm.ajaxForm(options);
+
+
+    jQuery.fn.inputHints=function() {
+
+        $(this).each(function(i) {
+            $(this).val($(this).attr('placeholder'))
+                .addClass('hint');
+        });
+
+        return $(this).focus(function() {
+            if ($(this).val() == $(this).attr('placeholder'))
+                $(this).val('')
+                    .removeClass('hint');
+        }).blur(function() {
+            if ($(this).val() == '')
+                $(this).val($(this).attr('placeholder'))
+                    .addClass('hint');
+        });
+    };
+    
+    var $inputs = $('input[placeholder]');
+    
+    if (!Modernizr.input.placeholder){
+        $inputs.inputHints();
+    }
 });
