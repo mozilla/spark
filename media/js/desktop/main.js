@@ -59,8 +59,8 @@ $(document).ready(function() {
     };
 
     // Code to execute to display the Reset Popup
-    $('#password-complete').hide();
-    showResetPopup();
+    // $('#password-complete').hide();
+    // showResetPopup();
 
     // displays the sign-in modal popup
     $('.popup-trigger').click(function() {
