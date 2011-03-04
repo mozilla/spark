@@ -47,9 +47,16 @@ $(document).ready(function() {
             'marginTop' : -(($('#popup').height() + 42)/2)
         });
         
+        $('#mask-noclick').hide();
+        $('#mask').show();
         $('#password-confirm').fadeOut(150);
         $('#password-complete').delay(160).fadeIn(150);
-    }
+    };
+
+    var hideResetPopup = function() {
+        $('#mask').fadeOut(200);
+        $('#popup').fadeOut(200);
+    };
 
     // Code to execute to display the Reset Popup
     $('#password-complete').hide();
