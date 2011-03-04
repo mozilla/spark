@@ -26,7 +26,7 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 .no-cssgradients a.button.grey, a.button.left-button {
     background:url('../img/spritesheet.png') repeat-x 0 -250px;
 }
-.no-css-gradients a.button.grey:hover, a.button.left-button:hover {
+.no-cssgradients a.button.grey:hover, .no-cssgradients a.button.left-button:hover {
     background:#e3e3e3;
     border-top:1px solid #ececec;
 }
