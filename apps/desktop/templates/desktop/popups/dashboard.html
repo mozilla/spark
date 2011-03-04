@@ -17,8 +17,8 @@
             </fieldset>
             <div class="buttons-wrapper">
                 <a class="button left-button">{{ _('Cancel') }}</a>
-                {# L10n: Button that submits the email address change form. #}
-                <button tabindex="4" class="right-button" type="submit">{{ _('Change email address') }}</button>
+                {# L10n: Button that submits the email address change form. Space is limited here, if the translation is longer than ~15 latin characters, drop the "email" part #}
+                <button tabindex="4" class="right-button" type="submit">{{ _('Change email') }}</button>
             </div>
         </form>
     </div>
@@ -40,7 +40,7 @@
             </fieldset>
             <div class="buttons-wrapper">
                 <a class="button left-button">{{ _('Cancel') }}</a>
-                {# L10n: Button that submits the password change form. #}
+                {# L10n: Button that submits the password change form. Space is limited here, if the translation is longer than ~15 latin characters, drop the "password" part #}
                 <button tabindex="4" class="right-button" type="submit">{{ _('Change password') }}</button>
             </div>
         </form>
@@ -60,6 +60,7 @@
             <hr>
             <div class="buttons-wrapper">
                 <a class="button left-button">{{ _('Cancel') }}</a>
+                {# L10n: Button that submits the account deletion form. Space is limited here, if the translation is longer than ~15 latin characters, drop the "account" part #}
                 <button ontouchstart="" tabindex="2" class="right-button" type="submit">{{ _('Delete account') }}</button>
             </div>
         </form>
