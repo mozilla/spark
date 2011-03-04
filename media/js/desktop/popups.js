@@ -142,12 +142,20 @@ $(document).ready(function() {
     		}
     	};
     	
+    
     	var $inputs = $('input[placeholder]');
    
         if (!Modernizr.input.placeholder){
             $inputs.addClass('placeholder');
         }
-    	
+
     	$inputs.addPlaceholder(); 
+        $('span.placeholder').click(function() {
+            $(this).prev('input').focus();
+        })
+        
+        $inputs.focus(function() {
+           $(this).next('span.placeholder').hide(); 
+        });
     
 });
