@@ -1,10 +1,10 @@
 from django.db import models
 
-from .challenges import challenges
-from .badges import badges
+from .utils import challenges, badges, get_challenge_id
 
 
 class Challenge(models.Model):
+    id = models.CharField(max_length=4, primary_key=True)
     level = models.PositiveIntegerField()
     number = models.PositiveIntegerField()
     easter_egg = models.BooleanField(default=False)
@@ -13,10 +13,7 @@ class Challenge(models.Model):
         unique_together = ('level', 'number')
     
     def __unicode__(self):
-        if self.level == 6:
-            return 'ee_ch%d' % self.number
-        else:
-            return 'lvl%d_ch%d' % (self.level, self.number)
+        return get_challenge_id(self.level, self.number)
     
     def get_instructions(self):
         return unicode(challenges[unicode(self)])
@@ -26,5 +23,3 @@ class Challenge(models.Model):
     
     def get_badge_description(self):
         return unicode(badges[unicode(self)][1])
-    
-    

@@ -23,7 +23,7 @@ def home(request):
 
 @login_required
 def boost(request):
-    profile = request.user.get_profile()
+    profile = request.user.profile
 
     # 'Boost your Spark' is not available once both steps have been completed
     if profile.boost2_completed and profile.boost1_completed:
@@ -36,7 +36,7 @@ def boost(request):
 def boost1(request):
     """ Boost your Spark step 1/2 :
         Allows a Spark user to be geolocated by the application."""
-    profile = request.user.get_profile()
+    profile = request.user.profile
     
     if profile.boost1_completed:
         return HttpResponseRedirect(reverse('mobile.boost2'))
@@ -63,7 +63,7 @@ def boost1(request):
 def boost2(request):
     """ Boost your Spark step 2/2 :
         Allows a Spark user to find a parent user by username or email address."""
-    profile = request.user.get_profile()
+    profile = request.user.profile
 
     if profile.boost2_completed:
         return HttpResponseRedirect(reverse('mobile.boost2'))
@@ -106,7 +106,7 @@ def boost2_confirm(request):
             pass #TODO: save as a flag in user profile?
         
         if not error:
-            profile = request.user.get_profile()
+            profile = request.user.profile
             profile.boost2_completed = True
             profile.save()
             return HttpResponseRedirect(reverse('mobile.home'))

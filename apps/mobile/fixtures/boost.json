@@ -95,7 +95,8 @@
         "fields": {
             "user": 1,
             "boost1_completed": 1,
-            "boost2_completed": 1
+            "boost2_completed": 1,
+            "challenges": []
         }
     },
     {
@@ -104,7 +105,8 @@
         "fields": {
             "user": 2,
             "boost1_completed": 0,
-            "boost2_completed": 0
+            "boost2_completed": 0,
+            "challenges": []
         }
     },
     {
@@ -113,7 +115,8 @@
         "fields": {
             "user": 3,
             "boost1_completed": 0,
-            "boost2_completed": 0
+            "boost2_completed": 0,
+            "challenges": []
         }
     },
     {
@@ -121,8 +124,9 @@
         "model": "users.profile",
         "fields": {
             "user": 4,
-            "boost1_completed": 0,
-            "boost2_completed": 0
+            "boost1_completed": 1,
+            "boost2_completed": 1,
+            "challenges": ["1_1", "1_2", "1_3", "2_1", "2_3", "2_5"]
         }
     },
     {
@@ -130,8 +134,9 @@
         "model": "users.profile",
         "fields": {
             "user": 5,
-            "boost1_completed": 0,
-            "boost2_completed": 0
+            "boost1_completed": 1,
+            "boost2_completed": 1,
+            "challenges": ["1_1", "1_2", "1_3", "2_2", "2_4", "2_6"]
         }
     },
     {

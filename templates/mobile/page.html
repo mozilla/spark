@@ -37,9 +37,9 @@
 	            {{ _('Menu') }}
 	        </div>
 			<div id="menu-content">
-		        <ul>    
-		            {% set profile = user.get_profile() %}
-		            {% if not profile.boost1_completed or not profile.boost2_completed %}
+		        <ul>
+		            {% set p = user.profile %}
+		            {% if not p.boost1_completed or not p.boost2_completed %}
 		            <li><a href="{{ url('mobile.boost') }}">{{ _('Boost your Spark') }}</a></li>
 		            {% endif %}
 		            <li><a href="{{ url('mobile.stats') }}">{{ _('Stats') }}</a></li>

@@ -22,6 +22,12 @@ class Profile(models.Model):
 
     def __unicode__(self):
         return unicode(self.user)
+    
+    def complete_challenge(challenge):
+        """ Forces completion of a challenge. """
+        
+
+User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
 
 
 class UserNode(MPTTModel):
@@ -41,3 +47,4 @@ class UserNode(MPTTModel):
 
     def __unicode__(self):
         return unicode(self.user)
+
