@@ -34,6 +34,8 @@
         <h4>{{ _('Personal link') }}</h4>
         <p>
             <a class="button" href="#">{{ _('Share your URL') }}</a>
+            {% set alternate_copy = _('Copy your URL') %}
+
             {% trans share_url='http://firefoxspark.com/m/foxybarbarian/' %}
             Rack up your 'shares' by pointing your friends to: <a href="{{ share_url }}">{{ share_url }}</a>
             {% endtrans %}
