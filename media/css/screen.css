@@ -618,10 +618,18 @@ div.input-wrapper {
     box-shadow:inset 0px 1px 0px #979797, inset 0px 2px 0px #c4c4c4, inset 0px 3px 0px #e3e3e3;
 }
 
+.no-cssgradients .input-wrapper {
+    background:#e7e7e7;
+}
+
 div.input-wrapper.error {
     background:-moz-linear-gradient(90deg, #d4b6ad, #eccec5);
     background:-webkit-gradient(linear,center top, center bottom, from(#d4b6ad), to(#eccec5));
     box-shadow:inset 0px 1px 0px #8d7973, inset 0px 2px 0px #b0968f, inset 0px 3px 0px #c8aca4;
+}
+
+.no-css-gradients .input-wrapper.error {
+    background:#d4d6ad;
 }
 
 div.input-wrapper:first-child {
@@ -633,13 +641,12 @@ div.input-wrapper:first-child {
     border-radius:0px;
     -moz-border-radius:0px;
     -webkit-border-radius:0px;
-    width:100%;
+    width:330px;
     color:#666;
     font-size:1.231em;
     background:transparent;
     border:0;
-    height:38px;
-    padding-left:15px;
+    padding:12px 0 12px 15px;
 }
 
 #popup form {
