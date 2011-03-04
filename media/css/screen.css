@@ -623,6 +623,7 @@ div.input-wrapper {
     background:-webkit-gradient(linear,center top, center bottom, from(#e7e7e7), to(#fefefe));
     margin-top:12px;
     box-shadow:inset 0px 1px 0px #979797, inset 0px 2px 0px #c4c4c4, inset 0px 3px 0px #e3e3e3;
+    position:relative;
 }
 
 .no-cssgradients .input-wrapper {
@@ -644,6 +645,19 @@ div.input-wrapper:first-child {
 }
 
 #popup input[type=text], input[type=email], input[type=password] {
+    display:block;
+    border-radius:0px;
+    -moz-border-radius:0px;
+    -webkit-border-radius:0px;
+    width:330px;
+    color:#666;
+    font-size:1.231em;
+    background:transparent;
+    border:0;
+    padding:12px 0 12px 15px;
+}
+
+span.placeholder {
     display:block;
     border-radius:0px;
     -moz-border-radius:0px;
