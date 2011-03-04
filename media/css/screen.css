@@ -31,7 +31,7 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
     border-top:1px solid #ececec;
 }
 
-.no-opacity #mask {
+.no-opacity #mask, .no-opacity #mask-noclick {
     background:url('../img/ie/mask.png') repeat;
 }
 
@@ -507,7 +507,7 @@ div.sub-section h4 {
 
 /*Sign-in popup*/
 
-#mask {
+#mask, #mask-noclick {
     position:absolute;
     z-index:9000;
     top:0;

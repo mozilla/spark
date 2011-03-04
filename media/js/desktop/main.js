@@ -7,8 +7,9 @@ $(document).ready(function() {
         windowHeight = $(document).height();
         windowWidth = $(window).width();
     
-        $('#mask').css({'width' : windowWidth, 'height' : windowHeight});   
-    }
+        $('#mask').css({'width' : windowWidth, 'height' : windowHeight});
+        $('#mask-noclick').css({'width' : windowWidth, 'height' : windowHeight});
+    };
 
     var showPopup = function() {
         // sets negative margins to the modal popup in order to center it on screen
@@ -19,7 +20,7 @@ $(document).ready(function() {
         
         $('#mask').fadeIn(200);
         $('#popup').fadeIn(200);
-    }
+    };
 
     var hidePopup = function() {
         $('#mask').fadeOut(200);
@@ -27,7 +28,32 @@ $(document).ready(function() {
         setTimeout(function() {
             $('#popup').children().hide();
         }, 200)
+    };
+
+    var showResetPopup = function() {
+        // sets negative margins to the modal popup in order to center it on screen
+        $('#popup').css( {
+            'marginLeft' : -(($('#popup').width() + 52)/2),
+            'marginTop' : -(($('#popup').height() + 42)/2)
+        });
+        
+        $('#mask-noclick').fadeIn(200);
+        $('#popup').fadeIn(200);
+    };
+
+    var showResetComplete = function() {
+        $('#popup').css( {
+            'marginLeft' : -(($('#popup').width() + 52)/2),
+            'marginTop' : -(($('#popup').height() + 42)/2)
+        });
+        
+        $('#password-confirm').fadeOut(150);
+        $('#password-complete').delay(160).fadeIn(150);
     }
+
+    // Code to execute to display the Reset Popup
+    $('#password-complete').hide();
+    showResetPopup();
 
     // displays the sign-in modal popup
     $('.popup-trigger').click(function() {
