@@ -5,7 +5,7 @@ from .utils import challenges, badges, get_challenge_id
 
 class Challenge(models.Model):
     id = models.CharField(max_length=4, primary_key=True)
-    level = models.PositiveIntegerField()
+    level = models.PositiveIntegerField(db_index=True)
     number = models.PositiveIntegerField()
     easter_egg = models.BooleanField(default=False)
     

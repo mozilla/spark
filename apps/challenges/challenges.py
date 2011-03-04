@@ -3,7 +3,7 @@ import logging
 from .models import Challenge
 from .utils import get_challenge_id as _id
 
-from users.models import UserNode
+from users.models import UserNode, Profile
 from users.utils import user_node
 
 
