@@ -50,3 +50,12 @@ p.license {
     font-size:0.878em;
     margin-top:18px;
 }
+
+#ffhome-video {
+    display:block;
+    margin-bottom:20px;
+}
+
+#ffhome-video img {
+    width:100%;
+}
