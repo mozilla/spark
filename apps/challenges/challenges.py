@@ -71,3 +71,11 @@ def get_locked_legend(count, level):
                     'You must complete at least %(count)d challenges in Level %(level)d to unlock this level.', count)
 
     return msg % {'count': count, 'level': level}
+
+def get_locked_legend_alternate(count, level):
+    # L10n: Legend associated to a locked challenge. Example: "Complete 4 more challenges in Level 3 to unlock."
+    msg = ungettext('Complete %(count)d more challenge in Level %(level)d to unlock.',
+                    'Complete %(count)d more challenges in Level %(level)d to unlock.', count)
+
+    return msg % {'count': count, 'level': level}
+
