@@ -116,8 +116,8 @@ def boost2_confirm(request):
 
 @login_required
 def badges(request):
-    badgelist = range(8)
-    return jingo.render(request, 'mobile/badges.html', { 'badges': badgelist })
+    profile = request.user.profile
+    return jingo.render(request, 'mobile/badges.html', { 'badges': profile.badges })
 
 
 @login_required

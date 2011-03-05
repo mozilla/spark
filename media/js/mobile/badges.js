@@ -1,4 +1,4 @@
-var initBadges = function() {    
+var initBadges = function() {
     var $badgelist = $('ul#badge-list'),
         $badges = $('ul#badge-list li'),
         viewportWidth,
@@ -38,8 +38,8 @@ var initBadges = function() {
         
         $badgeInfo = $('#badge-label-tmpl').clone();
         $badgeInfo.attr('id', 'badge-label');
-        $badgeInfo.find('h2').text("This is badge #"+i);
-        $badgeInfo.find('p').text("In hac habitasse platea dictumst. Nam pulv inar, odio sed rhoncus suscipit, sem diam ultrices maurism lorem.");
+        $badgeInfo.find('h2').text($(currentBadgeElement).data('name'));
+        $badgeInfo.find('p').text($(currentBadgeElement).data('description'));
         
         if(viewportHeight > viewportWidth) {
             $lastBadge.after($badgeInfo.css('marginLeft', portraitMargin).fadeIn(500));
