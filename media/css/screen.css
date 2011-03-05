@@ -1106,6 +1106,10 @@ span.challenges-count span {
     color:#fff;
 }
 
+.level.locked {
+    color:#999;
+}
+
 .level.locked .challenges-count {
     display:none;
 }
