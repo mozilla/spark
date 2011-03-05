@@ -1,0 +1,43 @@
+<div id="password-confirm">
+    {% set popuptitle = _('Password reset') if validlink else _('Password reset unsuccessful') %}
+
+    {% if validlink %}
+    <h3>{{ popuptitle }}</h3>
+        <p class="legend">{{ _('Enter your new password below.') }}</p>
+        <hr>
+        <form action="" method="post" accept-charset="utf-8">
+            {{ csrf() }}
+            <fieldset class="section">
+                <div class="input-wrapper">
+                    <input tabindex="1" type="password" name="new_password1" value="" placeholder="{{ _('New password') }}" required>
+                </div>
+	            {# {{ form.new_password1.errors|safe }} #}
+                <div class="input-wrapper">
+                    <input tabindex="2" type="password" name="new_password2" value="" placeholder="{{ _('Confirm password') }}" required>
+                </div>
+                {# {{ form.new_password2.errors|safe }} #}
+            </fieldset>
+        <div class="buttons-wrapper">
+            <a class="button left-button">{{ _('Cancel') }}</a>
+            {# L10n: Action verb on a form submit button. #}
+            <button ontouchstart="" tabindex="3" class="right-button" type="submit">{{ _('Update') }}</button>
+        </div>
+    </form>
+
+    {% else %}
+    <h3>{{ popuptitle }}</h3>
+    <p class="section legend">
+    {{ _('The password reset link was invalid, possibly because it has already been used.') }}
+    </p>
+    {% endif %}
+</div>
+
+<div id="password-complete">
+    {% set popuptitle = _('Password successfully reset') %}
+
+    <h3>{{ popuptitle }}</h3>
+	<p class="section legend">
+		{{ _('You can now sign in.') }}
+	</p>
+    <a href="#" class="button close">{{ _('Sign in') }}</a>
+</div>

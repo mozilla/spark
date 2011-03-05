@@ -2,7 +2,7 @@
 {% from "mobile/macros/errormsg.html" import error_msg %}
 {% set pagetitle = _('Boost your Spark') %}
 {% set body_id = 'boost' %}
-{% set scripts = ('menu',) %}
+{% set scripts = ('menu', 'customforms') %}
 
 {% block pagecontent %}
 <div class="section">
@@ -29,13 +29,14 @@
     </fieldset>
     <hr>
     <fieldset id="from-website">
-	    <p id="custom-cb" class="sans">
-	        <input tabindex="2" id="from-website-cb" type="checkbox" name="from_website">
+	    <p class="sans">
+	        <input tabindex="2" type="checkbox" name="from_website" class="styled">
 	        <label ontouchstart="" for="from-website-cb">{{ _('I started a new Spark on my own.') }}</label>
 	    </p>
     </fieldset>
     <hr>
     <div class="buttons-wrapper">
+        {# L10n: Space is limited here. The translation should be no longer than the English version, leave only "Later" if needed #}
 	    <div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Maybe later') }}</a></div>
 		<button ontouchstart="" tabindex="3" class="right-button" type="submit">{{ _('Find') }}</button>
     </div>

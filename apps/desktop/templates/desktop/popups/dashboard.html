@@ -17,8 +17,8 @@
             </fieldset>
             <div class="buttons-wrapper">
                 <a class="button left-button">{{ _('Cancel') }}</a>
-                {# L10n: Button that submits the email address change form. #}
-                <button tabindex="4" class="right-button" type="submit">{{ _('Change email address') }}</button>
+                {# L10n: Button that submits the email address change form. Space is limited here, if the translation is longer than ~15 latin characters, drop the "email" part #}
+                <button tabindex="4" class="right-button" type="submit">{{ _('Change email') }}</button>
             </div>
         </form>
     </div>
@@ -29,18 +29,18 @@
           <form method="post" accept-charset="utf-8">
             <fieldset class="section">
                 <div class="input-wrapper">
-                    <input tabindex="1" type="text" name="current-password" value="" placeholder="{{ _('Current password') }}" required>
+                    <input tabindex="1" type="password" name="current-password" value="" placeholder="{{ _('Current password') }}" required>
                 </div>
                 <div class="input-wrapper">
-                    <input tabindex="2" type="text" name="new-password" value="" placeholder="{{ _('New password') }}" required>
+                    <input tabindex="2" type="password" name="new-password" value="" placeholder="{{ _('New password') }}" required>
                 </div>
                 <div class="input-wrapper">
-                    <input tabindex="3" type="text" name="confirm-new-password" value="" placeholder="{{ _('Confirm new password') }}" required>
+                    <input tabindex="3" type="password" name="confirm-new-password" value="" placeholder="{{ _('Confirm new password') }}" required>
                 </div>
             </fieldset>
             <div class="buttons-wrapper">
                 <a class="button left-button">{{ _('Cancel') }}</a>
-                {# L10n: Button that submits the password change form. #}
+                {# L10n: Button that submits the password change form. Space is limited here, if the translation is longer than ~15 latin characters, drop the "password" part #}
                 <button tabindex="4" class="right-button" type="submit">{{ _('Change password') }}</button>
             </div>
         </form>
@@ -54,12 +54,13 @@
         <form method="post" accept-charset="utf-8">
             <fieldset class="section">
                 <div class="input-wrapper">
-                    <input tabindex="1" type="email" name="email" value="" placeholder="{{ _('Password') }}">
+                    <input tabindex="1" type="password" name="email" value="" placeholder="{{ _('Password') }}">
                 </div>
             </fieldset>
             <hr>
             <div class="buttons-wrapper">
                 <a class="button left-button">{{ _('Cancel') }}</a>
+                {# L10n: Button that submits the account deletion form. Space is limited here, if the translation is longer than ~15 latin characters, drop the "account" part #}
                 <button ontouchstart="" tabindex="2" class="right-button" type="submit">{{ _('Delete account') }}</button>
             </div>
         </form>

@@ -14,7 +14,7 @@
             {% for challenge in level.challenges %}
             <li>
                 <div class="challenge {% if challenge.completed %}complete{% endif %}">
-                    <div class="checkbox"></div>
+                    <div class="check"></div>
                     <span class="title">{{ challenge.name }}</span>
                     <p class="sans">
                         {{ challenge.description }}

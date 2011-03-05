@@ -167,6 +167,9 @@ MINIFY_BUNDLES = {
             'js/libs/jquery.form.js',
             'js/desktop/popups.js',
         ),
+        'dashboard': (
+            'js/desktop/dashboard.js',
+        ),
         'visualization': (
             'js/desktop/visualization.js',
         ),
@@ -178,6 +181,9 @@ MINIFY_BUNDLES = {
         ),
         'geolocation': (
             'js/mobile/geolocation.js',
+        ),
+        'customforms': (
+            'js/mobile/customforms.js',
         )
     }
 }

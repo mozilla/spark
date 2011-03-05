@@ -14,21 +14,28 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 
 /*Modernizr*/
 
-.no-cssgradients a.button {
+.no-cssgradients a.button, .no-cssgradients button.right-button {
     background:url('../img/spritesheet.png') repeat-x 0 -200px;
 }
 
-.no-cssgradients a.button:hover {
+.no-cssgradients a.button:hover, .no-cssgradients button.right-button:hover {
     border-top:1px solid #feed9b;
     background:#fee779;
 }
 
+.no-cssgradients a.button.grey, a.button.left-button {
+    background:url('../img/spritesheet.png') repeat-x 0 -250px;
+}
+.no-cssgradients a.button.grey:hover, .no-cssgradients a.button.left-button:hover {
+    background:#e3e3e3;
+    border-top:1px solid #ececec;
+}
 
-.no-opacity #mask {
+.no-opacity #mask, .no-opacity #mask-noclick {
     background:url('../img/ie/mask.png') repeat;
 }
 
-.no-opacity div.popup {
+.no-opacity #popup {
    background:url('../img/ie/popup.png') repeat; 
 }
 
@@ -500,7 +507,7 @@ div.sub-section h4 {
 
 /*Sign-in popup*/
 
-#mask {
+#mask, #mask-noclick {
     position:absolute;
     z-index:9000;
     top:0;
@@ -616,12 +623,21 @@ div.input-wrapper {
     background:-webkit-gradient(linear,center top, center bottom, from(#e7e7e7), to(#fefefe));
     margin-top:12px;
     box-shadow:inset 0px 1px 0px #979797, inset 0px 2px 0px #c4c4c4, inset 0px 3px 0px #e3e3e3;
+    position:relative;
+}
+
+.no-cssgradients .input-wrapper {
+    background:#e7e7e7;
 }
 
 div.input-wrapper.error {
     background:-moz-linear-gradient(90deg, #d4b6ad, #eccec5);
     background:-webkit-gradient(linear,center top, center bottom, from(#d4b6ad), to(#eccec5));
     box-shadow:inset 0px 1px 0px #8d7973, inset 0px 2px 0px #b0968f, inset 0px 3px 0px #c8aca4;
+}
+
+.no-css-gradients .input-wrapper.error {
+    background:#d4d6ad;
 }
 
 div.input-wrapper:first-child {
@@ -633,13 +649,26 @@ div.input-wrapper:first-child {
     border-radius:0px;
     -moz-border-radius:0px;
     -webkit-border-radius:0px;
-    width:100%;
+    width:330px;
     color:#666;
     font-size:1.231em;
     background:transparent;
     border:0;
-    height:38px;
-    padding-left:15px;
+    padding:12px 0 12px 15px;
+}
+
+span.placeholder {
+    display:block;
+    border-radius:0px;
+    -moz-border-radius:0px;
+    -webkit-border-radius:0px;
+    width:330px;
+    color:#666;
+    font-size:1.231em;
+    background:transparent;
+    border:0;
+    padding:12px 0 12px 15px;
+    pointer-events:none;
 }
 
 #popup form {
@@ -904,13 +933,13 @@ li.badge:hover {
     cursor:pointer;
 }
 
-li.badge div.badge-icon {
+li.badge .badge-icon {
     height:70px;
     width:70px;
-    background:url('../img/spritesheet.png') no-repeat 0px -300px;
+    background:url('../img/badges70x70.png') no-repeat;
 }
 
-li.badge div.star {
+li.badge .star {
     position:absolute;
     height:30px;
     width:30px;
@@ -921,7 +950,7 @@ li.badge div.star {
     pointer-events:none;
 }
 
-li.badge.new div.star {
+li.badge.new .star {
     display:block;
 }
 
@@ -964,8 +993,10 @@ div.badge-popup:hover {
 }
 
 div.badge-popup .badge-img {
-    padding-top:7px;
-    /*maybe it will be put in a spritesheet*/
+    margin-top:7px;
+    height:143px;
+    width:143px;
+    background:url('../img/badges143x143.png') no-repeat;
 }
 
 div.badge-popup .badge-sharing {
@@ -1128,6 +1159,10 @@ div.level:hover {
     cursor:pointer;
 }
 
+div.level.locked:hover {
+    cursor:default;
+}
+
 #level-details {
     display:none;
     width:710px;
@@ -1165,11 +1200,11 @@ div.level:hover {
 
 #level-details li .badge-icon {
     float:right;
-    height:50px;
-    width:50px;
-    background:url('../img/spritesheet.png') no-repeat 0 -440px;
+    height:40px;
+    width:40px;
+    background:url('../img/badges40x40.png') no-repeat;
     display:none;
-    margin-top:-55px;
+    margin:-43px 14px 0 0;
 }
 
 #level-details li.complete .badge-icon {
@@ -1242,4 +1277,271 @@ div.level:hover {
 
 #personal.logged-in #stats {
     padding-top:35px;
+}
+
+/*Badges spritesheet*/
+
+.badge1-1 div.badge-popup .badge-img {
+    background-position:0 0;
+}
+
+.badge1-2 div.badge-popup .badge-img {
+    background-position:-143px 0px;
+}
+
+.badge1-3 div.badge-popup .badge-img {
+    background-position:-286px 0px;
+}
+
+.badge2-1 div.badge-popup .badge-img {
+    background-position:0 -143px;
+}
+
+.badge2-2 div.badge-popup .badge-img {
+    background-position:-143px -143px;
+}
+
+.badge2-3 div.badge-popup .badge-img {
+    background-position:-286px -143px;
+}
+
+.badge2-4 div.badge-popup .badge-img {
+    background-position:-429px -143px;
+}
+
+.badge2-5 div.badge-popup .badge-img {
+    background-position:-572px -143px;
+}
+
+.badge2-6 div.badge-popup .badge-img {
+    background-position:-715px -143px;
+}
+
+.badge2-7 div.badge-popup .badge-img {
+    background-position:-858px -143px;
+}
+
+.badge3-1 div.badge-popup .badge-img {
+    background-position:0px -286px;
+}
+
+.badge3-2 div.badge-popup .badge-img {
+    background-position:-143px -286px;
+}
+
+.badge3-3 div.badge-popup .badge-img {
+    background-position:-286px -286px;
+}
+
+.badge3-4 div.badge-popup .badge-img {
+    background-position:-429px -286px;
+}
+
+.badge3-5 div.badge-popup .badge-img {
+    background-position:-572px -286px;
+}
+
+.badge3-6 div.badge-popup .badge-img {
+    background-position:-715px -286px;
+}
+
+.badge4-1 div.badge-popup .badge-img {
+    background-position:0px -429px;
+}
+
+.badge4-2 div.badge-popup .badge-img {
+    background-position:-143px -429px;
+}
+
+.badge4-3 div.badge-popup .badge-img {
+    background-position:-286px -429px;
+}
+
+.badge4-4 div.badge-popup .badge-img {
+    background-position:-429px -429px;
+}
+
+.badge4-5 div.badge-popup .badge-img {
+    background-position:-572px -429px;
+}
+
+.badge4-6 div.badge-popup .badge-img {
+    background-position:-715px -429px;
+}
+
+li.badge.badge1-1 .badge-icon {
+    background-position:0 0;
+}
+
+li.badge.badge1-2 .badge-icon {
+    background-position:-70px 0;
+}
+
+li.badge.badge1-3 .badge-icon {
+    background-position:-140px 0;
+}
+
+li.badge.badge2-1 .badge-icon {
+    background-position:0 -70px;
+}
+
+li.badge.badge2-2 .badge-icon {
+    background-position:-70px -70px;
+}
+
+li.badge.badge2-3 .badge-icon {
+    background-position:-140px -70px;
+}
+
+li.badge.badge2-4 .badge-icon {
+    background-position:-210px -70px;
+}
+
+li.badge.badge2-5 .badge-icon {
+    background-position:-280px -70px;
+}
+
+li.badge.badge2-6 .badge-icon {
+    background-position:-350px -70px;
+}
+
+li.badge.badge2-7 .badge-icon {
+    background-position:-420px -70px;
+}
+
+li.badge.badge3-1 .badge-icon {
+    background-position:0 -140px;
+}
+
+li.badge.badge3-2 .badge-icon {
+    background-position:-70px -140px;
+}
+
+li.badge.badge3-3 .badge-icon {
+    background-position:-140px -140px;
+}
+
+li.badge.badge3-4 .badge-icon {
+    background-position:-210px -140px;
+}
+
+li.badge.badge3-5 .badge-icon {
+    background-position:-280px -140px;
+}
+
+li.badge.badge3-6 .badge-icon {
+    background-position:-350px -140px;
+}
+
+li.badge.badge4-1 .badge-icon {
+    background-position:0 -210px;
+}
+
+li.badge.badge4-2 .badge-icon {
+    background-position:-70px -210px;
+}
+
+li.badge.badge4-3 .badge-icon {
+    background-position:-140px -210px;
+}
+
+li.badge.badge4-4 .badge-icon {
+    background-position:-210px -210px;
+}
+
+li.badge.badge4-5 .badge-icon {
+    background-position:-280px -210px;
+}
+
+li.badge.badge4-6 .badge-icon {
+    background-position:-350px -210px;
+}
+
+/*Mini badges in challenges*/
+#level-details .badge1-1 .badge-icon {
+    background-position:0 0;
+}
+
+#level-details .badge1-2 .badge-icon {
+    background-position:-40px 0;
+}
+
+#level-details .badge1-3 .badge-icon {
+    background-position:-80px 0;
+}
+
+#level-details .badge2-1 .badge-icon {
+    background-position:0 -40px;
+}
+
+#level-details .badge2-2 .badge-icon {
+    background-position:-40px -40px;
+}
+
+#level-details .badge2-3 .badge-icon {
+    background-position:-80px -40px;
+}
+
+#level-details .badge2-4 .badge-icon {
+    background-position:-120px -40px;
+}
+
+#level-details .badge2-5 .badge-icon {
+    background-position:-160px -40px;
+}
+
+#level-details .badge2-6 .badge-icon {
+    background-position:-200px -40px;
+}
+
+#level-details .badge2-7 .badge-icon {
+    background-position:-240px -40px;
+}
+
+#level-details .badge3-1 .badge-icon {
+    background-position:0 -80px;
+}
+
+#level-details .badge3-2 .badge-icon {
+    background-position:-40px -80px;
+}
+
+#level-details .badge3-3 .badge-icon {
+    background-position:-80px -80px;
+}
+
+#level-details .badge3-4 .badge-icon {
+    background-position:-120px -80px;
+}
+
+#level-details .badge3-5 .badge-icon {
+    background-position:-160px -80px;
+}
+
+#level-details .badge3-6 .badge-icon {
+    background-position:-200px -80px;
+}
+
+#level-details .badge4-1 .badge-icon {
+    background-position:0 -120px;
+}
+
+#level-details .badge4-2 .badge-icon {
+    background-position:-40px -120px;
+}
+
+#level-details .badge4-3 .badge-icon {
+    background-position:-80px -120px;
+}
+
+#level-details .badge4-4 .badge-icon {
+    background-position:-120px -120px;
+}
+
+#level-details .badge4-5 .badge-icon {
+    background-position:-160px -120px;
+}
+
+#level-details .badge4-6 .badge-icon {
+    background-position:-200px -120px;
 }
