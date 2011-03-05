@@ -44,6 +44,3 @@ var countUp = function(totalSeconds) {
     
     updateTime();
 };
-
-// replace totalSeconds by the actual value
-countUp(totalSeconds);

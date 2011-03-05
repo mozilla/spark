@@ -79,15 +79,25 @@ $(document).ready(function() {
         hidePopup();
     });
 
+    // All elements with the class 'close' will close the popup when clicked
+    $('#popup .close').click(function() {
+       hidePopup(); 
+    });
+
     // triggers password-recovery when forgot-password link is clicked
     $('#forgot-password').click(function() {
        $('#sign-in').fadeOut(150);
        $('#password-recovery').delay(160).fadeIn(150);
     });
     
-    // displays success if previous form is filled
-    // DELETE THIS ONCE THE FORM WORKS
-    $('#password-recovery a.left-button').click(function() {
+    // goes back to sign in when start over button is clicked
+    $('#password-recovery .left-button').click(function() {
+       $('#password-recovery').fadeOut(150);
+       $('#sign-in').delay(160).fadeIn(150); 
+    });
+
+    // test workflow 
+    $('#password-recovery input').click(function() {
        $('#password-recovery').fadeOut(150);
        $('#success').delay(160).fadeIn(150); 
     });
@@ -111,9 +121,19 @@ $(document).ready(function() {
        $('#delete-account').delay(160).fadeIn(150); 
     });
 
-    // account popup close button
-    $('#popup a.close').click(function() {
-       hidePopup(); 
+    $('#change-password .left-button').click(function() {
+       $('#change-password').fadeOut(150);
+       $('#your-account').delay(160).fadeIn(150);
+    });
+
+    $('#change-email .left-button').click(function() {
+       $('#change-email').fadeOut(150);
+       $('#your-account').delay(160).fadeIn(150);
+    });
+    
+    $('#delete-account .left-button').click(function() {
+       $('#delete-account').fadeOut(150);
+       $('#your-account').delay(160).fadeIn(150);
     });
 
     // Smooth Scrolling
