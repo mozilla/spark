@@ -129,29 +129,30 @@ def challenges(request):
 
 
 def instructions(request):
-    return jingo.render(request, 'mobile/instructions.html', {})
+    return jingo.render(request, 'mobile/instructions.html')
 
 
 @login_required
 def stats(request):
-    return jingo.render(request, 'mobile/stats.html', {})
+    return jingo.render(request, 'mobile/stats.html')
 
 
 @login_required
 def shareqr(request):
-    return jingo.render(request, 'mobile/shareqr.html', {})
+    return jingo.render(request, 'mobile/shareqr.html')
 
 
 @login_required
 def sharelink(request):
-    return jingo.render(request, 'mobile/sharelink.html', {})
+    return jingo.render(request, 'mobile/sharelink.html')
 
 
 @login_required
 def sharebadge(request):
-    return jingo.render(request, 'mobile/sharebadge.html', {})
+    return jingo.render(request, 'mobile/sharebadge.html')
 
 
+@login_required
 def about(request):
     return jingo.render(request, 'mobile/about.html')
 

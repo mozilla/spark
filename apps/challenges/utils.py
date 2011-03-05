@@ -257,12 +257,14 @@ badges = {
              _lazy(u'Most shares earns you this much coveted badge. Welcome to the Spark Hall of Fame. Congratulations!')],
 }
 
-
 # L10n: Short description of any challenge level. Example: "Level 3"
 LEVEL_GENERIC = _lazy(u'Level %(num)d')
 
 # L10n: Name of the 'Super Sparker' secret level.
 LEVEL_5 = _lazy(u'The Super Sparker')
+
+CHALLENGE_COUNT_PER_LVL = [3, 7, 6, 6, 5]
+UNLOCKING_COUNT_PER_LVL = [0, 1, 4, 4]
 
 
 
@@ -315,8 +317,8 @@ def get_profile_levels(profile):
     """ Builds a list of dictionaries containing profile-specific level and challenge completion information.
         Used by templates to easily render the list of completed challenges on desktop and mobile.
     """
-    get_challenge_count = lambda i: [3, 7, 6, 6, 5][i-1]
-    get_unlock_min_count = lambda i: [0, 1, 4, 4][i-1]
+    get_challenge_count = lambda i: CHALLENGE_COUNT_PER_LVL[i-1]
+    get_unlock_min_count = lambda i: UNLOCKING_COUNT_PER_LVL[i-1]
     pad = lambda n: str(n).zfill(2)
     level_count = 4 if profile.level < 5 else 5
     all_completed_challenges = profile.challenges.all()

@@ -10,7 +10,7 @@ from mptt.models import MPTTModel
 from spark.models import City
 
 from challenges.models import Challenge
-from challenges.utils import get_profile_levels
+from challenges import utils
 
 
 class Profile(models.Model):
@@ -53,7 +53,7 @@ class Profile(models.Model):
     @property
     def badges(self):
         badges = []
-        completed_challenges = CompletedChallenge.objects.filter(profile=self, 
+        completed_challenges = CompletedChallenge.objects.filter(profile=self,
                                                                  date_badge_earned__isnull=False)
         for cc in completed_challenges:
             badges.append({
@@ -63,13 +63,28 @@ class Profile(models.Model):
                 'date_earned': cc.date_badge_earned,
                 'new': cc.new_badge
             })
-        
         return badges
     
     
     @property
     def challenge_info(self):
-        return get_profile_levels(self)
+        return utils.get_profile_levels(self)
+
+
+    @property
+    def new_challenge_count(self):
+        if self.new_challenges:
+            challenge_count = utils.CHALLENGE_COUNT_PER_LVL[self.level-1]
+            completed_challenge_count = CompletedChallenge.objects.filter(profile=self,
+                                                                     challenge__level=self.level)
+            return challenge_count - completed_challenge_count
+        else:
+            return 0
+
+
+    @property
+    def new_badge_count(self):
+        return len([b for b in self.badges if b['new']])
 
 
     def complete_challenges(self, challenges):
