@@ -4,9 +4,9 @@ $(function() {
    
    // Show the badge popup when a badge is clicked and hides all others
    $('div.badge-icon').click(function() {
-          // alert($(this).children().length);
-      $(this).parent().siblings().children('div.badge-popup').hide();
-         $(this).siblings('div.badge-popup').fadeToggle(200);
+        $(this).parent().siblings().children('div.badge-popup').hide();
+        $(this).siblings('div.badge-popup').fadeToggle(200);
+        $('body').toggleClass('clickable');
    });
    
    // Displays the level details
@@ -14,6 +14,24 @@ $(function() {
          $(this).parent().toggleClass('open');
          $(this).next('ul').slideToggle('fast');
    });
+   
+   // $('body').not($(this).children('div.badge-popup')).mousedown(function() {
+   //     if($(this).hasClass('clickable')) {
+   //         console.log('click');
+   //         $(this).toggleClass('clickable');
+   //         $popups.fadeOut(200);
+   //     }
+   // });
+   
+   $(document.body).click(function(e) {
+     if( !$(e.target).is("div.badge-popup, div.badge-icon") ) {
+       if($('body').hasClass('clickable')) {
+           $('body').toggleClass('clickable');
+           $popups.fadeOut(200);
+       }
+     }
+   });
+   
    
 });
 </script>
