@@ -1,8 +1,8 @@
 var countUp = function(totalSeconds) {
-    var $days = $('#dd'),
-        $hours = $('#hh'),
-        $minutes = $('#mm'),
-        $seconds = $('#ss');
+    var $days = $('#days span.count'),
+        $hours = $('#hours span.count'),
+        $minutes = $('#minutes span.count'),
+        $seconds = $('#seconds span.count');
 
     var pad = function(number, length) {
         var str = '' + number;
@@ -21,7 +21,7 @@ var countUp = function(totalSeconds) {
         $seconds.text(pad(ss, 2));
     };
 
-    var processTime = function(totalSeconds) {
+    var processTime = function(total) {
         var dd = Math.floor(total / 86400),
             ddRemainder = total % 86400,
             hh = Math.floor(ddRemainder / 3600),
@@ -41,6 +41,6 @@ var countUp = function(totalSeconds) {
            processTime(totalSeconds);
         }, 1000);
     };
-    
+
     updateTime();
 };
