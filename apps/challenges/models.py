@@ -1,6 +1,7 @@
 from django.db import models
 
-from .utils import challenges, badges, get_challenge_id
+from .utils import (get_challenge_id, get_instructions, get_badge_name, 
+                    get_badge_description)
 
 
 class Challenge(models.Model):
@@ -15,11 +16,14 @@ class Challenge(models.Model):
     def __unicode__(self):
         return get_challenge_id(self.level, self.number)
     
-    def get_instructions(self):
-        return unicode(challenges[unicode(self)])
+    @property
+    def instructions(self):
+        return get_instructions(unicode(self))
     
-    def get_badge_name(self):
-        return unicode(badges[unicode(self)][0])
+    @property
+    def badge_name(self):
+        return get_badge_name(unicode(self))
     
-    def get_badge_description(self):
-        return unicode(badges[unicode(self)][1])
+    @property
+    def badge_description(self):
+        return get_badge_description(unicode(self))

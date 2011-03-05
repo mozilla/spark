@@ -1,0 +1,31 @@
+<ol id="challenges-list">
+    {% for level in levels %}
+    <li>
+        <div class="level {% if level.locked %}locked{% endif %}">
+            <div class="arrow"></div>
+            {{ level.legend }}
+            <span class="challenges-count {% if level.completed %}complete{% endif %}">
+                <span>{{ level.completed_count }}</span>/{{ level.max_count }}
+            </span>
+            {% if level.locked %}
+            <div class="lock"></div>
+            <span class="locked-message">{{ level.locked_message }}</span>
+            {% endif %}
+        </div>
+        <ul id="level-details">
+            {% for challenge in level.challenges %}
+            <li {% if challenge.completed %}class="complete badge{{ challenge.id|replace('_','-') }}"{% endif %}>
+                <div class="checkbox"></div>
+                <span class="title">{{ challenge.name }}</span>
+                <p>
+                    {{ challenge.description }}
+                </p>
+                {% if challenge.completed %}
+                <div class="badge-icon"></div>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ol>

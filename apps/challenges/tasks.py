@@ -1,9 +1,12 @@
-import logging
+import datetime
 
 from celery.decorators import task
 
+from users.models import CompletedChallenge
+
 from .models import Challenge
 from .challenges import all_challenges
+from .utils import award_hidden_badges
 
 
 @task
@@ -22,12 +25,10 @@ def update_completed_challenges(profile):
         if challenge.is_completed_by(profile):
             completed_challenges.append(id)
     
-    # Update the user profile (this awards badges too, since 1 challenge == 1 badge)
+    # Update the user profile
     if completed_challenges:
         new_challenges = Challenge.objects.filter(pk__in=completed_challenges)
-        for challenge in new_challenges:
-            logging.debug("%s was awarded: %s" % (profile.user.username, challenge.get_badge_name()))
-            profile.challenges.add(challenge)
+        profile.complete_challenges(new_challenges)
         
         # Let's see if the user gained a level
         _update_level(profile)
@@ -60,7 +61,9 @@ def _update_level(profile):
         if len([c for c in challenges if c.level < 5]) == 22:
             level = 5
     
+    # If the user has gained or more levels, update his profile
     if level != profile.level:
         profile.level = level
         profile.save()
+        award_hidden_badges(profile)
 

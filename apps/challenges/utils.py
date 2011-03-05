@@ -284,9 +284,92 @@ def get_locked_legend(count, level):
     return msg % {'count': count, 'level': level}
 
 
+def get_locked_legend_alternate(count, level):
+    # L10n: Legend associated to a locked challenge. Example: "Complete 4 more challenges in Level 3 to unlock.."
+    msg = ungettext('Complete %(count)d more challenge in Level %(level)d to unlock.',
+                    'Complete %(count)d more challenges in Level %(level)d to unlock.', count)
+
+    return msg % {'count': count, 'level': level}
+
+
 def get_challenge_id(level, number):
     if level == 6:
         return 'E_%d' % number
     else:
         return '%d_%d' % (level, number)
+
+
+def get_instructions(id):
+    return unicode(challenges[id])
+
+
+def get_badge_name(id):
+    return unicode(badges[id][0])
+
+
+def get_badge_description(id):
+    return unicode(badges[id][1])
+
+
+def get_profile_levels(profile):
+    """ Builds a list of dictionaries containing profile-specific level and challenge completion information.
+        Used by templates to easily render the list of completed challenges on desktop and mobile.
+    """
+    get_challenge_count = lambda i: [3, 7, 6, 6, 5][i-1]
+    get_unlock_min_count = lambda i: [0, 1, 4, 4][i-1]
+    pad = lambda n: str(n).zfill(2)
+    level_count = 4 if profile.level < 5 else 5
+    all_completed_challenges = profile.challenges.all()
+    previous_level_completed_count = 0
+    levels = []
+    
+    for i in range(1, level_count+1):
+        completed_at_this_level = [unicode(c) for c in all_completed_challenges if c.level == i]
+        challenge_count = get_challenge_count(i)
+        completed_count = len(completed_at_this_level)
+        level = {
+            'legend': get_level_description(i),
+            'completed': completed_count == challenge_count,
+            'completed_count': pad(completed_count),
+            'max_count': pad(challenge_count),
+            'locked': profile.level < i
+        }
+        
+        if not level['locked']:
+            challenges = []
+            for j in range(1, challenge_count+1):
+                id = get_challenge_id(i, j)
+                challenges.append({
+                    'id': id,
+                    'name': get_badge_name(id),
+                    'description': get_instructions(id),
+                    'completed': id in completed_at_this_level
+                })
+            level['challenges'] = challenges
+        elif i - profile.level == 1:
+            level['locked_message'] = get_locked_legend_alternate(get_unlock_min_count(i) - previous_level_completed_count, i-1)
+        
+        levels.append(level)
+        previous_level_completed_count = completed_count
+    
+    return levels
+
+
+def award_hidden_badges(profile):
+    """ When a user completes a challenge from a locked upper level, the badge is not awarded
+        until this level is unlocked.
+        This function detects if a user is eligible for badges that were not awarded yet.
+        Typically, it's used when the user gains a new level.
+    """
+    from users.models import CompletedChallenge
+    eligibles = CompletedChallenge.objects.filter(profile=profile,
+                                                  challenge__level=profile.level,
+                                                  date_badge_earned=None)
+    if eligibles:
+        from datetime import datetime
+        
+        for completed_challenge in eligibles:
+            completed_challenge.date_badge_earned = datetime.now()
+            completed_challenge.new_badge = True
+            completed_challenge.save()
 

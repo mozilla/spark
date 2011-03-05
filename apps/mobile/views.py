@@ -122,7 +122,10 @@ def badges(request):
 
 @login_required
 def challenges(request):
-    return jingo.render(request, 'mobile/challenges.html', {})
+    from challenges.utils import get_profile_levels
+    
+    levels = get_profile_levels(request.user.profile)
+    return jingo.render(request, 'mobile/challenges.html', {'levels': levels})
 
 
 def instructions(request):

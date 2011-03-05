@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 
 from spark.decorators import login_required
 
-from users.models import Profile
+from users.models import User
 
 import jingo
 
@@ -16,8 +16,11 @@ def home(request):
 #@login_required
 def dashboard(request):
     d = datetime(2011, 2, 18)
+    profile = User.objects.get(username='batman').profile
     return jingo.render(request, 'desktop/dashboard.html', { 'logged_in': True,
-                                                             'most_recent_share': d })
+                                                             'most_recent_share': d,
+                                                             'badges': profile.badges,
+                                                             'levels': profile.challenge_info })
 
 
 def user(request, username):
