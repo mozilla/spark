@@ -1159,6 +1159,10 @@ div.level:hover {
     cursor:pointer;
 }
 
+div.level.locked:hover {
+    cursor:default;
+}
+
 #level-details {
     display:none;
     width:710px;
