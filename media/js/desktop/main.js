@@ -90,6 +90,10 @@ $(document).ready(function() {
        $('#password-recovery').delay(160).fadeIn(150);
     });
     
+    $('#sign-in p.download a').click(function() {
+       hidePopup(); 
+    });
+    
     // goes back to sign in when start over button is clicked
     $('#password-recovery .left-button').click(function() {
        $('#password-recovery').fadeOut(150);
