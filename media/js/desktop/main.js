@@ -143,7 +143,22 @@ $(document).ready(function() {
     // popups
     
     function tweetPopup(url) {
-    	newwindow = window.open(url,'name','height=450,width=550');
+        var h = $(window).height(),
+            w = $(window).width(),
+            top = (h / 2) - (450 / 2),
+            left = (w / 2) - (550 / 2);
+
+    	newwindow = window.open(url,'name','height=450,width=550,top='+top+',left='+left);
+    	if (window.focus) {newwindow.focus()}
+    }
+    
+    function fbPopup(url) {
+        var h = $(window).height(),
+            w = $(window).width(),
+            top = (h / 2) - (400 / 2),
+            left = (w / 2) - (580 / 2);
+
+    	newwindow = window.open(url,'name','height=400,width=580,top='+top+',left='+left);
     	if (window.focus) {newwindow.focus()}
     }
 
@@ -158,6 +173,13 @@ $(document).ready(function() {
         var url = $(this).attr('href');
         
        tweetPopup(url);
+       return false;
+    });
+
+    $('#facebook').click(function() {
+        var url = $(this).attr('href');
+        
+       fbPopup(url);
        return false;
     });
 
