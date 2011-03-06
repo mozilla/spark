@@ -140,6 +140,20 @@ $(document).ready(function() {
        $('#your-account').delay(160).fadeIn(150);
     });
 
+    // popups
+    
+    function tweetPopup(url) {
+    	newwindow = window.open(url,'name','height=450,width=550');
+    	if (window.focus) {newwindow.focus()}
+    }
+
+    $('#twitter').click(function() {
+        var url = $(this).attr('href');
+        
+       tweetPopup(url);
+       return false;
+    });
+
     // Smooth Scrolling
     $('a[href*=#]').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
