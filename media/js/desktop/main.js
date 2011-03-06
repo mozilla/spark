@@ -154,6 +154,13 @@ $(document).ready(function() {
        return false;
     });
 
+    $('a.twitter').click(function() {
+        var url = $(this).attr('href');
+        
+       tweetPopup(url);
+       return false;
+    });
+
     // Smooth Scrolling
     $('a[href*=#]').click(function() {
         if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') 
