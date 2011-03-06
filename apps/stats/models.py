@@ -5,14 +5,16 @@ from spark.models import City
 
 
 class PersonalStats(models.Model):
-    user = models.OneToOneField(Profile, primary_key=True, 
+    user = models.OneToOneField(Profile, primary_key=True,
                                 related_name='stats')
-    longest_chain = models.PositiveIntegerField(default=1)
+    longest_chain = models.PositiveIntegerField(default=0)
+    total_shares = models.PositiveIntegerField(default=0)
     
     # TODO: other user-specific stats
 
     def __unicode__(self):
         return unicode(self.user)
+
 
 
 class GlobalStats(models.Model):
@@ -23,16 +25,23 @@ class GlobalStats(models.Model):
         return unicode(self.name)
 
 
+
+VIA_TWITTER = 1
+VIA_FACEBOOK = 2
+VIA_QR = 3
+VIA_POSTER = 4
+
 class SharingHistory(models.Model):
     parent = models.ForeignKey(Profile, db_index=True)
     date_shared = models.DateTimeField(auto_now_add=True)
-    shared_via_qr = models.BooleanField(default=False)
-    shared_via_poster = models.BooleanField(default=False)
-    shared_via_twitter = models.BooleanField(default=False)
-    shared_via_facebook = models.BooleanField(default=False)
+    shared_via = models.PositiveIntegerField()
+    timezone = models.CharField(max_length=6, blank=True, null=True)
     
     class Meta:
         ordering = ('-date_shared',)
+    
+    def __unicode__(self):
+        return '%s on %s' % (profile, shared_via, date_shared)
     
     @classmethod
     def get_num_shares(cls, profile):
@@ -48,15 +57,19 @@ class SharingHistory(models.Model):
     
     @classmethod
     def add_share_from_twitter(cls, profile):
-        SharingHistory.objects.create(parent=profile, shared_via_twitter=True)
+        SharingHistory.objects.create(parent=profile, shared_via=VIA_TWITTER)
 
     @classmethod
     def add_share_from_facebook(cls, profile):
-        SharingHistory.objects.create(parent=profile, shared_via_facebook=True)
+        SharingHistory.objects.create(parent=profile, shared_via=VIA_FACEBOOK)
 
     @classmethod
     def add_share_from_qr_code(cls, profile):
-        SharingHistory.objects.create(parent=profile, shared_via_qr=True)
+        SharingHistory.objects.create(parent=profile, shared_via=VIA_QR)
+
+    @classmethod
+    def add_share_from_poster(cls, profile):
+        SharingHistory.objects.create(parent=profile, shared_via=VIA_POSTER)
 
 
 class CitySharingHistory(models.Model):

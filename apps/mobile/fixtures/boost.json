@@ -121,8 +121,9 @@
         "model": "users.profile",
         "fields": {
             "user": 4,
-            "boost1_completed": 0,
-            "boost2_completed": 0
+            "boost1_completed": 1,
+            "boost2_completed": 1,
+            "level": 3
         }
     },
     {
@@ -130,8 +131,9 @@
         "model": "users.profile",
         "fields": {
             "user": 5,
-            "boost1_completed": 0,
-            "boost2_completed": 0
+            "boost1_completed": 1,
+            "boost2_completed": 1,
+            "level": 2
         }
     },
     {

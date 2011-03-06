@@ -127,8 +127,8 @@ class BoostStep2TestCase(TestCase):
         self._assert_error_eq(unicode(forms.DIRECT_CHILD), response)
     
     def test_invalid_relationship_part_of_a_chain(self):
-        self.client.login(username='batman', password='testpass')
-        response = self.client.post(self.url, {'identifier': 'bob'})
+        self.client.login(username='john', password='testpass')
+        response = self.client.post(self.url, {'identifier': 'franck'})
         eq_(200, response.status_code)
         self._assert_error_eq(unicode(forms.PART_OF_A_CHAIN), response)
 
@@ -159,7 +159,7 @@ class BoostStep2ConfirmationTestCase(TestCase):
         bob = User.objects.get(username='bob')
         john = User.objects.get(username='john')
         eq_(bob.node.parent, john.node)
-        eq_(True, bob.get_profile().boost2_completed)
+        eq_(True, bob.profile.boost2_completed)
 
     def test_no_parent_confirm(self):
         self.client.login(username='john', password='testpass')
@@ -167,6 +167,6 @@ class BoostStep2ConfirmationTestCase(TestCase):
         assert isinstance(response, HttpResponseRedirect)
         eq_('http://testserver/en-US%s' % reverse('mobile.home'), response['location'])
         
-        profile = User.objects.get(username='john').get_profile()
+        profile = User.objects.get(username='john').profile
         eq_(True, profile.boost2_completed)
 

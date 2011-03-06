@@ -9,31 +9,7 @@
         </p>
         {% endif %}
     </div>
-    <ul id="badges-list">
-        <li class="badge">
-            <div class="badge-icon"></div>
-            <div class="badge-popup">
-                <div class="arrow"></div>
-                <div class="badge-copy">
-                    <h4>Lorem Ipsum Dolor Sit</h4>
-                    {# L10n: This is followed by the date when a badge was earned. #}
-                    <span class="unlock-date">{{ _('earned on:') }} 3/1/11, 04:17:32pm</span>
-                    <p>
-                        Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. 
-                        Vivamus nisl tellus, ultrices vel fringilla in, digni ssim nec erat.
-                        Proin vitae velit neque. Maecenas ligula nisl, pulvinar sed fringilla innisl.
-                    </p>
-                </div>
-                <div class="badge-img">
-                </div>
-                <div class="badge-sharing">
-                    <span>{{ _('share this!') }}</span>
-                    <a href="#" class="facebook"></a>
-                    <a href="#" class="twitter"></a>
-                </div>
-            </div>
-    	</li>
-    </ul>
+    {% include "challenges/includes/desktop/badges.html" %}
     {% if not is_user_page %}
     <div id="badges-legend" class="">
         <div id="new-icon"></div>

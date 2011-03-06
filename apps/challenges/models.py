@@ -1,11 +1,12 @@
 from django.db import models
 
-from .challenges import challenges
-from .badges import badges
+from .utils import (get_challenge_id, get_instructions, get_badge_name, 
+                    get_badge_description)
 
 
 class Challenge(models.Model):
-    level = models.PositiveIntegerField()
+    id = models.CharField(max_length=4, primary_key=True)
+    level = models.PositiveIntegerField(db_index=True)
     number = models.PositiveIntegerField()
     easter_egg = models.BooleanField(default=False)
     
@@ -13,18 +14,16 @@ class Challenge(models.Model):
         unique_together = ('level', 'number')
     
     def __unicode__(self):
-        if self.level == 6:
-            return 'ee_ch%d' % self.number
-        else:
-            return 'lvl%d_ch%d' % (self.level, self.number)
+        return get_challenge_id(self.level, self.number)
     
-    def get_instructions(self):
-        return unicode(challenges[unicode(self)])
+    @property
+    def instructions(self):
+        return get_instructions(unicode(self))
     
-    def get_badge_name(self):
-        return unicode(badges[unicode(self)][0])
+    @property
+    def badge_name(self):
+        return get_badge_name(unicode(self))
     
-    def get_badge_description(self):
-        return unicode(badges[unicode(self)][1])
-    
-    
+    @property
+    def badge_description(self):
+        return get_badge_description(unicode(self))

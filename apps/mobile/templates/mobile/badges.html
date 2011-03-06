@@ -8,16 +8,7 @@
         {{ _('Keep track of all your completed challenges and share your badges with friends.') }}
     </p>
     <hr>
-    <ul ontouchstart="" id="badge-list" class="section" data-count="{{ badges|count }}">
-		{% for badge in badges %}
-        <li class="badge" data-index="{{ loop.index }}">
-            <a href="#"></a>
-            <div class="badge-wrapper">
-            </div>
-        </li>
-		{% endfor %}
-    </ul>
-    
+    {% include "challenges/includes/mobile/badges.html" %}
     <li id="badge-label-tmpl" style="display:none">
         <div>
             <div>

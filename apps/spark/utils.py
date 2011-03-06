@@ -43,5 +43,5 @@ def approximate_city(profile, radius):
             nearest = name
     
     if nearest:
-        profile.city = City.objects.get(pk=nearest)
+        profile.major_city = City.objects.get(pk=nearest)
         profile.save()

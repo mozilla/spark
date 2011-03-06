@@ -23,7 +23,7 @@ def home(request):
 
 @login_required
 def boost(request):
-    profile = request.user.get_profile()
+    profile = request.user.profile
 
     # 'Boost your Spark' is not available once both steps have been completed
     if profile.boost2_completed and profile.boost1_completed:
@@ -36,7 +36,7 @@ def boost(request):
 def boost1(request):
     """ Boost your Spark step 1/2 :
         Allows a Spark user to be geolocated by the application."""
-    profile = request.user.get_profile()
+    profile = request.user.profile
     
     if profile.boost1_completed:
         return HttpResponseRedirect(reverse('mobile.boost2'))
@@ -63,7 +63,7 @@ def boost1(request):
 def boost2(request):
     """ Boost your Spark step 2/2 :
         Allows a Spark user to find a parent user by username or email address."""
-    profile = request.user.get_profile()
+    profile = request.user.profile
 
     if profile.boost2_completed:
         return HttpResponseRedirect(reverse('mobile.boost2'))
@@ -106,7 +106,7 @@ def boost2_confirm(request):
             pass #TODO: save as a flag in user profile?
         
         if not error:
-            profile = request.user.get_profile()
+            profile = request.user.profile
             profile.boost2_completed = True
             profile.save()
             return HttpResponseRedirect(reverse('mobile.home'))
@@ -116,39 +116,50 @@ def boost2_confirm(request):
 
 @login_required
 def badges(request):
-    badgelist = range(8)
-    return jingo.render(request, 'mobile/badges.html', { 'badges': badgelist })
+    profile = request.user.profile
+    data = {'profile': profile, 'badges': profile.badges}
+    if len([b for b in data['badges'] if b['new']]) > 0:
+        profile.clear_new_badges()
+    
+    return jingo.render(request, 'mobile/badges.html', data)
 
 
 @login_required
 def challenges(request):
-    return jingo.render(request, 'mobile/challenges.html', {})
+    profile = request.user.profile
+    if profile.new_challenges:
+        profile.clear_new_challenges()
+        
+    return jingo.render(request, 'mobile/challenges.html', 
+                                        {'profile': profile,
+                                         'levels': profile.challenge_info})
 
 
 def instructions(request):
-    return jingo.render(request, 'mobile/instructions.html', {})
+    return jingo.render(request, 'mobile/instructions.html')
 
 
 @login_required
 def stats(request):
-    return jingo.render(request, 'mobile/stats.html', {})
+    return jingo.render(request, 'mobile/stats.html')
 
 
 @login_required
 def shareqr(request):
-    return jingo.render(request, 'mobile/shareqr.html', {})
+    return jingo.render(request, 'mobile/shareqr.html')
 
 
 @login_required
 def sharelink(request):
-    return jingo.render(request, 'mobile/sharelink.html', {})
+    return jingo.render(request, 'mobile/sharelink.html')
 
 
 @login_required
 def sharebadge(request):
-    return jingo.render(request, 'mobile/sharebadge.html', {})
+    return jingo.render(request, 'mobile/sharebadge.html')
 
 
+@login_required
 def about(request):
     return jingo.render(request, 'mobile/about.html')
 

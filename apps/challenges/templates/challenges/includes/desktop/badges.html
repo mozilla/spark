@@ -1,0 +1,29 @@
+<ul id="badges-list">
+    {% for badge in badges %}
+    <li class="badge badge{{ badge.id|replace('_','-') }} {% if badge.new %}new{% endif %}">
+        {% if badge.new %}
+        <div class="star"></div>
+        {% endif %}
+        <div class="badge-icon"></div>
+        <div class="badge-popup">
+            <div class="arrow"></div>
+            <div class="badge-copy">
+                <h4>{{ badge.name }}</h4>
+                {% set date_earned = datetimeformat(badge.date_earned, format='longdatetime') %}
+                {# L10n: This is followed by the date when a badge was earned. #}
+                <span class="unlock-date">{{ _('earned on:') }} {{ date_earned }}</span>
+                <p>
+                    {{ badge.description }}
+                </p>
+            </div>
+            <div class="badge-img">
+            </div>
+            <div class="badge-sharing">
+                <span>{{ _('share this!') }}</span>
+                <a href="#" class="facebook"></a>
+                <a href="#" class="twitter"></a>
+            </div>
+        </div>
+	</li>
+    {% endfor %}
+</ul>

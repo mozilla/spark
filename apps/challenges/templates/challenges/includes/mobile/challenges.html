@@ -1,0 +1,28 @@
+<ol id="challenges-list">
+    {% for level in levels %}
+    <li>
+        <div class="level {% if level.locked %}locked{% endif %}">
+            {{ level.legend }}
+            <span class="challenges-count {% if level.completed %}complete{% endif %}">
+                <span>{{ level.completed_count }}</span>/{{ level.max_count }}
+            </span>
+            {% if level.locked %}
+            <div class="lock"></div>
+            {% endif %}
+        </div>
+        <ul id="level-details">
+            {% for challenge in level.challenges %}
+            <li>
+                <div class="challenge {% if challenge.completed %}complete{% endif %}">
+                    <div class="check"></div>
+                    <span class="title">{{ challenge.name }}</span>
+                    <p class="sans">
+                        {{ challenge.description }}
+                    </p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ol>

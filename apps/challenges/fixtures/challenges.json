@@ -1,0 +1,416 @@
+[
+    {
+        "pk": "1_1",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 1,
+            "level": 1
+        }
+    },
+    {
+        "pk": "1_2",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 2,
+            "level": 1
+        }
+    },
+    {
+        "pk": "1_3",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 3,
+            "level": 1
+        }
+    },
+    {
+        "pk": "2_1",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 1,
+            "level": 2
+        }
+    },
+    {
+        "pk": "2_2",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 2,
+            "level": 2
+        }
+    },
+    {
+        "pk": "2_3",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 3,
+            "level": 2
+        }
+    },
+    {
+        "pk": "2_4",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 4,
+            "level": 2
+        }
+    },
+    {
+        "pk": "2_5",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 5,
+            "level": 2
+        }
+    },
+    {
+        "pk": "2_6",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 6,
+            "level": 2
+        }
+    },
+    {
+        "pk": "2_7",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 7,
+            "level": 2
+        }
+    },
+    {
+        "pk": "3_1",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 1,
+            "level": 3
+        }
+    },
+    {
+        "pk": "3_2",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 2,
+            "level": 3
+        }
+    },
+    {
+        "pk": "3_3",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 3,
+            "level": 3
+        }
+    },
+    {
+        "pk": "3_4",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 4,
+            "level": 3
+        }
+    },
+    {
+        "pk": "3_5",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 5,
+            "level": 3
+        }
+    },
+    {
+        "pk": "3_6",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 6,
+            "level": 3
+        }
+    },
+    {
+        "pk": "4_1",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 1,
+            "level": 4
+        }
+    },
+    {
+        "pk": "4_2",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 2,
+            "level": 4
+        }
+    },
+    {
+        "pk": "4_3",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 3,
+            "level": 4
+        }
+    },
+    {
+        "pk": "4_4",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 4,
+            "level": 4
+        }
+    },
+    {
+        "pk": "4_5",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 5,
+            "level": 4
+        }
+    },
+    {
+        "pk": "4_6",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 6,
+            "level": 4
+        }
+    },
+    {
+        "pk": "5_1",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 1,
+            "level": 5
+        }
+    },
+    {
+        "pk": "5_2",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 2,
+            "level": 5
+        }
+    },
+    {
+        "pk": "5_3",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 3,
+            "level": 5
+        }
+    },
+    {
+        "pk": "5_4",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 4,
+            "level": 5
+        }
+    },
+    {
+        "pk": "5_5",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": false,
+            "number": 5,
+            "level": 5
+        }
+    },
+    {
+        "pk": "E_1",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 1,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_10",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 10,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_11",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 11,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_12",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 12,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_13",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 13,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_14",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 14,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_15",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 15,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_16",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 16,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_17",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 17,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_18",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 18,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_19",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 19,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_2",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 2,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_3",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 3,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_4",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 4,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_5",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 5,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_6",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 6,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_7",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 7,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_8",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 8,
+            "level": 6
+        }
+    },
+    {
+        "pk": "E_9",
+        "model": "challenges.challenge",
+        "fields": {
+            "easter_egg": true,
+            "number": 9,
+            "level": 6
+        }
+    }
+]

@@ -1,20 +1,29 @@
 import urlparse
 import datetime
 
+from django.conf import settings
 from django.http import QueryDict
 from django.utils.encoding import smart_unicode, smart_str
 from django.utils.http import urlencode
 
 from jingo import register
 import jinja2
+from pytz import timezone
+from babel import localedata
+from babel.dates import format_date, format_time, format_datetime
+from babel.numbers import format_decimal
 from tower import ungettext as _ungettext
 
 from .urlresolvers import reverse
 
 
+# Most of these functions are taken from kitsune
+
+
 @register.function
 def ungettext(singular, plural, number, context=None):
     return _ungettext(singular, plural, number, context)
+
 
 @register.function
 def url(viewname, *args, **kwargs):
@@ -22,12 +31,14 @@ def url(viewname, *args, **kwargs):
     locale = kwargs.pop('locale', None)
     return reverse(viewname, locale=locale, args=args, kwargs=kwargs)
 
+
 @register.filter
 def label_with_help(f):
     """Print the label tag for a form field, including the help_text
     value as a title attribute."""
     label = u'<label for="%s" title="%s">%s</label>'
     return jinja2.Markup(label % (f.auto_id, f.help_text, f.label))
+
 
 @register.filter
 def urlparams(url_, hash=None, query_dict=None, **query):
@@ -57,6 +68,7 @@ def urlparams(url_, hash=None, query_dict=None, **query):
     new = urlparse.ParseResult(url_.scheme, url_.netloc, url_.path,
                                url_.params, query_string, fragment)
     return new.geturl()
+
 
 @register.filter
 def timesince(d, now=None):
@@ -108,3 +120,56 @@ def timesince(d, now=None):
         if count != 0:
             break
     return name(count) % {'number': count}
+
+
+def _babel_locale(locale):
+    """Return the Babel locale code, given a normal one."""
+    # Babel uses underscore as separator.
+    return locale.replace('-', '_')
+
+
+def _contextual_locale(context):
+    """Return locale from the context, falling back to a default if invalid."""
+    locale = context['request'].locale
+    if not localedata.exists(locale):
+        locale = settings.LANGUAGE_CODE
+    return locale
+
+
+@register.function
+@jinja2.contextfunction
+def datetimeformat(context, value, format='shortdatetime'):
+    """
+    Returns date/time formatted using babel's locale settings. Uses the
+    timezone from settings.py
+    """
+    if not isinstance(value, datetime.datetime):
+        # Expecting date value
+        raise ValueError
+
+    tzinfo = timezone(settings.TIME_ZONE)
+    tzvalue = tzinfo.localize(value)
+    locale = _babel_locale(_contextual_locale(context))
+
+    # If within a day, 24 * 60 * 60 = 86400s
+    if format == 'shortdatetime':
+        # Check if the date is today
+        if value.toordinal() == datetime.date.today().toordinal():
+            formatted = _lazy(u'Today at %s') % format_time(
+                                    tzvalue, format='short', locale=locale)
+        else:
+            formatted = format_datetime(tzvalue, format='short', locale=locale)
+    elif format == 'longdatetime':
+        formatted = format_datetime(tzvalue, format='long', locale=locale)
+    elif format == 'date':
+        formatted = format_date(tzvalue, locale=locale)
+    elif format == 'time':
+        formatted = format_time(tzvalue, locale=locale)
+    elif format == 'datetime':
+        formatted = format_datetime(tzvalue, locale=locale)
+    else:
+        # Unknown format
+        raise DateTimeFormatError
+
+    return jinja2.Markup('<time datetime="%s">%s</time>' % \
+                         (tzvalue.isoformat(), formatted))
