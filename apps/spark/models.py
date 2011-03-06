@@ -1,47 +1,20 @@
 from django.db import models
 
+from geo.countries import countries
 
-class ModelBase(models.Model):
+
+class City(models.Model):
     """
-    Base class for models to abstract some common features.
-    
-    * Adds automatic created and modified fields to the model.
+    Represents cities used by the global visualization.
     """
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
-    
-    class Meta:
-        abstract = True
-        get_latest_by = 'created'
-
-
-class Continent(models.Model):
-    code = models.CharField(max_length=2, primary_key=True)
-
-    def __unicode__(self):
-        return self.name
-
-
-class Country(models.Model):
-    iso = models.CharField(max_length=2, primary_key=True)
-    continent = models.ForeignKey(Continent, null=True)
-
-    class Meta:
-        ordering = ('iso',)
-
-    def __unicode__(self):
-        return self.iso
-
-
-class City(ModelBase):
-    """
-    Represents cities used by the global visualization
-    """
-    country = models.ForeignKey(Country)
-    city = models.CharField(max_length=255)
-    
-    class Meta:
-        unique_together = ('country', 'city')
+    name = models.CharField(max_length=255, primary_key=True)
+    country_code = models.CharField(max_length=2)
+    latitude = models.FloatField()
+    longitude = models.FloatField()
     
     def __unicode__(self):
-        return '%s, %s' % (self.country, self.city)
+        return '%s, %s' % (self.name, self.country_code)
+    
+    @property
+    def country(self):
+        return unicode(countries[self.country_code])
