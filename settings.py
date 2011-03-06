@@ -169,6 +169,7 @@ MINIFY_BUNDLES = {
         ),
         'dashboard': (
             'js/desktop/dashboard.js',
+            'js/desktop/sharehistory.js',
         ),
         'visualization': (
             'js/desktop/visualization.js',

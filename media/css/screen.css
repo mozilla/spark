@@ -916,6 +916,10 @@ span.label {
     margin-bottom:28px;
 }
 
+canvas#history {
+    background:url('../img/graph1-bg.png') repeat 0 0;
+}
+
 /*Badges*/
 
 #badges-list {
