@@ -1,7 +1,9 @@
 {% extends "mobile/base.html" %}
 
 {% if user.is_authenticated() %}
+{% if not profile %}
 {% set profile = user.get_profile() %}
+{% endif %}
 {% set num_new_challenges = profile.new_challenge_count %}
 {% set num_new_badges = profile.new_badge_count %}
 {% set num_notifications = num_new_challenges + num_new_badges %}

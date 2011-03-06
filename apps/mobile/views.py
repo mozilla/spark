@@ -117,15 +117,22 @@ def boost2_confirm(request):
 @login_required
 def badges(request):
     profile = request.user.profile
-    return jingo.render(request, 'mobile/badges.html', { 'badges': profile.badges })
+    data = {'profile': profile, 'badges': profile.badges}
+    if len([b for b in data['badges'] if b['new']]) > 0:
+        profile.clear_new_badges()
+    
+    return jingo.render(request, 'mobile/badges.html', data)
 
 
 @login_required
 def challenges(request):
-    from challenges.utils import get_profile_levels
-    
-    levels = get_profile_levels(request.user.profile)
-    return jingo.render(request, 'mobile/challenges.html', {'levels': levels})
+    profile = request.user.profile
+    if profile.new_challenges:
+        profile.clear_new_challenges()
+        
+    return jingo.render(request, 'mobile/challenges.html', 
+                                        {'profile': profile,
+                                         'levels': profile.challenge_info})
 
 
 def instructions(request):

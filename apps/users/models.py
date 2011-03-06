@@ -73,10 +73,11 @@ class Profile(models.Model):
 
     @property
     def new_challenge_count(self):
+        """Returns the number of recently completed challenges."""
         if self.new_challenges:
             challenge_count = utils.CHALLENGE_COUNT_PER_LVL[self.level-1]
-            completed_challenge_count = CompletedChallenge.objects.filter(profile=self,
-                                                                     challenge__level=self.level)
+            completed_challenge_count = len(CompletedChallenge.objects.filter(profile=self,
+                                                                              challenge__level=self.level))
             return challenge_count - completed_challenge_count
         else:
             return 0
@@ -84,7 +85,19 @@ class Profile(models.Model):
 
     @property
     def new_badge_count(self):
+        """Returns the number of recently earned badges."""
         return len([b for b in self.badges if b['new']])
+    
+    
+    def clear_new_badges(self):
+        """Clears notifications of recently earned badges."""
+        CompletedChallenge.objects.filter(profile=self, new_badge=True).update(new_badge=False)
+    
+    
+    def clear_new_challenges(self):
+        """Clears notifications of new available challenges."""
+        self.new_challenges = False
+        self.save()
 
 
     def complete_challenges(self, challenges):
@@ -117,7 +130,6 @@ class CompletedChallenge(models.Model):
     
     def __unicode__(self):
         return "%s <-> %s" % (self.profile, self.challenge)
-
 
 
 class UserNode(MPTTModel):
