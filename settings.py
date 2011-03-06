@@ -233,6 +233,7 @@ INSTALLED_APPS = (
     'mobile',
     'sharing',
     'challenges',
+    'stats'
 )
 
 # Let Tower know about our additional keywords.
