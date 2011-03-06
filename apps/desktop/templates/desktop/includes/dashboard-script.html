@@ -1,6 +1,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
-   var $popups = $('div.badge-popup');
+   var $popups = $('div.badge-popup'),
+       $popupChildren = $('div.badge-popup').children();
    
    // Show the badge popup when a badge is clicked and hides all others
    $('div.badge-icon').click(function() {
@@ -15,10 +16,10 @@ $(document).ready(function() {
          $(this).next('ul').slideToggle('fast');
    });
    
-   $(document.body).click(function(e) {
-     if( !$(e.target).is("div.badge-popup, div.badge-icon") ) {
+   $('body').click(function(e) {
+     if( !$(e.target).is('div.badge-popup, div.badge-icon, div.badge-popup p, div.badge-popup span, div.badge-popup div, div.badge-popup h4') ) {
        if($('body').hasClass('clickable')) {
-           $('body').toggleClass('clickable');
+           $(this).removeClass('clickable');
            $popups.fadeOut(200);
        }
      }
