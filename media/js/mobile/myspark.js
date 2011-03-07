@@ -9,6 +9,12 @@
         canvas.width = w;
     }
 
+    $(window).resize(function() {
+        w = $('#wrapper').width();
+        canvas.width = w;
+        console.log('resize');
+    });
+
     canvas.height = h;
     canvas.width = w;
 
@@ -99,8 +105,6 @@
 			posy = (o.y - 0.6) * 100;
 	    } else {
 	        posy = (o.x - 0.6) * -100;
-			posx = o.y * 100;
+			posx = o.y * -100;
 	    }
-        // Uncomment below to change the idle vertical state of the spark 
-		// posy = (o.y - 0.6) * 100;
 	}
