@@ -1159,6 +1159,10 @@ div.lock {
     background:url('../img/spritesheet.png') no-repeat -40px -377px;
 }
 
+div.level {
+    overflow:hidden;
+}
+
 li.open div.level {
     border-bottom:1px solid #403c3c;
 }
