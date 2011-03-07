@@ -3,13 +3,15 @@ $(document).ready(function() {
 	initMenu();
 });
 
-var multiplier = 1.4;
+{% set multiplier=1 %}
+var multiplier = {{ multiplier }};
 
 initShapes(multiplier);
+initMove();
 
 setInterval(function() {
     update();
     ctx.clearRect(0, 0, w, h);
-    drawShapes(shapes, multiplier);
+    drawShapes(shapes, posx, posy, multiplier);
 }, 1000 / 50);
 </script>
