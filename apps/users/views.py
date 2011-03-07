@@ -24,7 +24,7 @@ from spark.decorators import (ssl_required, logout_required, login_required,
 
 from users.backends import Sha256Backend
 from users.forms import (EmailConfirmationForm, EmailChangeForm, PasswordResetForm,
-                         PasswordChangeForm)
+                         PasswordChangeForm, PasswordConfirmationForm)
 from users.models import Profile
 from users.utils import handle_login, handle_register
 
@@ -130,6 +130,23 @@ def password_change(request):
         return {'status': 'success'}
 
 
+@login_required
+@post_required
+@ajax_required
+@json_view
+def delete_account(request):
+    form = PasswordConfirmationForm(user=request.user, data=request.POST)
+    if not form.is_valid():
+        return {'status': 'error',
+                'errors': dict(form.errors.iteritems())}
+    else:
+        request.user.is_active = False
+        request.user.save()
+        auth.logout(request)
+        return {'status': 'success',
+                'next': reverse('desktop.home')}
+
+
 @json_view
 def password_reset(request, mobile=False):
     """Password reset form.
@@ -211,11 +228,6 @@ def password_reset_complete(request):
     """Password reset complete.
     """
     return jingo.render(request, 'users/mobile/pw_reset_complete.html')
-
-
-@login_required
-def delete_account(request):
-    pass # TODO implement
 
 
 def _clean_next_url(request):

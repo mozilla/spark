@@ -22,17 +22,22 @@ function initChangeEmailForm() {
 }
 
 function initDeleteAccountForm() {
-    $('#change-password .left-button').click(function() {
-        $('#changepw').resetFormAfter(150);
+    $('#delaccount .left-button').click(function() {
+        $('#delaccount').resetFormAfter(150);
         $('#delete-account').fadeOut(150);
         $('#your-account').delay(160).fadeIn(150);
     });
     
-    popupForm('delaccount');
+    popupForm('delaccount', null, function($form, data) {
+        setTimeout(function() {
+            window.location.replace(data.next);
+        }, 200);
+    });
 }
 
 $(document).ready(function() {
     initPlaceholders();
     initChangePasswordForm();
     initChangeEmailForm();
+    initDeleteAccountForm();
 });

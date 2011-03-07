@@ -22,9 +22,9 @@ def home(request):
 
 
 def user(request, username):
-    user_profile = get_object_or_404(Profile, user__username=username)
+    user = get_object_or_404(User, username=username, is_active=True)
     data = {'username': username,
-            'profile': user_profile,
+            'profile': user.profile,
             'logged_in': request.user.is_authenticated(),
             'is_user_page': True}
     
