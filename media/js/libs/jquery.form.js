@@ -563,6 +563,10 @@ $.fn.formToArray = function(semantic) {
 			}
 		}
 		else if (v !== null && typeof v != 'undefined') {
+		    // clean values put by placeholder fallback scripts
+		    if(v === $(el).attr('placeholder')) {
+		        v = '';
+		    }
 			a.push({name: n, value: v});
 		}
 	}

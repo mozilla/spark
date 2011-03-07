@@ -3,13 +3,13 @@
         <h3>{{ _('Sign in') }}</h3>
             <p class="legend">{{ _('Welcome back! Ready to keep your Spark going strong? Just fill your details in below.') }}</p>
             <hr>
-            <form id="login-form" action="{{ url('users.login') }}" method="post" accept-charset="utf-8">
+            <form id="login" action="{{ url('users.login') }}" method="post" accept-charset="utf-8">
                 {{ csrf() }}
                 <fieldset class="section">
-                    <div class="input-wrapper">
+                    <div id="login-username" class="input-wrapper">
                         <input tabindex="1" type="text" name="username" value="" placeholder="{{ _('Username') }}" required>
                     </div>
-                    <div class="input-wrapper">
+                    <div id="login-password" class="input-wrapper">
                         <input tabindex="2" type="password" name="password" value="" placeholder="{{ _('Password') }}" required>
                     </div>
                 </fieldset>
