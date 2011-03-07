@@ -1,5 +1,5 @@
 <ul ontouchstart="" id="badge-list" class="section" data-count="{{ badges|count }}">
-	{% for badge in badges %}
+	{% for badge in profile.badges %}
     <li class="badge badge{{ badge.id|replace('_','-') }}" data-index="{{ loop.index }}" data-id="{{ badge.id }}" data-name="{{ badge.name }}" data-description="{{ badge.description }}">
         <a href="#"></a>
         <div class="badge-wrapper">

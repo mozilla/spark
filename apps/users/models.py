@@ -74,6 +74,7 @@ class Profile(models.Model):
                 return parent.user.username
         return None
     
+    
     @property
     def home_location(self):
         from geo.countries import countries
@@ -82,6 +83,11 @@ class Profile(models.Model):
             return '%s, %s' % (self.city_name, country)
         else:
             return ''
+    
+    
+    @property
+    def most_recent_share(self):
+        return datetime.datetime(2011, 2, 18)
     
     
     @property

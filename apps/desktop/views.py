@@ -13,24 +13,22 @@ def home(request):
     if request.user.is_authenticated():
         d = datetime(2011, 2, 18)
         profile = request.user.profile
-        return jingo.render(request, 'desktop/dashboard.html', { 'username': profile.user.username,
-                                                                 'logged_in': True,
-                                                                 'profile': profile,
-                                                                 'most_recent_share': d,
-                                                                 'badges': profile.badges,
-                                                                 'levels': profile.challenge_info })
+        return jingo.render(request, 'desktop/dashboard.html', {'username': profile.user.username,
+                                                                'profile': profile,
+                                                                'logged_in': True, 
+                                                                'levels': profile.challenge_info})
     else:
-        return jingo.render(request, 'desktop/home.html', { 'is_homepage': True })
+        return jingo.render(request, 'desktop/home.html', {'is_homepage': True})
 
 
 def user(request, username):
-    d = datetime(2011, 2, 18)
     user_profile = get_object_or_404(Profile, user__username=username)
-    return jingo.render(request, 'desktop/user.html', { 'username': username,
-                                                        'profile': request.user.profile,
-                                                        'logged_in': request.user.is_authenticated(),
-                                                        'is_user_page': True,
-                                                        'most_recent_share': d })
+    data = {'username': username,
+            'profile': user_profile,
+            'logged_in': request.user.is_authenticated(),
+            'is_user_page': True}
+    
+    return jingo.render(request, 'desktop/user.html', data)
 
 
 def visualization(request, ):
