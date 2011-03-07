@@ -3,9 +3,13 @@ $(document).ready(function() {
 	initMenu();
 });
 
+var multiplier = 1.4;
+
+initShapes(multiplier);
+
 setInterval(function() {
     update();
     ctx.clearRect(0, 0, w, h);
-    drawShapes(shapes, 1);
+    drawShapes(shapes, multiplier);
 }, 1000 / 50);
 </script>
