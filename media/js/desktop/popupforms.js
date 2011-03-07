@@ -27,16 +27,22 @@ function popupForm(formId, errorCallback, successCallback) {
         			$.each(data.errors, function(fieldname, errmsg) {
         			    if(fieldname === '__all__') {
         			        showError(errmsg[0]);
-        			        errorCallback('all');
+        			        if(errorCallback) {
+            			        errorCallback('all');
+            			    }
         			    } else {
             		        showFieldError(fieldname, errmsg[0]);
-            		        errorCallback(fieldname);
+            		        if(errorCallback) {
+                		        errorCallback(fieldname);
+                		    }
         			    }
         			});
 
 		            $submitButton.removeAttr("disabled");
         		} else if(data.status === 'success') {
-        		    successCallback($form, data);
+        		    if(successCallback) {
+            		    successCallback($form, data);   
+        		    }
         		}
             }
         };

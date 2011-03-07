@@ -167,11 +167,14 @@ MINIFY_BUNDLES = {
             'js/libs/placeholder.js',
             'js/desktop/main.js',
             'js/desktop/popupforms.js',
+        ),
+        'home': (
             'js/desktop/popups-loggedout.js',
         ),
         'dashboard': (
             'js/desktop/dashboard.js',
             'js/desktop/sharehistory.js',
+            'js/desktop/popups-youraccount.js',
         ),
         'visualization': (
             'js/desktop/visualization.js',

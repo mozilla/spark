@@ -167,34 +167,31 @@ class EmailChangeForm(forms.Form):
         return new_email
 
 
-class PasswordChangeForm(forms.Form):
+class PasswordChangeForm(auth_forms.PasswordChangeForm):
     """This form requires the current user's correct password 
        and two matching new password values."""
-    password = forms.CharField(error_messages={'required': PASSWD_CURRENT})
-    new_password = forms.CharField(error_messages={'required': PASSWD_CURRENT,
+    old_password = forms.CharField(error_messages={'required': PASSWD_CURRENT})
+    new_password1 = forms.CharField(error_messages={'required': PASSWD_REQUIRED,
                                                    'min_length': PASSWD_SHORT})
-    new_password2 = forms.CharField(error_messages={'required': PASSWD_CURRENT,
+    new_password2 = forms.CharField(error_messages={'required': PASSWD2_REQUIRED,
                                                     'min_length': PASSWD_SHORT})
-    
-    def __init__(self, user, *args, **kwargs):
-        super(PasswordChangeForm, self).__init__(*args, **kwargs)
-        self.user = user
     
     def clean(self):
         super(PasswordChangeForm, self).clean()
-        new_password = self.cleaned_data.get('new_password')
+        new_password1 = self.cleaned_data.get('new_password1')
         new_password2 = self.cleaned_data.get('new_password2')
-        if not new_password == new_password2:
+        if not new_password1 == new_password2:
             raise forms.ValidationError(_('Passwords must match.'))
 
         return self.cleaned_data
     
     def clean_password(self):
-        password = self.cleaned_data.get('password')
-        if not self.user.check_password(password):
+        old_password = self.cleaned_data.get('old_password')
+        if not self.user.check_password(old_password):
             raise forms.ValidationError(PASSWD_CURRENT)
         
-        return password
+        return old_password
+
 
 class PasswordConfirmationForm(forms.Form):
     """A simple form that requires and validates the current user's password."""

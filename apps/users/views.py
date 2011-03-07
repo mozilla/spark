@@ -4,8 +4,7 @@ import json
 
 from django.conf import settings
 from django.contrib import auth
-from django.contrib.auth.forms import (SetPasswordForm, PasswordChangeForm, 
-                                       AuthenticationForm)
+from django.contrib.auth.forms import SetPasswordForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.models import Site
@@ -24,7 +23,8 @@ from spark.decorators import (ssl_required, logout_required, login_required,
                               post_required, json_view, ajax_required)
 
 from users.backends import Sha256Backend
-from users.forms import (EmailConfirmationForm, EmailChangeForm, PasswordResetForm)
+from users.forms import (EmailConfirmationForm, EmailChangeForm, PasswordResetForm,
+                         PasswordChangeForm)
 from users.models import Profile
 from users.utils import handle_login, handle_register
 
@@ -202,13 +202,13 @@ def password_change(request):
     """Change password form page."""
     if request.method == 'POST':
         form = PasswordChangeForm(user=request.user, data=request.POST)
-        if form.is_valid():
+        if not form.is_valid():
+            return {'status': 'error',
+                    'errors': dict(form.errors.iteritems())}
+        else:
             form.save()
-            return {'pw_change_complete': True}
-    else:
-        form = PasswordChangeForm(user=request.user)
-
-    return jingo.render(request, 'users/desktop/pw_change.html', {'form': form})
+            return {'status': 'success'}
+    return HttpResponseBadRequest()
 
 
 @login_required

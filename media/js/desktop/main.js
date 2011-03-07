@@ -102,11 +102,6 @@ $(document).ready(function() {
        $('#delete-account').delay(160).fadeIn(150); 
     });
 
-    $('#change-password .left-button').click(function() {
-       $('#change-password').fadeOut(150);
-       $('#your-account').delay(160).fadeIn(150);
-    });
-
     $('#change-email .left-button').click(function() {
        $('#change-email').fadeOut(150);
        $('#your-account').delay(160).fadeIn(150);
