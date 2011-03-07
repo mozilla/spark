@@ -49,9 +49,8 @@
     {% endif %}
 	    
 	</head>
-	<!-- Language class must be dynamically applied to the body in order to create language-specific CSS rules -->
+	
 	<body id="{{ body_id }}" class="lang-en {{ body_class }}">
-	<!-- We could also use real HTML5 tags by using HTML5Shiv . See Boilterplate for more info -->
 		{% block content %}{% endblock %}
 
 		{{ js('common') }}
