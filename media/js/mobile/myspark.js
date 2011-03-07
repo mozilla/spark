@@ -4,6 +4,11 @@
 		w = $('#wrapper').width(),
 		shapes = [];
 
+    window.onorientationchange = function() {
+        w = $('#wrapper').width();
+        canvas.width = w;
+    }
+
     canvas.height = h;
     canvas.width = w;
 
