@@ -106,11 +106,28 @@ def register(request):
 def change_email(request):
     """Change user's email"""
     form = EmailChangeForm(request.user, request.POST)
-    u = request.user
-    if form.is_valid() and u.email != form.cleaned_data['new_email']:
-        return {'new_email': form.cleaned_data['new_email']}
-        
-    return {'email': request.user.email}
+    if not form.is_valid():
+        return {'status': 'error',
+                'errors': dict(form.errors.iteritems())}
+    else:
+        request.user.email = form.cleaned_data['new_email']
+        request.user.save()
+        return {'status': 'success'}
+
+
+@login_required
+@post_required
+@ajax_required
+@json_view
+def password_change(request):
+    """Change password form page."""
+    form = PasswordChangeForm(user=request.user, data=request.POST)
+    if not form.is_valid():
+        return {'status': 'error',
+                'errors': dict(form.errors.iteritems())}
+    else:
+        form.save()
+        return {'status': 'success'}
 
 
 @json_view
@@ -194,27 +211,6 @@ def password_reset_complete(request):
     """Password reset complete.
     """
     return jingo.render(request, 'users/mobile/pw_reset_complete.html')
-
-
-@login_required
-@json_view
-def password_change(request):
-    """Change password form page."""
-    if request.method == 'POST':
-        form = PasswordChangeForm(user=request.user, data=request.POST)
-        if not form.is_valid():
-            return {'status': 'error',
-                    'errors': dict(form.errors.iteritems())}
-        else:
-            form.save()
-            return {'status': 'success'}
-    return HttpResponseBadRequest()
-
-
-@login_required
-def password_change_complete(request):
-    """Change password complete page."""
-    return jingo.render(request, 'users/desktop/pw_change_complete.html')
 
 
 @login_required

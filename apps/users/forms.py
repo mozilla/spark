@@ -149,22 +149,31 @@ class EmailChangeForm(forms.Form):
     password = forms.CharField(error_messages={'required': PASSWD_CURRENT})
     new_email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED,
                                                  'invalid': EMAIL_INVALID})
+    confirm_new_email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED,
+                                                         'invalid': EMAIL_INVALID})
 
     def __init__(self, user, *args, **kwargs):
         super(EmailChangeForm, self).__init__(*args, **kwargs)
         self.user = user
 
-    def clean_new_email(self):
-        password = self.cleaned_data['password']
-        new_email = self.cleaned_data['new_email']
+    def clean(self):
+        password = self.cleaned_data.get('password')
+        new_email = self.cleaned_data.get('new_email')
+        confirm_new_email = self.cleaned_data.get('confirm_new_email')
+        
         if not self.user.check_password(password):
             raise forms.ValidationError(PASSWD_CURRENT)
+            
         if self.user.email == new_email:
             raise forms.ValidationError(_('This is your current email address.'))
+        
+        if new_email != confirm_new_email:
+            raise forms.ValidationError(EMAIL_INVALID)
+        
         if User.objects.filter(email=new_email).exists():
             raise forms.ValidationError(_('A user with that email address '
                                           'already exists.'))
-        return new_email
+        return self.cleaned_data
 
 
 class PasswordChangeForm(auth_forms.PasswordChangeForm):
