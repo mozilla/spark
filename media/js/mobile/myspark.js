@@ -26,7 +26,7 @@
 
          	ctx.save();
 		    	ctx.fillStyle = "rgba("+shape.rgb+", 0.6)";
-		        ctx.translate((w/2) + (posx * i), (h - 30) + (posy * i));
+		        ctx.translate((w/2) + (posx * shape.moveFactor), (h - 30) + (posy * shape.moveFactor));
 		        ctx.rotate(deg2rad(shape.angle));
 		        ctx.beginPath();
 		        ctx.moveTo(0, 0);
@@ -39,6 +39,8 @@
 	function update() {
         for(var i = 0, nb = shapes.length; i < nb; i += 1) {
             var s = shapes[i];
+            
+            s.moveFactor = 1-(i/6);
             
             if(Math.abs(s.angle) > (s.maxAngle - s.arcAngle) || Math.abs(s.angle) < s.minAngle) {
                 s.angleStep *= -1;
@@ -89,9 +91,9 @@
 	function setPosition(o) {
 	    if(window.innerHeight > window.innerWidth) {
 	     	posx = o.x * 100;
-			posy = o.y * 100;   
+			posy = (o.y - 0.6) * 100;
 	    } else {
-	        posy = o.x * -100;
+	        posy = (o.x - 0.6) * -100;
 			posx = o.y * 100;
 	    }
         // Uncomment below to change the idle vertical state of the spark 
