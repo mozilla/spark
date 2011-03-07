@@ -652,10 +652,6 @@ li.badge:active, li.badge.current {
 
 /* My Spark */
 
-#spark-wrapper.fpo {
-    margin-top:80px;
-}
-
 #myspark #header {
     margin-top:20px;
     border-top:3px solid #ffd40d;
@@ -667,26 +663,8 @@ li.badge:active, li.badge.current {
     padding-top:10px;
 }
 
-div.shape {
-    height:150px;
-    width:300px;
-    margin-bottom:-150px;
-    -moz-transform-origin:center bottom;
-    position:relative;
-    left:0px;
-}
-
-#clipping {
-    height:150px;
-    width:auto;
-    overflow:hidden;
-    margin:0px auto 30px;
-    width:288px;
-}
-
-#spark {
-    position:relative;
-    margin-top:-30px;
+#myspark #content {
+    overflow:visible;
 }
 
 /* Home */

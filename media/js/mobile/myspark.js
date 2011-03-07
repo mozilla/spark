@@ -1,6 +1,6 @@
 	var canvas = document.getElementById('spark'),
 	    ctx = canvas.getContext("2d"),
-	    h = 300,
+	    h = 200,
 		w = $('#wrapper').width(),
 		shapes = [];
 
@@ -18,7 +18,7 @@
 	function drawShapes(shapes, multiplier) {                    
         
         if(multiplier < 1) {
-            shapes.splice(6);
+            //shapes.splice(6);
         }
         
         for(i = 0, nb = shapes.length; i < nb; i += 1) {
@@ -26,7 +26,7 @@
 
          	ctx.save();
 		    	ctx.fillStyle = "rgba("+shape.rgb+", 0.6)";
-		        ctx.translate(w/2, 150);
+		        ctx.translate(w/2, h - 30);
 		        ctx.rotate(deg2rad(shape.angle));
 		        ctx.beginPath();
 		        ctx.moveTo(0, 0);
