@@ -163,9 +163,11 @@ MINIFY_BUNDLES = {
             'js/libs/DD_belatedPNG_0.0.8a.min.js',
         ),
         'desktop': (
-            'js/desktop/main.js',
             'js/libs/jquery.form.js',
-            'js/desktop/popups.js',
+            'js/libs/placeholder.js',
+            'js/desktop/main.js',
+            'js/desktop/popupforms.js',
+            'js/desktop/popups-loggedout.js',
         ),
         'dashboard': (
             'js/desktop/dashboard.js',

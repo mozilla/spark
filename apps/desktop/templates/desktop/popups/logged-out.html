@@ -35,10 +35,10 @@
             {% endtrans %}
         </p>
         <hr>
-        <form id="recover" method="post" accept-charset="utf-8">
+        <form id="recover" action="{{ url('users.pw_reset') }}" method="post" accept-charset="utf-8">
+            {{ csrf() }}
             <fieldset id="account" class="section">
-                <!-- <span class="error">Oops! There was a problem.</span> -->
-                <div class="input-wrapper"> <!-- add class error to this div to enable red color -->
+                <div class="input-wrapper" id="recover-email">
                     <input tabindex="1" type="email" name="email" value="" placeholder="{{ _('Email address') }}">
                 </div>
             </fieldset>

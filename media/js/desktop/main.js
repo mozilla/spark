@@ -1,77 +1,76 @@
-$(document).ready(function() {
+// Modal popup
 
-    // Modal popup
+// sets the dimensions of the mask
+var initMask = function() {
+    windowHeight = $(document).height();
+    windowWidth = $(window).width();
 
-    // sets the dimensions of the mask
-    var initMask = function() {
-        windowHeight = $(document).height();
-        windowWidth = $(window).width();
+    $('#mask').css({'width' : windowWidth, 'height' : windowHeight});
+    $('#mask-noclick').css({'width' : windowWidth, 'height' : windowHeight});
+};
+
+var showPopup = function() {
+    // sets negative margins to the modal popup in order to center it on screen
+    $('#popup').css( {
+        'marginLeft' : -(($('#popup').width() + 52)/2),
+        'marginTop' : -(($('#popup').height() + 42)/2)
+    });
     
-        $('#mask').css({'width' : windowWidth, 'height' : windowHeight});
-        $('#mask-noclick').css({'width' : windowWidth, 'height' : windowHeight});
-    };
+    $('#mask').fadeIn(200);
+    $('#popup').fadeIn(200);
+};
 
-    var showPopup = function() {
-        // sets negative margins to the modal popup in order to center it on screen
-        $('#popup').css( {
-            'marginLeft' : -(($('#popup').width() + 52)/2),
-            'marginTop' : -(($('#popup').height() + 42)/2)
-        });
-        
-        $('#mask').fadeIn(200);
-        $('#popup').fadeIn(200);
-    };
+var hidePopup = function() {
+    $('#mask').fadeOut(200);
+    $('#popup').fadeOut(200);
+    setTimeout(function() {
+        $('#popup').children().hide();
+    }, 200)
+};
 
-    var hidePopup = function() {
-        $('#mask').fadeOut(200);
-        $('#popup').fadeOut(200);
-        setTimeout(function() {
-            $('#popup').children().hide();
-        }, 200)
-    };
+var showResetPopup = function() {
+    // sets negative margins to the modal popup in order to center it on screen
+    $('#popup').css( {
+        'marginLeft' : -(($('#popup').width() + 52)/2),
+        'marginTop' : -(($('#popup').height() + 42)/2)
+    });
+    
+    $('#mask-noclick').fadeIn(200);
+    $('#popup').fadeIn(200);
+};
 
-    var showResetPopup = function() {
-        // sets negative margins to the modal popup in order to center it on screen
-        $('#popup').css( {
-            'marginLeft' : -(($('#popup').width() + 52)/2),
-            'marginTop' : -(($('#popup').height() + 42)/2)
-        });
-        
-        $('#mask-noclick').fadeIn(200);
-        $('#popup').fadeIn(200);
-    };
+var showResetComplete = function() {
+    $('#popup').css( {
+        'marginLeft' : -(($('#popup').width() + 52)/2),
+        'marginTop' : -(($('#popup').height() + 42)/2)
+    });
+    
+    $('#mask-noclick').hide();
+    $('#mask').show();
+    $('#password-confirm').fadeOut(150);
+    $('#password-complete').delay(160).fadeIn(150);
+};
 
-    var showResetComplete = function() {
-        $('#popup').css( {
-            'marginLeft' : -(($('#popup').width() + 52)/2),
-            'marginTop' : -(($('#popup').height() + 42)/2)
-        });
-        
-        $('#mask-noclick').hide();
-        $('#mask').show();
-        $('#password-confirm').fadeOut(150);
-        $('#password-complete').delay(160).fadeIn(150);
-    };
+var hideResetPopup = function() {
+    $('#mask').fadeOut(200);
+    $('#popup').fadeOut(200);
+};
 
-    var hideResetPopup = function() {
-        $('#mask').fadeOut(200);
-        $('#popup').fadeOut(200);
-    };
-
+$(document).ready(function() {
     // Code to execute to display the Reset Popup
     // $('#password-complete').hide();
     // showResetPopup();
 
     // displays the sign-in modal popup
     $('.popup-trigger').click(function() {
-       $('#sign-in').show();
-       showPopup();
+        $('#sign-in').show();
+        showPopup();
     });
     
     // displays the account manager popup
     $('#edit-account a').click(function() {
-       $('#your-account').show();
-       showPopup(); 
+        $('#your-account').show();
+        showPopup(); 
     });
 
     // hides the sign-in modal popup (and resets it to sign-in state)
@@ -81,29 +80,7 @@ $(document).ready(function() {
 
     // All elements with the class 'close' will close the popup when clicked
     $('#popup .close').click(function() {
-       hidePopup(); 
-    });
-
-    // triggers password-recovery when forgot-password link is clicked
-    $('#forgot-password').click(function() {
-       $('#sign-in').fadeOut(150);
-       $('#password-recovery').delay(160).fadeIn(150);
-    });
-    
-    $('#sign-in p.download a').click(function() {
-       hidePopup(); 
-    });
-    
-    // goes back to sign in when start over button is clicked
-    $('#password-recovery .left-button').click(function() {
-       $('#password-recovery').fadeOut(150);
-       $('#sign-in').delay(160).fadeIn(150); 
-    });
-
-    // test workflow 
-    $('#password-recovery input').click(function() {
-       $('#password-recovery').fadeOut(150);
-       $('#success').delay(160).fadeIn(150); 
+        hidePopup();
     });
 
     //Your account links

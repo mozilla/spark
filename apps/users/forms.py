@@ -77,11 +77,15 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
     """ Redefines AuthenticationForm to provide a new error message
         when authentication has failed. 
     """
-    def clean(self):
-       username = self.cleaned_data.get('username')
-       password = self.cleaned_data.get('password')
+    username = forms.CharField(error_messages={'invalid': USERNAME_INVALID,
+                                            'required': USERNAME_REQUIRED})
+    password = forms.CharField(error_messages={'required': PASSWD_REQUIRED})
 
-       if username and password:
+    def clean(self):
+        username = self.cleaned_data.get('username')
+        password = self.cleaned_data.get('password')
+
+        if username and password:
            self.user_cache = authenticate(username=username,
                                           password=password)
            if self.user_cache is None:
@@ -90,13 +94,29 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
            elif not self.user_cache.is_active:
                raise forms.ValidationError(_('This account is inactive.'))
 
-       if self.request:
+        if self.request:
            if not self.request.session.test_cookie_worked():
                raise forms.ValidationError(
                    _("Your Web browser doesn't appear to have cookies "
                      "enabled. Cookies are required for logging in."))
 
-       return self.cleaned_data
+        return self.cleaned_data
+
+
+class PasswordResetForm(auth_forms.PasswordResetForm):
+    """ Redefines PasswordResetForm to customize validation and error messages.
+    """
+    email = forms.CharField(error_messages={'required': EMAIL_REQUIRED})
+    
+    def clean_email(self):
+        try:
+            super(PasswordResetForm, self).clean_email()
+        except forms.ValidationError, e:
+            # Don't leak existence of email addresses 
+            # (No error if wrong email address)
+            pass
+        
+        return self.cleaned_data
 
 
 class EmailConfirmationForm(forms.Form):

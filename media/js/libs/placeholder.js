@@ -1,78 +1,3 @@
-$(document).ready(function() {
-    popupForm('login', function(fieldname) {
-        if(fieldname === 'all') {
-            $('#login-password input').val('').trigger('focusout');
-        }
-    }, function(data) {
-        setTimeout(function() {
-            window.location.replace(data.next);
-        }, 200);
-    });
-    
-	var $inputs = $('input[placeholder]');
-
-    if (!Modernizr.input.placeholder){
-        $inputs.addClass('placeholder');
-    }
-
-	$inputs.addPlaceholder(); 
-    $('span.placeholder').click(function() {
-        $(this).prev('input').focus();
-    })
-    
-    $inputs.focus(function() {
-       $(this).next('span.placeholder').hide(); 
-    });
-});
-
-var popupForm = function(formId, errorCallback, successCallback) {
-    var $form = $('#'+formId),
-        $submitButton = $form.find('button'),
-    
-        beforeForm = function() {
-        	//$submitButton.attr("disabled", "disabled");
-        	$('.errorlist').remove();
-        },
-
-        showError = function(msg) {
-            $form.find('fieldset').prepend('<ul class="errorlist"><li>'+msg+'</li></ul>');
-        },
-
-        showFieldError = function(fieldname, msg) {
-            var $fieldWrapper = $('#'+formId+'-'+fieldname);
-            $fieldWrapper.after('<ul class="errorlist"><li>'+msg+'</li></ul>');
-            $fieldWrapper.find('input').addClass('error');
-        },
-
-        processResponse = function(data) {
-            if (data) {
-        		if(data.status === 'error') {
-        			$.each(data.errors, function(fieldname, errmsg) {
-        			    if(fieldname === '__all__') {
-        			        showError(errmsg[0]);
-        			        errorCallback('all');
-        			    } else {
-            		        showFieldError(fieldname, errmsg[0]);
-            		        errorCallback(fieldname);
-        			    }
-        			});
-
-		            $submitButton.removeAttr("disabled");
-        		} else if(data.status === 'success') {
-        		    successCallback(data);
-        		}
-            }
-        };
-
-    options = {
-        dataType: 'json',
-        success: processResponse,
-        beforeSubmit: beforeForm
-    };
-    
-    $form.ajaxForm(options);
-};
-
 // placeholder fallback script
 var testinput = document.createElement('input');
 	$.extend($.support, { placeholder: !!('placeholder' in testinput) });
@@ -172,3 +97,20 @@ var testinput = document.createElement('input');
 		}
 	};
 
+
+function initPlaceholders() {
+    var $inputs = $('input[placeholder]');
+
+    if (!Modernizr.input.placeholder) {
+        $inputs.addClass('placeholder');
+    }
+
+    $inputs.addPlaceholder();
+    $('span.placeholder').click(function() {
+        $(this).prev('input').focus();
+    });
+
+    $inputs.focus(function() {
+       $(this).next('span.placeholder').hide();
+    });
+}
