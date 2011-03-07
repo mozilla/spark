@@ -185,6 +185,9 @@ MINIFY_BUNDLES = {
         ),
         'customforms': (
             'js/mobile/customforms.js',
+        ),
+        'myspark': (
+            'js/mobile/myspark.js',
         )
     }
 }

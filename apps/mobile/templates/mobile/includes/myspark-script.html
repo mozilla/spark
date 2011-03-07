@@ -1,0 +1,11 @@
+<script type="text/javascript">
+$(document).ready(function() {
+	initMenu();
+});
+
+setInterval(function() {
+    update();
+    ctx.clearRect(0, 0, w, h);
+    drawShapes(shapes, 1);
+}, 1000 / 50);
+</script>
