@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 
 from spark.decorators import login_required
 
-from users.models import User
+from users.models import User, Profile
 
 import jingo
 
@@ -26,7 +26,8 @@ def home(request):
 def user(request, username):
     d = datetime(2011, 2, 18)
     user_profile = get_object_or_404(Profile, user__username=username)
-    return jingo.render(request, 'desktop/user.html', { 'profile': user_profile,
+    return jingo.render(request, 'desktop/user.html', { 'username': username,
+                                                        'profile': request.user.profile,
                                                         'logged_in': request.user.is_authenticated(),
                                                         'is_user_page': True,
                                                         'most_recent_share': d })

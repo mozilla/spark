@@ -1,6 +1,6 @@
 <ul id="main-menu">
     {% if logged_in %}
-	<li><a href="#download">{{ _('your Spark') }}</a>
+	<li><a href="{{ url('desktop.home')}}">{{ _('your Spark') }}</a>
 		<span class="subtitle">{{ _('your dashboard') }}</span>
 	</li>
     {% else %}

@@ -65,6 +65,24 @@ class Profile(models.Model):
             })
         return badges
     
+    @property
+    def parent_username(self):
+        node = self.user.node
+        if node:
+            parent = node.parent
+            if parent:
+                return parent.user.username
+        return None
+    
+    @property
+    def home_location(self):
+        from geo.countries import countries
+        if self.country_code:
+            country = countries[self.country_code]
+            return '%s, %s' % (self.city_name, country)
+        else:
+            return ''
+    
     
     @property
     def challenge_info(self):

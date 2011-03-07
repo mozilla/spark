@@ -7,9 +7,9 @@
 	</div>
 	<div id="user-details">
 	    {# L10n: Name of the parent user who shared Spark with you via a link/QR code. #}
-	    <span id="parent-user">{{ _('Spark started with: <span>{parent}</span>')|fe(parent='Alice123') }}</span>
+	    <span id="parent-user">{{ _('Spark started with: <span>{parent}</span>')|fe(parent=profile.parent_username) }}</span>
 	    {# L10n: City and country of the logged-in user. #}
-	    <span id="user-location">{{ _('Home location: <span>{location}</span>')|fe(location='New York, United States') }}</span>
+	    <span id="user-location">{{ _('Home location: <span>{location}</span>')|fe(location=profile.home_location) }}</span>
 	    <span id="edit-account">{{ _('Edit <a href="#">your account ></a>')|safe }}</span>
 	</div>
 </div><!-- end main-info -->

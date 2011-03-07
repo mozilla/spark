@@ -68,9 +68,10 @@
     <div id="your-account">
         <h3>{{ _('Your Account') }}</h3>
         <div id="account-details" class="sans">
-            <span>{{ _('Logged in as: <span>{username}</span>')|fe(username='Foxybarbarian') }}</span>
-            <span>{{ _('Email Address: <span>{email}</span>')|fe(email='name@gmail.com') }}</span>
-            <span>{{ _('Joined Spark: <span>{date_joined}</span>')|fe(date_joined='December 31, 2011') }}</span>
+            <span>{{ _('Logged in as: <span>{username}</span>')|fe(username=username) }}</span>
+            <span>{{ _('Email Address: <span>{email}</span>')|fe(email=request.user.email) }}</span>
+            {% set date_joined = datetimeformat(request.user.date_joined, format='date') %}
+            <span>{{ _('Joined Spark: <span>{date_joined}</span>')|fe(date_joined=date_joined ) }}</span>
         </div>
         <hr>
         <a href="#" class="button change-password">{{ _('Change password') }}</a>

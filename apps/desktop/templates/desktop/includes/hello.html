@@ -1,4 +1,4 @@
-{{ _('Hello, {username}!')|f(username=username) }}
+{{ _('Hello, {username}!')|f(username=request.user.username) }}
 <span>
     {# L10n: This appears just after: "Hello, {username}!" #}
     {{ _('Not you?') }}
