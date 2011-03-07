@@ -59,7 +59,7 @@ def login(request, mobile=False):
                         'errors': dict(form.errors.iteritems())}
             else:
                 return {'status': 'success',
-                        'next': reverse('desktop.dashboard')}
+                        'next': reverse('desktop.home')}
 
         return HttpResponseBadRequest()
 

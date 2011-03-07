@@ -10,18 +10,17 @@ import jingo
 
 
 def home(request):
-    return jingo.render(request, 'desktop/home.html', { 'is_homepage': True })
-
-
-@login_required
-def dashboard(request):
-    d = datetime(2011, 2, 18)
-    profile = request.user.profile
-    return jingo.render(request, 'desktop/dashboard.html', { 'logged_in': True,
-                                                             'profile': profile,
-                                                             'most_recent_share': d,
-                                                             'badges': profile.badges,
-                                                             'levels': profile.challenge_info })
+    if request.user.is_authenticated():
+        d = datetime(2011, 2, 18)
+        profile = request.user.profile
+        return jingo.render(request, 'desktop/dashboard.html', { 'username': profile.user.username,
+                                                                 'logged_in': True,
+                                                                 'profile': profile,
+                                                                 'most_recent_share': d,
+                                                                 'badges': profile.badges,
+                                                                 'levels': profile.challenge_info })
+    else:
+        return jingo.render(request, 'desktop/home.html', { 'is_homepage': True })
 
 
 def user(request, username):

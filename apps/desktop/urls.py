@@ -6,7 +6,6 @@ from . import views
 urlpatterns = patterns('',
     url(r'^$', redirect_to, {'url': 'desktop.home'}),
     url(r'^home$', views.home, name='desktop.home'),
-    url(r'^dashboard$', views.dashboard, name='desktop.dashboard'),
     url(r'^user/(?P<username>[\w\d]+)$', views.user, name='desktop.user'),
     url(r'^global$', views.visualization, name='desktop.visualization'),
     

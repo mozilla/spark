@@ -1,6 +1,6 @@
-{{ _('Hello, {username}!')|f(username='FoxyBarbarian') }}
+{{ _('Hello, {username}!')|f(username=username) }}
 <span>
     {# L10n: This appears just after: "Hello, {username}!" #}
     {{ _('Not you?') }}
-    <a href="#">{{ _('Sign out >') }}</a>
+    <a href="{{ url('users.logout') }}">{{ _('Sign out >') }}</a>
 </span>

@@ -3,6 +3,10 @@ $(document).ready(function() {
         if(fieldname === 'all') {
             $('#login-password input').val('').trigger('focusout');
         }
+    }, function(data) {
+        setTimeout(function() {
+            window.location.replace(data.next);
+        }, 200);
     });
     
 	var $inputs = $('input[placeholder]');
@@ -19,10 +23,9 @@ $(document).ready(function() {
     $inputs.focus(function() {
        $(this).next('span.placeholder').hide(); 
     });
-    
 });
 
-var popupForm = function(formId, errorCallback) {
+var popupForm = function(formId, errorCallback, successCallback) {
     var $form = $('#'+formId),
         $submitButton = $form.find('button'),
     
@@ -56,9 +59,7 @@ var popupForm = function(formId, errorCallback) {
 
 		            $submitButton.removeAttr("disabled");
         		} else if(data.status === 'success') {
-        		    setTimeout(function() {
-                        window.location.replace(data.next);
-                    }, 200);
+        		    successCallback(data);
         		}
             }
         };
