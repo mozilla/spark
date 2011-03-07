@@ -45,3 +45,26 @@ def approximate_city(profile, radius):
     if nearest:
         profile.major_city = City.objects.get(pk=nearest)
         profile.save()
+
+
+def get_ua(request):
+    return request.META.get('HTTP_USER_AGENT', '')
+
+
+def is_iphone(request):
+    return 'iPhone' in get_ua(request)
+
+
+def is_android_non_firefox(request):
+    ua = get_ua(request)
+    if 'Android' in ua and not 'Firefox' in ua:
+        return True
+    return False
+
+
+def is_firefox_mobile(request):
+    ua = get_ua(request)
+    if 'Android' in ua and 'Firefox' in ua:
+        return True
+    return False
+
