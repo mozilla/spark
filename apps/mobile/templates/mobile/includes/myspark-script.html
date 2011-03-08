@@ -3,15 +3,8 @@ $(document).ready(function() {
 	initMenu();
 });
 
-{% set level=2 %}
-var level = {{ level }};
+{% set level=5 %}
 
-initShapes(level);
-initMove();
+initSpark({{ level }});
 
-setInterval(function() {
-    update();
-    ctx.clearRect(0, 0, w, h);
-    drawShapes(shapes, posx, posy, level);
-}, 1000 / 50);
 </script>

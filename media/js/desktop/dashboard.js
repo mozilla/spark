@@ -131,13 +131,14 @@ var initSpark = function (level) {
                     { arcAngle: 120, angle: -0, angleStep: -0.3, minAngle: 180, maxAngle: -20, rgb: '255, 0, 60', scale: 1, scaleStep: 0.01, minScale: 0.95, maxScale: 1 },
                     { arcAngle: 155, angle: -10, angleStep: -0.5, minAngle: -30, maxAngle: 170, rgb: '255, 0, 60', scale: 0.9, scaleStep: 0.02, minScale: 0.65, maxScale: 0.9 },
                     { arcAngle: 45, angle: -77, angleStep: -2, minAngle: 50, maxAngle: 120, rgb: '255, 155, 0', scale: 0.7, scaleStep: 0.01, minScale: 0.5, maxScale: 0.7 },
-                    { arcAngle: 65, angle: -25, angleStep: -1.5, minAngle: -10, maxAngle: 90, rgb: '255, 155, 0', scale: 0.85, scaleStep: 0.018, minScale: 0.7, maxScale: 0.9 },
-                    { arcAngle: 95, angle: -15, angleStep: -0.4, minAngle: -20, maxAngle: 145, rgb: '255, 155, 0', scale: 0.7, scaleStep: 0.015, minScale: 0.65, maxScale: 0.85 },
+                    { arcAngle: 65, angle: -95, angleStep: -1.5, minAngle: 80, maxAngle: 200, rgb: '255, 155, 0', scale: 0.6, scaleStep: 0.018, minScale: 0.5, maxScale: 0.6 },
+                    { arcAngle: 95, angle: 0, angleStep: -2, minAngle: -5, maxAngle: 110, rgb: '255, 155, 0', scale: 0.7, scaleStep: 0.015, minScale: 0.65, maxScale: 0.85 },
                     { arcAngle: 45, angle: -45, angleStep: -1.1, minAngle: 40, maxAngle: 140, rgb: '255, 155, 0', scale: 0.75, scaleStep: 0.01, minScale: 0.55, maxScale: 0.75 },
                     { arcAngle: 55, angle: -90, angleStep: -0.9, minAngle: 90, maxAngle: 170, rgb: '255, 255, 0', scale: 0.55, scaleStep: 0.01, minScale: 0.4, maxScale: 0.65 },
                     { arcAngle: 35, angle: -120, angleStep: -1.2, minAngle: 100, maxAngle: 180, rgb: '255, 255, 0', scale: 0.4, scaleStep: 0.015, minScale: 0.3, maxScale: 0.5 },
                     { arcAngle: 30, angle: -40, angleStep: -1.3, minAngle: 15, maxAngle: 75, rgb: '255, 255, 0', scale: 0.4, scaleStep: 0.018, minScale: 0.3, maxScale: 0.5 },
-                    { arcAngle: 90, angle: -0, angleStep: -0.005, minAngle: 0, maxAngle: 95, rgb: '255, 255, 0', scale: 0.25, scaleStep: 0.02, minScale: 0.15, maxScale: 0.25 } ];
+                    { arcAngle: 90, angle: -0, angleStep: -0.005, minAngle: 0, maxAngle: 95, rgb: '255, 255, 0', scale: 0.25, scaleStep: 0.02, minScale: 0.15, maxScale: 0.25 } 
+                    ];
     };
     
     initShapes();
