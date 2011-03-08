@@ -869,23 +869,23 @@ div.section-header p {
     height:173px;
 }
 
-.placeholder.one {
+.placeholder.level-1 {
     background:url('../img/ie/your-spark-1.png') no-repeat center bottom;
 }
 
-.placeholder.two {
+.placeholder.level-2 {
     background:url('../img/ie/your-spark-2.png') no-repeat center bottom;
 }
 
-.placeholder.three {
+.placeholder.level-3 {
     background:url('../img/ie/your-spark-3.png') no-repeat center bottom;
 }
 
-.placeholder.four {
+.placeholder.level-4 {
     background:url('../img/ie/your-spark-4.png') no-repeat center bottom;
 }
 
-.placeholder.five {
+.placeholder.level-5 {
     background:url('../img/ie/your-spark-5.png') no-repeat center bottom;
 }
 

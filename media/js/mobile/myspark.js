@@ -26,7 +26,9 @@
         shapes.push(shape);
     }
 
-	function drawShapes(shapes, posx, posy, multiplier) {
+	function drawShapes(shapes, posx, posy, level) {
+        
+        var multiplier = 1 + (level / 10);
         
         if(multiplier < 1) {
             //shapes.splice(6);
@@ -69,7 +71,10 @@
         }
 	}
 
-    function initShapes(multiplier) {
+    function initShapes(level) {
+        
+        var multiplier = 1 + (level / 10);
+        
         createShape({ arcAngle: 100, angle: -80, angleStep: -0.1, minAngle: 80, maxAngle: 190, rgb: '255, 0, 60', scale: 0.85, scaleStep: 0.01, minScale: 0.8, maxScale: 0.95 });
         createShape({ arcAngle: 35, angle: -120, angleStep: -0.3, minAngle: 70, maxAngle: 160, rgb: '255, 0, 60', scale: 0.95, scaleStep: 0.015, minScale: 0.9, maxScale: 1.1 });
         createShape({ arcAngle: 155, angle: -10, angleStep: -0.5, minAngle: -30, maxAngle: 170, rgb: '255, 0, 60', scale: 0.8, scaleStep: 0.02, minScale: 0.65, maxScale: 0.9 });

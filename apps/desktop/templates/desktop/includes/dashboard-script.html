@@ -30,18 +30,18 @@ $(document).ready(function() {
    
    initShareHistory([30,0,120,20,40, 15, 10, 20, 40, 80, 40, 20, 39, 23, 32]);
    
-   {% set multiplier=1 %}
-   var multiplier = {{ multiplier }};
+   {% set level=5 %}
+   var level = {{ level }};
 
-   initShapes(multiplier);
+   initShapes(level);
    
    update()
-   drawShapes(shapes, multiplier);
+   drawShapes(shapes, level);
 
    // setInterval(function() {
    //     update();
    //     ctx.clearRect(0, 0, w, h);
-   //     drawShapes(shapes, multiplier);
+   //     drawShapes(shapes, level);
    // }, 1000 / 30);
    
 });

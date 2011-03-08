@@ -62,7 +62,9 @@ function createShape(shape) {
     shapes.push(shape);
 }
 
-function drawShapes(shapes, multiplier) {
+function drawShapes(shapes, level) {
+    
+    var multiplier = 1 + (level / 10);
     
     if(multiplier < 1) {
         //shapes.splice(6);
