@@ -23,7 +23,6 @@ from spark.tests import post
 
 from users.models import Profile
 from users.tests import TestCaseBase
-from users.views import _clean_next_url
 
 
 class LoginTests(TestCaseBase):
@@ -85,17 +84,6 @@ class LoginTests(TestCaseBase):
                                      'next': next})
         eq_(302, response.status_code)
         eq_('http://testserver' + next, response['location'])
-
-    @mock.patch_object(Site.objects, 'get_current')
-    def test_clean_url(self, get_current):
-        '''Verify that protocol and domain get removed.'''
-        get_current.return_value.domain = 'su.mo.com'
-        r = RequestFactory().post('/users/login',
-                                  {'next': 'https://su.mo.com/kb/new?f=b'})
-        eq_('/kb/new?f=b', _clean_next_url(r))
-        r = RequestFactory().post('/users/login',
-                                  {'next': 'http://su.mo.com/kb/new'})
-        eq_('/kb/new', _clean_next_url(r))
 
     @mock.patch_object(Site.objects, 'get_current')
     def test_login_invalid_next_parameter(self, get_current):

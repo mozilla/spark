@@ -16,7 +16,7 @@ from django.utils.http import base36_to_int
 
 import jingo
 
-from spark.urlresolvers import reverse
+from spark.urlresolvers import reverse, clean_next_url
 from spark.helpers import url
 
 from spark.decorators import (ssl_required, logout_required, login_required, 
@@ -45,7 +45,7 @@ def login(request, mobile=False):
     form = handle_login(request)
     
     if mobile:
-        next_url = _clean_next_url(request) or reverse('mobile.home')
+        next_url = clean_next_url(request) or reverse('mobile.home')
         
         if request.user.is_authenticated():
             return HttpResponseRedirect(next_url)
@@ -68,7 +68,7 @@ def login(request, mobile=False):
 def logout(request, mobile=False):
     """Log the user out."""
     auth.logout(request)
-    next_url = _clean_next_url(request) if 'next' in request.GET else ''
+    next_url = clean_next_url(request) if 'next' in request.GET else ''
     home_view = 'mobile.home' if mobile else 'desktop.home'
     return HttpResponseRedirect(next_url or reverse(home_view))
 
@@ -229,30 +229,3 @@ def password_reset_complete(request):
     """
     return jingo.render(request, 'users/mobile/pw_reset_complete.html')
 
-
-def _clean_next_url(request):
-    if 'next' in request.POST:
-        url = request.POST.get('next')
-    elif 'next' in request.GET:
-        url = request.GET.get('next')
-    else:
-        url = request.META.get('HTTP_REFERER')
-
-    if url:
-        parsed_url = urlparse.urlparse(url)
-        # Don't redirect outside of Spark.
-        # Don't include protocol+domain, so if we are https we stay that way.
-        if parsed_url.scheme:
-            site_domain = Site.objects.get_current().domain
-            url_domain = parsed_url.netloc
-            if site_domain != url_domain:
-                url = None
-            else:
-                url = u'?'.join([getattr(parsed_url, x) for x in
-                                ('path', 'query') if getattr(parsed_url, x)])
-
-        # Don't redirect right back to login or logout page
-        if parsed_url.path in [settings.LOGIN_URL, settings.LOGOUT_URL]:
-            url = None
-
-    return url

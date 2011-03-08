@@ -1,10 +1,11 @@
 import threading
+import urlparse
 
 from django.conf import settings
 from django.core.handlers.wsgi import WSGIRequest
 from django.core.urlresolvers import reverse as django_reverse
 from django.utils.translation.trans_real import parse_accept_lang_header
-
+from django.contrib.sites.models import Site
 
 # Thread-local storage for URL prefixes. Access with (get|set)_url_prefix.
 _locals = threading.local()
@@ -133,3 +134,40 @@ class Prefixer(object):
         url_parts.append(path)
 
         return '/'.join(url_parts)
+
+
+def clean_next_url(request):
+    if 'next' in request.POST:
+        url = request.POST.get('next')
+    elif 'next' in request.GET:
+        url = request.GET.get('next')
+    else:
+        url = request.META.get('HTTP_REFERER')
+
+    if url:
+        parsed_url = urlparse.urlparse(url)
+        site_domain = Site.objects.get_current().domain
+        next_domain = parsed_url.netloc
+
+        if next_domain:
+            if site_domain != next_domain:
+                # Don't let absolute or protocol relative URLs redirect outside of Spark.
+                return None
+            else:
+                # Don't include protocol+domain, so if we are https we stay that way.
+                url = u'?'.join([getattr(parsed_url, x) for x in
+                                ('path', 'query') if getattr(parsed_url, x)])
+
+        # Prepend a '/' to the url if not present. We only want relative URLs.
+        if not parsed_url.scheme and not url.startswith('/'):
+            url = '/' + url
+
+        # Don't redirect right back to login or logout page
+        auth_urls = [reverse('users.mobile_login'), reverse('users.login'), 
+                     reverse('users.logout'), reverse('users.mobile_logout')]
+        if parsed_url.path in auth_urls:
+            url = None
+
+    return url
+
+
