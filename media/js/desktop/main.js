@@ -1,59 +1,54 @@
 // Modal popup
+var $popup = $('#popup'),
+    $mask = $('#mask');
 
 // sets the dimensions of the mask
 var initMask = function() {
     windowHeight = $(document).height();
     windowWidth = $(window).width();
 
-    $('#mask').css({'width' : windowWidth, 'height' : windowHeight});
+    $mask.css({'width' : windowWidth, 'height' : windowHeight});
     $('#mask-noclick').css({'width' : windowWidth, 'height' : windowHeight});
 };
 
+var resizePopup = function() {
+    $popup.css( {
+        'marginLeft' : -(($popup.width() + 52)/2),
+        'marginTop' : -(($popup.height() + 42)/2)
+    });   
+}
+
 var showPopup = function() {
-    // sets negative margins to the modal popup in order to center it on screen
-    $('#popup').css( {
-        'marginLeft' : -(($('#popup').width() + 52)/2),
-        'marginTop' : -(($('#popup').height() + 42)/2)
-    });
-    
-    $('#mask').fadeIn(200);
-    $('#popup').fadeIn(200);
+    resizePopup();
+    $mask.fadeIn(200);
+    $popup.fadeIn(200);
 };
 
 var hidePopup = function() {
-    $('#mask').fadeOut(200);
-    $('#popup').fadeOut(200);
+    $mask.fadeOut(200);
+    $popup.fadeOut(200);
     setTimeout(function() {
-        $('#popup').children().hide();
+        $popup.children().hide();
     }, 200)
 };
 
 var showResetPopup = function() {
-    // sets negative margins to the modal popup in order to center it on screen
-    $('#popup').css( {
-        'marginLeft' : -(($('#popup').width() + 52)/2),
-        'marginTop' : -(($('#popup').height() + 42)/2)
-    });
-    
+    resizePopup();
     $('#mask-noclick').fadeIn(200);
-    $('#popup').fadeIn(200);
+    $popup.fadeIn(200);
 };
 
 var showResetComplete = function() {
-    $('#popup').css( {
-        'marginLeft' : -(($('#popup').width() + 52)/2),
-        'marginTop' : -(($('#popup').height() + 42)/2)
-    });
-    
+    resizePopup();
     $('#mask-noclick').hide();
-    $('#mask').show();
+    $mask.show();
     $('#password-confirm').fadeOut(150);
     $('#password-complete').delay(160).fadeIn(150);
 };
 
 var hideResetPopup = function() {
-    $('#mask').fadeOut(200);
-    $('#popup').fadeOut(200);
+    $mask.fadeOut(200);
+    $popup.fadeOut(200);
 };
 
 $(document).ready(function() {
@@ -74,7 +69,7 @@ $(document).ready(function() {
     });
 
     // hides the sign-in modal popup (and resets it to sign-in state)
-    $('#mask').click(function() {
+    $mask.click(function() {
         hidePopup();
     });
 
