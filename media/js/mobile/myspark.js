@@ -37,7 +37,11 @@
 
          	ctx.save();
 		    	ctx.fillStyle = "rgba("+shape.rgb+", 0.6)";
-		        ctx.translate((w/2) + (posx * shape.moveFactor), (h - 30) + (posy * shape.moveFactor));
+		    	if (window.innerHeight > window.innerWidth) {
+	  		        ctx.translate((w/2) + (posx * shape.moveFactor), (h - 30) + (posy * shape.moveFactor));
+		    	} else {
+		    	    ctx.translate((w/2) + (posx * shape.moveFactor), (h - 30));
+		    	};
 		        ctx.rotate(deg2rad(shape.angle));
 		        ctx.beginPath();
 		        ctx.moveTo(0, 0);
