@@ -29,10 +29,10 @@ Please refer to [Playdoh's docs][github-playdoh] for more information.
 [github-sparklib]: http://mozilla.github.com/spark-lib
 
 
-Versions of the site
-====================
+Desktop and mobile versions
+===========================
 
 When the installation is complete:
 
-Desktop website of Spark: http://localhost:8000/
-Mobile Spark game: http://localhost:8000/m/
+* Desktop website of Spark: http://localhost:8000/
+* Mobile Spark game: http://localhost:8000/m/
