@@ -24,9 +24,9 @@ or else there will be a conflict with a django app named spark.
 
 Please refer to [Playdoh's docs][github-playdoh] for more information.
 
-[github-playdoh]: http://mozilla.github.com/playdoh
-[github-spark]: http://mozilla.github.com/spark
-[github-sparklib]: http://mozilla.github.com/spark-lib
+[github-playdoh]: http://github.com/mozilla/playdoh
+[github-spark]: http://github.com/mozilla/spark
+[github-sparklib]: http://github.com/mozilla/spark-lib
 
 
 Desktop and mobile versions
