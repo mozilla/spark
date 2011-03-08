@@ -863,8 +863,30 @@ div.section-header p {
     margin-bottom:35px;
 }
 
-#spark-graphic img {
-    margin-top:55px;
+#spark-graphic .placeholder {
+    padding-top:55px;
+    width:300px;
+    height:173px;
+}
+
+.placeholder.one {
+    background:url('../img/ie/your-spark-1.png') no-repeat center bottom;
+}
+
+.placeholder.two {
+    background:url('../img/ie/your-spark-2.png') no-repeat center bottom;
+}
+
+.placeholder.three {
+    background:url('../img/ie/your-spark-3.png') no-repeat center bottom;
+}
+
+.placeholder.four {
+    background:url('../img/ie/your-spark-4.png') no-repeat center bottom;
+}
+
+.placeholder.five {
+    background:url('../img/ie/your-spark-5.png') no-repeat center bottom;
 }
 
 p.legend {

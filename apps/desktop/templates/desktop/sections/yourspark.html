@@ -24,7 +24,9 @@
 {% endif %}
         <div id="spark-graphic">
             <canvas id="spark">
-                <img src="{{ MEDIA_URL }}img/your-spark.png" alt="">
+                {% set level='five' %}
+                <div class="placeholder {{ level }}">
+                </div>
             </canvas>
         </div>
         <p class="legend">
