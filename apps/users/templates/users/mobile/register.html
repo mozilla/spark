@@ -15,7 +15,7 @@
 		{{ csrf() }}	
 		<fieldset id="account" class="section">
             <div class="input-wrapper">
-                <input tabindex="1" type="text" name="username" value="{{ form.username.data|safe|replace('None','') }}" placeholder="{{ _('Username') }}" required>
+                <input tabindex="1" type="text" name="username" value="{{ form.username.data }}" placeholder="{{ _('Username') }}" required>
             </div>
 			{{ form.username.errors|safe }}
             <div class="input-wrapper">
@@ -27,7 +27,7 @@
             </div>
 			{{ form.password2.errors|safe }}
             <div class="input-wrapper">
-                <input tabindex="4" type="email" name="email" value="{{ form.email.data|safe|replace('None','') }}" placeholder="{{ _('Email address') }}" required>
+                <input tabindex="4" type="email" name="email" value="{{ form.email.data }}" placeholder="{{ _('Email address') }}" required>
             </div>
 			{{ form.email.errors|safe }}
         </fieldset>
