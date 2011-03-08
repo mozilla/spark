@@ -1,5 +1,6 @@
 {% extends "mobile/page.html" %}
 {% from "mobile/macros/errormsg.html" import error_msg %}
+{% from "macros/fielderror.html" import fielderror %}
 {% set pagetitle = _('Boost your Spark') %}
 {% set body_id = 'boost' %}
 {% set scripts = ('menu', 'customforms') %}
@@ -22,7 +23,7 @@
         <div class="input-wrapper">
             <input tabindex="1" type="text" name="identifier" value="{{ form.identifier.data }}" placeholder="{{ _('Username/email address') }}">
         </div>
-		{{ form.identifier.errors|safe }}
+		{{ fielderror(form.identifier) }}
 		{% trans policy_url='http://www.mozilla.com/m/privacy.html' %}
 		Email address is only used to connect to you. See our <a href="{{ policy_url }}">Privacy Policy.</a>
 		{% endtrans %}

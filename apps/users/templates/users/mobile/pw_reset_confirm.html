@@ -1,4 +1,5 @@
 {% extends "mobile/page.html" %}
+{% from "macros/fielderror.html" import fielderror %}
 {% set pagetitle = _('Password reset') if validlink else _('Password reset unsuccessful') %}
 {% set body_id = 'forgot-pwd' %}
 {% set hide_menu = True %}
@@ -15,11 +16,11 @@
         <div class="input-wrapper">
 			<input tabindex="1" type="password" name="new_password1" placeholder="{{ _('New password') }}" required>
         </div>
-		{{ form.new_password1.errors|safe }}
+		{{ fielderror(form.new_password1) }}
 		<div class="input-wrapper">
 			<input tabindex="2" type="password" name="new_password2" placeholder="{{ _('Confirm password') }}" required>
         </div>
-		{{ form.new_password2.errors|safe }}
+		{{ fielderror(form.new_password2) }}
     </fieldset>
     <hr>
     <div class="buttons-wrapper">
