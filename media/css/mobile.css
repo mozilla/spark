@@ -519,6 +519,11 @@ button:active, button:focus {
     border-bottom:1px solid #404040;
 }
 
+#boost2-result {
+    padding:20px 0;
+    border-bottom:1px solid #404040;
+}
+
 #checkmark {
     height:50px;
     background:url('../img/mobile/checkmark.png') no-repeat 15px center rgba(119,225,24,0.5);
@@ -538,9 +543,22 @@ button:active, button:focus {
     color:#fff;
 }
 
+#boost2-result span {
+    font-size:1.005em;
+    font-weight:bold;
+    color:#fff;
+}
+
 #boost .cta a {
     line-height:1.6em;
     padding:1.2em 2em 1.2em 8px;
+}
+
+#boost p.disclaimer {
+    font-size:0.9em;
+    margin-top:10px;
+    padding-left:12px;
+    margin-bottom:-10px;
 }
 
 /*Badges*/

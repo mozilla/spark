@@ -15,13 +15,19 @@
     </p>
 
     {% if no_parent %}
-    <p class="sans" id="boost2-result">
-		{{ _('Congrats! You started a new Spark.') }}
-    </p>
+    <div id="boost2-result">
+        <div id="checkmark"></div>
+        <span>
+    		{{ _('Congrats! You started a new Spark.') }}
+    	</span>	
+    </div>
     {% else %}
-	<p class="sans" id="boost2-result">
-		{{ _('Your Spark was started by: {parent}')|f(parent=parent) }}<br>
-    </p>
+	<div id="boost2-result">
+        <div id="checkmark"></div>
+        <span>
+    		{{ _('Your Spark was started by: {parent}')|f(parent=parent) }}
+    	</span>
+    </div>
     {% endif %}
 
 </div>
