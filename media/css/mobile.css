@@ -245,6 +245,12 @@ a.button:active {
     color:#000;
 }
 
+a:active button, a:focus button {
+    text-decoration:none;
+    outline:0;
+    border:0;
+}
+
 p.license {
     color:#808080;
     font-size:0.878em;
@@ -680,13 +686,14 @@ li.badge:active, li.badge.current {
     padding-top:10px;
 }
 
-#home {
-    background:url('../img/mobile/spark.png') no-repeat center 0;
+body#home {
+    background:url('../img/mobile/spark.jpg') no-repeat center 0;
     background-size:320px auto;
-}
+    min-height:400px;
+} 
 
-#static-spark {
-    height:200px;
+#home #header {
+    margin-bottom:200px;   
 }
 
 #home .left-button, #user-share .left-button {
