@@ -30,5 +30,19 @@ $(document).ready(function() {
    
    initShareHistory([30,0,120,20,40, 15, 10, 20, 40, 80, 40, 20, 39, 23, 32]);
    
+   {% set multiplier=1 %}
+   var multiplier = {{ multiplier }};
+
+   initShapes(multiplier);
+   
+   update()
+   drawShapes(shapes, multiplier);
+
+   // setInterval(function() {
+   //     update();
+   //     ctx.clearRect(0, 0, w, h);
+   //     drawShapes(shapes, multiplier);
+   // }, 1000 / 30);
+   
 });
 </script>

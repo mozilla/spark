@@ -23,7 +23,9 @@
     <div class="column">
 {% endif %}
         <div id="spark-graphic">
-            <img src="{{ MEDIA_URL }}img/your-spark.png">
+            <canvas id="spark">
+                <img src="{{ MEDIA_URL }}img/your-spark.png" alt="">
+            </canvas>
         </div>
         <p class="legend">
             {{ _('Sign in with Firefox 4 to see your Spark come alive.') }}
