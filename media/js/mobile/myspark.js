@@ -56,7 +56,7 @@ var initSpark = function (level) {
              	ctx.save();
     		    	ctx.fillStyle = "rgba("+shape.rgb+", 0.6)";
     		    	if (window.innerHeight > window.innerWidth) {
-    	  		        ctx.translate((w/2) + (posx * shape.moveFactor), (h - 30) + (posy * shape.moveFactor));
+    	  		        ctx.translate((w/2) - (posx * shape.moveFactor), (h - 30) - (posy * shape.moveFactor));
     		    	} else {
     		    	    ctx.translate((w/2) + (posx * shape.moveFactor), (h - 30));
     		    	};
