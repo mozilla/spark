@@ -1,7 +1,12 @@
 {% extends "desktop/base.html" %}
 {% set title = _('Home') %}
 {% set body_id = 'logged-out' %}
+
+{% if not is_pwreset %}
 {% set scripts = ('desktop', 'home') %}
+{% else %}
+{% set scripts = ('desktop', 'home', 'pwreset') %}
+{% endif %}
 
 {% block content %}
     <div id="container">

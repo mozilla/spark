@@ -68,3 +68,6 @@ def is_firefox_mobile(request):
         return True
     return False
 
+
+def is_mobile(request):
+    return is_iphone(request) or is_android_non_firefox(request) or is_firefox_mobile(request)

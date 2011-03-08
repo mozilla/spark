@@ -176,6 +176,9 @@ MINIFY_BUNDLES = {
             'js/desktop/sharehistory.js',
             'js/desktop/popups-youraccount.js',
         ),
+        'pwreset': (
+            'js/desktop/popup-pwreset.js',
+        ),
         'visualization': (
             'js/desktop/visualization.js',
         ),

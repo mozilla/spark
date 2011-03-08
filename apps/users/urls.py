@@ -8,12 +8,10 @@ desktop_patterns = patterns('',
     #  Login/logout (ajax)
     url(r'^login$', views.login, name='users.login'),
     url(r'^logout$', views.logout, name='users.logout'),
-
-    # Password reset (ajax)
-    url(r'^pwreset$', views.password_reset, name='users.pw_reset'),
-    url(r'^pwreset/(?P<uidb36>[-\w]+)/(?P<token>[-\w]+)$',
-        views.password_reset_confirm, name="users.pw_reset_confirm"),
-
+    
+    # Forgot password (ajax)
+    url(r'^forgotinfo$', views.forgot_password, name='users.forgot_password'),
+    
     # Change password (ajax)
     url(r'^pwchange$', views.password_change, name='users.pw_change'),
 
@@ -33,13 +31,10 @@ mobile_patterns = patterns('',
     url(r'^register$', views.register, name='users.mobile_register'),
     
     # Forgot password
-    url(r'^forgotinfo$', views.password_reset, opts,
-                                        name='users.mobile_forgotinfo'),
+    url(r'^forgotinfo$', views.forgot_password, opts,
+                                        name='users.mobile_forgot_password'),
 
     # Password reset
-    url(r'^pwreset/(?P<uidb36>[-\w]+)/(?P<token>[-\w]+)$',
-                        views.password_reset_confirm, opts,
-                                        name='users.mobile_pw_reset_confirm'),
     url(r'^pwresetsent$', views.password_reset_sent, 
                                         name='users.mobile_pw_reset_sent'),
     url(r'^pwresetcomplete$', views.password_reset_complete,
@@ -47,6 +42,10 @@ mobile_patterns = patterns('',
 )
 
 urlpatterns = patterns('',
+    # Password reset (handles both the mobile page and the ajax desktop popup)
+    url(r'^pwreset/(?P<uidb36>[-\w]+)/(?P<token>[-\w]+)$',
+        views.password_reset_confirm, name="users.pw_reset_confirm"),
+        
     url(r'^users/', include(desktop_patterns)),
     url(r'^m/', include(mobile_patterns)),
 )

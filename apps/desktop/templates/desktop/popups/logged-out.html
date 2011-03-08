@@ -35,7 +35,7 @@
             {% endtrans %}
         </p>
         <hr>
-        <form id="recover" action="{{ url('users.pw_reset') }}" method="post" accept-charset="utf-8">
+        <form id="recover" action="{{ url('users.forgot_password') }}" method="post" accept-charset="utf-8">
             {{ csrf() }}
             <fieldset id="account" class="section">
                 <div class="input-wrapper" id="recover-email">
@@ -62,5 +62,8 @@
         </p>
         <hr>
         <a href="#" class="button close">{{ _('OK') }}</a>
-    </div>            
+    </div>
+    {% if is_pwreset %}
+    {% include "desktop/popups/pwreset.html" %}
+    {% endif %}
 </div>

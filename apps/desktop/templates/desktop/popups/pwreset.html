@@ -5,13 +5,13 @@
     <h3>{{ popuptitle }}</h3>
         <p class="legend">{{ _('Enter your new password below.') }}</p>
         <hr>
-        <form action="" method="post" accept-charset="utf-8">
+        <form id="pwreset" action="{{ url('users.pw_reset_confirm', uidb36, token) }}" method="post" accept-charset="utf-8">
             {{ csrf() }}
             <fieldset class="section">
-                <div class="input-wrapper">
+                <div id="pwreset-new_password1" class="input-wrapper">
                     <input tabindex="1" type="password" name="new_password1" value="" placeholder="{{ _('New password') }}" required>
                 </div>
-                <div class="input-wrapper">
+                <div id="pwreset-new_password2" class="input-wrapper">
                     <input tabindex="2" type="password" name="new_password2" value="" placeholder="{{ _('Confirm password') }}" required>
                 </div>
             </fieldset>
@@ -27,6 +27,7 @@
     <p class="section legend">
     {{ _('The password reset link was invalid, possibly because it has already been used.') }}
     </p>
+    <a href="#" class="button close">{{ _('OK') }}</a>
     {% endif %}
 </div>
 

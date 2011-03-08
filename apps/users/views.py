@@ -4,7 +4,6 @@ import json
 
 from django.conf import settings
 from django.contrib import auth
-from django.contrib.auth.forms import SetPasswordForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.models import Site
@@ -18,13 +17,13 @@ import jingo
 
 from spark.urlresolvers import reverse, clean_next_url
 from spark.helpers import url
-
+from spark.utils import is_mobile
 from spark.decorators import (ssl_required, logout_required, login_required, 
                               post_required, json_view, ajax_required)
 
 from users.backends import Sha256Backend
 from users.forms import (EmailConfirmationForm, EmailChangeForm, PasswordResetForm,
-                         PasswordChangeForm, PasswordConfirmationForm)
+                         PasswordChangeForm, PasswordConfirmationForm, SetPasswordForm)
 from users.models import Profile
 from users.utils import handle_login, handle_register
 
@@ -104,7 +103,7 @@ def register(request):
 @ajax_required
 @json_view
 def change_email(request):
-    """Change user's email"""
+    """Change email ajax view."""
     form = EmailChangeForm(request.user, request.POST)
     if not form.is_valid():
         return {'status': 'error',
@@ -120,7 +119,7 @@ def change_email(request):
 @ajax_required
 @json_view
 def password_change(request):
-    """Change password form page."""
+    """Change password ajax view."""
     form = PasswordChangeForm(user=request.user, data=request.POST)
     if not form.is_valid():
         return {'status': 'error',
@@ -135,6 +134,7 @@ def password_change(request):
 @ajax_required
 @json_view
 def delete_account(request):
+    """Delete account ajax view."""
     form = PasswordConfirmationForm(user=request.user, data=request.POST)
     if not form.is_valid():
         return {'status': 'error',
@@ -148,11 +148,8 @@ def delete_account(request):
 
 
 @json_view
-def password_reset(request, mobile=False):
-    """Password reset form.
-
-    Based on django.contrib.auth.views. This view sends the email.
-
+def forgot_password(request, mobile=False):
+    """Password reset form. This view sends an email with a reset link.
     """
     if request.method == "POST":
         form = PasswordResetForm(request.POST)
@@ -178,31 +175,30 @@ def password_reset(request, mobile=False):
 
 
 def password_reset_sent(request):
-    """Password reset email sent.
-
-    Based on django.contrib.auth.views. This view shows a success message after
-    email is sent.
-
+    """ Password reset email sent. This view shows a success message after
+        email is sent.
     """
     return jingo.render(request, 'users/mobile/pw_reset_sent.html')
 
 
 @ssl_required
 @json_view
-def password_reset_confirm(request, uidb36=None, token=None, mobile=False):
+def password_reset_confirm(request, uidb36=None, token=None):
     """View that checks the hash in a password reset link and presents a
     form for entering a new password.
-
-    Based on django.contrib.auth.views.
-
+    
+    It's used on both desktop (ajax) and mobile websites.
     """
     try:
         uid_int = base36_to_int(uidb36)
     except ValueError:
         raise Http404
-
+    
     user = get_object_or_404(User, id=uid_int)
     context = {}
+    
+    # Display mobile or desktop version by sniffing user-agent
+    mobile = is_mobile(request)
 
     if default_token_generator.check_token(user, token):
         context['validlink'] = True
@@ -213,7 +209,10 @@ def password_reset_confirm(request, uidb36=None, token=None, mobile=False):
                 if mobile:
                     return HttpResponseRedirect(reverse('users.mobile_pw_reset_complete'))
                 else:
-                    return {'pw_reset_complete': True}
+                    return {'status': 'success'}
+            elif not mobile:
+                    return {'status': 'error',
+                            'errors': dict(form.errors.iteritems())}
         else:
             form = SetPasswordForm(None)
     else:
@@ -221,7 +220,14 @@ def password_reset_confirm(request, uidb36=None, token=None, mobile=False):
         form = None
     context['form'] = form
 
-    return jingo.render(request, 'users/mobile/pw_reset_confirm.html', context)
+    if mobile:
+        return jingo.render(request, 'users/mobile/pw_reset_confirm.html', context)
+    else:
+        context.update({'uidb36': uidb36,
+                        'token': token,
+                        'is_pwreset': True,
+                        'is_homepage': True})
+        return jingo.render(request, 'desktop/home.html', context)
 
 
 def password_reset_complete(request):

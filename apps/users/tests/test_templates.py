@@ -149,14 +149,14 @@ class PasswordReset(TestCaseBase):
         settings.DEBUG = self.orig_debug
 
     def test_bad_email_ajax(self):
-        r = self.client.post(reverse('users.pw_reset'),
+        r = self.client.post(reverse('users.forgot_password'),
                              {'email': 'foo@bar.com'})
         eq_(200, r.status_code)
         eq_(True, json.loads(r.content)['pw_reset_sent'])
         eq_(0, len(mail.outbox))
     
     def test_bad_email_mobile(self):
-        r = self.client.post(reverse('users.mobile_forgotinfo'),
+        r = self.client.post(reverse('users.mobile_forgot_password'),
                              {'email': 'foo@bar.com'})
         eq_(302, r.status_code)
         eq_('http://testserver/en-US/m/pwresetsent', r['location'])
@@ -165,7 +165,7 @@ class PasswordReset(TestCaseBase):
     @mock.patch_object(Site.objects, 'get_current')
     def test_success(self, get_current):
         get_current.return_value.domain = 'testserver.com'
-        r = self.client.post(reverse('users.mobile_forgotinfo'),
+        r = self.client.post(reverse('users.mobile_forgot_password'),
                              {'email': self.user.email})
         eq_(302, r.status_code)
         eq_('http://testserver/en-US/m/pwresetsent', r['location'])
@@ -174,14 +174,14 @@ class PasswordReset(TestCaseBase):
         assert mail.outbox[0].body.find('pwreset/%s' % self.uidb36) > 0
 
     def _get_mobile_reset_url(self):
-        return reverse('users.mobile_pw_reset_confirm',
+        return reverse('users.pw_reset_confirm',
                        args=[self.uidb36, self.token])
 
     def test_bad_reset_url(self):
         r = self.client.get('/m/pwreset/junk/', follow=True)
         eq_(r.status_code, 404)
 
-        r = self.client.get(reverse('users.mobile_pw_reset_confirm',
+        r = self.client.get(reverse('users.pw_reset_confirm',
                                     args=[self.uidb36, '12-345']))
         eq_(200, r.status_code)
         doc = pq(r.content)

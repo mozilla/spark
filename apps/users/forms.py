@@ -26,6 +26,8 @@ PASSWD_SHORT = _lazy(u'Password is too short '
 PASSWD_CURRENT = _lazy(u'Please enter your current password.')
 
 
+PASSWD_MIN_LENGTH = 8
+
 
 class RegisterForm(forms.ModelForm):
     """A user registration form that detects duplicate email addresses.
@@ -42,7 +44,7 @@ class RegisterForm(forms.ModelForm):
                         'max_length': USERNAME_LONG})
     password = forms.CharField(error_messages={'required': PASSWD_REQUIRED,
                                                'min_length': PASSWD_SHORT},
-                                               min_length=8)
+                                               min_length=PASSWD_MIN_LENGTH)
     password2 = forms.CharField(error_messages={'required': PASSWD2_REQUIRED})
     email = forms.EmailField(error_messages={'required': EMAIL_REQUIRED,
                                              'invalid': EMAIL_INVALID})
@@ -181,7 +183,8 @@ class PasswordChangeForm(auth_forms.PasswordChangeForm):
        and two matching new password values."""
     old_password = forms.CharField(error_messages={'required': PASSWD_CURRENT})
     new_password1 = forms.CharField(error_messages={'required': PASSWD_REQUIRED,
-                                                   'min_length': PASSWD_SHORT})
+                                                   'min_length': PASSWD_SHORT},
+                                    min_length=PASSWD_MIN_LENGTH)
     new_password2 = forms.CharField(error_messages={'required': PASSWD2_REQUIRED,
                                                     'min_length': PASSWD_SHORT})
     
@@ -216,4 +219,23 @@ class PasswordConfirmationForm(forms.Form):
             raise forms.ValidationError(PASSWD_CURRENT)
         
         return password
+
+
+class SetPasswordForm(auth_forms.SetPasswordForm):
+    """This form is used to change a user's password after he has followed
+        a link to reset it.
+    """
+    new_password1 = forms.CharField(error_messages={'required': PASSWD_REQUIRED,
+                                                    'min_length': PASSWD_SHORT},
+                                    min_length=PASSWD_MIN_LENGTH)
+    new_password2 = forms.CharField(error_messages={'required': PASSWD2_REQUIRED})
+    
+    def clean(self):
+        super(SetPasswordForm, self).clean()
+        new_password1 = self.cleaned_data.get('new_password1')
+        new_password2 = self.cleaned_data.get('new_password2')
+        if new_password1 and new_password2 and not new_password1 == new_password2:
+           raise forms.ValidationError(_('Passwords must match.'))
+
+        return self.cleaned_data
 

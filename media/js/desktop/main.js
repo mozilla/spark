@@ -52,10 +52,6 @@ var hideResetPopup = function() {
 };
 
 $(document).ready(function() {
-    // Code to execute to display the Reset Popup
-    // $('#password-complete').hide();
-    // showResetPopup();
-
     // displays the sign-in modal popup
     $('.popup-trigger').click(function() {
         $('#sign-in').show();
@@ -76,6 +72,11 @@ $(document).ready(function() {
     // All elements with the class 'close' will close the popup when clicked
     $('#popup .close').click(function() {
         hidePopup();
+    });
+    
+    $('#password-confirm .close').click(function() {
+        hideResetPopup();
+        $('#mask-noclick').hide();
     });
 
     //Your account links
@@ -164,8 +165,6 @@ $(document).ready(function() {
             }
         }
     });
-
-    // Execute functions below
 
     initMask();
 
