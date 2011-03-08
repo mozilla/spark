@@ -1185,10 +1185,6 @@ div.level {
     overflow:hidden;
 }
 
-li.open div.level {
-    border-bottom:1px solid #403c3c;
-}
-
 div.level:hover {
     cursor:pointer;
 }
@@ -1210,6 +1206,10 @@ div.level.locked:hover {
     border-bottom:1px solid #403c3c;
     font-weight:normal;
     padding:0.3em 0;
+}
+
+#level-details li:first-child {
+    border-top:1px solid #403c3c;
 }
 
 #level-details span.title {
