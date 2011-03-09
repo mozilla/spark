@@ -540,6 +540,10 @@ div.sub-section h4 {
     padding-bottom:20px;
 }
 
+#popup h3.noborder {
+    border-bottom:0;
+}
+
 #popup p.legend {
     color:#b2b2b2;
     font-style:italic;
