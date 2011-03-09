@@ -82,30 +82,17 @@ $(document).ready(function() {
     //Your account links
     //change password
     $('#your-account .change-password').click(function() {
-       $('#your-account').fadeOut(150);
-       $('#change-password').delay(160).fadeIn(150); 
+       swap('#your-account', '#change-password');
     });
 
     //change email
     $('#your-account .change-email').click(function() {
-       $('#your-account').fadeOut(150);
-       $('#change-email').delay(160).fadeIn(150); 
+       swap('#your-account', '#change-email');
     });
 
     //delete account
     $('#your-account .delete-account').click(function() {
-       $('#your-account').fadeOut(150);
-       $('#delete-account').delay(160).fadeIn(150); 
-    });
-
-    $('#change-email .left-button').click(function() {
-       $('#change-email').fadeOut(150);
-       $('#your-account').delay(160).fadeIn(150);
-    });
-    
-    $('#delete-account .left-button').click(function() {
-       $('#delete-account').fadeOut(150);
-       $('#your-account').delay(160).fadeIn(150);
+       swap('#your-account', '#delete-account');
     });
 
     // popups

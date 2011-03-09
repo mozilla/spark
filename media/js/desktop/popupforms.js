@@ -1,5 +1,5 @@
 function popupForm(formId, errorCallback, successCallback) {
-    var $form = $('#'+formId),
+    var $form = $(formId),
         $submitButton = $form.find('button'),
     
         beforeForm = function() {
@@ -16,7 +16,7 @@ function popupForm(formId, errorCallback, successCallback) {
         },
 
         showFieldError = function(fieldname, msg) {
-            var $fieldWrapper = $('#'+formId+'-'+fieldname);
+            var $fieldWrapper = $(formId+'-'+fieldname);
             $fieldWrapper.after('<span class="error">'+msg+'</span>');
             $fieldWrapper.addClass('error');
         },
@@ -75,3 +75,16 @@ $.fn.resetFormAfter = function(delay) {
     }, delay);
 	return this;
 };
+
+function swap(fromId, toId) {
+    $(fromId).fadeOut(150);
+    $(toId).delay(160).fadeIn(150);
+}
+
+function resetForm(formId) {
+    $(formId).resetFormAfter(150);
+}
+
+function resetField(fieldId) {
+    $(fieldId).resetAfter(0);
+}

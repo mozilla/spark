@@ -1,7 +1,6 @@
 function initLoginForm() {
     $('#forgot-password').click(function() {
-       $('#sign-in').fadeOut(150);
-       $('#password-recovery').delay(160).fadeIn(150);
+       swap('#sign-in', '#password-recovery');
     });
     
     $('#sign-in p.download a').click(function() {
@@ -9,33 +8,38 @@ function initLoginForm() {
     });
     
     $('#login .close').click(function() {
-        $('#login').resetFormAfter(150);
+        resetForm('#login');
     });
     
-    popupForm('login', function(fieldname) {
+    var error = function(fieldname) {
         if(fieldname === 'all') {
-            $('#login-password input').resetAfter(0);
+            resetField('#login-password input');
         }
-    }, function($form, data) {
+    };
+    
+    var success = function($form, data) {
         $form.find('button').attr("disabled", "disabled");
         setTimeout(function() {
+            // Redirect to logged-in user home page
             window.location.replace(data.next);
         }, 200);
-    });
+    };
+    
+    popupForm('#login', error, success);
 }
 
 function initPasswordRecoverForm() {
     $('#password-recovery .left-button').click(function() {
-        $('#recover').resetFormAfter(150);
-        $('#password-recovery').fadeOut(150);
-        $('#sign-in').delay(160).fadeIn(150);
+        resetForm('#recover');
+        swap('#password-recovery', '#sign-in');
     });
     
-    popupForm('recover', function() {}, function(data) {
-        $('#recover').resetFormAfter(150);
-        $('#password-recovery').fadeOut(150);
-        $('#success').delay(160).fadeIn(150);
-    });
+    var success = function(data) {
+        resetForm('#recover');
+        swap('#password-recovery', '#success');
+    };
+    
+    popupForm('#recover', null, success);
 }
 
 $(document).ready(function() {

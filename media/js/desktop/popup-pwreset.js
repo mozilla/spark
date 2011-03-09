@@ -2,8 +2,8 @@ function initPasswordResetForm() {
     var error = function(field) {
         if(field === 'all') {
             // Clear the values from both fields if passwords don't match
-            $('#pwreset-new_password1 input').resetAfter(0);
-            $('#pwreset-new_password2 input').resetAfter(0);    
+            resetField('#pwreset-new_password1 input');
+            resetField('#pwreset-new_password2 input');
         }
     };
     
@@ -11,7 +11,7 @@ function initPasswordResetForm() {
         showResetComplete();
     }
     
-    popupForm('pwreset', error, success);
+    popupForm('#pwreset', error, success);
 }
 
 $(document).ready(function() {
