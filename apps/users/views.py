@@ -79,6 +79,10 @@ def register(request):
     """Register a new user."""
     form = handle_register(request)
     if form.is_valid():
+        new_user = auth.authenticate(username=form.cleaned_data['username'],
+                                     password=form.cleaned_data['password'])
+        auth.login(request, new_user)
+
         data = form.cleaned_data
         optins = []
         if data['newsletter']:
