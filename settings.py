@@ -176,6 +176,15 @@ MINIFY_BUNDLES = {
             'js/desktop/sharehistory.js',
             'js/desktop/popups-youraccount.js',
         ),
+        'user-logged-in': (
+            'js/desktop/dashboard.js',
+            'js/desktop/sharehistory.js',
+        ),
+        'user-logged-out': (
+            'js/desktop/dashboard.js',
+            'js/desktop/sharehistory.js',
+            'js/desktop/popups-loggedout.js',
+        ),
         'pwreset': (
             'js/desktop/popup-pwreset.js',
         ),

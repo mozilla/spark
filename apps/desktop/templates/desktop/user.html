@@ -3,7 +3,12 @@
 {% set title = _("{username}'s Spark")|f(username=username) %}
 {% set body_id = 'personal' %}
 {% set body_class = 'logged-in' if logged_in else 'logged-out' %}
-{% set scripts = ('desktop', 'dashboard') %}
+
+{% if logged_in %}
+{% set scripts = ('desktop', 'user-logged-in') %}
+{% else %}
+{% set scripts = ('desktop', 'user-logged-out') %}
+{% endif %}
 
 {% block content %}
 	    <div id="container">
