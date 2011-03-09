@@ -65,14 +65,19 @@ class Profile(models.Model):
             })
         return badges
     
+    
     @property
     def parent_username(self):
-        node = self.user.node
-        if node:
-            parent = node.parent
-            if parent:
-                return parent.user.username
-        return None
+        try:
+            node = self.user.node
+            if node:
+                parent = node.parent
+                if parent:
+                    return parent.user.username
+        except UserNode.DoesNotExist:
+            pass
+        
+        return ''
     
     
     @property
