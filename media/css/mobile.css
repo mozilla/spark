@@ -67,6 +67,10 @@ html {
     background:#110f10;
 }
 
+html.openmenu {
+    height:500px;
+}
+
 body {
     font-family:'Helvetica Neue', Helvetica, 'MgOpenModerna', Arial, sans-serif;
     color:#fff;

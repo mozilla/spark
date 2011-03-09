@@ -9,6 +9,7 @@ var initMenu = function () {
             $('#menu').removeClass('open').addClass('closed');
             $('#menu-wrapper').removeClass('open').addClass('closed');
         }
+        $('html').toggleClass('openmenu');
     });
     
     $('#logout').click(function() {
