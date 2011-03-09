@@ -94,7 +94,7 @@ var initSpark = function (level) {
             if(ignorelist.indexOf(i) === -1) {
              	ctx.save();
                     ctx.shadowBlur = 30;
-                    ctx.shadowColor = "rgba(0,0,0,0.5)";
+                    ctx.shadowColor = "rgba(0,0,0,0.2)";
         	    	ctx.fillStyle = "rgba("+shape.rgb+", 0.6)";
         		    ctx.translate(w / 2, h);
         	        ctx.rotate(deg2rad(shape.angle));
