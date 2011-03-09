@@ -24,8 +24,7 @@
 {% endif %}
         <div id="spark-graphic">
             <canvas id="spark">
-                {% set level='5' %}
-                <div class="placeholder level-{{ level }}">
+                <div class="placeholder level-{{ profile.level }}">
                 </div>
             </canvas>
         </div>
@@ -35,11 +34,11 @@
     </div>
     <div id="user-stats" class="column">
         <div id="total-shares">
-            <span class="count">52</span>
+            <span class="count">{{ profile.total_shares }}</span>
             <span class="label">{{ _('total shares') }}</span>
         </div>
         <div id="longest-chain">
-            <span class="count">4</span>
+            <span class="count">{{ profile.longest_chain }}</span>
             <span class="label">{{ _('longest chain') }}</span>
         </div>
         <div id="activation">

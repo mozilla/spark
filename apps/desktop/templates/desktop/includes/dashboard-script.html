@@ -28,9 +28,8 @@ $(document).ready(function() {
    
    initShareHistory([30,0,120,20,40, 15, 10, 20, 40, 80, 40, 20, 39, 23, 32]);
 
-   {% set level=5 %}
+   {# set level=5 #}
 
-   initSpark({{ level }});
-
+   initSpark({{ profile.level }});
 });
 </script>

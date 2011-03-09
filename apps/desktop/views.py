@@ -11,7 +11,6 @@ import jingo
 
 def home(request):
     if request.user.is_authenticated():
-        d = datetime.datetime(2011, 2, 18)
         profile = request.user.profile
         delta = datetime.datetime.now() - profile.user.date_joined
         return jingo.render(request, 'desktop/dashboard.html',

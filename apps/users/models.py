@@ -52,6 +52,9 @@ class Profile(models.Model):
     
     @property
     def badges(self):
+        """Returns a list of dicts used for badge list rendering.
+           They represent all badges earned by the user in the Spark game.
+        """
         badges = []
         completed_challenges = CompletedChallenge.objects.filter(profile=self,
                                                                  date_badge_earned__isnull=False)
@@ -68,6 +71,10 @@ class Profile(models.Model):
     
     @property
     def parent_username(self):
+        """Returns the username of the person who was identified by the current user
+           at Boost your Spark 2/2. Technically, this is the user's parent in the
+           user tree (see UserNode model).
+        """
         try:
             node = self.user.node
             if node:
@@ -82,6 +89,9 @@ class Profile(models.Model):
     
     @property
     def home_location(self):
+        """Returns a string containing the location determined by Google Location Services
+           when Boost your Spark 1/2 was completed by the user.
+        """
         from geo.countries import countries
         if self.country_code:
             country = countries[self.country_code]
@@ -92,11 +102,35 @@ class Profile(models.Model):
     
     @property
     def most_recent_share(self):
-        return datetime.datetime(2011, 2, 18)
+        """Most recent share stat displayed on desktop dashboard/user pages."""
+        from stats.models import SharingHistory
+        
+        share = SharingHistory.objects.filter(parent=self)[:1]
+        if share:
+            return share[0].date_shared
+        else:
+            return None
+
+
+    @property
+    def longest_chain(self):
+        """Longest chain stat displayed on desktop dashboard/user pages."""
+        return 0
+
+
+    @property
+    def total_shares(self):
+        """Total shares stat displayed on desktop dashboard/user pages."""
+        from stats.models import SharingHistory
+        
+        return SharingHistory.objects.filter(parent=self).count()
     
     
     @property
     def challenge_info(self):
+        """Returns an object hierarchy containing completed level/challenge information.
+           Used to render both desktop and mobile collapsing challenge lists.
+        """
         return utils.get_profile_levels(self)
 
 
@@ -130,6 +164,7 @@ class Profile(models.Model):
 
 
     def complete_challenges(self, challenges):
+        """Helper method to easily save the completion of given challenges for this user."""
         if challenges:
             for challenge in challenges:
                 # If the completed challenge is from an upper level and not an easter egg, we keep the badge hidden.

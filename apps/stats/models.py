@@ -30,11 +30,12 @@ VIA_TWITTER = 1
 VIA_FACEBOOK = 2
 VIA_QR = 3
 VIA_POSTER = 4
+UNKNOWN = 5
 
 class SharingHistory(models.Model):
     parent = models.ForeignKey(Profile, db_index=True)
     date_shared = models.DateTimeField(auto_now_add=True)
-    shared_via = models.PositiveIntegerField()
+    shared_via = models.PositiveIntegerField(default=UNKNOWN)
     timezone = models.CharField(max_length=6, blank=True, null=True)
     
     class Meta:
