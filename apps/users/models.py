@@ -128,7 +128,7 @@ class Profile(models.Model):
     
     @property
     def challenge_info(self):
-        """Returns an object hierarchy containing completed level/challenge information.
+        """Returns a list of dicts containing level/challenge completion information.
            Used to render both desktop and mobile collapsing challenge lists.
         """
         return utils.get_profile_levels(self)

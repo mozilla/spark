@@ -60,10 +60,13 @@
             </div>
             <span class="label">{{ _('length of activation') }}</span>
         </div>
+        {% set most_recent_share = profile.most_recent_share %}
+        {% if most_recent_share %}
         <div id="most-recent">
-            <span class="count">{{ profile.most_recent_share|timesince }}</span>
+            <span class="count">{{ most_recent_share|timesince }}</span>
             <span class="label">{{ _('most recent share') }}</span>
         </div>
+        {% endif %}
     </div>
     <div id="graphs" class="column last">
         <div id="share-history">
