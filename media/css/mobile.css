@@ -558,6 +558,11 @@ button:active, button:focus {
     padding:1.2em 2em 1.2em 8px;
 }
 
+.cta.twolines a {
+    line-height:1.6em;
+    padding:1.2em 2em 1.2em 8px;
+}
+
 #boost p.disclaimer {
     font-size:0.9em;
     margin-top:10px;
