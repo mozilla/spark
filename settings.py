@@ -327,6 +327,7 @@ BROKER_VHOST = 'spark'
 BROKER_CONNECTION_TIMEOUT = 0.1
 CELERY_RESULT_BACKEND = 'amqp'
 CELERY_IGNORE_RESULT = True
+#CELERY_ENABLED = True
 
 # Addresses email comes from
 DEFAULT_FROM_EMAIL = 'test@localhost.spark'

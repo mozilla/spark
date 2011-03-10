@@ -25,7 +25,7 @@ def subscribe(campaigns, address, format='html', source_url='', lang=''):
         data['%s_DATE' % campaign] = date.today().strftime('%Y-%m-%d')
         data['_ri_'] = settings.RESPONSYS_ID
 
-        if not settings.DEBUG:
+        if not settings.DEBUG and settings.CELERY_ENABLED:
             try:            
                 res = urllib2.urlopen(settings.RESPONSYS_URL, data=urlencode(data))
                 if res.code != 200:
