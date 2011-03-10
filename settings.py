@@ -321,9 +321,9 @@ TEST_RUNNER = 'test_utils.runner.RadicalTestSuiteRunner'
 ## Celery
 BROKER_HOST = 'localhost'
 BROKER_PORT = 5672
-BROKER_USER = 'playdoh'
-BROKER_PASSWORD = 'playdoh'
-BROKER_VHOST = 'playdoh'
+BROKER_USER = 'spark'
+BROKER_PASSWORD = 'spark'
+BROKER_VHOST = 'spark'
 BROKER_CONNECTION_TIMEOUT = 0.1
 CELERY_RESULT_BACKEND = 'amqp'
 CELERY_IGNORE_RESULT = True
