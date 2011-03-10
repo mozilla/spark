@@ -6,6 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'', include('spark.urls')),
+    (r'^', include('sharing.urls')),
     (r'', include('desktop.urls')),
     (r'^m/', include('mobile.urls')),
     (r'^', include('users.urls')),

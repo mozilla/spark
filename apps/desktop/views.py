@@ -3,7 +3,6 @@ import datetime
 from django.shortcuts import get_object_or_404
 
 from spark.decorators import login_required
-
 from users.models import User, Profile
 
 import jingo
@@ -18,7 +17,7 @@ def home(request):
                                      'profile': profile,
                                      'logged_in': True,
                                      'levels': profile.challenge_info,
-                                     'date_joined_delta': _total_seconds(delta) })
+                                     'date_joined_delta': _total_seconds(delta)})
     else:
         return jingo.render(request, 'desktop/home.html', {'is_homepage': True})
 

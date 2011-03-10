@@ -17,7 +17,11 @@
         {% endtrans %}
     </div>
     <div class="sub-section">
+        {% if profile %}
+        <img src="{{ profile.qr_code_download }}" alt="" id="qrcode">
+        {% else %}
         <img src="{{ MEDIA_URL }}img/qrcode.png" alt="" id="qrcode">
+        {% endif %}
         <h4>{{ _('Option 01 / Scan the QR code') }}</h4>
         <p>
             {% trans %}Scan the QR code to the right with your phone's camera to automatically install Firefox on your phone.{% endtrans %}

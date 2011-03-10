@@ -2,12 +2,17 @@ import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 
 from tower import ugettext as _, ugettext_lazy as _lazy
 
 from mptt.models import MPTTModel
 
+from spark.urlresolvers import reverse
+from spark.helpers import urlparams
 from spark.models import City
+
+from sharing import utils as sharing_utils
 
 from challenges.models import Challenge
 from challenges import utils
@@ -48,6 +53,10 @@ class Profile(models.Model):
 
     def __unicode__(self):
         return unicode(self.user)
+        
+
+    def get_absolute_url(self):
+        return reverse('desktop.user', args=[self.user.username])
     
     
     @property
@@ -150,6 +159,15 @@ class Profile(models.Model):
     def new_badge_count(self):
         """Returns the number of recently earned badges."""
         return len([b for b in self.badges if b['new']])
+    
+    
+    @property
+    def qr_code_download(self):
+        """Returns the URL of a QR code which, when scanned, points to: http://[domain]/download?via=qr&user=[username]
+        """
+        site = Site.objects.get_current()
+        url = 'http://%s%s' % (site, urlparams(reverse('sharing.download'), via='qr', user=self.user.username))
+        return sharing_utils.url2qr(url)
     
     
     def clear_new_badges(self):
