@@ -334,6 +334,7 @@ DEFAULT_FROM_EMAIL = 'test@localhost.spark'
 AUTH_PROFILE_MODULE = 'users.Profile'
 
 # Responsys
-RESPONSYS_ID = '<insert responsys key here>'
+RESPONSYS_ID = '<insert prod responsys key here>'
 MOZILLA_CAMPAIGN = 'MOZILLA_AND_YOU'
 SPARK_CAMPAIGN = 'SPARK_2011'
+RESPONSYS_URL = 'http://awesomeness.mozilla.org/pub/rf'

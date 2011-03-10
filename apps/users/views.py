@@ -91,6 +91,7 @@ def register(request):
             optins.append(settings.SPARK_CAMPAIGN)
         
         if len(optins) > 0:
+            # This will be async if Celery is enabled
             status= responsys.subscribe(optins,
                                         data['email'],
                                         'html',
