@@ -79,10 +79,12 @@ def register(request):
     """Register a new user."""
     form = handle_register(request)
     if form.is_valid():
+        # User is logged-in automatically after registration
         new_user = auth.authenticate(username=form.cleaned_data['username'],
                                      password=form.cleaned_data['password'])
         auth.login(request, new_user)
-
+        
+        # Register for newletters
         data = form.cleaned_data
         optins = []
         if data['newsletter']:
@@ -97,6 +99,11 @@ def register(request):
                                         'html',
                                         responsys.make_source_url(request),
                                         request.locale)
+        
+        # Set a flag for mobile menu notifications
+        profile = User.objects.get(username=form.cleaned_data['username']).profile
+        profile.new_challenges = True
+        profile.save()
         
         return HttpResponseRedirect(reverse('mobile.home'))
     return jingo.render(request, 'users/mobile/register.html',
