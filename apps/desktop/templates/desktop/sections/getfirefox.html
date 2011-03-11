@@ -17,14 +17,24 @@
         {% endtrans %}
     </div>
     <div class="sub-section">
+        <h4>{{ _('Option 01 / Install it over-the-air') }}</h4>
+        <p>
+            {% trans market_url='market://' %}
+            From your desktop, click on the <a href="{{ market_url }}">Firefox app in the Android Market</a> and install it over-the-air.
+            {% endtrans %}
+        </p>
+    </div>
+    <div class="sub-section">
         {% if profile %}
         <img src="{{ profile.qr_code_download }}" alt="" id="qrcode">
         {% else %}
         <img src="{{ MEDIA_URL }}img/qrcode.png" alt="" id="qrcode">
         {% endif %}
-        <h4>{{ _('Option 01 / Scan the QR code') }}</h4>
+        <h4>{{ _('Option 02 / Scan the QR code') }}</h4>
         <p>
-            {% trans %}Scan the QR code to the right with your phone's camera to automatically install Firefox on your phone.{% endtrans %}
+            {% trans %}
+            Scan the QR code to install Firefox on your phone, or just access the Market app on your Android and search "Mozilla Firefox".
+            {% endtrans %}
             <small>
                 <span class="title">{{ _("What's this?") }}</span>
                 {% trans %}
@@ -34,18 +44,10 @@
         </p>
     </div>
     <div class="sub-section">
-        <h4>{{ _("Option 02 / Use your phone's browser") }}</h4>
+        <h4>{{ _("Option 03 / Use your phone's browser") }}</h4>
         <p>
             {% trans download_url='http://firefox.com/m/', link_text='Firefox.com/m' %}
             Point your browser to <a href="{{ download_url }}">{{ link_text }}</a>  and download it from there.
-            {% endtrans %}
-        </p>
-    </div>
-    <div class="sub-section">
-        <h4>{{ _('Option 03 / Install it over-the-air') }}</h4>
-        <p>
-            {% trans market_url='market://' %}
-            From your desktop, click on the <a href="{{ market_url }}">Firefox app in the Android Market</a> and install it over-the-air.
             {% endtrans %}
         </p>
     </div>
