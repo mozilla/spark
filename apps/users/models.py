@@ -1,6 +1,6 @@
 import datetime
 
-from django.db import models
+from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 
@@ -145,7 +145,7 @@ class Profile(models.Model):
 
     @property
     def new_challenge_count(self):
-        """Returns the number of recently completed challenges."""
+        """Returns the number of newly available challenges in the user's current level."""
         if self.new_challenges:
             challenge_count = utils.CHALLENGE_COUNT_PER_LVL[self.level-1]
             completed_challenge_count = len(CompletedChallenge.objects.filter(profile=self,
@@ -183,17 +183,21 @@ class Profile(models.Model):
 
     def complete_challenges(self, challenges):
         """Helper method to easily save the completion of given challenges for this user."""
+        error = False
         if challenges:
             for challenge in challenges:
-                # If the completed challenge is from an upper level and not an easter egg, we keep the badge hidden.
-                # This is done by setting the date_badge_earned to NULL.
-                date = None if self.level < challenge.level and not challenge.easter_egg else datetime.datetime.now()
-            
-                CompletedChallenge.objects.create(profile=self, challenge=challenge, date_badge_earned=date, 
-                                                  # Don't set new_badge to True if the badge is hidden.
-                                                  new_badge=date is not None)
-            self.new_challenges = True
-            self.save()
+                try:
+                    # If the completed challenge is from an upper level and not an easter egg, we keep the badge hidden.
+                    # This is done by setting the date_badge_earned to NULL.
+                    date = None if self.level < challenge.level and not challenge.easter_egg else datetime.datetime.now()
+                
+                    CompletedChallenge.objects.create(profile=self, challenge=challenge, date_badge_earned=date, 
+                                                      # Don't set new_badge to True if the badge is hidden.
+                                                      new_badge=date is not None)
+                except IntegrityError:
+                    # Challenge was already completed by another concurrent 'update_completed_challenges' task.
+                    # In this case, fail silently.
+                    pass
 
 
 # Retrieves or creates a Profile automatically whenever the profile property is accessed
@@ -209,6 +213,9 @@ class CompletedChallenge(models.Model):
     date_completed = models.DateTimeField(auto_now_add=True)
     date_badge_earned = models.DateTimeField(blank=True, null=True)
     new_badge = models.BooleanField(default=False)
+    
+    class Meta:
+        unique_together = ('challenge', 'profile')
     
     def __unicode__(self):
         return "%s <-> %s" % (self.profile, self.challenge)

@@ -8,6 +8,8 @@ from spark.decorators import post_required
 from users.models import User, UserNode
 from users.utils import create_relationship
 
+from challenges.tasks import update_completed_challenges
+
 from .forms import BoostStep1Form, BoostStep2Form
 from .decorators import login_required, logout_required
 
@@ -52,6 +54,9 @@ def boost1(request):
             profile.country_code = data['country_code']
             profile.boost1_completed = True
             profile.save()
+            
+            update_completed_challenges.delay(profile.user.id)
+            
             data.update({'geolocation': 'success',
                          'geo_result': '%s, %s' % (data['city'], data['country'])})
         else:
@@ -110,6 +115,12 @@ def boost2_confirm(request):
             profile = request.user.profile
             profile.boost2_completed = True
             profile.save()
+            
+            # Don't use a celery task here so that "+{n} new" notification
+            # has the correct value in the mobile menu on the next page.
+            # This requires to award badges synchronously for this particular step.
+            update_completed_challenges(profile.user.id)
+            
             return HttpResponseRedirect(reverse('mobile.home'))
     
     return jingo.render(request, 'spark/handlers/mobile/400.html', status=400)

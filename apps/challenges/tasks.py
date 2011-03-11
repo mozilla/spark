@@ -2,7 +2,7 @@ import datetime
 
 from celery.decorators import task
 
-from users.models import CompletedChallenge
+from users.models import Profile, CompletedChallenge
 
 from .models import Challenge
 from .challenges import all_challenges
@@ -10,28 +10,30 @@ from .utils import award_hidden_badges
 
 
 @task
-def update_completed_challenges(profile):
+def update_completed_challenges(profile_id):
     """ Detects if the user has completed new challenges and updates their profile. """
+    profile = Profile.objects.get(pk=profile_id)
     
-    # Retrieve previously completed challenges
-    previous_challenges = (unicode(c) for c in profile.challenges.all())
+    if profile:    
+        # Retrieve previously completed challenges
+        previous_challenges = [unicode(c) for c in profile.challenges.all()]
     
-    # Loop through all challenges and exclude already completed ones
-    non_completed_challenges = ((id, c) for (id, c) in all_challenges.iteritems() if id not in previous_challenges)
+        # Loop through all challenges and exclude already completed ones
+        non_completed_challenges = ((id, c) for (id, c) in all_challenges.iteritems() if id not in previous_challenges)
     
-    # Find newly completed challenges
-    completed_challenges = []
-    for id, challenge in non_completed_challenges:
-        if challenge.is_completed_by(profile):
-            completed_challenges.append(id)
+        # Find newly completed challenges
+        completed_challenges = []
+        for id, challenge in non_completed_challenges:
+            if challenge.is_completed_by(profile):
+                completed_challenges.append(id)
     
-    # Update the user profile
-    if completed_challenges:
-        new_challenges = Challenge.objects.filter(pk__in=completed_challenges)
-        profile.complete_challenges(new_challenges)
+        # Update the user profile
+        if completed_challenges:
+            new_challenges = Challenge.objects.filter(pk__in=completed_challenges)
+            profile.complete_challenges(new_challenges)
         
-        # Let's see if the user gained a level
-        _update_level(profile)
+            # Let's see if the user gained a level
+            _update_level(profile)
 
 
 
@@ -61,9 +63,10 @@ def _update_level(profile):
         if len([c for c in challenges if c.level < 5]) == 22:
             level = 5
     
-    # If the user has gained or more levels, update his profile
+    # If the user has gained one or more levels, update his profile
     if level != profile.level:
         profile.level = level
+        profile.new_challenges = True
         profile.save()
         award_hidden_badges(profile)
 

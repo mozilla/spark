@@ -14,7 +14,6 @@ class UpdateCompletedChallenges(TestCase):
     def test_complete_3_challenges(self):
         profile = User.objects.get(username='franck').profile
 
-        eq_(False, profile.new_challenges)        
         eq_(0, profile.challenges.count())
         eq_(1, profile.level)
         
@@ -24,8 +23,6 @@ class UpdateCompletedChallenges(TestCase):
         # Should complete challenges: 1_2, 1_3
         eq_(2, profile.challenges.count())
         eq_(["1_2", "1_3"], [unicode(c) for c in profile.challenges.all()])
-        
-        eq_(True, profile.new_challenges)
 
 
 class UpdateLevel(TestCase):
