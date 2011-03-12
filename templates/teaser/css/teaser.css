@@ -1,0 +1,132 @@
+/*
+YUI CSS reset
+*/
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}input,textarea,select{*font-size:100%;}legend{color:#000;}
+
+/*
+YUI CSS font
+*/
+body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}select,input,button,textarea{font:99% arial,helvetica,clean,sans-serif;}table{font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;*font-size:108%;line-height:100%;}
+
+/* Font-face */
+
+@font-face {
+    font-family: 'MgOpenModerna';
+    src:          url('../fonts/mgopenmodernaregular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'MgOpenModerna';
+    src:          url('../fonts/mgopenmodernabold-webfont.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+/*Common rules*/
+
+html {
+    background:#110f10;
+}
+
+body {
+    font-family:'Helvetica Neue', Helvetica, 'MgOpenModerna', Arial, sans-serif;
+    color:#fff;
+    background:url('../img/bg.png') repeat top right;
+    padding-bottom:20px;
+}
+
+#wrapper {
+    max-width:50em;
+    padding:0 16px 0 16px;
+    margin:0 auto;
+    z-index:2;
+    position:relative;
+    overflow:auto;
+}
+
+#header {
+    padding-top:12px;
+    border-bottom:3px solid #ffd40d;
+}
+
+h1 {
+    font-weight:bold;
+    padding:16px 8px;
+    font-size:2.26em;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+}
+
+p {
+    color:#b2b2b2;
+    font-family:"Warnock Pro", Palatino, "Times New Roman", serif;
+    font-size:1.005em;
+    line-height:1.538em;
+}
+
+p.sans {
+    font-family:'Helvetica Neue', Helvetica, 'MgOpenModerna', Arial, sans-serif;
+}
+
+
+#home #header {
+    margin-top:20px;
+    border-top:3px solid #ffd40d;
+    border-bottom:0px;
+    padding-top:0px;
+}
+
+#home #header h1 {
+    padding-top:10px;
+}
+
+body#home {
+    background:url('../img/spark.jpg') no-repeat center 0;
+    background-size:320px auto;
+    min-height:400px;
+} 
+
+#home #header {
+    margin-bottom:200px;   
+}
+
+
+/*Teaser Page*/
+
+.teaser #content {
+    overflow:visible;
+}
+
+#teaser-copy {
+    background:#000;
+    border:1px solid #ffd40d;
+    padding:0 12px;
+    margin:-190px auto 0 auto;
+    max-width:236px;
+}
+
+#teaser-copy h2 {
+    font-size:1.883em;
+    padding:20px 0;
+    border-bottom:1px solid #404040;
+    font-weight:bold;
+}
+
+#teaser-copy p {
+    margin:20px 0;
+}
+
+#teaser-badges {
+    background:url('../img/teaser-badges.png') no-repeat center center;
+    background-size:234px auto;
+    height:151.33px;
+    width:234px;
+    margin:20px auto;
+}
