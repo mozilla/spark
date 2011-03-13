@@ -167,9 +167,13 @@ var initSparkedCountries = function(countryList) {
         countries[c].attr(style).hide();
         countries[c].hover((function(code) {
             return function() {
+                $tooltip.show();
                 $tooltipContent.text(countryNames[code]);   
             }
-        })(c));
+        })(c),
+        function() {
+            $tooltip.hide();
+        });
     }
 
     var list = countryList;
@@ -178,12 +182,9 @@ var initSparkedCountries = function(countryList) {
         var cc = list[i];
         countries[cc].show();
     }
-
-    
 };
 
 // Countries tooltip
-
 $(document).mousemove(function(e){
     var w = $tooltip.width(); 
 
@@ -191,12 +192,4 @@ $(document).mousemove(function(e){
        'left' : e.pageX - ((w / 2) + 10),
        'top' : e.pageY + 27
     });
-});
-
-$('#minimap path').live('mouseenter', function() {
-    $tooltip.show();
-});
-
-$('#minimap path').live('mouseleave', function() {
-    $tooltip.hide();
 });
