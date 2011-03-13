@@ -1,10 +1,12 @@
 <ul id="badges-list">
     {% for badge in profile.badges %}
-    <li class="badge badge{{ badge.id|replace('_','-') }} {% if badge.new %}new{% endif %}">
+    <li class="badge {% if badge.new %}new{% endif %}">
         {% if badge.new %}
         <div class="star"></div>
         {% endif %}
-        <div class="badge-icon"></div>
+        <div class="badge-icon">
+            <img src="{{ MEDIA_URL }}img/badges/{{ badge.id|replace('_','-') }}.png" alt="">
+        </div>
         <div class="badge-popup">
             <div class="arrow"></div>
             <div class="badge-copy">
@@ -16,8 +18,7 @@
                     {{ badge.description }}
                 </p>
             </div>
-            <div class="badge-img">
-            </div>
+            <img src="{{ MEDIA_URL }}img/badges/{{ badge.id|replace('_','-') }}.png" alt="">
             <div class="badge-sharing">
                 <span>{{ _('share this!') }}</span>
                 <a href="#" class="facebook"></a>

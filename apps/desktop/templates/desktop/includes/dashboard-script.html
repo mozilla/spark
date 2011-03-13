@@ -16,7 +16,7 @@ $(document).ready(function() {
    });
    
    $('body').click(function(e) {
-     if( !$(e.target).is('div.badge-popup, div.badge-icon, div.badge-popup p, div.badge-popup span, div.badge-popup div, div.badge-popup h4') ) {
+     if( !$(e.target).is('div.badge-popup, div.badge-icon, div.badge-icon img, div.badge-popup p, div.badge-popup span, div.badge-popup div, div.badge-popup img, div.badge-popup h4') ) {
        if($('body').hasClass('clickable')) {
            $(this).removeClass('clickable');
            $popups.fadeOut(200);

@@ -147,6 +147,9 @@ MINIFY_BUNDLES = {
         ),
         'non-firefox': (
             'css/non-firefox.css',
+        ),
+        'badges': (
+            'css/badges.css',
         )
     },
     'js': {

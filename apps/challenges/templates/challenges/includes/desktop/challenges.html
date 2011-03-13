@@ -14,14 +14,14 @@
         </div>
         <ul id="level-details">
             {% for challenge in level.challenges %}
-            <li {% if challenge.completed %}class="complete badge{{ challenge.id|replace('_','-') }}"{% endif %}>
+            <li {% if challenge.completed %}class="complete"{% endif %}>
                 <div class="checkbox"></div>
                 <span class="title">{{ challenge.name }}</span>
                 <p>
                     {{ challenge.description }}
                 </p>
                 {% if challenge.completed %}
-                <div class="badge-icon"></div>
+                <img src="{{ MEDIA_URL }}img/badges/{{ challenge.id|replace('_','-') }}.png" alt="">
                 {% endif %}
             </li>
             {% endfor %}

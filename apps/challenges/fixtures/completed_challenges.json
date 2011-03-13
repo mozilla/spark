@@ -77,6 +77,127 @@
         }
     },
     {
+        "pk": 15, 
+        "model": "users.completedchallenge", 
+        "fields": {
+            "profile": 4, 
+            "challenge": "3_1", 
+            "new_badge": false, 
+            "date_completed": "2011-02-25 14:12:57", 
+            "date_badge_earned": "2011-03-04 13:30:05"
+        }
+    },
+    {
+        "pk": 16, 
+        "model": "users.completedchallenge", 
+        "fields": {
+            "profile": 4, 
+            "challenge": "3_2", 
+            "new_badge": false, 
+            "date_completed": "2011-02-25 14:12:57", 
+            "date_badge_earned": "2011-03-04 13:30:05"
+        }
+    },
+    {
+        "pk": 17, 
+        "model": "users.completedchallenge", 
+        "fields": {
+            "profile": 4, 
+            "challenge": "3_3", 
+            "new_badge": false, 
+            "date_completed": "2011-02-25 14:12:57", 
+            "date_badge_earned": "2011-03-04 13:30:05"
+        }
+    },
+    {
+        "pk": 18, 
+        "model": "users.completedchallenge", 
+        "fields": {
+            "profile": 4, 
+            "challenge": "3_4", 
+            "new_badge": false, 
+            "date_completed": "2011-02-25 14:12:57", 
+            "date_badge_earned": "2011-03-04 13:30:05"
+        }
+    },
+    {
+        "pk": 19, 
+        "model": "users.completedchallenge", 
+        "fields": {
+            "profile": 4, 
+            "challenge": "3_5", 
+            "new_badge": false, 
+            "date_completed": "2011-02-25 14:12:57", 
+            "date_badge_earned": "2011-03-04 13:30:05"
+        }
+    },
+    {
+        "pk": 20, 
+        "model": "users.completedchallenge", 
+        "fields": {
+            "profile": 4, 
+            "challenge": "4_1", 
+            "new_badge": false, 
+            "date_completed": "2011-02-25 14:12:57", 
+            "date_badge_earned": "2011-03-04 13:30:05"
+        }
+    },
+    {
+        "pk": 21, 
+        "model": "users.completedchallenge", 
+        "fields": {
+            "profile": 4, 
+            "challenge": "4_2", 
+            "new_badge": false, 
+            "date_completed": "2011-02-25 14:12:57", 
+            "date_badge_earned": "2011-03-04 13:30:05"
+        }
+    },
+    {
+        "pk": 22, 
+        "model": "users.completedchallenge", 
+        "fields": {
+            "profile": 4, 
+            "challenge": "E_4", 
+            "new_badge": false, 
+            "date_completed": "2011-02-25 14:12:57", 
+            "date_badge_earned": "2011-03-04 13:30:05"
+        }
+    },
+    {
+        "pk": 23, 
+        "model": "users.completedchallenge", 
+        "fields": {
+            "profile": 4, 
+            "challenge": "E_8", 
+            "new_badge": false, 
+            "date_completed": "2011-02-25 14:12:57", 
+            "date_badge_earned": "2011-03-04 13:30:05"
+        }
+    },
+    {
+        "pk": 24, 
+        "model": "users.completedchallenge", 
+        "fields": {
+            "profile": 4, 
+            "challenge": "E_11", 
+            "new_badge": false, 
+            "date_completed": "2011-02-25 14:12:57", 
+            "date_badge_earned": "2011-03-04 13:30:05"
+        }
+    },
+    {
+        "pk": 25, 
+        "model": "users.completedchallenge", 
+        "fields": {
+            "profile": 4, 
+            "challenge": "E_7", 
+            "new_badge": false, 
+            "date_completed": "2011-02-25 14:12:57", 
+            "date_badge_earned": "2011-03-04 13:30:05"
+        }
+    },
+    {
         "pk": 8, 
         "model": "users.completedchallenge", 
         "fields": {
