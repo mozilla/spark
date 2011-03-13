@@ -944,10 +944,14 @@ span.label {
 
 canvas#history {
     background:url('../img/graph1-bg.png') repeat 0 0;
+    height:86px;
+    width:310px;
 }
 
 #minimap {
     background:url('../img/minimap.png') no-repeat 0 1px;
+    height:174px;
+    width:310px;
 }
 
 /*Badges*/
