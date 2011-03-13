@@ -184,8 +184,10 @@ $(document).mousemove(function(e){
     });
 });
 
-$('#minimap').hover(function() {
-    $tooltip.toggle();
-}, function() {
-    $tooltip.toggle();
+$('#minimap path').live('mouseenter', function() {
+    $tooltip.show();
+});
+
+$('#minimap path').live('mouseleave', function() {
+    $tooltip.hide();
 });

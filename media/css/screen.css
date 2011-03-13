@@ -968,6 +968,7 @@ canvas#history {
     color:#fff;
     padding:15px;
     display:none;
+    z-index:10000;
 }
 
 #tooltip-arrow {
