@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Language and direction will need to be dynamically inserted depending on UA sniffing -->
 <html lang="{{ LANG }}" dir="{{ DIR }}">
 	<head>
 		<meta charset="utf-8">
@@ -50,7 +49,7 @@
 	    
 	</head>
 	
-	<body id="{{ body_id }}" class="lang-en {{ body_class }}">
+	<body id="{{ body_id }}" class="lang-{{ LANG }} {{ body_class }}">
 		{% block content %}{% endblock %}
 
 		{{ js('common') }}

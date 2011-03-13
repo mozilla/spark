@@ -26,10 +26,8 @@ $(document).ready(function() {
    
    countUp({{ date_joined_delta }});
    
-   initShareHistory([30,0,120,20,40, 15, 10, 20, 40, 80, 40, 20, 39, 23, 32]);
-
-   {# set level=5 #}
-
+   initShareHistory([{{ profile.shares_over_time|join(', ') }}]);
+   
    initSpark({{ profile.level }});
    
    {# set sparked_countries=[] #}

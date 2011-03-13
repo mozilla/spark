@@ -1,4 +1,7 @@
+from datetime import datetime, timedelta
+
 from django.db import models
+from django.db.models import Count
 
 from users.models import Profile
 from spark.models import City
@@ -50,7 +53,27 @@ class SharingHistory(models.Model):
     
     @classmethod
     def get_shares_over_time(cls, profile):
-        return SharingHistory.objects.filter(parent=profile)
+        start = datetime(2011, 2, 27)
+        num_days = (datetime.now() + timedelta(days=1) - start).days
+        shares = [0 for i in range(num_days)]
+        date_range = (start + timedelta(days=i) for i in range(num_days))
+        dates = [(i, '%d-%d' % (d.day, d.month)) for (i, d) in enumerate(date_range)]
+        
+        qs = (SharingHistory.objects.filter(parent=profile)
+                           .extra(select={'month': 'extract(month from date_shared)', 
+                                          'day': 'extract(day from date_shared)'})
+                            .values('month', 'day').annotate(num_shares=Count('date_shared')))
+        
+        for r in qs:
+            day = '%d-%d' % (r['day'], r['month'])
+            for (i, date) in dates:
+                if date == day:
+                    shares[i] = r['num_shares']
+                    break
+        
+        return shares
+        
+        
     
     @classmethod
     def add_share(cls, profile):

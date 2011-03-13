@@ -96,14 +96,14 @@ class Profile(models.Model):
         return ''
     
     
-    @property
-    def home_location(self):
+    
+    def get_home_location(self, locale):
         """Returns a string containing the location determined by Google Location Services
            when Boost your Spark 1/2 was completed by the user.
         """
         from geo.countries import countries
-        if self.country_code:
-            country = countries[self.country_code]
+        if self.country_code and hasattr(countries, locale):
+            country = countries[locale][self.country_code]
             return '%s, %s' % (self.city_name, country)
         else:
             return ''
@@ -119,6 +119,15 @@ class Profile(models.Model):
             return share[0].date_shared
         else:
             return None
+    
+    
+    @property
+    def shares_over_time(self):
+        """Aggregate data of Spark shares since the start of the campaign.
+           Used by the 'shares over time' diagram in the user dashboard.
+        """
+        from stats.models import SharingHistory
+        return SharingHistory.get_shares_over_time(self)
 
 
     @property

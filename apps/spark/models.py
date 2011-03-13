@@ -1,13 +1,13 @@
 from django.db import models
 
-from geo.countries import countries
+from geo.cities import cities
 
 
 class City(models.Model):
     """
     Represents cities used by the global visualization.
     """
-    name = models.CharField(max_length=255, primary_key=True)
+    id = models.CharField(max_length=255, primary_key=True)
     country_code = models.CharField(max_length=2)
     latitude = models.FloatField()
     longitude = models.FloatField()
@@ -18,3 +18,7 @@ class City(models.Model):
     @property
     def country(self):
         return unicode(countries[self.country_code])
+    
+    @property
+    def name(self):
+        return unicode(cities[self.name]['name'])

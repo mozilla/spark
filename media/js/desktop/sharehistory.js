@@ -4,7 +4,8 @@ var initShareHistory = function(values) {
         h = 86,
         w = 310,
         x = 0,
-        nbValues = values.length;
+        nbValues = values.length,
+        m;
 
     canvas.height = h;
     canvas.width = w; 
@@ -14,10 +15,14 @@ var initShareHistory = function(values) {
     };
 
     var maxValue = arrayMax(values);
-    var m = (h - 10) / maxValue;
+    if (maxValue > 0) {
+        m = (h - 10) / maxValue;
+    } else {
+        m = 0;
+    }
 
     c.beginPath();
-    c.moveTo(x, (h - values[0] * m))
+    c.moveTo(x, (h - values[0] * m));
 
     for(i = 0; i <= nbValues - 1; i += 1) {
         var y = (h - values[i] * m);
