@@ -956,7 +956,7 @@ canvas#history {
 
 #tooltip {
     position:absolute;
-    min-width:170px;
+    min-width:50px;
     background:#212020;
     border:2px solid #ffd40d;
     border-radius:2px;
@@ -966,7 +966,7 @@ canvas#history {
     box-shadow:inset 1px 1px 1px rgba(0,0,0,0.75), 6px 5px 10px rgba(0,0,0,0.75);
     text-align:center;
     color:#fff;
-    padding:15px;
+    padding:10px;
     display:none;
     z-index:10000;
 }
@@ -978,7 +978,7 @@ canvas#history {
     width:28px;
     background:url('../img/tooltip-arrow.png') no-repeat 0 0;
     margin:0 0 -22px -14px;
-    top:-32px;
+    top:-27px;
 }
 
 #tooltip span {

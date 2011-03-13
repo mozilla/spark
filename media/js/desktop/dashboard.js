@@ -154,14 +154,22 @@ var initSpark = function (level) {
     // }, 1000 / 30);
 };
 
+var $tooltip = $('#tooltip'),
+    $tooltipContent = $('#tooltip span');
+
 // Countries you've reached
 var initSparkedCountries = function(countryList) {
     var R = Raphael("minimap", 310, 174),
         countries = getCountries(R),
         style = {fill: '#ffd40d', 'stroke-width': 0};
-
+    
     for(var c in countries) {
         countries[c].attr(style).hide();
+        countries[c].hover((function(code) {
+            return function() {
+                $tooltipContent.text(code);   
+            }
+        })(c));
     }
 
     var list = countryList;
@@ -169,17 +177,18 @@ var initSparkedCountries = function(countryList) {
     for(var i=0, max=list.length; i < max; i += 1) {
         var cc = list[i];
         countries[cc].show();
-    }   
+    }
+
+    
 };
 
 // Countries tooltip
-var $tooltip = $('#tooltip');
 
 $(document).mousemove(function(e){
     var w = $tooltip.width(); 
 
    $tooltip.css({
-       'left' : e.pageX - ((w / 2) + 15),
+       'left' : e.pageX - ((w / 2) + 10),
        'top' : e.pageY + 27
     });
 });
