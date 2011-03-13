@@ -24,14 +24,10 @@ $(document).ready(function() {
      }
    });
    
+   // Init all dashboard components
    countUp({{ date_joined_delta }});
-   
-   initShareHistory([{{ profile.shares_over_time|join(', ') }}]);
-   
+   initShareHistory({{ profile.shares_over_time }});
    initSpark({{ profile.level }});
-   
-   {# set sparked_countries=[] #}
-  
-   initSparkedCountries(['fr', 'br', 'us', 'pt', 'es', 'cn', 'nz']);
+   initSparkedCountries({{ profile.sparked_countries|safe }});
 });
 </script>

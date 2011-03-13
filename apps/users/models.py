@@ -128,7 +128,13 @@ class Profile(models.Model):
         """
         from stats.models import SharingHistory
         return SharingHistory.get_shares_over_time(self)
-
+    
+    
+    @property
+    def sparked_countries(self):
+        """List of countries this user has shared their Spark with."""
+        return ['fr', 'br', 'us', 'pt', 'es', 'nz', 'jp', 'kr', 'se', 'ly', 'ro', 'bj', 'in', 'cm', 'ua']
+    
 
     @property
     def longest_chain(self):
