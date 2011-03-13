@@ -1106,20 +1106,20 @@ div.badge-popup .arrow {
     left:21px;
 }
 
-li.arrow1 .badge-popup { left:-25px; }
-li.arrow1 .arrow { left:45px; }
+li.nb8 .badge-popup { left:-25px; }
+li.nb8 .arrow { left:45px; }
 
-li.arrow2 .badge-popup { left:-105px; }
-li.arrow2 .arrow { left:125px; }
+li.nb9 .badge-popup { left:-105px; }
+li.nb9 .arrow { left:125px; }
 
-li.arrow3 .badge-popup { left:-185px; }
-li.arrow3 .arrow { left:205px; }
+li.nb10 .badge-popup { left:-185px; }
+li.nb10 .arrow { left:205px; }
 
-li.arrow4 .badge-popup { left:-265px; }
-li.arrow4 .arrow { left:285px; }
+li.nb11 .badge-popup { left:-265px; }
+li.nb11 .arrow { left:285px; }
 
-li.arrow5 .badge-popup { left:-345px; }
-li.arrow5 .arrow { left:365px; }
+li.nb12 .badge-popup { left:-345px; }
+li.nb12 .arrow { left:365px; }
 
 /*Challenges*/
 
