@@ -171,3 +171,21 @@ var initSparkedCountries = function(countryList) {
         countries[cc].show();
     }   
 };
+
+// Countries tooltip
+var $tooltip = $('#tooltip');
+
+$(document).mousemove(function(e){
+    var w = $tooltip.width(); 
+
+   $tooltip.css({
+       'left' : e.pageX - ((w / 2) + 15),
+       'top' : e.pageY + 27
+    });
+});
+
+$('#minimap').hover(function() {
+    $tooltip.toggle();
+}, function() {
+    $tooltip.toggle();
+});
