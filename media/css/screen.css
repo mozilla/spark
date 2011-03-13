@@ -934,16 +934,20 @@ span.label {
     font-family:'Times New Roman', sans-serif;
 }
 
-#graphs span.label {
-    margin-top:8px;
+#share-history {
+    margin-bottom:10px;
 }
 
-#share-history {
-    margin-bottom:28px;
+#share-history .label {
+    margin-top:8px;
 }
 
 canvas#history {
     background:url('../img/graph1-bg.png') repeat 0 0;
+}
+
+#minimap {
+    background:url('../img/minimap.png') no-repeat 0 1px;
 }
 
 /*Badges*/

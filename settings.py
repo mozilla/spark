@@ -175,6 +175,8 @@ MINIFY_BUNDLES = {
             'js/desktop/dashboard.js',
             'js/desktop/sharehistory.js',
             'js/desktop/popups-youraccount.js',
+            'js/libs/raphael-min.js',
+            'js/desktop/minimap.js',
         ),
         'user-logged-in': (
             'js/desktop/dashboard.js',

@@ -152,4 +152,22 @@ var initSpark = function (level) {
     //     ctx.clearRect(0, 0, w, h);
     //     drawShapes(shapes, level);
     // }, 1000 / 30);
-}
+};
+
+// Countries you've reached
+var initSparkedCountries = function(countryList) {
+    var R = Raphael("minimap", 310, 174),
+        countries = getCountries(R),
+        style = {fill: '#ffd40d', 'stroke-width': 0};
+
+    for(var c in countries) {
+        countries[c].attr(style).hide();
+    }
+
+    var list = countryList;
+
+    for(var i=0, max=list.length; i < max; i += 1) {
+        var cc = list[i];
+        countries[cc].show();
+    }   
+};
