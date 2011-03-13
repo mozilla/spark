@@ -71,11 +71,19 @@
     <div id="graphs" class="column last">
         <div id="share-history">
             <canvas id="history" height="80" width="310"></canvas>
+            {% if not is_user_page %}
             <span class="label">{{ _('your shares over time') }}</span>
+            {% else %}
+            <span class="label">{{ _('shares over time') }}</span>            
+            {% endif %}
         </div>
         <div id="sparked-countries">
             <div id="minimap"></div>
+            {% if not is_user_page %}
             <span class="label">{{ _("countries you've sparked") }}</span>
+            {% else %}
+            <span class="label">{{ _("countries sparked") }}</span>
+            {% endif %}
         </div>
     </div>
 </div> <!-- end stats -->

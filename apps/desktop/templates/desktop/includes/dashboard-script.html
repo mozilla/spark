@@ -24,6 +24,9 @@ $(document).ready(function() {
      }
    });
    
+   // Localized country list
+   countryNames = {{ countries|replace("u'", "'")|safe }};
+   
    // Init all dashboard components
    countUp({{ date_joined_delta }});
    initShareHistory({{ profile.shares_over_time }});

@@ -2,6 +2,8 @@ import datetime
 
 from django.shortcuts import get_object_or_404
 
+from geo.countries import countries
+
 from spark.decorators import login_required
 from users.models import User, Profile
 
@@ -17,7 +19,8 @@ def home(request):
                                      'profile': profile,
                                      'logged_in': True,
                                      'levels': profile.challenge_info,
-                                     'date_joined_delta': _total_seconds(delta)})
+                                     'date_joined_delta': _total_seconds(delta),
+                                     'countries': countries[request.locale]})
     else:
         return jingo.render(request, 'desktop/home.html', {'is_homepage': True})
 
@@ -29,7 +32,8 @@ def user(request, username):
             'profile': user.profile,
             'logged_in': request.user.is_authenticated(),
             'date_joined_delta': _total_seconds(delta),
-            'is_user_page': True}
+            'is_user_page': True,
+            'countries': countries[request.locale]}
     
     return jingo.render(request, 'desktop/user.html', data)
 

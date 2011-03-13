@@ -167,7 +167,7 @@ var initSparkedCountries = function(countryList) {
         countries[c].attr(style).hide();
         countries[c].hover((function(code) {
             return function() {
-                $tooltipContent.text(code);   
+                $tooltipContent.text(countryNames[code]);   
             }
         })(c));
     }
