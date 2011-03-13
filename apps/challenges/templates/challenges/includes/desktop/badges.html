@@ -1,6 +1,9 @@
 <ul id="badges-list">
     {% for badge in profile.badges %}
-    <li class="badge {% if badge.new %}new{% endif %}">
+    {% set position = loop.index % 12 %}
+    {% set position = 12 if position == 0 else position %}
+    {% set class = ' nb%s' % position if position >= 8 else '' %}
+    <li class="badge{% if badge.new %} new{% endif %}{{ class }}">
         {% if badge.new %}
         <div class="star"></div>
         {% endif %}
@@ -10,12 +13,12 @@
         <div class="badge-popup">
             <div class="arrow"></div>
             <div class="badge-copy">
-                <h4>{{ badge.name }}</h4>
+                <h4>{{ badge.name|safe }}</h4>
                 {% set date_earned = datetimeformat(badge.date_earned, format='longdatetime') %}
                 {# L10n: This is followed by the date when a badge was earned. #}
                 <span class="unlock-date">{{ _('earned on:') }} {{ date_earned }}</span>
                 <p>
-                    {{ badge.description }}
+                    {{ badge.description|safe }}
                 </p>
             </div>
             <img src="{{ MEDIA_URL }}img/badges/{{ badge.id|replace('_','-') }}.png" alt="">

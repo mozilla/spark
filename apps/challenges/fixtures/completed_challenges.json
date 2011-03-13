@@ -213,23 +213,12 @@
         "model": "users.completedchallenge", 
         "fields": {
             "profile": 5, 
-            "challenge": "1_1", 
+            "challenge": "1_2",
             "new_badge": false, 
             "date_completed": "2011-03-04 14:39:57", 
             "date_badge_earned": null
         }
-    }, 
-    {
-        "pk": 10, 
-        "model": "users.completedchallenge", 
-        "fields": {
-            "profile": 5, 
-            "challenge": "1_2", 
-            "new_badge": false, 
-            "date_completed": "2011-03-04 14:39:57", 
-            "date_badge_earned": null
-        }
-    }, 
+    },
     {
         "pk": 11, 
         "model": "users.completedchallenge", 

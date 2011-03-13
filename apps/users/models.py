@@ -69,7 +69,7 @@ class Profile(models.Model):
                                                                  date_badge_earned__isnull=False)
         for cc in completed_challenges:
             badges.append({
-                'id': '%d_%d' % (cc.challenge.level, cc.challenge.number),
+                'id': utils.get_challenge_id(cc.challenge.level, cc.challenge.number),
                 'name': cc.challenge.badge_name,
                 'description': cc.challenge.badge_description,
                 'date_earned': cc.date_badge_earned,
