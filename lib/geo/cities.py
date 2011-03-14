@@ -325,7 +325,7 @@ cities = {
 def load_cities():
     from spark.models import City
     for city, props in cities.iteritems():
-        City.objects.create(name=city, country_code=props['cc'], latitude=props['lat'], longitude=props['lng'])
+        City.objects.create(city_name=city, country_code=props['cc'], latitude=props['lat'], longitude=props['lng'])
 
 
 

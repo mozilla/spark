@@ -19,14 +19,12 @@ class PersonalStats(models.Model):
         return unicode(self.user)
 
 
-
 class GlobalStats(models.Model):
     name = models.CharField(max_length=255, primary_key=True)
     value = models.FloatField(blank=True, null=True)
     
     def __unicode__(self):
         return unicode(self.name)
-
 
 
 VIA_TWITTER = 1
@@ -40,17 +38,17 @@ class SharingHistory(models.Model):
     date_shared = models.DateTimeField(auto_now_add=True)
     shared_via = models.PositiveIntegerField(default=UNKNOWN)
     timezone = models.CharField(max_length=6, blank=True, null=True)
-    
+
     class Meta:
         ordering = ('-date_shared',)
-    
+
     def __unicode__(self):
         return '%s on %s' % (profile, shared_via, date_shared)
-    
+
     @classmethod
     def get_num_shares(cls, profile):
         return SharingHistory.objects.filter(parent=profile).count()
-    
+
     @classmethod
     def get_shares_over_time(cls, profile):
         start = datetime(2011, 2, 27)
@@ -73,12 +71,10 @@ class SharingHistory(models.Model):
         
         return shares
         
-        
-    
     @classmethod
     def add_share(cls, profile):
         SharingHistory.objects.create(parent=profile)
-    
+
     @classmethod
     def add_share_from_twitter(cls, profile):
         SharingHistory.objects.create(parent=profile, shared_via=VIA_TWITTER)
@@ -96,14 +92,25 @@ class SharingHistory(models.Model):
         SharingHistory.objects.create(parent=profile, shared_via=VIA_POSTER)
 
 
+
 class CitySharingHistory(models.Model):
     city_from = models.ForeignKey(City, related_name='from_city')
     city_to = models.ForeignKey(City, related_name='to_city')
     sharer = models.ForeignKey(Profile, db_index=True)
     date_shared = models.DateTimeField(auto_now_add=True)
-    
+
+
     @classmethod
     def add_share(cls, from_city, to_city, sharer):
         CitySharingHistory.objects.create(city_from=from_city,
                                           city_to=to_city,
                                           sharer=sharer)
+
+    @classmethod
+    def add_share_from_profiles(cls, sharer, sharee):
+        city1 = sharer.major_city
+        city2 = sharee.major_city
+        
+        if city1 and city2:
+            CitySharingHistory.add_share(city1, city2, sharer)
+
