@@ -180,13 +180,13 @@ h3 {
   line-height:1.1em;
 }
 
-h3 p {
+.left-column p {
     color:#999;
 	font-style:italic;
 	font-weight:normal;
-	font-size:0.444em;
+	font-size:1.231em;
 	font-family:'Warnock Pro', 'Times New Roman', serif;
-	line-height:1.8em;
+	line-height:150%;
 }
 
 h4 {
