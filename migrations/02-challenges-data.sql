@@ -1,5 +1,4 @@
-
-INSERT INTO `challenges_challenge` (`id`, `level`, `number`, `easter_egg`) VALUES
+INSERT INTO challenges_challenge (id, level, number, easter_egg) VALUES
 ('1_1', 1, 1, False),
 ('1_2', 1, 2, False),
 ('1_3', 1, 3, False),

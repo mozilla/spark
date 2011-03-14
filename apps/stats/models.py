@@ -51,7 +51,7 @@ class SharingHistory(models.Model):
 
     @classmethod
     def get_shares_over_time(cls, profile):
-        start = datetime(2011, 2, 27)
+        start = datetime(2011, 3, 8)
         num_days = (datetime.now() + timedelta(days=1) - start).days
         shares = [0 for i in range(num_days)]
         date_range = (start + timedelta(days=i) for i in range(num_days))

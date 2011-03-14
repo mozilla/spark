@@ -3,7 +3,7 @@ import os
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-# Set up playdoh.
+# Set up Spark.
 import manage
 from django.conf import settings
 

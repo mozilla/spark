@@ -102,8 +102,8 @@ class Profile(models.Model):
            when Boost your Spark 1/2 was completed by the user.
         """
         from geo.countries import countries
-        if self.country_code and hasattr(countries, locale):
-            country = countries[locale][self.country_code]
+        if self.country_code and locale in countries:
+            country = countries[locale][self.country_code.lower()]
             return '%s, %s' % (self.city_name, country)
         else:
             return ''
