@@ -17,9 +17,12 @@ Important: clone into a directory with a different name than spark,
 or else there will be a conflict with a django app named spark.
 
 * git clone --recursive git://github.com/mozilla/spark.git my_spark
-* optional: create a virtualenv before running the step below
+* Optional: create a virtualenv before running the step below
 * pip install -r requirements/compiled.txt
 * cp settings_local.py-dist settings_local.py
+* Create the database configured in settings_local.py
+* ./vendor/src/schematic/schematic migrations/
+* From mysql: source lib/staging/test-data.sql
 * ./manage.py runserver
 
 Please refer to [Playdoh's docs][github-playdoh] for more information.
