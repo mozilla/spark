@@ -5,13 +5,13 @@
 		<meta name="viewport" content="width=device-width">
 		{# L10n: Page title pattern for <title> tag. #}
 		<title>{{ _('{title} | Spark powered by Firefox for mobile')|f(title=title) }}</title>
-		{{ js('modernizr') }}
 		{% block site_css %}
 	      {{ css('desktop') }}
 	    {% endblock %}
 	    {% for stylesheet in stylesheets %}
         {{ css(stylesheet) }}
         {% endfor %}
+		{{ js('modernizr') }}
         <!--[if lte IE 7]>
             <link rel="stylesheet" href="{{ MEDIA_URL }}css/ie6-7.css">
         <![endif]-->
