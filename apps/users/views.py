@@ -152,6 +152,13 @@ def delete_account(request):
         return {'status': 'error',
                 'errors': dict(form.errors.iteritems())}
     else:
+        # Anonymize user instead of actually deleting it.
+        # We need to keep user metadata in Profile and UserNode
+        # so that the game keeps working as intended.
+        # If we used user.delete() these would get deleted too.
+        request.user.username = None
+        request.user.password = None
+        request.user.email = None
         request.user.is_active = False
         request.user.save()
         auth.logout(request)

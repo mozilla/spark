@@ -111,10 +111,11 @@ def boost2_confirm(request):
             except User.DoesNotExist:
                 error = True
         else:
-            pass #TODO: save as a flag in user profile?
+            pass #TODO: save as a no_parent flag in user profile
         
         if not error:
             profile = request.user.profile
+            profile.parent_username = username
             profile.boost2_completed = True
             profile.save()
             

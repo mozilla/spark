@@ -38,6 +38,7 @@ class Profile(models.Model):
     # Boost 2/2
     boost2_completed = models.BooleanField(default=False)
     no_parent = models.BooleanField(default=True)
+    parent_username = models.CharField(max_length=30, blank=True, null=True)
     date_boost2_localtime = models.DateTimeField(blank=True, null=True)
 
     # Flags
@@ -76,27 +77,8 @@ class Profile(models.Model):
                 'new': cc.new_badge
             })
         return badges
-    
-    
-    @property
-    def parent_username(self):
-        """Returns the username of the person who was identified by the current user
-           at Boost your Spark 2/2. Technically, this is the user's parent in the
-           user tree (see UserNode model).
-        """
-        try:
-            node = self.user.node
-            if node:
-                parent = node.parent
-                if parent:
-                    return parent.user.username
-        except UserNode.DoesNotExist:
-            pass
-        
-        return ''
-    
-    
-    
+
+
     def get_home_location(self, locale):
         """Returns a string containing the location determined by Google Location Services
            when Boost your Spark 1/2 was completed by the user.
