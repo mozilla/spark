@@ -452,16 +452,8 @@ div.sub-section h4 {
     background:url('../img/spritesheet.png') no-repeat 0 -100px;
 }
 
-#facebook {
-    background:url('../img/spritesheet.png') no-repeat -50px -150px;
-}
-
 .facebook {
     background:url('../img/spritesheet.png') no-repeat -50px -100px;    
-}
-
-#twitter {
-    background:url('../img/spritesheet.png') no-repeat -100px -100px;
 }
 
 .twitter {
