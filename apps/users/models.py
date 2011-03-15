@@ -89,6 +89,12 @@ class Profile(models.Model):
             return '%s, %s' % (self.city_name, country)
         else:
             return ''
+            
+    @property
+    def spark_started_with(self):
+        if self.parent_username is not None:
+            return self.parent_username
+        return ''
     
     
     @property
