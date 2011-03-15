@@ -74,7 +74,7 @@ def boost2(request):
     profile = request.user.profile
 
     if profile.boost2_completed:
-        return HttpResponseRedirect(reverse('mobile.boost2'))
+        return HttpResponseRedirect(reverse('mobile.home'))
 
     if request.method == 'POST':
         form = BoostStep2Form(request.user, request.POST)
