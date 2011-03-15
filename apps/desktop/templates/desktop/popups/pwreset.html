@@ -5,7 +5,7 @@
     <h3>{{ popuptitle }}</h3>
         <p class="legend">{{ _('Enter your new password below.') }}</p>
         <hr>
-        <form id="pwreset" action="{{ url('users.pw_reset_confirm', uidb36, token) }}" method="post" accept-charset="utf-8">
+        <form id="pwreset" action="{{ url('users.pw_reset_confirm', uidb36, token)|secure_url }}" method="post" accept-charset="utf-8">
             {{ csrf() }}
             <fieldset class="section">
                 <div id="pwreset-new_password1" class="input-wrapper">

@@ -3,7 +3,7 @@
         <h3>{{ _('Sign in') }}</h3>
             <p class="legend">{{ _('Welcome back! Ready to keep your Spark going strong? Just fill your details in below.') }}</p>
             <hr>
-            <form id="login" action="{{ url('users.login') }}" method="post" accept-charset="utf-8">
+            <form id="login" action="{{ url('users.login')|secure_url }}" method="post" accept-charset="utf-8">
                 {{ csrf() }}
                 <fieldset class="section">
                     <div id="login-username" class="input-wrapper">
@@ -35,7 +35,7 @@
             {% endtrans %}
         </p>
         <hr>
-        <form id="recover" action="{{ url('users.forgot_password') }}" method="post" accept-charset="utf-8">
+        <form id="recover" action="{{ url('users.forgot_password')|secure_url }}" method="post" accept-charset="utf-8">
             {{ csrf() }}
             <fieldset id="account" class="section">
                 <div class="input-wrapper" id="recover-email">

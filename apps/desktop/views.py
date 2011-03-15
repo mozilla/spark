@@ -1,10 +1,13 @@
 import datetime
 
+from django.conf import settings
 from django.shortcuts import get_object_or_404
 
 from geo.countries import countries
 
 from spark.decorators import login_required
+from spark.helpers import secure_url
+
 from users.models import User, Profile
 
 import jingo

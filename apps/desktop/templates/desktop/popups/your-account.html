@@ -3,7 +3,7 @@
         <h3>{{ _('Change Email Address') }}</h3>
           <p class="legend">{{ _('Please enter the following information') }}</p>
           <hr>
-          <form id="changeemail" action="{{ url('users.change_email') }}" method="post" accept-charset="utf-8">
+          <form id="changeemail" action="{{ url('users.change_email')|secure_url }}" method="post" accept-charset="utf-8">
             {{ csrf() }}
             <fieldset class="section">
                 <div id="changeemail-password" class="input-wrapper">
@@ -27,7 +27,7 @@
         <h3>{{ _('Change Password') }}</h3>
           <p class="legend">{{ _('Please enter the following information') }}</p>
           <hr>
-          <form id="changepw" action="{{ url('users.pw_change') }}" method="post" accept-charset="utf-8">
+          <form id="changepw" action="{{ url('users.pw_change')|secure_url }}" method="post" accept-charset="utf-8">
             {{ csrf() }}
             <fieldset class="section">
                 <div id="changepw-old_password" class="input-wrapper">
@@ -53,7 +53,7 @@
             {% trans %}You're about to permanently delete your Spark account. To proceed, please enter your password below.{% endtrans %}
         </p>
         <hr>
-        <form id="delaccount" action="{{ url('users.delete_account') }}" method="post" accept-charset="utf-8">
+        <form id="delaccount" action="{{ url('users.delete_account')|secure_url }}" method="post" accept-charset="utf-8">
             {{ csrf() }}
             <fieldset class="section">
                 <div id="delaccount-password" class="input-wrapper">

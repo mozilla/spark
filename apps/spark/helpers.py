@@ -5,6 +5,7 @@ from django.conf import settings
 from django.http import QueryDict
 from django.utils.encoding import smart_unicode, smart_str
 from django.utils.http import urlencode
+from django.contrib.sites.models import Site
 
 from jingo import register
 import jinja2
@@ -38,6 +39,15 @@ def label_with_help(f):
     value as a title attribute."""
     label = u'<label for="%s" title="%s">%s</label>'
     return jinja2.Markup(label % (f.auto_id, f.help_text, f.label))
+
+
+@register.filter
+def secure_url(url):
+    if settings.DEBUG:
+        return url
+    else:
+        site = Site.objects.get_current()
+        return u'https://%s%s' % (site, url)
 
 
 @register.filter
