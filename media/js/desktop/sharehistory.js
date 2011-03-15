@@ -37,4 +37,4 @@ var initShareHistory = function(values) {
     c.lineTo(0, values[0]);
     c.fillStyle = "#ffd40d";
     c.fill();   
-}
+};

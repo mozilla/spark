@@ -180,6 +180,12 @@ var initSparkedCountries = function(countryList) {
 
     for(var i=0, max=list.length; i < max; i += 1) {
         var cc = list[i];
+        
+        // India cc must be appended with a _ not to be confused
+        // with the JavaScript 'in' operator which generates errors
+        // during JS compression.
+        cc = cc === 'in' ? 'in_' : cc;
+
         countries[cc].show();
     }
 };

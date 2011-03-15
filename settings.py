@@ -162,6 +162,9 @@ MINIFY_BUNDLES = {
         'modernizr': (
             'js/libs/modernizr-1.6.min.js',
         ),
+        'raphael': (
+            'js/libs/raphael.min.js',
+        ),
         'pngfix': (
             'js/libs/DD_belatedPNG_0.0.8a.min.js',
         ),
@@ -175,20 +178,17 @@ MINIFY_BUNDLES = {
             'js/desktop/popups-loggedout.js',
         ),
         'dashboard': (
-            'js/libs/raphael.min.js',
             'js/desktop/minimap.js',
             'js/desktop/dashboard.js',
             'js/desktop/sharehistory.js',
             'js/desktop/popups-youraccount.js',
         ),
         'user-logged-in': (
-            'js/libs/raphael.min.js',
             'js/desktop/minimap.js',
             'js/desktop/dashboard.js',
             'js/desktop/sharehistory.js',
         ),
         'user-logged-out': (
-            'js/libs/raphael.min.js',
             'js/desktop/minimap.js',
             'js/desktop/dashboard.js',
             'js/desktop/sharehistory.js',

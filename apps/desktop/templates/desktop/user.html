@@ -5,9 +5,9 @@
 {% set body_class = 'logged-in' if logged_in else 'logged-out' %}
 
 {% if logged_in %}
-{% set scripts = ('desktop', 'user-logged-in') %}
+{% set scripts = ('desktop', 'raphael', 'user-logged-in') %}
 {% else %}
-{% set scripts = ('desktop', 'user-logged-out') %}
+{% set scripts = ('desktop', 'raphael', 'user-logged-out') %}
 {% endif %}
 
 {% block content %}
