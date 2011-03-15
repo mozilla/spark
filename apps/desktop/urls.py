@@ -6,7 +6,7 @@ from . import views
 urlpatterns = patterns('',
     url(r'^$', redirect_to, {'url': 'desktop.home'}),
     url(r'^home$', views.home, name='desktop.home'),
-    url(r'^user/(?P<username>[\w\d]+)$', views.user, name='desktop.user'),
+    url(r'^user/(?P<username>[\w.@+-]+)$', views.user, name='desktop.user'),
     url(r'^global$', views.visualization, name='desktop.visualization'),
     
     url(r'^pwchange', views.ajax_pwchange, name='desktop.pwchange'),
