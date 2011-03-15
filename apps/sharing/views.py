@@ -21,8 +21,12 @@ def download(request):
     via = request.GET.get('via')
     
     if username:
-        user_profile = User.objects.get(username=username).profile
-        if via:
-            SharingHistory.add_share_from_qr_code(user_profile)
+        try:
+            user = User.objects.get(username=username)
+            if via:
+                SharingHistory.add_share_from_qr_code(user.profile)
+        except User.DoesNotExist:
+            # Ignore unknown usernames
+            pass
     
     return HttpResponseRedirect(DOWNLOAD_URL)
