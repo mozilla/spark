@@ -162,12 +162,16 @@ var initSparkedCountries = function(countryList) {
     var R = Raphael("minimap", 310, 174),
         countries = getCountries(R),
         style = {fill: '#ffd40d', 'stroke-width': 0};
-    
+
     for(var c in countries) {
         countries[c].attr(style).hide();
         countries[c].hover((function(code) {
             return function() {
                 $tooltip.show();
+                // India cc must be appended with a _ not to be confused
+                // with the JavaScript 'in' operator which generates errors
+                // during JS compression.
+                code = code === 'in_' ? 'in':code;
                 $tooltipContent.text(countryNames[code]);   
             }
         })(c),
@@ -180,10 +184,6 @@ var initSparkedCountries = function(countryList) {
 
     for(var i=0, max=list.length; i < max; i += 1) {
         var cc = list[i];
-        
-        // India cc must be appended with a _ not to be confused
-        // with the JavaScript 'in' operator which generates errors
-        // during JS compression.
         cc = cc === 'in' ? 'in_' : cc;
 
         countries[cc].show();
