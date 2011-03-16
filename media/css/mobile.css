@@ -841,11 +841,11 @@ div.level:hover {
     cursor:pointer;
 }
 
-#level-details {
+#challenges-list .level-details {
     display:none;
 }
 
-#level-details li {
+#challenges-list .level-details li {
     margin-top:0;
     font-size:75%;
     line-height:3.278em;

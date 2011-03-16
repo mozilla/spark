@@ -1240,12 +1240,12 @@ div.level.locked:hover {
     cursor:default;
 }
 
-#level-details {
+#challenges-list .level-details {
     display:none;
     width:710px;
 }
 
-#level-details li {
+#challenges-list .level-details li {
     margin-top:0;
     font-size:0.667em;
     line-height:1.5em;
@@ -1255,19 +1255,19 @@ div.level.locked:hover {
     padding:0.3em 0;
 }
 
-#level-details li:first-child {
+#challenges-list .level-details li:first-child {
     border-top:1px solid #403c3c;
 }
 
-#level-details span.title {
+#challenges-list .level-details span.title {
     font-weight:bold;
 }
 
-#level-details li p {
+#challenges-list .level-details li p {
     color:#999;
 }
 
-#level-details .checkbox {
+#challenges-list .level-details .checkbox {
     float:left;
     height:50px;
     width:50px;
@@ -1275,11 +1275,11 @@ div.level.locked:hover {
     margin:0 10px;
 }
 
-#level-details li.complete .checkbox {
+#challenges-list .level-details li.complete .checkbox {
     background:url('../img/spritesheet.png') no-repeat -88px -388px;
 }
 
-#level-details li img {
+#challenges-list .level-details li img {
     float:right;
     height:40px;
     width:40px;
