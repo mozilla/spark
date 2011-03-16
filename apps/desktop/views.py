@@ -7,8 +7,6 @@ from geo.countries import countries
 
 from spark.decorators import ssl_required, login_required
 from spark.helpers import secure_url
-
-from celery.decorators import task
     
 from users.models import User, Profile
 
@@ -59,12 +57,9 @@ def ajax_delaccount(request):
     return jingo.render(request, 'desktop/home.html', {})
 
 
-@task
-def a_test_task(some_data):
-    test = 'foobar'
-
 def test_celery(request):
     from django.http import HttpResponse
+    from .tasks import a_test_task
     
     try:
         a_test_task.delay(1)
