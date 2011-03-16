@@ -70,20 +70,20 @@ def test_celery(request):
 
 def test_celery2(request):
     import sys, traceback
-    from django.conf import settings as s
     from django.http import HttpResponse
-    from .tasks import a_test_task
+    from challenges.tasks import update_completed_challenges
+    from users.models import User
 
     try:
-        a_test_task.delay(1)
+        username = request.GET.get('user')
+        user = User.objects.get(username=username)
+        update_completed_challenges.delay(user.id)
     except Exception, e:
         type, value, tb = sys.exc_info()
         stacktrace = '%s:%s<br>%s' % (type.__name__, value, '<br>'.join(traceback.format_tb(tb)))
-        #celery_settings = ('BROKER_USER: %s<br>BROKER_PASSWORD: %s<br>BROKER_VHOST: %s<br>CARROT_BACKEND: %s<br>CELERY_ENABLED: %s' % (s.BROKER_USER,
-        #                                                                s.BROKER_PASSWORD, s.BROKER_VHOST, s.CARROT_BACKEND, s.CELERY_ENABLED))
-        return HttpResponse("<html><body>Celery is not working<br>Error: %s<p>%s</body></html>" % (e, stacktrace))#, celery_settings))
+        return HttpResponse("<html><body>Error:<p>%s</body></html>" % stacktrace)
 
-    return HttpResponse("<html><body>Celery is working</body></html>")
+    return HttpResponse("<html><body>Challenge completion task has been scheduled for %s</body></html>" % username)
     
 
 
