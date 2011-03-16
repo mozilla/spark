@@ -55,9 +55,7 @@ def boost1(request):
             profile.boost1_completed = True
             profile.save()
 
-            # Replace when celery server is up
-            #update_completed_challenges.delay(profile.user.id)
-            update_completed_challenges(profile.user.id)
+            update_completed_challenges.delay(profile.user.id)
             
             data.update({'geolocation': 'success',
                          'geo_result': '%s, %s' % (data['city'], data['country'])})
