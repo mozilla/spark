@@ -11,4 +11,7 @@ urlpatterns = patterns('',
     
     url(r'^pwchange', views.ajax_pwchange, name='desktop.pwchange'),
     url(r'^delaccount', views.ajax_delaccount, name='desktop.delaccount'),
+    
+    ### Temporary - Celery test
+    url(r'^test_celery$', views.test_celery, name='desktop.test_celery'),
 )

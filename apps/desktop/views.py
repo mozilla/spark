@@ -8,6 +8,8 @@ from geo.countries import countries
 from spark.decorators import ssl_required, login_required
 from spark.helpers import secure_url
 
+from celery.decorators import task
+    
 from users.models import User, Profile
 
 import jingo
@@ -55,6 +57,22 @@ def ajax_pwchange(request):
 @login_required
 def ajax_delaccount(request):
     return jingo.render(request, 'desktop/home.html', {})
+
+
+@task
+def a_test_task(some_data):
+    test = 'foobar'
+
+def test_celery(request):
+    from django.http import HttpResponse
+    
+    try:
+        a_test_task.delay(1)
+    except Exception, e:
+        return HttpResponse("<html><body>Celery is not working<br>Error: %s</body></html>" % e)
+    
+    return HttpResponse("<html><body>Celery is working</body></html>")
+    
 
 
 def _total_seconds(td):
