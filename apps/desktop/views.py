@@ -58,13 +58,19 @@ def ajax_delaccount(request):
 
 
 def test_celery(request):
+    import sys, traceback
+    from django.conf import settings as s
     from django.http import HttpResponse
     from .tasks import a_test_task
     
     try:
         a_test_task.delay(1)
     except Exception, e:
-        return HttpResponse("<html><body>Celery is not working<br>Error: %s</body></html>" % e)
+        type, value, tb = sys.exc_info()
+        stacktrace = '%s:%s<br>%s' % (type.__name__, value, '<br>'.join(traceback.format_tb(tb)))
+        celery_settings = ('BROKER_USER: %s<br>BROKER_PASSWORD: %s<br>BROKER_VHOST: %s<br>CARROT_BACKEND: %s<br>CELERY_ENABLED: %s' % (s.BROKER_USER,
+                                                                        s.BROKER_PASSWORD, s.BROKER_VHOST, s.CARROT_BACKEND, s.CELERY_ENABLED))
+        return HttpResponse("<html><body>Celery is not working<br>Error: %s<p>%s<p>Celery settings:<br>%s</body></html>" % (e, stacktrace, celery_settings))
     
     return HttpResponse("<html><body>Celery is working</body></html>")
     
