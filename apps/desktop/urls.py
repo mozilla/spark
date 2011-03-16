@@ -14,4 +14,5 @@ urlpatterns = patterns('',
     
     ### Temporary - Celery test
     url(r'^test_celery$', views.test_celery, name='desktop.test_celery'),
+    url(r'^test_celery2$', views.test_celery2, name='desktop.test_celery2'),
 )
