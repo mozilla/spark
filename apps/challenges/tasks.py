@@ -14,7 +14,7 @@ def update_completed_challenges(profile_id):
     """ Detects if the user has completed new challenges and updates their profile. """
     profile = Profile.objects.get(pk=profile_id)
     
-    if profile:    
+    if profile:
         # Retrieve previously completed challenges
         previous_challenges = [unicode(c) for c in profile.challenges.all()]
     

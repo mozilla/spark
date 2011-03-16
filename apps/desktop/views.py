@@ -1,4 +1,5 @@
 import datetime
+import json
 
 from django.conf import settings
 from django.shortcuts import get_object_or_404
@@ -24,7 +25,7 @@ def home(request):
                                      'logged_in': True,
                                      'levels': profile.challenge_info,
                                      'date_joined_delta': _total_seconds(delta),
-                                     'countries': countries[request.locale]})
+                                     'countries': json.dumps(countries[request.locale]) })
     else:
         return jingo.render(request, 'desktop/home.html', {'is_homepage': True})
 
@@ -38,7 +39,7 @@ def user(request, username):
             'logged_in': request.user.is_authenticated(),
             'date_joined_delta': _total_seconds(delta),
             'is_user_page': True,
-            'countries': countries[request.locale]}
+            'countries': json.dumps(countries[request.locale]) }
     
     return jingo.render(request, 'desktop/user.html', data)
 
