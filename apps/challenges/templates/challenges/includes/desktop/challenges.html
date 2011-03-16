@@ -12,7 +12,7 @@
             <span class="locked-message">{{ level.locked_message }}</span>
             {% endif %}
         </div>
-        <ul id="level-details">
+        <ul class="level-details">
             {% for challenge in level.challenges %}
             <li {% if challenge.completed %}class="complete"{% endif %}>
                 <div class="checkbox"></div>
