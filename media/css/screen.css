@@ -35,7 +35,7 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
     background:url('../img/ie/mask.png') repeat;
 }
 
-.no-opacity #popup {
+.no-opacity #popup, .no-opacity #video-player {
    background:url('../img/ie/popup.png') repeat; 
 }
 
@@ -1352,4 +1352,18 @@ div.level.locked:hover {
 
 #personal.logged-in #stats {
     padding-top:35px;
+}
+
+/*Video player*/
+
+#video-player {
+    position:fixed;
+    left:50%;
+    top:50%;
+    background:rgba(16,14,14,0.8);
+    display:none;
+    z-index:9999;
+    border:1px solid #363333;
+    width:640px;
+    padding:25px;
 }

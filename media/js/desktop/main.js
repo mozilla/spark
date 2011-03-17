@@ -1,6 +1,8 @@
 // Modal popup
 var $popup = $('#popup'),
     $mask = $('#mask');
+    $videoPlayer = $('#video-player'),
+    video = document.querySelector('video');
 
 // sets the dimensions of the mask
 var initMask = function() {
@@ -15,8 +17,15 @@ var resizePopup = function() {
     $popup.css( {
         'marginLeft' : -(($popup.width() + 52)/2),
         'marginTop' : -(($popup.height() + 42)/2)
-    });   
-}
+    });
+};
+
+var positionVideoPlayer = function() {
+    $videoPlayer.css( {
+        'marginLeft' : -(($videoPlayer.width() + 50) / 2),
+        'marginTop' : -(($videoPlayer.height() + 50) / 2)
+    });
+};
 
 var showPopup = function() {
     resizePopup();
@@ -24,9 +33,15 @@ var showPopup = function() {
     $popup.fadeIn(200);
 };
 
+var hideVideo = function() {
+    $videoPlayer.fadeOut(200);
+    video.pause();
+};
+
 var hidePopup = function() {
     $mask.fadeOut(200);
     $popup.fadeOut(200);
+    hideVideo();
     setTimeout(function() {
         $popup.children().hide();
     }, 200)
@@ -49,6 +64,12 @@ var showResetComplete = function() {
 var hideResetPopup = function() {
     $mask.fadeOut(200);
     $popup.fadeOut(200);
+};
+
+var showVideoPlayer = function() {
+    positionVideoPlayer();
+    $mask.fadeIn(200);
+    $videoPlayer.fadeIn(200);
 };
 
 $(document).ready(function() {
@@ -77,6 +98,11 @@ $(document).ready(function() {
     $('#password-confirm .close').click(function() {
         hideResetPopup();
         $('#mask-noclick').hide();
+    });
+
+    //opens video player
+    $('a.video-launcher').click(function() {
+       showVideoPlayer(); 
     });
 
     //Your account links
