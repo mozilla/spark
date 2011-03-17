@@ -66,6 +66,11 @@ def boost1(request):
 
 
 @login_required
+def geolocation_fallback(request):
+    return jingo.render(request, 'mobile/citylist.html', {})
+
+
+@login_required
 def boost2(request):
     """ Boost your Spark step 2/2 :
         Allows a Spark user to find a parent user by username or email address."""
