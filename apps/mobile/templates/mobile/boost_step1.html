@@ -59,7 +59,7 @@
     	{% else %}
     	<div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
         {# L10n: Space is limited here. The translation should be no longer than the English version #}
-        <div class="button right-button" id="geolocate"><a href="#">{{ _('Try again') }}</a></div>
+        <div class="button right-button" id="geolocate"><a href="#">{{ _('Try again') }}</a><img src="{{ MEDIA_URL }}img/mobile/spinner.gif" alt="" class="preload spinner"></div>
         {% endif %}
     </div>
 </form>
