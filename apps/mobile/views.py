@@ -4,6 +4,8 @@ import jingo
 
 from spark.urlresolvers import reverse
 from spark.decorators import post_required
+from spark.utils import get_city_fullname
+from spark.models import City
 
 from users.models import User, UserNode
 from users.utils import create_relationship
@@ -67,7 +69,10 @@ def boost1(request):
 
 @login_required
 def geolocation_fallback(request):
-    return jingo.render(request, 'mobile/citylist.html', {})
+    cities = City.objects.order_by('city_name')
+    citylist = [get_city_fullname(city, request.locale) for city in cities]
+    
+    return jingo.render(request, 'mobile/citylist.html', {'cities': citylist})
 
 
 @login_required
