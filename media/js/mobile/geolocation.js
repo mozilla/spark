@@ -14,15 +14,12 @@ $(document).ready(function() {
 		$('form').submit();
 	}
 	
+	var error = function() {
+	    $('form').submit();
+	}
+	
 	var geolocateMe = function() {
-    	navigator.geolocation.getCurrentPosition(process);
-    	
-    	if(timer) {
-            clearTimeout(timer);
-    	}
-    	timer = setTimeout(function() {
-    	    $('form').submit();
-    	}, 8000);
+    	navigator.geolocation.getCurrentPosition(process, error, {timeout: 8000});
     };
     
     $('#geolocate').click(geolocateMe);
