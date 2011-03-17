@@ -9,7 +9,17 @@
     </p>
     <ul id="sharing">
         <li class="cta"><a href="">{{ _('Share on Twitter') }}</a></li>
-        <li class="cta"><a href="">{{ _('Share on Facebook') }}</a></li>
+        <li class="cta"><a href="http://m.facebook.com/dialog/feed?
+        display=touch&amp;
+        app_id=123050457758183&amp;
+        redirect_uri=http://www.example.com&amp;
+        link=http://www.example.com&amp;
+        picture=http://www.example.com&amp;
+        name=Name&amp;
+        caption=caption&amp;
+        description=description&amp;
+        {% set message='Wanna%20help%20me%20light%20up%20the%20world%3F%20Check%20out%20my%20Spark%21' %}
+        message={{ message }}">{{ _('Share on Facebook') }}</a></li>
         <li class="cta"><a href="">{{ _('Share via SMS') }}</a></li>
     </ul>
 {% endblock %}
