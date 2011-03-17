@@ -117,7 +117,7 @@ $(document).ready(function() {
     	if (window.focus) {newwindow.focus()}
     }
 
-    $('#twitter').click(function() {
+    $('.twitter').click(function() {
         var url = $(this).attr('href');
         
        tweetPopup(url);
@@ -131,7 +131,7 @@ $(document).ready(function() {
        return false;
     });
 
-    $('#facebook').click(function() {
+    $('.facebook').click(function() {
         var url = $(this).attr('href');
         
        fbPopup(url);
