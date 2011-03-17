@@ -968,3 +968,27 @@ div.challenge.complete .check {
 .legal-links a.last {
     border-bottom:1px solid #404040;
 }
+
+/*Choose your city*/
+
+#city-list li {
+    border-bottom:1px solid #404040;
+    font-size:1.13em;
+    font-weight:bold;
+    line-height:2.875em;
+    color:#fff;
+}
+
+#city-list li:first-child {
+    border-top:1px solid #404040;
+}
+
+#city-list li a {
+    margin:2px 0;
+    padding-left:8px;
+    display:block;
+}
+
+#city-list li a:active {
+    background-color:rgba(255,255,255,0.16);
+}
