@@ -20,6 +20,9 @@ $(document).ready(function() {
 	
 	var geolocateMe = function() {
     	navigator.geolocation.getCurrentPosition(process, error, {timeout: 8000});
+    	
+    	$('#geolocate a').hide();
+    	$('#geolocate img').show();
     };
     
     $('#geolocate').click(geolocateMe);

@@ -255,6 +255,15 @@ a:active button, a:focus button {
     border:0;
 }
 
+img.spinner {
+    margin-top:7px;
+    margin-left:9px;
+}
+
+img.preload {
+    display:none;
+}
+
 p.license {
     color:#808080;
     font-size:0.878em;
@@ -983,12 +992,12 @@ div.challenge.complete .check {
     border-top:1px solid #404040;
 }
 
-#city-list li a {
+#city-list li span {
     margin:2px 0;
     padding-left:8px;
     display:block;
 }
 
-#city-list li a:active {
+#city-list li span:active {
     background-color:rgba(255,255,255,0.16);
 }

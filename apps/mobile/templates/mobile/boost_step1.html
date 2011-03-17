@@ -50,7 +50,7 @@
         {# L10n: Space is limited here. The translation should be no longer than the English version, leave only "Later" if needed #}
         <div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Maybe later') }}</a></div>
         {# L10n: Space is limited here. The translation should be no longer than the English version #}
-        <div class="button right-button" id="geolocate"><a href="#">{{ _('Locate me') }}</a></div>
+        <div class="button right-button" id="geolocate"><a href="#">{{ _('Locate me') }}</a><img src="{{ MEDIA_URL }}img/mobile/spinner.gif" alt="" class="preload spinner"></div>
         {% elif geolocation == 'success' %}
         <input type="hidden" name="next" value="1">
         <div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
