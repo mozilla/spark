@@ -23,6 +23,7 @@ $(document).ready(function() {
     	
     	$('#geolocate a').hide();
     	$('#geolocate img').show();
+    	$('ul.errorlist').hide();
     };
     
     $('#geolocate').click(geolocateMe);
