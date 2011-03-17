@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    var timer = null;
+    
 	var process = function(info) {
 		if(info.coords) {
 		    $('#lat').attr('value', info.coords.latitude);
@@ -14,7 +16,14 @@ $(document).ready(function() {
 	
 	var geolocateMe = function() {
     	navigator.geolocation.getCurrentPosition(process);
-    }
+    	
+    	if(timer) {
+            clearTimeout(timer);
+    	}
+    	timer = setTimeout(function() {
+    	    $('form').submit();
+    	}, 8000);
+    };
     
     $('#geolocate').click(geolocateMe);
 });

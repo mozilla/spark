@@ -6,6 +6,7 @@ from pyquery import PyQuery as pq
 
 from spark.tests import TestCase, LocalizingClient
 from spark.urlresolvers import reverse
+from spark.models import City
 
 from mobile import forms
 from users.models import User
@@ -40,7 +41,7 @@ class BoostStep1TestCase(TestCase):
     
     def test_valid_geolocation_info(self):
         self.client.login(username='bob', password='testpass')
-        response = self.client.post(self.url, self.fake_geo_data)
+        response = self.client.post(self.url, self.fake_geo_data, follow=True)
         eq_(200, response.status_code)
         doc = pq(response.content)
         eq_(1, len(doc('#your-location')))
@@ -62,6 +63,52 @@ class BoostStep1TestCase(TestCase):
         eq_(200, response.status_code)
         doc = pq(response.content)
         eq_(1, len(doc('ul.errorlist li')))
+
+
+class Boost1FallbackTestCase(TestCase):
+    fixtures = ['boost.json', 'cities.json']
+    
+    def setUp(self):
+        self.client = LocalizingClient()
+        self.url = reverse('mobile.yourlocation')
+    
+    def test_redirect_if_already_completed(self):
+        self.client.login(username='franck', password='testpass')
+        response = self.client.get(self.url)
+        
+        eq_(302, response.status_code)
+    
+    def test_updates_profile_with_correct_data(self):
+        # This user has not completed boost 1 yet
+        self.client.login(username='bob', password='testpass')
+        response = self.client.get(self.url)
+        eq_(200, response.status_code)
+        
+        # 80 is the id of Seattle in the db
+        response = self.client.post(self.url, {'city': 80})
+        eq_(302, response.status_code)
+        
+        profile = User.objects.get(username='bob').profile
+        seattle = City.objects.get(pk=80)
+        eq_(seattle, profile.major_city)
+        eq_('Seattle', profile.city_name)
+        eq_(True, profile.latitude is not None)
+        eq_(True, profile.longitude is not None)
+        eq_('us', profile.country_code.lower())
+    
+    def test_unknown_city_id_is_ignored(self):
+        profile = User.objects.get(username='bob').profile
+        eq_(True, profile.major_city is None)
+        eq_(True, profile.city_name is None)
+        
+        self.client.login(username='bob', password='testpass')
+        response = self.client.post(self.url, {'city': 16872})
+        eq_(200, response.status_code)
+        
+        profile = User.objects.get(username='bob').profile
+        eq_(True, profile.major_city is None)
+        eq_(True, profile.city_name is None)
+
 
 class BoostStep2TestCase(TestCase):
     fixtures = ['boost.json']

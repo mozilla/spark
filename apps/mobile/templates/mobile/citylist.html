@@ -10,9 +10,27 @@
         {{ _("Sorry, we couldn't determine your location.") }}
     </p>
 </div>
+    <form id="citychoices" action="" method="POST">
+        {{ csrf() }}
+        <input id="chosen_city" type="hidden" name="city" value="">
+    </form>
     <ul id="city-list">
-        {% for city in cities %}
-        <li><a href="">{{ city }}</a></li>
+        {% for (id, city) in cities %}
+        <li data-city="{{ id }}"><span>{{ city }}</span></li>
         {% endfor %}
     </ul>
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function() {
+    $form = $("form");
+    
+    $("#city-list li").click(function() {
+        var id = $(this).data('city');
+        $("#chosen_city").val(id);
+        $form.submit();
+    });
+});
+</script>
 {% endblock %}

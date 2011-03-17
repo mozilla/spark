@@ -32,6 +32,12 @@
 </ul>
 {% endif %}
 
+{% if geolocation == 'error' %}
+<hr>
+<h2 id="disclaimer" class="cta"><a href="{{ url('mobile.yourlocation') }}">{{ _('Select your location manually') }}</a></h2>
+<hr>
+{% endif %}
+
 <form action="" method="post" accept-charset="utf-8">
 	{{ csrf() }}
 	<input type="hidden" id="lat" name="lat" value="">

@@ -1,0 +1,3162 @@
+[
+  {
+    "pk": 294, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Suva", 
+      "latitude": -18.123560000000001, 
+      "longitude": 178.43757600000001, 
+      "country_code": "FJ"
+    }
+  }, 
+  {
+    "pk": 206, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Auckland", 
+      "latitude": -36.884109000000002, 
+      "longitude": 174.77042, 
+      "country_code": "NZ"
+    }
+  }, 
+  {
+    "pk": 203, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Wellington", 
+      "latitude": -41.280515000000001, 
+      "longitude": 174.767121, 
+      "country_code": "NZ"
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Christchurch", 
+      "latitude": -43.531027000000002, 
+      "longitude": 172.637767, 
+      "country_code": "NZ"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Dunedin", 
+      "latitude": -45.874501000000002, 
+      "longitude": 170.503851, 
+      "country_code": "NZ"
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Port-Vila", 
+      "latitude": -17.730419000000001, 
+      "longitude": 168.32298299999999, 
+      "country_code": "VU"
+    }
+  }, 
+  {
+    "pk": 253, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Noumea", 
+      "latitude": -22.302959000000001, 
+      "longitude": 166.439087, 
+      "country_code": "NC"
+    }
+  }, 
+  {
+    "pk": 114, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Honiara", 
+      "latitude": -9.4384999999999994, 
+      "longitude": 159.92584199999999, 
+      "country_code": "SB"
+    }
+  }, 
+  {
+    "pk": 136, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Petropavlovsk-Kamchatskiy", 
+      "latitude": 53.05048, 
+      "longitude": 158.63659699999999, 
+      "country_code": "RU"
+    }
+  }, 
+  {
+    "pk": 68, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Brisbane", 
+      "latitude": -27.468879999999999, 
+      "longitude": 153.02282700000001, 
+      "country_code": "AU"
+    }
+  }, 
+  {
+    "pk": 98, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Sydney", 
+      "latitude": -33.869629000000003, 
+      "longitude": 151.20695499999999, 
+      "country_code": "AU"
+    }
+  }, 
+  {
+    "pk": 220, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Canberra", 
+      "latitude": -35.306541000000003, 
+      "longitude": 149.12655599999999, 
+      "country_code": "AU"
+    }
+  }, 
+  {
+    "pk": 191, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Hobart", 
+      "latitude": -42.881630000000001, 
+      "longitude": 147.33158900000001, 
+      "country_code": "AU"
+    }
+  }, 
+  {
+    "pk": 247, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Port Moresby", 
+      "latitude": -9.47959, 
+      "longitude": 147.18852200000001, 
+      "country_code": "PG"
+    }
+  }, 
+  {
+    "pk": 106, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Melbourne", 
+      "latitude": -37.817532, 
+      "longitude": 144.96714800000001, 
+      "country_code": "AU"
+    }
+  }, 
+  {
+    "pk": 306, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Sapporo-shi", 
+      "latitude": 42.985320999999999, 
+      "longitude": 141.248062, 
+      "country_code": "JP"
+    }
+  }, 
+  {
+    "pk": 84, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tokyo", 
+      "latitude": 35.670479, 
+      "longitude": 139.74092099999999, 
+      "country_code": "JP"
+    }
+  }, 
+  {
+    "pk": 160, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Adelaide", 
+      "latitude": -34.926102, 
+      "longitude": 138.599884, 
+      "country_code": "AU"
+    }
+  }, 
+  {
+    "pk": 218, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Nagoya-shi", 
+      "latitude": 35.149859999999997, 
+      "longitude": 136.92622399999999, 
+      "country_code": "JP"
+    }
+  }, 
+  {
+    "pk": 155, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kyoto-shi", 
+      "latitude": 35.098129, 
+      "longitude": 135.71893299999999, 
+      "country_code": "JP"
+    }
+  }, 
+  {
+    "pk": 303, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Osaka-shi", 
+      "latitude": 34.677470999999997, 
+      "longitude": 135.50323499999999, 
+      "country_code": "JP"
+    }
+  }, 
+  {
+    "pk": 314, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kobe-shi", 
+      "latitude": 34.757331999999998, 
+      "longitude": 135.10676599999999, 
+      "country_code": "JP"
+    }
+  }, 
+  {
+    "pk": 85, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Vladivostok", 
+      "latitude": 43.154615999999997, 
+      "longitude": 131.91075499999999, 
+      "country_code": "RU"
+    }
+  }, 
+  {
+    "pk": 188, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Darwin", 
+      "latitude": -12.467499999999999, 
+      "longitude": 130.843155, 
+      "country_code": "AU"
+    }
+  }, 
+  {
+    "pk": 296, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Fukuoka-shi", 
+      "latitude": 33.568699000000002, 
+      "longitude": 130.34635900000001, 
+      "country_code": "JP"
+    }
+  }, 
+  {
+    "pk": 96, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Busan", 
+      "latitude": 35.170428999999999, 
+      "longitude": 128.999481, 
+      "country_code": "KR"
+    }
+  }, 
+  {
+    "pk": 268, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Daegu", 
+      "latitude": 35.888710000000003, 
+      "longitude": 128.614868, 
+      "country_code": "KR"
+    }
+  }, 
+  {
+    "pk": 289, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Seoul", 
+      "latitude": 37.557121000000002, 
+      "longitude": 126.977379, 
+      "country_code": "KR"
+    }
+  }, 
+  {
+    "pk": 61, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Harbin", 
+      "latitude": 45.755198999999998, 
+      "longitude": 126.62251999999999, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Incheon", 
+      "latitude": 37.704639, 
+      "longitude": 126.440872, 
+      "country_code": "KR"
+    }
+  }, 
+  {
+    "pk": 238, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Pyongyang", 
+      "latitude": 39.014220999999999, 
+      "longitude": 125.77629899999999, 
+      "country_code": "KP"
+    }
+  }, 
+  {
+    "pk": 110, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Davao City", 
+      "latitude": 7.0799599999999998, 
+      "longitude": 125.61277, 
+      "country_code": "PH"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Changchun", 
+      "latitude": 43.881309999999999, 
+      "longitude": 125.312622, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 71, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Shenyang", 
+      "latitude": 41.788508999999998, 
+      "longitude": 123.40612, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Dalian", 
+      "latitude": 38.943809999999999, 
+      "longitude": 121.57652299999999, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 195, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Taipei City", 
+      "latitude": 25.080441, 
+      "longitude": 121.564194, 
+      "country_code": "TW"
+    }
+  }, 
+  {
+    "pk": 37, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Shanghai", 
+      "latitude": 31.247709, 
+      "longitude": 121.472618, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 216, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Manila", 
+      "latitude": 14.60962, 
+      "longitude": 121.00588999999999, 
+      "country_code": "PH"
+    }
+  }, 
+  {
+    "pk": 77, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Qingdao", 
+      "latitude": 36.087508999999997, 
+      "longitude": 120.34272, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 229, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kaohsiung City", 
+      "latitude": 22.672568999999999, 
+      "longitude": 120.293228, 
+      "country_code": "TW"
+    }
+  }, 
+  {
+    "pk": 67, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Hangzhou", 
+      "latitude": 30.252500999999999, 
+      "longitude": 120.165024, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 304, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Nanjing", 
+      "latitude": 32.048499999999997, 
+      "longitude": 118.778969, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 240, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tianjin", 
+      "latitude": 38.958919999999999, 
+      "longitude": 117.63343, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 257, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Jinan", 
+      "latitude": 36.65551, 
+      "longitude": 116.96701, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 44, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Beijing", 
+      "latitude": 39.906010000000002, 
+      "longitude": 116.38790899999999, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Perth", 
+      "latitude": -31.953019999999999, 
+      "longitude": 115.85723900000001, 
+      "country_code": "AU"
+    }
+  }, 
+  {
+    "pk": 225, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Bandar Seri Begawan", 
+      "latitude": 4.8903400000000001, 
+      "longitude": 114.942459, 
+      "country_code": "BN"
+    }
+  }, 
+  {
+    "pk": 43, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Handan", 
+      "latitude": 36.601939999999999, 
+      "longitude": 114.470253, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 207, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Wuhan", 
+      "latitude": 30.572399000000001, 
+      "longitude": 114.279121, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 221, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Hong Kong", 
+      "latitude": 22.283325000000001, 
+      "longitude": 114.15872, 
+      "country_code": "HK"
+    }
+  }, 
+  {
+    "pk": 126, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Shenzhen", 
+      "latitude": 22.546789, 
+      "longitude": 114.112556, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 182, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Dongguan", 
+      "latitude": 23.046499000000001, 
+      "longitude": 113.735817, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Zhengzhou", 
+      "latitude": 34.762501, 
+      "longitude": 113.653023, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 66, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Macau", 
+      "latitude": 22.193173000000002, 
+      "longitude": 113.54890399999999, 
+      "country_code": "MO"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Guangzhou", 
+      "latitude": 23.107389000000001, 
+      "longitude": 113.267616, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 236, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Surabaya", 
+      "latitude": -7.2585699999999997, 
+      "longitude": 112.746689, 
+      "country_code": "ID"
+    }
+  }, 
+  {
+    "pk": 165, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Taiyuan", 
+      "latitude": 37.893008999999999, 
+      "longitude": 112.551613, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Xi'an", 
+      "latitude": 34.273009999999999, 
+      "longitude": 108.928009, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 283, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Bandung", 
+      "latitude": -6.91242, 
+      "longitude": 107.606911, 
+      "country_code": "ID"
+    }
+  }, 
+  {
+    "pk": 194, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ulan Bator", 
+      "latitude": 47.928500999999997, 
+      "longitude": 106.912308, 
+      "country_code": "MN"
+    }
+  }, 
+  {
+    "pk": 122, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Jakarta", 
+      "latitude": -6.1714399999999996, 
+      "longitude": 106.82782, 
+      "country_code": "ID"
+    }
+  }, 
+  {
+    "pk": 57, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ho Chi Minh City", 
+      "latitude": 10.759180000000001, 
+      "longitude": 106.662498, 
+      "country_code": "VN"
+    }
+  }, 
+  {
+    "pk": 272, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Chongqing", 
+      "latitude": 29.544001000000002, 
+      "longitude": 106.522621, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 46, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Hanoi", 
+      "latitude": 21.031949999999998, 
+      "longitude": 105.819908, 
+      "country_code": "VN"
+    }
+  }, 
+  {
+    "pk": 101, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Phnom Penh", 
+      "latitude": 11.56474, 
+      "longitude": 104.913208, 
+      "country_code": "KH"
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Palembang", 
+      "latitude": -2.9910299999999999, 
+      "longitude": 104.757408, 
+      "country_code": "ID"
+    }
+  }, 
+  {
+    "pk": 210, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Chengdu", 
+      "latitude": 30.670000000000002, 
+      "longitude": 104.071022, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 130, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Singapore", 
+      "latitude": 1.2937799999999999, 
+      "longitude": 103.853256, 
+      "country_code": "SG"
+    }
+  }, 
+  {
+    "pk": 183, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Lanzhou", 
+      "latitude": 36.059299000000003, 
+      "longitude": 103.75627900000001, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Vientiane", 
+      "latitude": 17.965309000000001, 
+      "longitude": 102.611519, 
+      "country_code": "LA"
+    }
+  }, 
+  {
+    "pk": 280, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kuala Lumpur", 
+      "latitude": 3.1046649999999998, 
+      "longitude": 101.69117, 
+      "country_code": "MY"
+    }
+  }, 
+  {
+    "pk": 154, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Bangkok", 
+      "latitude": 13.75333, 
+      "longitude": 100.504822, 
+      "country_code": "TH"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "George Town", 
+      "latitude": 5.4107649999999996, 
+      "longitude": 100.33623299999999, 
+      "country_code": "MY"
+    }
+  }, 
+  {
+    "pk": 271, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Medan", 
+      "latitude": 3.7522760000000002, 
+      "longitude": 98.676047999999994, 
+      "country_code": "ID"
+    }
+  }, 
+  {
+    "pk": 177, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Yangon", 
+      "latitude": 16.803889999999999, 
+      "longitude": 96.154694000000006, 
+      "country_code": "MM"
+    }
+  }, 
+  {
+    "pk": 270, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Chittagong", 
+      "latitude": 22.330299, 
+      "longitude": 91.825111000000007, 
+      "country_code": "BD"
+    }
+  }, 
+  {
+    "pk": 215, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Lhasa", 
+      "latitude": 29.650499, 
+      "longitude": 91.132011000000006, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 273, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Dhaka", 
+      "latitude": 23.709800999999999, 
+      "longitude": 90.407111999999998, 
+      "country_code": "BD"
+    }
+  }, 
+  {
+    "pk": 102, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Thimphu", 
+      "latitude": 27.466000000000001, 
+      "longitude": 89.663002000000006, 
+      "country_code": "BT"
+    }
+  }, 
+  {
+    "pk": 246, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kolkata", 
+      "latitude": 22.526669999999999, 
+      "longitude": 88.346159999999998, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ahmadabad", 
+      "latitude": 25.282869999999999, 
+      "longitude": 87.804130000000001, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 282, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Urumqi", 
+      "latitude": 43.795200000000001, 
+      "longitude": 87.580177000000006, 
+      "country_code": "CN"
+    }
+  }, 
+  {
+    "pk": 142, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kathmandu", 
+      "latitude": 27.702000000000002, 
+      "longitude": 85.317497000000003, 
+      "country_code": "NP"
+    }
+  }, 
+  {
+    "pk": 176, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Patna", 
+      "latitude": 25.604759999999999, 
+      "longitude": 85.124170000000007, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 49, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Nagpur", 
+      "latitude": 25.36439, 
+      "longitude": 83.817869999999999, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 159, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Novosibirsk", 
+      "latitude": 55.038865000000001, 
+      "longitude": 82.911079999999998, 
+      "country_code": "RU"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Lucknow", 
+      "latitude": 26.83906, 
+      "longitude": 80.933260000000004, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Chennai", 
+      "latitude": 13.063969999999999, 
+      "longitude": 80.243110000000001, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 288, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Hyderabad", 
+      "latitude": 17.4376, 
+      "longitude": 78.470600000000005, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 125, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Bangalore", 
+      "latitude": 12.97092, 
+      "longitude": 77.604820000000004, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 140, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "New Delhi", 
+      "latitude": 28.64472, 
+      "longitude": 77.11439, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 127, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Almaty", 
+      "latitude": 43.255051000000002, 
+      "longitude": 76.912627999999998, 
+      "country_code": "KZ"
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Jaipur", 
+      "latitude": 26.898759999999999, 
+      "longitude": 75.796360000000007, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 202, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Bishkek", 
+      "latitude": 42.870021999999999, 
+      "longitude": 74.587890999999999, 
+      "country_code": "KG"
+    }
+  }, 
+  {
+    "pk": 90, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Lahore", 
+      "latitude": 31.549910000000001, 
+      "longitude": 74.327301000000006, 
+      "country_code": "PK"
+    }
+  }, 
+  {
+    "pk": 185, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Pune", 
+      "latitude": 18.526710000000001, 
+      "longitude": 73.861599999999996, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kanpur", 
+      "latitude": 22.6084, 
+      "longitude": 73.66283, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 119, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Omsk", 
+      "latitude": 54.993614999999998, 
+      "longitude": 73.364699999999999, 
+      "country_code": "RU"
+    }
+  }, 
+  {
+    "pk": 199, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Shah Faisalabad", 
+      "latitude": 31.408950999999998, 
+      "longitude": 73.083449999999999, 
+      "country_code": "PK"
+    }
+  }, 
+  {
+    "pk": 201, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Islamabad", 
+      "latitude": 33.709839000000002, 
+      "longitude": 73.075912000000002, 
+      "country_code": "PK"
+    }
+  }, 
+  {
+    "pk": 224, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "R\u00e5walpindi", 
+      "latitude": 33.606152000000002, 
+      "longitude": 73.052611999999996, 
+      "country_code": "PK"
+    }
+  }, 
+  {
+    "pk": 116, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Mumbai", 
+      "latitude": 19.076191000000001, 
+      "longitude": 72.875877000000003, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 139, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Un", 
+      "latitude": 21.165130999999999, 
+      "longitude": 72.836181999999994, 
+      "country_code": "IN"
+    }
+  }, 
+  {
+    "pk": 275, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Aqmola", 
+      "latitude": 51.189442, 
+      "longitude": 71.432091, 
+      "country_code": "KZ"
+    }
+  }, 
+  {
+    "pk": 251, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tashkent", 
+      "latitude": 41.305222000000001, 
+      "longitude": 69.268958999999995, 
+      "country_code": "UZ"
+    }
+  }, 
+  {
+    "pk": 245, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kabul", 
+      "latitude": 34.530909999999999, 
+      "longitude": 69.136748999999995, 
+      "country_code": "AF"
+    }
+  }, 
+  {
+    "pk": 158, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Karategin", 
+      "latitude": 38.559319000000002, 
+      "longitude": 68.774970999999994, 
+      "country_code": "TJ"
+    }
+  }, 
+  {
+    "pk": 129, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Karachi", 
+      "latitude": 24.889779999999998, 
+      "longitude": 67.028510999999995, 
+      "country_code": "PK"
+    }
+  }, 
+  {
+    "pk": 51, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Yekaterinburg", 
+      "latitude": 56.857498, 
+      "longitude": 60.612499, 
+      "country_code": "RU"
+    }
+  }, 
+  {
+    "pk": 169, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Mashhad", 
+      "latitude": 36.290058000000002, 
+      "longitude": 59.596851000000001, 
+      "country_code": "IR"
+    }
+  }, 
+  {
+    "pk": 181, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Muscat", 
+      "latitude": 23.615175000000001, 
+      "longitude": 58.591175, 
+      "country_code": "OM"
+    }
+  }, 
+  {
+    "pk": 147, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ashgabat", 
+      "latitude": 37.950420000000001, 
+      "longitude": 58.390121000000001, 
+      "country_code": "TM"
+    }
+  }, 
+  {
+    "pk": 40, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Dubai", 
+      "latitude": 25.269445000000001, 
+      "longitude": 55.30865, 
+      "country_code": "AE"
+    }
+  }, 
+  {
+    "pk": 123, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tehran", 
+      "latitude": 35.671939999999999, 
+      "longitude": 51.424438000000002, 
+      "country_code": "IR"
+    }
+  }, 
+  {
+    "pk": 254, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Samara", 
+      "latitude": 53.191560000000003, 
+      "longitude": 50.189259999999997, 
+      "country_code": "RU"
+    }
+  }, 
+  {
+    "pk": 151, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Baku", 
+      "latitude": 40.378120000000003, 
+      "longitude": 49.802841000000001, 
+      "country_code": "AZ"
+    }
+  }, 
+  {
+    "pk": 50, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Antananarivo", 
+      "latitude": -18.907640000000001, 
+      "longitude": 47.527678999999999, 
+      "country_code": "MG"
+    }
+  }, 
+  {
+    "pk": 178, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Riyadh", 
+      "latitude": 24.647324999999999, 
+      "longitude": 46.714585, 
+      "country_code": "SA"
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tabriz", 
+      "latitude": 38.080970999999998, 
+      "longitude": 46.290112000000001, 
+      "country_code": "IR"
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Mogadishu", 
+      "latitude": 2.0411700000000002, 
+      "longitude": 45.344138999999998, 
+      "country_code": "SO"
+    }
+  }, 
+  {
+    "pk": 213, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Yerevan", 
+      "latitude": 40.183332999999998, 
+      "longitude": 44.516666999999998, 
+      "country_code": "AM"
+    }
+  }, 
+  {
+    "pk": 113, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Baghdad", 
+      "latitude": 33.338611999999998, 
+      "longitude": 44.393889999999999, 
+      "country_code": "IQ"
+    }
+  }, 
+  {
+    "pk": 263, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Nizhny Novgorod", 
+      "latitude": 56.321710000000003, 
+      "longitude": 44.033073999999999, 
+      "country_code": "RU"
+    }
+  }, 
+  {
+    "pk": 279, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Dar es Salaam", 
+      "latitude": -6.8229199999999999, 
+      "longitude": 39.269660999999999, 
+      "country_code": "TZ"
+    }
+  }, 
+  {
+    "pk": 228, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Jeddah", 
+      "latitude": 21.481680000000001, 
+      "longitude": 39.182859999999998, 
+      "country_code": "SA"
+    }
+  }, 
+  {
+    "pk": 259, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Asmara", 
+      "latitude": 15.33236, 
+      "longitude": 38.926169999999999, 
+      "country_code": "ER"
+    }
+  }, 
+  {
+    "pk": 248, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Addis Ababa", 
+      "latitude": 9.0227299999999993, 
+      "longitude": 38.746791999999999, 
+      "country_code": "ET"
+    }
+  }, 
+  {
+    "pk": 111, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Moscow", 
+      "latitude": 55.756950000000003, 
+      "longitude": 37.614975000000001, 
+      "country_code": "RU"
+    }
+  }, 
+  {
+    "pk": 211, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Nairobi", 
+      "latitude": -1.277298, 
+      "longitude": 36.806260999999999, 
+      "country_code": "KE"
+    }
+  }, 
+  {
+    "pk": 94, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Damascus", 
+      "latitude": 33.519210999999999, 
+      "longitude": 36.313308999999997, 
+      "country_code": "SY"
+    }
+  }, 
+  {
+    "pk": 99, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Amman", 
+      "latitude": 31.950001, 
+      "longitude": 35.933331000000003, 
+      "country_code": "JO"
+    }
+  }, 
+  {
+    "pk": 105, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Beirut", 
+      "latitude": 33.892749999999999, 
+      "longitude": 35.485270999999997, 
+      "country_code": "LB"
+    }
+  }, 
+  {
+    "pk": 295, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Jerusalem", 
+      "latitude": 31.773599999999998, 
+      "longitude": 35.224997999999999, 
+      "country_code": "IL"
+    }
+  }, 
+  {
+    "pk": 267, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ankara", 
+      "latitude": 39.942929999999997, 
+      "longitude": 32.860480000000003, 
+      "country_code": "TR"
+    }
+  }, 
+  {
+    "pk": 244, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Maputo", 
+      "latitude": -25.9681, 
+      "longitude": 32.580649999999999, 
+      "country_code": "MZ"
+    }
+  }, 
+  {
+    "pk": 171, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Khartoum", 
+      "latitude": 15.590920000000001, 
+      "longitude": 32.518828999999997, 
+      "country_code": "SD"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Paphos", 
+      "latitude": 34.777161, 
+      "longitude": 32.434080000000002, 
+      "country_code": "CY"
+    }
+  }, 
+  {
+    "pk": 69, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Cairo", 
+      "latitude": 30.083739999999999, 
+      "longitude": 31.25536, 
+      "country_code": "EG"
+    }
+  }, 
+  {
+    "pk": 223, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Harare", 
+      "latitude": -17.823350999999999, 
+      "longitude": 31.050229999999999, 
+      "country_code": "ZW"
+    }
+  }, 
+  {
+    "pk": 285, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ethekwini", 
+      "latitude": -29.855744000000001, 
+      "longitude": 31.035125000000001, 
+      "country_code": "ZA"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kiev", 
+      "latitude": 50.429447000000003, 
+      "longitude": 30.546693000000001, 
+      "country_code": "UA"
+    }
+  }, 
+  {
+    "pk": 170, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "St. Petersburg", 
+      "latitude": 59.933140000000002, 
+      "longitude": 30.306114999999998, 
+      "country_code": "RU"
+    }
+  }, 
+  {
+    "pk": 166, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Istanbul", 
+      "latitude": 41.040855000000001, 
+      "longitude": 28.986183, 
+      "country_code": "TR"
+    }
+  }, 
+  {
+    "pk": 233, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tshwane", 
+      "latitude": -25.745874000000001, 
+      "longitude": 28.187629999999999, 
+      "country_code": "ZA"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Johannesburg", 
+      "latitude": -26.204944000000001, 
+      "longitude": 28.040035, 
+      "country_code": "ZA"
+    }
+  }, 
+  {
+    "pk": 197, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Bucharest", 
+      "latitude": 44.434294999999999, 
+      "longitude": 26.102965000000001, 
+      "country_code": "RO"
+    }
+  }, 
+  {
+    "pk": 81, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Vilnius", 
+      "latitude": 54.689844999999998, 
+      "longitude": 25.269258000000001, 
+      "country_code": "LT"
+    }
+  }, 
+  {
+    "pk": 200, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Helsinki", 
+      "latitude": 60.17116, 
+      "longitude": 24.932580000000002, 
+      "country_code": "FI"
+    }
+  }, 
+  {
+    "pk": 250, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tallinn", 
+      "latitude": 59.436475000000002, 
+      "longitude": 24.752600000000001, 
+      "country_code": "EE"
+    }
+  }, 
+  {
+    "pk": 241, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Riga", 
+      "latitude": 56.945999999999998, 
+      "longitude": 24.114905, 
+      "country_code": "LV"
+    }
+  }, 
+  {
+    "pk": 205, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Athens", 
+      "latitude": 37.976149999999997, 
+      "longitude": 23.736415000000001, 
+      "country_code": "GR"
+    }
+  }, 
+  {
+    "pk": 237, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Sofia", 
+      "latitude": 42.697085000000001, 
+      "longitude": 23.324549999999999, 
+      "country_code": "BG"
+    }
+  }, 
+  {
+    "pk": 189, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Skopje", 
+      "latitude": 41.995998, 
+      "longitude": 21.431298999999999, 
+      "country_code": "MK"
+    }
+  }, 
+  {
+    "pk": 313, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Warsaw", 
+      "latitude": 52.235370000000003, 
+      "longitude": 21.009485000000002, 
+      "country_code": "PL"
+    }
+  }, 
+  {
+    "pk": 219, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Belgrade", 
+      "latitude": 44.811877000000003, 
+      "longitude": 20.464144999999998, 
+      "country_code": "RS"
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Cracow", 
+      "latitude": 50.06006, 
+      "longitude": 19.932600000000001, 
+      "country_code": "PL"
+    }
+  }, 
+  {
+    "pk": 274, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Budapest", 
+      "latitude": 47.506225000000001, 
+      "longitude": 19.064820000000001, 
+      "country_code": "HU"
+    }
+  }, 
+  {
+    "pk": 193, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Gdansk", 
+      "latitude": 54.352770999999997, 
+      "longitude": 18.650065999999999, 
+      "country_code": "PL"
+    }
+  }, 
+  {
+    "pk": 135, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Cape Town", 
+      "latitude": -33.919103999999997, 
+      "longitude": 18.421970000000002, 
+      "country_code": "ZA"
+    }
+  }, 
+  {
+    "pk": 88, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ilid\u017ea", 
+      "latitude": 43.853161, 
+      "longitude": 18.384930000000001, 
+      "country_code": "BA"
+    }
+  }, 
+  {
+    "pk": 108, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Stockholm", 
+      "latitude": 59.332279999999997, 
+      "longitude": 18.062840000000001, 
+      "country_code": "SE"
+    }
+  }, 
+  {
+    "pk": 115, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Bratislava", 
+      "latitude": 48.149245000000001, 
+      "longitude": 17.107005000000001, 
+      "country_code": "SK"
+    }
+  }, 
+  {
+    "pk": 103, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Vienna", 
+      "latitude": 48.202548, 
+      "longitude": 16.368804999999998, 
+      "country_code": "AT"
+    }
+  }, 
+  {
+    "pk": 261, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Zagreb", 
+      "latitude": 45.807259999999999, 
+      "longitude": 15.967599999999999, 
+      "country_code": "HR"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kinshasa", 
+      "latitude": -4.3164199999999999, 
+      "longitude": 15.29834, 
+      "country_code": "CD"
+    }
+  }, 
+  {
+    "pk": 173, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Brazzaville", 
+      "latitude": -4.2745100000000003, 
+      "longitude": 15.286580000000001, 
+      "country_code": "CG"
+    }
+  }, 
+  {
+    "pk": 186, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Valletta", 
+      "latitude": 35.897799999999997, 
+      "longitude": 14.512499999999999, 
+      "country_code": "MT"
+    }
+  }, 
+  {
+    "pk": 301, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Prague", 
+      "latitude": 50.079082999999997, 
+      "longitude": 14.43323, 
+      "country_code": "CZ"
+    }
+  }, 
+  {
+    "pk": 277, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Naples", 
+      "latitude": 40.839941000000003, 
+      "longitude": 14.251761999999999, 
+      "country_code": "IT"
+    }
+  }, 
+  {
+    "pk": 117, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Berlin", 
+      "latitude": 52.516074000000003, 
+      "longitude": 13.376987, 
+      "country_code": "DE"
+    }
+  }, 
+  {
+    "pk": 184, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Luanda", 
+      "latitude": -8.8124099999999999, 
+      "longitude": 13.23503, 
+      "country_code": "AO"
+    }
+  }, 
+  {
+    "pk": 95, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tripoli", 
+      "latitude": 32.877707999999998, 
+      "longitude": 13.18732, 
+      "country_code": "LY"
+    }
+  }, 
+  {
+    "pk": 312, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Copenhagen", 
+      "latitude": 55.676310000000001, 
+      "longitude": 12.569355, 
+      "country_code": "DK"
+    }
+  }, 
+  {
+    "pk": 174, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Rome", 
+      "latitude": 41.903109999999998, 
+      "longitude": 12.495760000000001, 
+      "country_code": "IT"
+    }
+  }, 
+  {
+    "pk": 265, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Munich", 
+      "latitude": 48.136415, 
+      "longitude": 11.577531, 
+      "country_code": "DE"
+    }
+  }, 
+  {
+    "pk": 138, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Yaounde", 
+      "latitude": 3.8717999999999999, 
+      "longitude": 11.512230000000001, 
+      "country_code": "CM"
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Oslo", 
+      "latitude": 59.912280000000003, 
+      "longitude": 10.749980000000001, 
+      "country_code": "NO"
+    }
+  }, 
+  {
+    "pk": 208, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tunis", 
+      "latitude": 36.798672000000003, 
+      "longitude": 10.17263, 
+      "country_code": "TN"
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Hamburg", 
+      "latitude": 53.553345, 
+      "longitude": 9.9924549999999996, 
+      "country_code": "DE"
+    }
+  }, 
+  {
+    "pk": 82, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Douala", 
+      "latitude": 4.0474800000000002, 
+      "longitude": 9.7063699999999997, 
+      "country_code": "CM"
+    }
+  }, 
+  {
+    "pk": 292, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Schaan", 
+      "latitude": 47.166834999999999, 
+      "longitude": 9.5098149999999997, 
+      "country_code": "LI"
+    }
+  }, 
+  {
+    "pk": 75, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Milan", 
+      "latitude": 45.468944999999998, 
+      "longitude": 9.1810299999999998, 
+      "country_code": "IT"
+    }
+  }, 
+  {
+    "pk": 89, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Stuttgart", 
+      "latitude": 48.767674999999997, 
+      "longitude": 9.1719249999999999, 
+      "country_code": "DE"
+    }
+  }, 
+  {
+    "pk": 222, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Zurich", 
+      "latitude": 47.37706, 
+      "longitude": 8.5395500000000002, 
+      "country_code": "CH"
+    }
+  }, 
+  {
+    "pk": 145, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kano", 
+      "latitude": 11.988799999999999, 
+      "longitude": 8.5229900000000001, 
+      "country_code": "NG"
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Abuja", 
+      "latitude": 9.0666700000000002, 
+      "longitude": 7.4833299999999996, 
+      "country_code": "NG"
+    }
+  }, 
+  {
+    "pk": 262, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Berne", 
+      "latitude": 46.948431999999997, 
+      "longitude": 7.440461, 
+      "country_code": "CH"
+    }
+  }, 
+  {
+    "pk": 55, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Monaco", 
+      "latitude": 43.732849000000002, 
+      "longitude": 7.4176599999999997, 
+      "country_code": "MC"
+    }
+  }, 
+  {
+    "pk": 74, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Cologne", 
+      "latitude": 50.941654999999997, 
+      "longitude": 6.9550549999999998, 
+      "country_code": "DE"
+    }
+  }, 
+  {
+    "pk": 297, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Geneva", 
+      "latitude": 46.208357999999997, 
+      "longitude": 6.1427009999999997, 
+      "country_code": "CH"
+    }
+  }, 
+  {
+    "pk": 58, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Marseille", 
+      "latitude": 43.293705000000003, 
+      "longitude": 5.3724749999999997, 
+      "country_code": "FR"
+    }
+  }, 
+  {
+    "pk": 311, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Amsterdam", 
+      "latitude": 52.37312, 
+      "longitude": 4.8931950000000004, 
+      "country_code": "NL"
+    }
+  }, 
+  {
+    "pk": 162, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Lyon", 
+      "latitude": 45.759399000000002, 
+      "longitude": 4.82897, 
+      "country_code": "FR"
+    }
+  }, 
+  {
+    "pk": 180, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Rotterdam", 
+      "latitude": 51.922834999999999, 
+      "longitude": 4.4784550000000003, 
+      "country_code": "NL"
+    }
+  }, 
+  {
+    "pk": 235, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Brussels", 
+      "latitude": 50.848385, 
+      "longitude": 4.349685, 
+      "country_code": "BE"
+    }
+  }, 
+  {
+    "pk": 132, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ibadan", 
+      "latitude": 7.3788400000000003, 
+      "longitude": 3.89527, 
+      "country_code": "NG"
+    }
+  }, 
+  {
+    "pk": 307, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Lagos", 
+      "latitude": 6.4391800000000003, 
+      "longitude": 3.4234800000000001, 
+      "country_code": "NG"
+    }
+  }, 
+  {
+    "pk": 198, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Algiers", 
+      "latitude": 36.765808, 
+      "longitude": 3.03193, 
+      "country_code": "DZ"
+    }
+  }, 
+  {
+    "pk": 144, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Cotonou", 
+      "latitude": 6.3569300000000002, 
+      "longitude": 2.44008, 
+      "country_code": "BJ"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Paris", 
+      "latitude": 48.856929999999998, 
+      "longitude": 2.3412000000000002, 
+      "country_code": "FR"
+    }
+  }, 
+  {
+    "pk": 281, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Barcelona", 
+      "latitude": 41.385589000000003, 
+      "longitude": 2.1687449999999999, 
+      "country_code": "ES"
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Niamey", 
+      "latitude": 13.50975, 
+      "longitude": 2.1067399999999998, 
+      "country_code": "NE"
+    }
+  }, 
+  {
+    "pk": 124, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "London", 
+      "latitude": 51.506324999999997, 
+      "longitude": -0.12714400000000001, 
+      "country_code": "GB"
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Accra", 
+      "latitude": 5.5585599999999999, 
+      "longitude": -0.20091999999999999, 
+      "country_code": "GH"
+    }
+  }, 
+  {
+    "pk": 316, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Oran Rp", 
+      "latitude": 35.701529999999998, 
+      "longitude": -0.64202000000000004, 
+      "country_code": "DZ"
+    }
+  }, 
+  {
+    "pk": 91, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ouagadougou", 
+      "latitude": 12.36398, 
+      "longitude": -1.52826, 
+      "country_code": "BF"
+    }
+  }, 
+  {
+    "pk": 79, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Stanley", 
+      "latitude": 54.872422, 
+      "longitude": -1.6909829999999999, 
+      "country_code": "GB"
+    }
+  }, 
+  {
+    "pk": 227, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Birmingham", 
+      "latitude": 52.478594999999999, 
+      "longitude": -1.908604, 
+      "country_code": "GB"
+    }
+  }, 
+  {
+    "pk": 76, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Manchester", 
+      "latitude": 53.479604999999999, 
+      "longitude": -2.248818, 
+      "country_code": "GB"
+    }
+  }, 
+  {
+    "pk": 104, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Edinburgh", 
+      "latitude": 55.954155, 
+      "longitude": -3.2027739999999998, 
+      "country_code": "GB"
+    }
+  }, 
+  {
+    "pk": 230, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Madrid", 
+      "latitude": 40.420299999999997, 
+      "longitude": -3.7057739999999999, 
+      "country_code": "ES"
+    }
+  }, 
+  {
+    "pk": 97, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Abidjan", 
+      "latitude": 5.3233899999999998, 
+      "longitude": -4.0262700000000002, 
+      "country_code": "CI"
+    }
+  }, 
+  {
+    "pk": 266, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Glasgow", 
+      "latitude": 55.857809000000003, 
+      "longitude": -4.2425110000000004, 
+      "country_code": "GB"
+    }
+  }, 
+  {
+    "pk": 164, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Belfast", 
+      "latitude": 54.595295, 
+      "longitude": -5.9345239999999997, 
+      "country_code": "GB"
+    }
+  }, 
+  {
+    "pk": 48, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Dublin", 
+      "latitude": 53.34807, 
+      "longitude": -6.2482740000000003, 
+      "country_code": "IE"
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Casablanca", 
+      "latitude": 33.605381000000001, 
+      "longitude": -7.6319400000000002, 
+      "country_code": "MA"
+    }
+  }, 
+  {
+    "pk": 56, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Bamako", 
+      "latitude": 12.652950000000001, 
+      "longitude": -7.9864800000000002, 
+      "country_code": "ML"
+    }
+  }, 
+  {
+    "pk": 163, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Marrakech", 
+      "latitude": 31.633821000000001, 
+      "longitude": -8.0024090000000001, 
+      "country_code": "MA"
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Porto", 
+      "latitude": 41.149450000000002, 
+      "longitude": -8.6103140000000007, 
+      "country_code": "PT"
+    }
+  }, 
+  {
+    "pk": 310, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Lisbon", 
+      "latitude": 38.725735, 
+      "longitude": -9.1502099999999995, 
+      "country_code": "PT"
+    }
+  }, 
+  {
+    "pk": 148, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Monrovia", 
+      "latitude": 6.30077, 
+      "longitude": -10.79716, 
+      "country_code": "LR"
+    }
+  }, 
+  {
+    "pk": 308, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Nouakchott", 
+      "latitude": 18.084060999999998, 
+      "longitude": -15.97842, 
+      "country_code": "MR"
+    }
+  }, 
+  {
+    "pk": 93, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Santa Cruz de Tenerife", 
+      "latitude": 28.46039, 
+      "longitude": -16.264519, 
+      "country_code": "ES"
+    }
+  }, 
+  {
+    "pk": 298, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Banjul", 
+      "latitude": 13.45641, 
+      "longitude": -16.581289000000002, 
+      "country_code": "GM"
+    }
+  }, 
+  {
+    "pk": 100, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Dakar", 
+      "latitude": 14.686669999999999, 
+      "longitude": -17.451910000000002, 
+      "country_code": "SN"
+    }
+  }, 
+  {
+    "pk": 217, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Reykjavik", 
+      "latitude": 64.147414999999995, 
+      "longitude": -21.933989, 
+      "country_code": "IS"
+    }
+  }, 
+  {
+    "pk": 137, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ponta Delgada", 
+      "latitude": 37.739624999999997, 
+      "longitude": -25.668569000000002, 
+      "country_code": "PT"
+    }
+  }, 
+  {
+    "pk": 287, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Recife", 
+      "latitude": -8.0553840000000001, 
+      "longitude": -34.872003999999997, 
+      "country_code": "BR"
+    }
+  }, 
+  {
+    "pk": 276, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Salvador", 
+      "latitude": -12.97002, 
+      "longitude": -38.504559, 
+      "country_code": "BR"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Fortaleza", 
+      "latitude": -3.718404, 
+      "longitude": -38.542923999999999, 
+      "country_code": "BR"
+    }
+  }, 
+  {
+    "pk": 153, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Rio De Janeiro", 
+      "latitude": -22.976734, 
+      "longitude": -43.195084000000001, 
+      "country_code": "BR"
+    }
+  }, 
+  {
+    "pk": 234, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Belo Horizonte", 
+      "latitude": -19.945364000000001, 
+      "longitude": -43.932684000000002, 
+      "country_code": "BR"
+    }
+  }, 
+  {
+    "pk": 47, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "S\u00e3o Jos\u00e9 Dos Campos", 
+      "latitude": -23.179324000000001, 
+      "longitude": -45.887183999999998, 
+      "country_code": "BR"
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Sao Paulo", 
+      "latitude": -23.56288, 
+      "longitude": -46.654659000000002, 
+      "country_code": "BR"
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Campinas", 
+      "latitude": -22.909049, 
+      "longitude": -47.064594, 
+      "country_code": "BR"
+    }
+  }, 
+  {
+    "pk": 252, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Porto Alegre", 
+      "latitude": -30.034258999999999, 
+      "longitude": -51.228020000000001, 
+      "country_code": "BR"
+    }
+  }, 
+  {
+    "pk": 168, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Cayenne", 
+      "latitude": 4.9417350000000004, 
+      "longitude": -52.320894000000003, 
+      "country_code": "GF"
+    }
+  }, 
+  {
+    "pk": 175, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "St. John's", 
+      "latitude": 47.561241000000003, 
+      "longitude": -52.711787999999999, 
+      "country_code": "CA"
+    }
+  }, 
+  {
+    "pk": 78, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Paramaribo", 
+      "latitude": 5.8240299999999996, 
+      "longitude": -55.173850999999999, 
+      "country_code": "SR"
+    }
+  }, 
+  {
+    "pk": 256, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Montevideo", 
+      "latitude": -34.880901000000001, 
+      "longitude": -56.165439999999997, 
+      "country_code": "UY"
+    }
+  }, 
+  {
+    "pk": 192, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Asuncion", 
+      "latitude": -25.30509, 
+      "longitude": -57.621948000000003, 
+      "country_code": "PY"
+    }
+  }, 
+  {
+    "pk": 258, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Georgetown", 
+      "latitude": 6.8046100000000003, 
+      "longitude": -58.154831000000001, 
+      "country_code": "GY"
+    }
+  }, 
+  {
+    "pk": 264, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Buenos Aires", 
+      "latitude": -34.608521000000003, 
+      "longitude": -58.373539000000001, 
+      "country_code": "AR"
+    }
+  }, 
+  {
+    "pk": 36, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Bridgetown", 
+      "latitude": 13.092090000000001, 
+      "longitude": -59.611938000000002, 
+      "country_code": "BB"
+    }
+  }, 
+  {
+    "pk": 187, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Manaus", 
+      "latitude": -3.1238959999999998, 
+      "longitude": -60.020648999999999, 
+      "country_code": "BR"
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Rosario", 
+      "latitude": -32.967798999999999, 
+      "longitude": -60.659238999999999, 
+      "country_code": "AR"
+    }
+  }, 
+  {
+    "pk": 309, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Santa Cruz de la Sierra", 
+      "latitude": -17.790371, 
+      "longitude": -63.184508999999998, 
+      "country_code": "BO"
+    }
+  }, 
+  {
+    "pk": 109, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Cordoba", 
+      "latitude": -31.407181000000001, 
+      "longitude": -64.185678999999993, 
+      "country_code": "AR"
+    }
+  }, 
+  {
+    "pk": 87, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Caracas", 
+      "latitude": 10.49605, 
+      "longitude": -66.898276999999993, 
+      "country_code": "VE"
+    }
+  }, 
+  {
+    "pk": 190, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "La Paz", 
+      "latitude": -16.499009999999998, 
+      "longitude": -68.146248, 
+      "country_code": "BO"
+    }
+  }, 
+  {
+    "pk": 146, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ushuaia", 
+      "latitude": -54.788519000000001, 
+      "longitude": -68.226078999999999, 
+      "country_code": "AR"
+    }
+  }, 
+  {
+    "pk": 305, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Santo Domingo", 
+      "latitude": 18.486699999999999, 
+      "longitude": -69.940490999999994, 
+      "country_code": "DO"
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Santiago", 
+      "latitude": -33.437269000000001, 
+      "longitude": -70.650564000000003, 
+      "country_code": "CL"
+    }
+  }, 
+  {
+    "pk": 149, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Boston", 
+      "latitude": 42.358635, 
+      "longitude": -71.056698999999995, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Maracaibo", 
+      "latitude": 10.688205, 
+      "longitude": -71.598383999999996, 
+      "country_code": "VE"
+    }
+  }, 
+  {
+    "pk": 152, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Valparaiso", 
+      "latitude": -33.045378999999997, 
+      "longitude": -71.620273999999995, 
+      "country_code": "CL"
+    }
+  }, 
+  {
+    "pk": 156, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Cuzco", 
+      "latitude": -13.551970000000001, 
+      "longitude": -72.069168000000005, 
+      "country_code": "PE"
+    }
+  }, 
+  {
+    "pk": 214, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Port-au-Prince", 
+      "latitude": 18.54298, 
+      "longitude": -72.343102000000002, 
+      "country_code": "HT"
+    }
+  }, 
+  {
+    "pk": 63, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Valdivia", 
+      "latitude": -39.819574000000003, 
+      "longitude": -73.245624000000007, 
+      "country_code": "CL"
+    }
+  }, 
+  {
+    "pk": 212, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Montreal", 
+      "latitude": 45.512293, 
+      "longitude": -73.554406999999998, 
+      "country_code": "CA"
+    }
+  }, 
+  {
+    "pk": 118, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "New York", 
+      "latitude": 40.714550000000003, 
+      "longitude": -74.007124000000005, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 300, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Bogota", 
+      "latitude": 4.6563699999999999, 
+      "longitude": -74.117789999999999, 
+      "country_code": "CO"
+    }
+  }, 
+  {
+    "pk": 243, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Philadelphia", 
+      "latitude": 39.952269999999999, 
+      "longitude": -75.162368999999998, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 133, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Medellin", 
+      "latitude": 6.23651, 
+      "longitude": -75.590278999999995, 
+      "country_code": "CO"
+    }
+  }, 
+  {
+    "pk": 131, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Ottawa", 
+      "latitude": 45.421500000000002, 
+      "longitude": -75.691894000000005, 
+      "country_code": "CA"
+    }
+  }, 
+  {
+    "pk": 231, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Santiago de Cuba", 
+      "latitude": 20.028891000000002, 
+      "longitude": -75.828979000000004, 
+      "country_code": "CU"
+    }
+  }, 
+  {
+    "pk": 290, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Baltimore", 
+      "latitude": 39.290554999999998, 
+      "longitude": -76.609604000000004, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 302, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Kingston", 
+      "latitude": 18.015711, 
+      "longitude": -76.797309999999996, 
+      "country_code": "JM"
+    }
+  }, 
+  {
+    "pk": 232, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Lima", 
+      "latitude": -12.0436, 
+      "longitude": -77.021216999999993, 
+      "country_code": "PE"
+    }
+  }, 
+  {
+    "pk": 72, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Washington", 
+      "latitude": 38.890369999999997, 
+      "longitude": -77.031959000000001, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 107, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Quito", 
+      "latitude": -0.22950000000000001, 
+      "longitude": -78.524276999999998, 
+      "country_code": "EC"
+    }
+  }, 
+  {
+    "pk": 196, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Toronto", 
+      "latitude": 43.648560000000003, 
+      "longitude": -79.385323999999997, 
+      "country_code": "CA"
+    }
+  }, 
+  {
+    "pk": 143, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Panama City", 
+      "latitude": 8.9649199999999993, 
+      "longitude": -79.536620999999997, 
+      "country_code": "PA"
+    }
+  }, 
+  {
+    "pk": 269, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Guayaquil", 
+      "latitude": -2.2038199999999999, 
+      "longitude": -79.897461000000007, 
+      "country_code": "EC"
+    }
+  }, 
+  {
+    "pk": 45, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Miami", 
+      "latitude": 25.728985000000002, 
+      "longitude": -80.237419000000003, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 41, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Havana", 
+      "latitude": 23.116800000000001, 
+      "longitude": -82.388587999999999, 
+      "country_code": "CU"
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tampa", 
+      "latitude": 27.946529999999999, 
+      "longitude": -82.459269000000006, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 204, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Detroit", 
+      "latitude": 42.331685, 
+      "longitude": -83.047923999999995, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 134, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "San Jose", 
+      "latitude": 9.9304699999999997, 
+      "longitude": -84.078620999999998, 
+      "country_code": "CR"
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Atlanta", 
+      "latitude": 33.748314999999998, 
+      "longitude": -84.391109, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 284, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Managua", 
+      "latitude": 12.12884, 
+      "longitude": -86.253890999999996, 
+      "country_code": "NI"
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tegucigalpa", 
+      "latitude": 14.09506, 
+      "longitude": -87.211967000000001, 
+      "country_code": "HN"
+    }
+  }, 
+  {
+    "pk": 239, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Chicago", 
+      "latitude": 41.884149999999998, 
+      "longitude": -87.632408999999996, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 315, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Belize City", 
+      "latitude": 17.495621, 
+      "longitude": -88.181579999999997, 
+      "country_code": "BZ"
+    }
+  }, 
+  {
+    "pk": 242, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "San Salvador", 
+      "latitude": 13.697430000000001, 
+      "longitude": -89.199096999999995, 
+      "country_code": "SV"
+    }
+  }, 
+  {
+    "pk": 141, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Merida", 
+      "latitude": 20.966919999999998, 
+      "longitude": -89.622539000000003, 
+      "country_code": "MX"
+    }
+  }, 
+  {
+    "pk": 226, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "New Orleans", 
+      "latitude": 29.953690000000002, 
+      "longitude": -90.077714, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 255, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "St Louis", 
+      "latitude": 38.627740000000003, 
+      "longitude": -90.199513999999994, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 150, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Guatemala City", 
+      "latitude": 14.618, 
+      "longitude": -90.524910000000006, 
+      "country_code": "GT"
+    }
+  }, 
+  {
+    "pk": 73, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Minneapolis", 
+      "latitude": 44.979035000000003, 
+      "longitude": -93.264928999999995, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 293, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Houston", 
+      "latitude": 29.760449999999999, 
+      "longitude": -95.369783999999996, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 167, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Dallas", 
+      "latitude": 32.778154999999998, 
+      "longitude": -96.795404000000005, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 83, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "San Juan", 
+      "latitude": 26.18769, 
+      "longitude": -98.146979000000002, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 128, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "San Antonio", 
+      "latitude": 29.424489999999999, 
+      "longitude": -98.494624000000002, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 161, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Mexico City", 
+      "latitude": 19.431899999999999, 
+      "longitude": -99.132851000000002, 
+      "country_code": "MX"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Monterrey", 
+      "latitude": 25.670974999999999, 
+      "longitude": -100.30995900000001, 
+      "country_code": "MX"
+    }
+  }, 
+  {
+    "pk": 209, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Guadalajara", 
+      "latitude": 20.68759, 
+      "longitude": -103.351074, 
+      "country_code": "MX"
+    }
+  }, 
+  {
+    "pk": 92, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Denver", 
+      "latitude": 39.740009999999998, 
+      "longitude": -104.992259, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Isla De Pascua", 
+      "latitude": -27.147939999999998, 
+      "longitude": -109.427587, 
+      "country_code": "CL"
+    }
+  }, 
+  {
+    "pk": 260, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Phoenix", 
+      "latitude": 33.448259999999998, 
+      "longitude": -112.075774, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 70, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Edmonton", 
+      "latitude": 53.546219999999998, 
+      "longitude": -113.490374, 
+      "country_code": "CA"
+    }
+  }, 
+  {
+    "pk": 179, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Calgary", 
+      "latitude": 51.04522, 
+      "longitude": -114.063014, 
+      "country_code": "CA"
+    }
+  }, 
+  {
+    "pk": 157, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Las Vegas", 
+      "latitude": 36.171914999999998, 
+      "longitude": -115.139974, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 291, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Tijuana", 
+      "latitude": 32.531305000000003, 
+      "longitude": -117.038169, 
+      "country_code": "MX"
+    }
+  }, 
+  {
+    "pk": 112, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "San Diego", 
+      "latitude": 32.715694999999997, 
+      "longitude": -117.16171900000001, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 42, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Los Angeles", 
+      "latitude": 34.053489999999996, 
+      "longitude": -118.24531899999999, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 80, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Seattle", 
+      "latitude": 47.603560000000002, 
+      "longitude": -122.32943899999999, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "San Francisco", 
+      "latitude": 37.777124999999998, 
+      "longitude": -122.41964400000001, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 249, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Vancouver", 
+      "latitude": 49.260440000000003, 
+      "longitude": -123.114034, 
+      "country_code": "CA"
+    }
+  }, 
+  {
+    "pk": 172, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Whitehorse", 
+      "latitude": 60.720869999999998, 
+      "longitude": -135.053169, 
+      "country_code": "CA"
+    }
+  }, 
+  {
+    "pk": 299, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Papeete", 
+      "latitude": -17.545529999999999, 
+      "longitude": -149.570572, 
+      "country_code": "PF"
+    }
+  }, 
+  {
+    "pk": 278, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Anchorage", 
+      "latitude": 61.217590000000001, 
+      "longitude": -149.85835399999999, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 121, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Honolulu", 
+      "latitude": 21.304770000000001, 
+      "longitude": -157.85761400000001, 
+      "country_code": "US"
+    }
+  }, 
+  {
+    "pk": 120, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Apia", 
+      "latitude": -13.80791, 
+      "longitude": -171.822845, 
+      "country_code": "WS"
+    }
+  }, 
+  {
+    "pk": 286, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Nuku'alofa", 
+      "latitude": -21.135679, 
+      "longitude": -175.20053100000001, 
+      "country_code": "TO"
+    }
+  }, 
+  {
+    "pk": 52, 
+    "model": "spark.city", 
+    "fields": {
+      "city_name": "Adak", 
+      "latitude": 51.880009999999999, 
+      "longitude": -176.657569, 
+      "country_code": "US"
+    }
+  }
+]

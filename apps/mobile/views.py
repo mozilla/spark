@@ -59,20 +59,53 @@ def boost1(request):
 
             update_completed_challenges.delay(profile.user.id)
             
-            data.update({'geolocation': 'success',
-                         'geo_result': '%s, %s' % (data['city'], data['country'])})
+            return HttpResponseRedirect(reverse('mobile.boost1_complete'))
         else:
             data.update({'geolocation': 'error'})
-        
+
     return jingo.render(request, 'mobile/boost_step1.html', data)
 
 
 @login_required
-def geolocation_fallback(request):
-    cities = City.objects.order_by('city_name')
-    citylist = [get_city_fullname(city, request.locale) for city in cities]
+def boost1_complete(request):
+    profile = request.user.profile
+    if not profile.boost1_completed:
+        return HttpResponseRedirect(reverse('mobile.boost1'))
     
-    return jingo.render(request, 'mobile/citylist.html', {'cities': citylist})
+    return jingo.render(request, 'mobile/boost_step1.html', {'geolocation': 'success',
+                'geo_result': get_city_fullname(profile.city_name, profile.country_code, request.locale)})
+
+
+@login_required
+def geolocation_fallback(request):
+    profile = request.user.profile
+    if not profile.boost1_completed:
+        
+        if request.method == 'POST':
+            city_id = request.POST.get('city')
+    
+            try:
+                city = City.objects.get(pk=city_id)
+                profile.major_city = city
+                profile.latitude = city.latitude
+                profile.longitude = city.longitude
+                profile.city_name = city.city_name
+                profile.country_code = city.country_code
+                profile.boost1_completed = True
+                profile.save()
+        
+                return HttpResponseRedirect(reverse('mobile.boost1_complete'))
+            except City.DoesNotExist:
+                # Wrong city in the POST data, ignore it and display the city list again.
+                pass
+    
+        cities = City.objects.order_by('city_name')
+        citylist = [(city.id, get_city_fullname(city.city_name, city.country_code, request.locale)) for city in cities]
+
+        return jingo.render(request, 'mobile/citylist.html', {'cities': citylist})
+    
+    # Ignore chosen city and redirect if user has already completed Boost step 1.
+    return HttpResponseRedirect(reverse('mobile.boost1_complete'))
 
 
 @login_required
@@ -114,12 +147,14 @@ def boost2_confirm(request):
             try:
                 parent = User.objects.get(username=username)
                 created = create_relationship(parent, request.user)
-                if not created:
+                if created:
+                    profile = request.user.profile
+                    profile.no_parent = False
+                    profile.save()
+                else:
                     error = True
             except User.DoesNotExist:
                 error = True
-        else:
-            pass #TODO: save as a no_parent flag in user profile
         
         if not error:
             profile = request.user.profile

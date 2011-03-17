@@ -47,22 +47,19 @@ def approximate_city(profile, radius):
         profile.save()
 
 
-def get_city_fullname(city, locale):
+def get_city_fullname(city_name, country_code, locale):
     from geo.countries import countries
-    
-    if not city:
-        return ''
     
     if locale not in countries:
         locale = 'en-US'
     
-    cc = city.country_code.lower()
+    cc = country_code.lower()
     if cc in countries[locale]:
-        country = countries[locale][cc]
+        country_name = countries[locale][cc]
     else:
-        return '?'
+        country_name = '?'
     
-    return '%s, %s' % (city.city_name, country)
+    return '%s, %s' % (city_name, country_name)
 
 
 def get_ua(request):
