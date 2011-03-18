@@ -57,7 +57,7 @@ def boost1(request):
             profile.boost1_completed = True
             profile.save()
 
-            update_completed_challenges(profile.user.id)
+            update_completed_challenges.delay(profile.user.id)
             
             return HttpResponseRedirect(reverse('mobile.boost1_complete'))
         else:
@@ -94,7 +94,7 @@ def geolocation_fallback(request):
                 profile.boost1_completed = True
                 profile.save()
                 
-                update_completed_challenges(profile.user.id)
+                update_completed_challenges.delay(profile.user.id)
         
                 return HttpResponseRedirect(reverse('mobile.boost1_complete'))
             except City.DoesNotExist:
