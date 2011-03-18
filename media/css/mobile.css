@@ -51,6 +51,10 @@ html, body {
 	clear:both;
 	}
 
+#menu-wrapper.closed {
+/*    top:-50px;*/
+}
+
 /*Opera Fix*/
 body:before {
 	content:"";
@@ -67,7 +71,7 @@ html {
     background:#110f10;
 }
 
-html.openmenu {
+html.openmenu, html.openmenu body {
     height:500px;
 }
 
