@@ -19,7 +19,10 @@
         share the Firefox Spark. Yay!
         {% endtrans %}
     </p>
-    <a href="{{ url('users.mobile_register') }}" class="button" ontouchstart="">{{ _('Share the Spark') }}</a>
+    <div class="buttons-wrapper">
+        <a href="{{ url('users.mobile_register') }}"><button ontouchstart="" class="left-button">{{ _('Start a spark') }}</button></a>
+        <a href="{{ url('users.mobile_login') }}"><button ontouchstart="" class="right-button">{{ _('Sign in') }}</button></a>
+    </div>
     {% else %}
     <p class="section sans">
         {% trans %}

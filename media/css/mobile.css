@@ -965,6 +965,11 @@ body#user-share {
     color:#ffd40d;
 }
 
+.non-ff h2.first {
+    font-size:inherit;
+    color:inherit;
+}
+
 .non-ff h3 {
     font-size:1.13em;
     font-weight:bold;

@@ -4,9 +4,13 @@
 {% set scripts = ('menu',) %}
 {% set hide_menu = True %}
 
+{% if iphone or android_non_ff %}
+{% set body_class = 'non-ff' %}
+{% endif %}
+
 {% block flame %}{% endblock %}
 
-{% block subtitle %}<h2>{{ _("{username}'s Spark")|f(username=username) }}</h2>{% endblock %}
+{% block subtitle %}<h2 class="first">{{ _("{username}'s Spark")|f(username=username) }}</h2>{% endblock %}
 
 {% block pagecontent %}
     {% if not logged_in %}
