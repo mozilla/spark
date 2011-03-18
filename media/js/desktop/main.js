@@ -1,6 +1,6 @@
 // Modal popup
 var $popup = $('#popup'),
-    $mask = $('#mask');
+    $mask = $('#mask'),
     $videoPlayer = $('#video-player'),
     video = document.querySelector('video');
 
