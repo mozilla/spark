@@ -722,7 +722,7 @@ li.badge:active, li.badge.current {
     padding-top:10px;
 }
 
-body#home, body#user-share {
+body#home {
     background:url('../img/mobile/spark.jpg') no-repeat center 0;
     background-size:320px auto;
     min-height:400px;
@@ -925,6 +925,16 @@ div.challenge.complete .check {
 
 #remember span {
     font-weight:bold;
+}
+
+body#user-share {
+    background:url('../img/mobile/spark.jpg') no-repeat center 40px;
+    background-size:320px auto;
+    min-height:400px;
+}
+
+#static-spark {
+    height:200px;
 }
 
 /*Stats*/
