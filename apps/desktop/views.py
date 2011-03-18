@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 
 from geo.countries import countries
 
-from spark.decorators import ssl_required, login_required
+from spark.decorators import ssl_required, login_required, mobile_view
 from spark.helpers import secure_url
 
 from users.models import User, Profile
@@ -15,6 +15,7 @@ import jingo
 
 
 @ssl_required
+@mobile_view('mobile.home')
 def home(request):
     if request.user.is_authenticated():
         profile = request.user.profile
@@ -31,6 +32,7 @@ def home(request):
 
 
 @ssl_required
+@mobile_view('mobile.user')
 def user(request, username):
     user = get_object_or_404(User, username=username, is_active=True)
     delta = datetime.datetime.now() - user.date_joined

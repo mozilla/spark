@@ -12,6 +12,8 @@ from users.utils import create_relationship
 
 from challenges.tasks import update_completed_challenges
 
+from desktop.views import home as desktop_home
+
 from .forms import BoostStep1Form, BoostStep2Form
 from .decorators import login_required, logout_required
 
@@ -240,7 +242,8 @@ def non_firefox(request):
     return jingo.render(request, 'mobile/non_firefox.html')
 
 
-def user(request):
+def user(request, username):
+    print username
     return jingo.render(request, 'mobile/user.html', {'num_people': 8, 
                                                       'num_countries': 5,
                                                       'num_badges': 9})
