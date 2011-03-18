@@ -1367,3 +1367,13 @@ div.level.locked:hover {
     width:640px;
     padding:25px;
 }
+
+.video-player-no-flash {
+    line-height:150%;
+    font-size:1.231em;
+}
+
+.video-player-no-flash p {
+    margin-bottom:1em;
+    color:#fff;
+}
