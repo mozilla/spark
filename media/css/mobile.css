@@ -937,6 +937,10 @@ body#user-share {
     height:200px;
 }
 
+.logged-in #static-spark {
+    height:230px;
+}
+
 /*Stats*/
 
 #stats-list {
@@ -960,22 +964,22 @@ body#user-share {
 }
 
 /*non-ff*/
-.non-ff h2 {
+.non-ff h2, .ff h2 {
     font-size:2.26em;
     color:#ffd40d;
 }
 
-.non-ff h2.first {
+.non-ff h2.first, .ff h2.first {
     font-size:inherit;
     color:inherit;
 }
 
-.non-ff h3 {
+.non-ff h3, .ff h3 {
     font-size:1.13em;
     font-weight:bold;
 }
 
-.non-ff p {
+.non-ff p, .ff p {
     line-height:150%;
     padding-bottom:18px;
 }

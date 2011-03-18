@@ -4,8 +4,12 @@
 {% set scripts = ('menu',) %}
 {% set hide_menu = True %}
 
-{% if iphone or android_non_ff %}
-{% set body_class = 'non-ff' %}
+{% if logged_in %}
+    {% if iphone or android_non_ff %}
+        {% set body_class = 'non-ff logged-in' %}
+    {% else %}
+        {% set body_class = 'ff logged-in' %}
+    {% endif %}
 {% endif %}
 
 {% block flame %}{% endblock %}
