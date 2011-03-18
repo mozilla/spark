@@ -31,6 +31,7 @@ ENV_BRANCH = {
 GIT_PULL = "git pull -q origin %(branch)s"
 GIT_SUBMODULE = "git submodule update --init"
 SVN_UP = "svn update"
+COMPILE_PO = "./compile.sh"
 
 EXEC = 'exec'
 CHDIR = 'chdir'
@@ -54,6 +55,7 @@ def update_site(env, debug):
         commands += [
             (CHDIR, os.path.join(here, 'locale')),
             (EXEC, SVN_UP),
+            (EXEC, COMPILE_PO),
             (CHDIR, here),
         ]
     elif os.path.exists(os.path.join(here, 'locale', '.git')):
