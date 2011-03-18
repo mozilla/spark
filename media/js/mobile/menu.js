@@ -28,12 +28,16 @@ var hintMenu = function() {
         docHeight = $(document).height();
 
     if(docHeight >= 500) {
-        $menu.css('top', -55);
-        setTimeout(function() {
-            $menu.animate({'top': '+=55'});
-        }, 1000);
-        $(window).scroll(function() {
-            $menu.css('top', 0);
-        });
+        if($(window).scrollTop() === 0) {
+            $menu.css('top', -55);
+            setTimeout(function() {
+                $menu.animate({'top': 0});
+            }, 1000);
+            $(window).scroll(function() {
+                $menu.css('top', 0);
+            });
+        }
+    } else {
+        $menu.css('top', 0);
     }
 };

@@ -276,7 +276,6 @@ p.license {
 
 #menu-wrapper {
     position:relative;
-    height:50px;
     overflow:visible;
     pointer-events:none;
 }
@@ -298,10 +297,6 @@ p.license {
 
 #menu.closed {
     bottom:-450px;
-}
-
-#menu.closed, #menu.open {
-    -moz-transition:1s bottom ease;
 }
 
 #menu-header {
@@ -730,7 +725,7 @@ body#home {
     background:url('../img/mobile/spark.jpg') no-repeat center 0;
     background-size:320px auto;
     min-height:400px;
-} 
+}
 
 #home #header {
     margin-bottom:200px;   
