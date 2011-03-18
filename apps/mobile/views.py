@@ -1,10 +1,12 @@
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 
 import jingo
 
 from spark.urlresolvers import reverse
 from spark.decorators import post_required
-from spark.utils import get_city_fullname
+from spark.utils import (get_city_fullname, is_android_non_firefox, is_iphone,
+                         is_firefox_mobile, is_android, get_ua)
 from spark.models import City
 
 from users.models import User, UserNode
@@ -24,7 +26,19 @@ from tower import ugettext_lazy as _lazy
 def home(request):
     if request.user.is_authenticated():
         return jingo.render(request, 'mobile/myspark.html', {})
-    return jingo.render(request, 'mobile/home.html', {})
+    
+    print get_ua(request)
+    
+    data = {}
+    if is_firefox_mobile(request):
+        template = 'mobile/home.html'
+    elif is_iphone(request):
+        template = 'mobile/iphone.html'
+    else:
+        data.update({'non_android': not is_android_non_firefox(request)})
+        template = 'mobile/non_firefox.html'
+    
+    return jingo.render(request, template, data)
 
 
 @login_required
@@ -221,7 +235,6 @@ def sharebadge(request):
     return jingo.render(request, 'mobile/sharebadge.html')
 
 
-@login_required
 def about(request):
     return jingo.render(request, 'mobile/about.html')
 
@@ -243,7 +256,15 @@ def non_firefox(request):
 
 
 def user(request, username):
-    print username
-    return jingo.render(request, 'mobile/user.html', {'num_people': 8, 
-                                                      'num_countries': 5,
-                                                      'num_badges': 9})
+    user = get_object_or_404(User, username=username, is_active=True)
+    data = {'username': username,
+            'profile': user.profile,
+            'logged_in': request.user.is_authenticated(),
+            'android_non_ff': is_android_non_firefox(request),
+            'iphone': is_iphone(request),
+            'firefox': is_firefox_mobile(request),
+            'num_people': 8,
+            'num_countries': 5,
+            'num_badges': 9}
+
+    return jingo.render(request, 'mobile/user.html', data)

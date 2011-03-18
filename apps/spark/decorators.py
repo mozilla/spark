@@ -15,6 +15,7 @@ from .urlresolvers import reverse
 
 
 def mobile_view(mobile_view_name):
+    """This decorator redirects the view to a mobile view if request.MOBILE == True."""
     def decorator(view_fn):
         @wraps(view_fn)
         def wrapper(request, *args, **kw):

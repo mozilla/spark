@@ -722,7 +722,7 @@ li.badge:active, li.badge.current {
     padding-top:10px;
 }
 
-body#home {
+body#home, body#user-share {
     background:url('../img/mobile/spark.jpg') no-repeat center 0;
     background-size:320px auto;
     min-height:400px;

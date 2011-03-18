@@ -6,8 +6,12 @@
 
 {% block flame %}{% endblock %}
 
+{% block subtitle %}<h2>{{ _("{username}'s Spark")|f(username=username) }}</h2>{% endblock %}
+
 {% block pagecontent %}
-    <span id="remember">{{ _('Remember <span>{username}</span> when you boost your Spark!')|fe(username='FoxyBarbarian') }}</span>
+    {% if not logged_in %}
+    <span id="remember">{{ _('Remember <span>{username}</span> when you boost your Spark!')|fe(username=username) }}</span>
+    {% endif %}
     <div id="static-spark">
     
     </div>
@@ -17,7 +21,7 @@
                                          'in <span>{n} different countries</span> around the world.', num_countries)|fe(n=num_countries) %}
         
         {{ ngettext('<span>{username}</span> shared to <span>{n} person</span> {countries_part}',
-                    '<span>{username}</span> shared to <span>{n} people</span> {countries_part}', num_people)|fe(n=num_people, username='FoxyBarbarian', countries_part=countries_part) }}
+                    '<span>{username}</span> shared to <span>{n} people</span> {countries_part}', num_people)|fe(n=num_people, username=username, countries_part=countries_part) }}
 
         {# L10n: 'they' is referring to the user who shared to {n} people in the previous string. #}
         {{ ngettext('And, they unlocked <span>{n} cool badge</span> in the process.',
@@ -26,30 +30,33 @@
         {{ _('How far will your Spark go?') }}
     </p>
 
+    {% if android_non_ff %}
     {#  Compatible phone, non-firefox #}
     <p class="section sans">
         {{ _("Don't have a spark yet? Get Firefox 4 for Android then start a spark.") }}
     </p>
-        <a href="#" class="button">{{ _('Get Firefox 4 for Android') }}</a>
-
-    {#  Compatible phone, viewing with Firefox, logged-out #}
-    <hr>
-    <h2 class="cta"><a ontouchstart="" href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></h2>
-    <hr>
-    <div class="buttons-wrapper">
-        {# L10n: Space is limited here. The translation should be no longer than the English version, leave only the verb if needed #}
-        <a href="{{ url('users.mobile_register') }}"><button ontouchstart="" class="left-button">{{ _('Start a spark') }}</button></a>
-        <a href="{{ url('users.mobile_login') }}"><button ontouchstart="" class="right-button">{{ _('Sign in') }}</button></a>
-    </div>
-
-    {#  Compatible phone, viewing with Firefox, logged-in #}
-    <a href="#" class="button">{{ _('Go to My Spark') }}</a>
-
-    {#  Incompatible phone #}
+    <a href="http://www.mozilla.com/m/" class="button">{{ _('Get Firefox 4 for Android') }}</a>
+    {% elif firefox %}
+        {% if logged_in %}
+        <a href="{{ url('mobile.home') }}" class="button">{{ _('Go to My Spark') }}</a>
+        {% else %}
+        {#  Compatible phone, viewing with Firefox, logged-out #}
+        <hr>
+        <h2 class="cta"><a ontouchstart="" href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></h2>
+        <hr>
+        <div class="buttons-wrapper">
+            {# L10n: Space is limited here. The translation should be no longer than the English version, leave only the verb if needed #}
+            <a href="{{ url('users.mobile_register') }}"><button ontouchstart="" class="left-button">{{ _('Start a spark') }}</button></a>
+            <a href="{{ url('users.mobile_login') }}"><button ontouchstart="" class="right-button">{{ _('Sign in') }}</button></a>
+        </div>
+        {% endif %}
+    {% else %}
+    {#  Incompatible phone (iPhone, other browsers) #}
     <p class="section sans">
         {{ _("Aww, too bad your phone isn't compatible. Want to help light up the world anyway?") }}
     </p>
-    <a href="#" class="button">{{ _('Share a spark') }}</a>
+    <a href="{{ url('users.mobile_register') }}" class="button">{{ _('Share a spark') }}</a>
+    {% endif %}
 
     {#  The rest is for everyone #}
     <hr>
@@ -75,7 +82,7 @@
              {{ _('Add features and functionality to customize Firefox exactly the way you like.') }}
          </p>
      </div>
-     <a href="#" class="button" ontouchstart="">{{ _('Learn more') }}</a>
+     <a href="http://www.mozilla.com/firefox/" class="button" ontouchstart="">{{ _('Learn more') }}</a>
 
      <hr>
      <div class="section">
@@ -89,12 +96,12 @@
              {% endtrans %}
          </p>
      </div>
-     <a href="#" class="button" ontouchstart="">{{ _('Learn more') }}</a>
+     <a href="{{ url('mobile.about') }}" class="button" ontouchstart="">{{ _('Learn more') }}</a>
 
      <div class="legal-links">
-         <a href="#">{{ _('Privacy Policy') }}</a>
-         <a href="#">{{ _('Legal Notices') }}</a>
-         <a class="last" href="#">{{ _('Report Trademark Abuse') }}</a>
+         <a href="http://www.mozilla.com/m/privacy.html">{{ _('Privacy Policy') }}</a>
+         <a href="http://www.mozilla.com/about/legal.html">{{ _('Legal Notices') }}</a>
+         <a class="last" href="http://www.mozilla.com/legal/fraud-report/index.html">{{ _('Report Trademark Abuse') }}</a>
      </div>
 
      <p class="license sans">

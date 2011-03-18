@@ -70,6 +70,13 @@ def is_iphone(request):
     return 'iPhone' in get_ua(request)
 
 
+def is_android(request):
+    ua = get_ua(request)
+    if 'Android' in ua:
+        return True
+    return False
+
+
 def is_android_non_firefox(request):
     ua = get_ua(request)
     if 'Android' in ua and not 'Firefox' in ua:
