@@ -354,3 +354,6 @@ RESPONSYS_ID = '<insert prod responsys key here>'
 MOZILLA_CAMPAIGN = 'MOZILLA_AND_YOU'
 SPARK_CAMPAIGN = 'SPARK_2011'
 RESPONSYS_URL = 'http://awesomeness.mozilla.org/pub/rf'
+
+# Mobile detection (django-mobility middleware)
+MOBILE_COOKIE = 'mobile'

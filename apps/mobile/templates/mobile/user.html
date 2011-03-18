@@ -29,17 +29,17 @@
     
         {{ _('How far will your Spark go?') }}
     </p>
-
-    {% if android_non_ff %}
-    {#  Compatible phone, non-firefox #}
-    <p class="section sans">
-        {{ _("Don't have a spark yet? Get Firefox 4 for Android then start a spark.") }}
-    </p>
-    <a href="http://www.mozilla.com/m/" class="button">{{ _('Get Firefox 4 for Android') }}</a>
-    {% elif firefox %}
-        {% if logged_in %}
-        <a href="{{ url('mobile.home') }}" class="button">{{ _('Go to My Spark') }}</a>
-        {% else %}
+    
+    {% if logged_in %}
+    <a href="{{ url('mobile.home') }}" class="button">{{ _('Go to My Spark') }}</a>
+    {% else %}
+        {% if android_non_ff %}
+        {#  Compatible phone, non-firefox, logged-out #}
+        <p class="section sans">
+            {{ _("Don't have a spark yet? Get Firefox 4 for Android then start a spark.") }}
+        </p>
+        <a href="http://www.mozilla.com/m/" class="button">{{ _('Get Firefox 4 for Android') }}</a>
+        {% elif firefox %}
         {#  Compatible phone, viewing with Firefox, logged-out #}
         <hr>
         <h2 class="cta"><a ontouchstart="" href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></h2>
@@ -49,13 +49,13 @@
             <a href="{{ url('users.mobile_register') }}"><button ontouchstart="" class="left-button">{{ _('Start a spark') }}</button></a>
             <a href="{{ url('users.mobile_login') }}"><button ontouchstart="" class="right-button">{{ _('Sign in') }}</button></a>
         </div>
+        {% else %}
+        {#  Incompatible phone (iPhone, other browsers), logged-out #}    
+        <p class="section sans">
+            {{ _("Aww, too bad your phone isn't compatible. Want to help light up the world anyway?") }}
+        </p>
+        <a href="{{ url('users.mobile_register') }}" class="button">{{ _('Share a spark') }}</a>
         {% endif %}
-    {% else %}
-    {#  Incompatible phone (iPhone, other browsers) #}
-    <p class="section sans">
-        {{ _("Aww, too bad your phone isn't compatible. Want to help light up the world anyway?") }}
-    </p>
-    <a href="{{ url('users.mobile_register') }}" class="button">{{ _('Share a spark') }}</a>
     {% endif %}
 
     {#  The rest is for everyone #}
