@@ -3,12 +3,13 @@ import datetime
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
+from django.core.urlresolvers import reverse as django_reverse
 
 from tower import ugettext as _, ugettext_lazy as _lazy
 
 from mptt.models import MPTTModel
 
-from spark.urlresolvers import reverse
+from spark.urlresolvers import reverse, absolute_url
 from spark.helpers import urlparams
 from spark.models import City
 
@@ -60,6 +61,14 @@ class Profile(models.Model):
         return reverse('desktop.user', args=[self.user.username])
     
     
+    @property
+    def twitter_sharing_url(self):
+        # django_reverse used instead of reverse because we don't want a locale preprended to sharing links.
+        url = urlparams(django_reverse('desktop.user', args=[self.user.username]), 
+                                                                f='t') # ?f=t means 'from twitter'
+        return absolute_url(url)
+
+
     @property
     def badges(self):
         """Returns a list of dicts used for badge list rendering.

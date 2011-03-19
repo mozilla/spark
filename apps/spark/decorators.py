@@ -4,12 +4,29 @@ from functools import wraps
 
 from django.conf import settings
 from django.contrib.auth import REDIRECT_FIELD_NAME
-from django.http import (HttpResponse, HttpResponseForbidden, HttpResponseRedirect, 
+from django.http import (HttpResponse, HttpResponseForbidden, HttpResponseRedirect,
                          HttpResponseBadRequest, HttpResponseNotAllowed)
 from django.utils.decorators import available_attrs
 from django.utils.http import urlquote
+from django.utils.encoding import smart_str
 
+from .helpers import urlparams
 from .urlresolvers import reverse
+
+
+def mobile_view(mobile_view_name):
+    """This decorator redirects the view to a mobile view if request.MOBILE == True."""
+    def decorator(view_fn):
+        @wraps(view_fn)
+        def wrapper(request, *args, **kw):
+            if request.MOBILE:
+                query = dict((smart_str(k), request.GET[k]) for k in request.GET)
+                return HttpResponseRedirect(urlparams(reverse(mobile_view_name, args=kw.values()), **query))
+            else:
+                return view_fn(request, *args, **kw)
+        return wrapper
+    return decorator
+
 
 ## Taken from kitsune & zamboni
 

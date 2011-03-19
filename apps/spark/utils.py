@@ -2,6 +2,7 @@ import re
 import math
 
 
+
 def is_mobile_request(request):
     mobile_url = re.compile(r'.+/m/.+')
     return mobile_url.match(request.path) != None
@@ -68,6 +69,13 @@ def get_ua(request):
 
 def is_iphone(request):
     return 'iPhone' in get_ua(request)
+
+
+def is_android(request):
+    ua = get_ua(request)
+    if 'Android' in ua:
+        return True
+    return False
 
 
 def is_android_non_firefox(request):

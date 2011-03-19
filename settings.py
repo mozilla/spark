@@ -229,6 +229,9 @@ MIDDLEWARE_CLASSES = (
     'spark.middleware.RemoveSlashMiddleware',
     
     'django.middleware.common.CommonMiddleware',
+    # Dev environment - settings_local.py will add
+    # 'mobile.middleware.DetectMobileMiddleware' here
+    'mobility.middleware.XMobileMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -351,3 +354,6 @@ RESPONSYS_ID = '<insert prod responsys key here>'
 MOZILLA_CAMPAIGN = 'MOZILLA_AND_YOU'
 SPARK_CAMPAIGN = 'SPARK_2011'
 RESPONSYS_URL = 'http://awesomeness.mozilla.org/pub/rf'
+
+# Mobile detection (django-mobility middleware)
+MOBILE_COOKIE = 'mobile'

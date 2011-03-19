@@ -66,4 +66,20 @@
 
 {% block script %}
 {% include 'desktop/includes/dashboard-script.html' %}
+
+<script>
+$(document).ready(function() {
+    $('#option-01 a').click(function() {
+        $.ajax({
+            type: 'GET',
+            url: '{{ url('sharing.download_from_market_desktop')}}',
+            context: document.body,
+            success: function(data) {
+                window.location.replace(data.next);
+          }
+        });
+        return false;
+    });
+});
+</script>
 {% endblock %}

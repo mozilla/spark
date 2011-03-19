@@ -162,6 +162,10 @@ div.clearfix {
     clear:both;
 }
 
+img.preload {
+    display:none;
+}
+
 /* Typography and Colors */
 
 body {
@@ -209,6 +213,7 @@ a {
 
 a:hover {
     color:#fee779;
+    cursor:pointer;
 }
 
 a:active {
@@ -1265,6 +1270,7 @@ div.level.locked:hover {
 
 #challenges-list .level-details li p {
     color:#999;
+    width:650px;
 }
 
 #challenges-list .level-details .checkbox {
@@ -1292,6 +1298,10 @@ div.level.locked:hover {
     float:right;
     font-size:75%;
     min-width:188px;
+}
+
+#personal-link a {
+    display:block;
 }
 
 /* Personal Page - logged out*/

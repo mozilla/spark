@@ -5,4 +5,6 @@ from . import views
 
 urlpatterns = patterns('',
     url(r'^download$', views.download, name='sharing.download'),
+    url(r'^download/market$', views.download_from_market_desktop, name='sharing.download_from_market_desktop'),
+    url(r'^m/download/market$', views.download_from_market_mobile, name='sharing.download_from_market_mobile')
 )

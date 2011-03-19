@@ -20,9 +20,7 @@
 	        <h1>
 	            {{ pagetitle }}
 	        </h1>
-	        {% if body_id == 'user-share' %}
-            <h2>{{ _("{username}'s Spark")|f(username='FoxyBarbarian') }}</h2>
-			{% endif %}
+	        {% block subtitle %}{% endblock %}
 	    </div> <!-- end header -->
 
 		<div id="content">
@@ -78,6 +76,7 @@
             </div>
 	    </div>
 	</div> <!-- end menu wrapper -->
+	<img src="{{ MEDIA_URL }}img/mobile/badge-label-bg.png" alt="" class="preload">
 	{% endif %}
 
 {% endblock %}

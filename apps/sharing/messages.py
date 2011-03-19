@@ -34,3 +34,6 @@ FACEBOOK_BADGE_MSG = _lazy(u'I just unlocked the Spark %(badge_name)s badge. Che
 SMS_BADGE_MSG = _lazy(u'I just unlocked the Spark %(badge_name)s badge. '
                        'Check out all my badges %(short_url)s and join in the fun. '
                        'Start your own spark, take challenges, unlock badges + more.')
+
+# L10n: Sharing message (Twitter)
+TWITTER_SHARE_MSG = _lazy(u'Hey! Help me spread Firefox 4 for Android across the globe.')

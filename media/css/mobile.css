@@ -926,6 +926,20 @@ div.challenge.complete .check {
     font-weight:bold;
 }
 
+body#user-share {
+    background:url('../img/mobile/spark.jpg') no-repeat center 40px;
+    background-size:320px auto;
+    min-height:400px;
+}
+
+#static-spark {
+    height:200px;
+}
+
+.logged-in #static-spark {
+    height:230px;
+}
+
 /*Stats*/
 
 #stats-list {
@@ -949,17 +963,22 @@ div.challenge.complete .check {
 }
 
 /*non-ff*/
-.non-ff h2 {
+.non-ff h2, .ff h2 {
     font-size:2.26em;
     color:#ffd40d;
 }
 
-.non-ff h3 {
+.non-ff h2.first, .ff h2.first {
+    font-size:inherit;
+    color:inherit;
+}
+
+.non-ff h3, .ff h3 {
     font-size:1.13em;
     font-weight:bold;
 }
 
-.non-ff p {
+.non-ff p, .ff p {
     line-height:150%;
     padding-bottom:18px;
 }

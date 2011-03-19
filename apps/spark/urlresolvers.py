@@ -171,3 +171,12 @@ def clean_next_url(request):
     return url
 
 
+def absolute_reverse(view_name):
+    return absolute_url(reverse(view_name))
+
+
+def absolute_url(url):
+    site = Site.objects.get_current()
+    return u'https://%s%s' % (site, url)
+
+

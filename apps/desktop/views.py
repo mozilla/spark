@@ -1,13 +1,18 @@
 import datetime
 import json
+import urllib
 
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 
 from geo.countries import countries
 
-from spark.decorators import ssl_required, login_required
+from spark.decorators import ssl_required, login_required, mobile_view
 from spark.helpers import secure_url
+from spark.urlresolvers import absolute_reverse
+
+from sharing.utils import set_shared_by_cookie
+from sharing.messages import TWITTER_SHARE_MSG, TWITTER_SPARK_MSG
 
 from users.models import User, Profile
 
@@ -15,6 +20,7 @@ import jingo
 
 
 @ssl_required
+@mobile_view('mobile.home')
 def home(request):
     if request.user.is_authenticated():
         profile = request.user.profile
@@ -25,12 +31,18 @@ def home(request):
                                      'logged_in': True,
                                      'levels': profile.challenge_info,
                                      'date_joined_delta': _total_seconds(delta),
-                                     'countries': json.dumps(countries[request.locale]) })
+                                     'countries': json.dumps(countries[request.locale]),
+                                     'twitter_url': urllib.quote(profile.twitter_sharing_url),
+                                     'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)) })
     else:
-        return jingo.render(request, 'desktop/home.html', {'is_homepage': True})
+        data = {'is_homepage': True,
+                'twitter_url': urllib.quote(absolute_reverse('desktop.home')),
+                'twitter_msg': urllib.quote(unicode(TWITTER_SHARE_MSG))}
+        return jingo.render(request, 'desktop/home.html', data)
 
 
 @ssl_required
+@mobile_view('mobile.user')
 def user(request, username):
     user = get_object_or_404(User, username=username, is_active=True)
     delta = datetime.datetime.now() - user.date_joined
@@ -40,8 +52,9 @@ def user(request, username):
             'date_joined_delta': _total_seconds(delta),
             'is_user_page': True,
             'countries': json.dumps(countries[request.locale]) }
-    
-    return jingo.render(request, 'desktop/user.html', data)
+
+    response = jingo.render(request, 'desktop/user.html', data)
+    return set_shared_by_cookie(response, username)
 
 
 def visualization(request, ):
