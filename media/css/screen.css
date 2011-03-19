@@ -285,7 +285,8 @@ ul#main-menu {
 	font-weight:normal;
 	font-size:0.8em;
 	font-style:italic;
-	line-height:2em;
+    padding-top:0.5em;
+	line-height:1.3em;
 	font-family:'WarnockPro', 'Times New Roman', sans-serif;
 }
 	
