@@ -213,6 +213,7 @@ a {
 
 a:hover {
     color:#fee779;
+    cursor:pointer;
 }
 
 a:active {
