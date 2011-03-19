@@ -1,6 +1,16 @@
 import re
 import math
 
+from django.contrib.sites.models import Site
+
+from spark.urlresolvers import reverse
+
+
+
+def absolute_reverse(view_name):
+    site = Site.objects.get_current()
+    return u'https://%s%s' % (site, reverse(view_name))
+
 
 def is_mobile_request(request):
     mobile_url = re.compile(r'.+/m/.+')
