@@ -131,7 +131,7 @@ $(document).ready(function() {
     $('#download-button').click(function() {
         $.ajax({
             type: 'GET',
-            url: '{{ url('sharing.download_from_market')}}',
+            url: '{{ url('sharing.download_from_market_mobile')}}',
             context: document.body,
             success: function(data) {
                 window.location.replace(data.next);

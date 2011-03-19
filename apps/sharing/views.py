@@ -37,15 +37,27 @@ def download(request):
 
 
 @ajax_required
-def download_from_market(request):
+def download_from_market_desktop(request):
+    response = HttpResponse(json.dumps({'next': 'http://market.android.com/details?id=org.mozilla.firefox'}),
+                            content_type='application/json')
+    return _handle_tracking(request, response)
+
+
+@ajax_required
+def download_from_market_mobile(request):
     response = HttpResponse(json.dumps({'next': 'market://details?id=org.mozilla.firefox'}),
                             content_type='application/json')
+    return _handle_tracking(request, response)
 
+
+def _handle_tracking(request, response):
+    """Handles the share tracking logic so that users get their number of shares increased
+       when someone downloads Firefox mobile via their user page."""
     if not _has_parent_cookie(request):
         parent_username = _add_share_to_parent(request)
         # Set a 'parent' cookie so that you can't trigger a +1 share for the parent more than once.
         response = set_parent_cookie(response, parent_username)
-        
+    
     return response
 
 

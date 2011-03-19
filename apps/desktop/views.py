@@ -9,6 +9,8 @@ from geo.countries import countries
 from spark.decorators import ssl_required, login_required, mobile_view
 from spark.helpers import secure_url
 
+from sharing.utils import set_shared_by_cookie
+
 from users.models import User, Profile
 
 import jingo
@@ -42,8 +44,9 @@ def user(request, username):
             'date_joined_delta': _total_seconds(delta),
             'is_user_page': True,
             'countries': json.dumps(countries[request.locale]) }
-    
-    return jingo.render(request, 'desktop/user.html', data)
+
+    response = jingo.render(request, 'desktop/user.html', data)
+    return set_shared_by_cookie(response, username)
 
 
 def visualization(request, ):
