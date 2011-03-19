@@ -9,10 +9,10 @@ from geo.countries import countries
 
 from spark.decorators import ssl_required, login_required, mobile_view
 from spark.helpers import secure_url
-from spark.utils import absolute_reverse
+from spark.urlresolvers import absolute_reverse
 
 from sharing.utils import set_shared_by_cookie
-from sharing.messages import TWITTER_SHARE_MSG
+from sharing.messages import TWITTER_SHARE_MSG, TWITTER_SPARK_MSG
 
 from users.models import User, Profile
 
@@ -31,11 +31,13 @@ def home(request):
                                      'logged_in': True,
                                      'levels': profile.challenge_info,
                                      'date_joined_delta': _total_seconds(delta),
-                                     'countries': json.dumps(countries[request.locale]) })
+                                     'countries': json.dumps(countries[request.locale]),
+                                     'twitter_url': urllib.quote(profile.twitter_sharing_url),
+                                     'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)) })
     else:
-        data = {'share_url': urllib.quote(absolute_reverse('desktop.home')),
-                'is_homepage': True,
-                'twitter_msg': urllib.quote(TWITTER_SHARE_MSG)}
+        data = {'is_homepage': True,
+                'twitter_url': urllib.quote(absolute_reverse('desktop.home')),
+                'twitter_msg': urllib.quote(unicode(TWITTER_SHARE_MSG))}
         return jingo.render(request, 'desktop/home.html', data)
 
 
