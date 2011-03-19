@@ -46,7 +46,7 @@
         <p class="section sans">
             {{ _("Don't have a spark yet? Get Firefox 4 for Android then start a spark.") }}
         </p>
-        <a href="http://www.mozilla.com/m/" class="button">{{ _('Get Firefox 4 for Android') }}</a>
+        <a id="download-button" href="#" class="button">{{ _('Get Firefox 4 for Android') }}</a>
         {% else %}
             {% if firefox %}
             {#  Compatible phone, viewing with Firefox, logged-out #}
@@ -123,4 +123,21 @@
          v3.0 or any later version.
          {% endtrans %}
      </p>
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function() {
+    $('#download-button').click(function() {
+        $.ajax({
+            type: 'GET',
+            url: '{{ url('sharing.download_from_market')}}',
+            context: document.body,
+            success: function(data) {
+                window.location.replace(data.next);
+          }
+        });
+    });
+});
+</script>
 {% endblock %}

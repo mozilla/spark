@@ -3,11 +3,11 @@ from django.shortcuts import get_object_or_404
 
 import jingo
 
+from spark.models import City
 from spark.urlresolvers import reverse
 from spark.decorators import post_required
 from spark.utils import (get_city_fullname, is_android_non_firefox, is_iphone,
                          is_firefox_mobile, is_android, get_ua)
-from spark.models import City
 
 from users.models import User, UserNode
 from users.utils import create_relationship
@@ -15,6 +15,8 @@ from users.utils import create_relationship
 from challenges.tasks import update_completed_challenges
 
 from desktop.views import home as desktop_home
+
+from sharing.utils import set_shared_by_cookie
 
 from .forms import BoostStep1Form, BoostStep2Form
 from .decorators import login_required, logout_required
@@ -267,4 +269,5 @@ def user(request, username):
             'num_countries': 5,
             'num_badges': 9}
 
-    return jingo.render(request, 'mobile/user.html', data)
+    response = jingo.render(request, 'mobile/user.html', data)
+    return set_shared_by_cookie(response, username)
