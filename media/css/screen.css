@@ -1388,3 +1388,18 @@ div.level.locked:hover {
     margin-bottom:1em;
     color:#fff;
 }
+
+#video-player div {
+    position:relative;
+}
+
+#video-player img {
+    position:absolute;
+    top:-37px;
+    right:-37px;
+    z-index:2000;
+}
+
+#video-player img:hover {
+    cursor:pointer;
+}

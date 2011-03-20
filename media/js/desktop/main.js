@@ -90,6 +90,10 @@ $(document).ready(function() {
         hidePopup();
     });
 
+    $('#video-player img').click(function() {
+       hidePopup(); 
+    });
+
     // All elements with the class 'close' will close the popup when clicked
     $('#popup .close').click(function() {
         hidePopup();
