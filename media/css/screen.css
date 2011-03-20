@@ -729,6 +729,11 @@ span.error {
     display:inline;
     color:#b2b2b2;
 }
+
+img.spinner {
+    margin-top:7px;
+    margin-left:9px;
+}
 /*Backgrounds*/
 
 #spark-bg {
