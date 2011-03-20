@@ -4,7 +4,7 @@ function initLoginForm() {
     });
     
     $('#sign-in p.download a').click(function() {
-       hidePopup(); 
+       hidePopup();
     });
     
     $('#login .close').click(function() {

@@ -41,7 +41,9 @@ var hideVideo = function() {
 var hidePopup = function() {
     $mask.fadeOut(200);
     $popup.fadeOut(200);
-    hideVideo();
+    if(video) {
+        hideVideo();
+    }
     setTimeout(function() {
         $popup.children().hide();
     }, 200)
