@@ -70,12 +70,10 @@
     </div>
 
     <p class="license sans">
-        {% trans %}
-        Except where otherwise noted, content on 
-        this site is licensed under the Creative 
-        Commons Attribution Share-Alike License 
-        v3.0 or any later version.
-        {% endtrans %}
+    	{% trans noted_url='http://www.mozilla.com/en-US/about/legal.html#site', license_url='http://creativecommons.org/licenses/by-sa/3.0/' %}
+    	Except where otherwise <a href="{{ noted_url }}">noted</a>, content of this site is licensed under the
+    	<a href="{{ license_url }}">Creative Commons Attribution Share-Alike License v3.0</a> or any later version.
+    	{% endtrans %}
     </p>
 {% endblock %}
 
