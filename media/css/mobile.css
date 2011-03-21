@@ -476,10 +476,6 @@ form.section {
     float: left;
     background-size:24px auto;
     position:relative;
-    top:8px;
-}
-
-#newsletter p:nth-child(2) .checkbox {
     top:0px;
 }
 
