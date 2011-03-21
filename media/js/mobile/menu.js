@@ -1,5 +1,11 @@
 var initMenu = function () {
-    var windowHeight = $(window).height();
+    var windowHeight;
+
+    windowHeight = $(window).height();
+    
+    $(window).resize(function() {
+       windowHeight = $(window).height(); 
+    });
     
     $('#menu-header').click(function() {
         if($(this).hasClass('closed')) {
@@ -11,8 +17,9 @@ var initMenu = function () {
             $('#menu').removeClass('open').addClass('closed');
             $('#menu-wrapper').removeClass('open').addClass('closed');
         }
+        
         if(windowHeight < 600) {
-            $('html').toggleClass('openmenu');   
+            $('html').toggleClass('openmenu');
         }
     });
     
