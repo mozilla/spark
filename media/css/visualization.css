@@ -38,7 +38,7 @@ ul#main-menu {
 	font-size:inherit;
 }
 
-#visualizer #sign-in {
+#visualizer #sign-in-first {
     font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-style:normal;
     color:inherit;
@@ -147,10 +147,12 @@ div.ui-slider-range {
 
 #content {
     height:780px;
-    margin-top:-300px;
-    background:url('../img/global/map.jpg') no-repeat center bottom;
     position:relative;
-    z-index:-2;
+    margin-top:-213px;
+}
+
+#visualization.pannable:hover {
+    cursor:move;
 }
 
 #time-wrapper a.ui-slider-handle {
@@ -238,7 +240,7 @@ a.ui-slider-handle:active, a.ui-slider-handle:focus {
 
 #zoom-wrapper {
     width:225px;
-    margin:30px auto 100px;
+    margin:-40px auto 100px;
 }
 
 #zoom a.ui-slider-handle {
@@ -252,8 +254,7 @@ a.ui-slider-handle:active, a.ui-slider-handle:focus {
 
 #tooltip {
     position:absolute;
-    height:36px;
-    width:170px;
+    min-width:170px;
     background:#212020;
     border:2px solid #ffd40d;
     border-radius:2px;
@@ -261,6 +262,10 @@ a.ui-slider-handle:active, a.ui-slider-handle:focus {
     -webkit-border-radius:2px;
     -o-border-radius:2px;
     box-shadow:inset 1px 1px 1px rgba(0,0,0,0.75), 6px 5px 10px rgba(0,0,0,0.75);
+    text-align:center;
+    color:#fff;
+    padding:15px;
+    display:none;
 }
 
 #tooltip-arrow {
@@ -268,9 +273,9 @@ a.ui-slider-handle:active, a.ui-slider-handle:focus {
     left:50%;
     height:22px;
     width:28px;
-    background:url('../img/global/tooltip-arrow.png') no-repeat 0 0;
-    margin-left:-14px;
-    top:-17px;
+    background:url('../img/tooltip-arrow.png') no-repeat 0 0;
+    margin:0 0 -22px -14px;
+    top:-32px;
 }
 
 #cities {
@@ -322,8 +327,4 @@ img.preload {
     left:0;
     bottom:0;
     display:none;
-}
-
-svg textarea:hover #tooltip {
-    display:block;
 }

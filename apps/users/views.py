@@ -43,8 +43,10 @@ def login(request, mobile=False):
     """Try to log the user in."""
     form = handle_login(request)
     
+    next = clean_next_url(request)
+    
     if mobile:
-        next_url = clean_next_url(request) or reverse('mobile.home')
+        next_url = next or reverse('mobile.home')
         
         if request.user.is_authenticated():
             return HttpResponseRedirect(next_url)
@@ -58,7 +60,7 @@ def login(request, mobile=False):
                         'errors': dict(form.errors.iteritems())}
             else:
                 return {'status': 'success',
-                        'next': reverse('desktop.home')}
+                        'next': next or reverse('desktop.home')}
 
         return HttpResponseBadRequest()
 

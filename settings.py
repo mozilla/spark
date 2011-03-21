@@ -200,7 +200,14 @@ MINIFY_BUNDLES = {
             'js/desktop/popup-pwreset.js',
         ),
         'visualization': (
-            'js/desktop/visualization.js',
+            'js/desktop/popups-loggedout.js',
+            'js/desktop/visualization/raphael-zpd.js',
+            'js/desktop/visualization/raphael-group.js',
+            'js/desktop/visualization/state.js',
+            'js/desktop/visualization/ui.js',
+            'js/desktop/visualization/ui-timer.js',
+            'js/desktop/visualization/animation.js',
+            'js/desktop/visualization/init-raphael.js',
         ),
         'menu': (
             'js/mobile/menu.js',
