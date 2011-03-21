@@ -12,7 +12,7 @@ from spark.helpers import secure_url
 from spark.urlresolvers import absolute_reverse
 
 from sharing.utils import set_shared_by_cookie
-from sharing.messages import TWITTER_SHARE_MSG, TWITTER_SPARK_MSG
+from sharing.messages import TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, FACEBOOK_SPARK_TITLE, FACEBOOK_SPARK_MSG 
 
 from users.models import User, Profile
 
@@ -37,7 +37,8 @@ def home(request):
     else:
         data = {'is_homepage': True,
                 'twitter_url': urllib.quote(absolute_reverse('desktop.home')),
-                'twitter_msg': urllib.quote(unicode(TWITTER_SHARE_MSG))}
+                'twitter_msg': urllib.quote(unicode(TWITTER_SHARE_MSG)),
+                'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE))}
         return jingo.render(request, 'desktop/home.html', data)
 
 
