@@ -17,7 +17,7 @@ from users.models import User
 from .utils import set_parent_cookie
 
 
-DOWNLOAD_URL = 'http://firefox.com/m/'
+DOWNLOAD_URL = 'market://details?id=org.mozilla.firefox'
 
 
 def download(request):
