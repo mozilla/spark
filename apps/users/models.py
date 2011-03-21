@@ -62,6 +62,12 @@ class Profile(models.Model):
     def get_absolute_url(self):
         return reverse('desktop.user', args=[self.user.username])
 
+
+    @property
+    def generic_sharing_url(self):
+        url = urlparams(django_reverse('desktop.user', args=[self.user.username]))
+        return absolute_url(url)
+        
     
     def _social_sharing_url(self, service):
         # django_reverse used instead of reverse because we don't want a locale preprended to sharing links.

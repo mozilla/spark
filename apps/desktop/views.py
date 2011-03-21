@@ -15,6 +15,8 @@ from sharing.utils import set_shared_by_cookie
 from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, FACEBOOK_SPARK_TITLE, 
                               FACEBOOK_SPARK_MSG)
 
+from spark.urlresolvers import absolute_url
+
 from users.models import User, Profile
 
 import jingo
@@ -37,7 +39,8 @@ def home(request):
                                      'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)),
                                      'facebook_url': urllib.quote(profile.facebook_sharing_url),
                                      'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
-                                     'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG))})
+                                     'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)),
+                                     'abs_url': profile.generic_sharing_url})
     else:
         data = {'is_homepage': True,
                 'twitter_url': urllib.quote(absolute_reverse('desktop.home')),
