@@ -12,7 +12,7 @@ from spark.helpers import secure_url
 from spark.urlresolvers import absolute_reverse
 
 from sharing.utils import set_shared_by_cookie
-from sharing.messages import TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, FACEBOOK_SPARK_TITLE, FACEBOOK_SPARK_MSG 
+from sharing.messages import TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, TWITTER_BADGE_MSG, FACEBOOK_SPARK_TITLE, FACEBOOK_SPARK_MSG, FACEBOOK_BADGE_MSG 
 
 from users.models import User, Profile
 
@@ -33,7 +33,11 @@ def home(request):
                                      'date_joined_delta': _total_seconds(delta),
                                      'countries': json.dumps(countries[request.locale]),
                                      'twitter_url': urllib.quote(profile.twitter_sharing_url),
-                                     'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)) })
+                                     'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)),
+                                     'twitter_badge_msg': TWITTER_BADGE_MSG,
+                                     'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
+                                     'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)),
+                                     'facebook_badge_msg': FACEBOOK_BADGE_MSG })
     else:
         data = {'is_homepage': True,
                 'twitter_url': urllib.quote(absolute_reverse('desktop.home')),
