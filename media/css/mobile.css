@@ -17,7 +17,6 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
     src:          url('../fonts/mgopenmodernaregular-webfont.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-
 }
 
 @font-face {
@@ -477,12 +476,18 @@ form.section {
     float: left;
     background-size:24px auto;
     position:relative;
-    top:13px;
+    top:8px;
+}
+
+#newsletter p:nth-child(2) .checkbox {
+    top:0px;
 }
 
 #newsletter label, #from-website label {
     font-style:normal;
-    line-height:48px;
+    line-height:150%;
+    display:block;
+    margin:15px 0;
 }
 
 #boost label {
