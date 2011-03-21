@@ -25,8 +25,8 @@
             {% if logged_in %}
             <div class="badge-sharing">
                 <span>{{ _('share this!') }}</span>
-                <a class="facebook" href="http://www.facebook.com/dialog/feed?display=popup&amp;app_id=100139296738213&amp;redirect_uri={{facebook_url}}&amp;link={{facebook_url}}&amp;name={{facebook_title}}&amp;message={{ facebook_badge_msg % {'badge_name':badge.name} }}"></a>
-                <a href="http://twitter.com/share?url={{twitter_url}}&amp;text={{ twitter_badge_msg % {'badge_name':badge.name, 'short_url':''} }}&amp;via=mozmobile" class="twitter"></a>
+                <a class="facebook" href="http://www.facebook.com/dialog/feed?display=popup&amp;app_id=100139296738213&amp;redirect_uri={{facebook_url}}&amp;link={{facebook_url}}&amp;name={{facebook_title}}&amp;message={{ badge.facebook_msg }}"></a>
+                <a href="http://twitter.com/share?url={{twitter_url}}&amp;text={{ badge.twitter_msg }}&amp;via=mozmobile" class="twitter"></a>
             </div>
             {% endif %}
         </div>

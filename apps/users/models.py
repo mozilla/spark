@@ -1,4 +1,5 @@
 import datetime
+import urllib
 
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
@@ -14,6 +15,7 @@ from spark.helpers import urlparams
 from spark.models import City
 
 from sharing import utils as sharing_utils
+from sharing.messages import TWITTER_BADGE_MSG, FACEBOOK_BADGE_MSG
 
 from challenges.models import Challenge
 from challenges import utils
@@ -92,7 +94,9 @@ class Profile(models.Model):
                 'name': cc.challenge.badge_name,
                 'description': cc.challenge.badge_description,
                 'date_earned': cc.date_badge_earned,
-                'new': cc.new_badge
+                'new': cc.new_badge,
+                'twitter_msg': urllib.quote(unicode(TWITTER_BADGE_MSG % {'badge_name':cc.challenge.badge_name, 'short_url':''})),
+                'facebook_msg': urllib.quote(unicode(FACEBOOK_BADGE_MSG % {'badge_name':cc.challenge.badge_name}))
             })
         return badges
 
