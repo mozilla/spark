@@ -1,4 +1,6 @@
 var initMenu = function () {
+    var windowHeight = $(window).height();
+    
     $('#menu-header').click(function() {
         if($(this).hasClass('closed')) {
             $(this).removeClass('closed').addClass('open');
@@ -9,7 +11,9 @@ var initMenu = function () {
             $('#menu').removeClass('open').addClass('closed');
             $('#menu-wrapper').removeClass('open').addClass('closed');
         }
-        $('html').toggleClass('openmenu');
+        if(windowHeight < 600) {
+            $('html').toggleClass('openmenu');   
+        }
     });
     
     $('#logout').click(function() {
