@@ -40,6 +40,8 @@ var initBadges = function() {
         $badgeInfo.attr('id', 'badge-label');
         $badgeInfo.find('h2').text($(currentBadgeElement).data('name'));
         $badgeInfo.find('p').text($(currentBadgeElement).data('description'));
+        var url = $badgeInfo.find('a').attr('href');
+        $badgeInfo.find('a').attr('href', url+'?id='+$(currentBadgeElement).data('id'));
         
         if(viewportHeight > viewportWidth) {
             $lastBadge.after($badgeInfo.css('marginLeft', portraitMargin).fadeIn(500));

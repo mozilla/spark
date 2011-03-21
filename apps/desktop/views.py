@@ -12,7 +12,8 @@ from spark.helpers import secure_url
 from spark.urlresolvers import absolute_reverse
 
 from sharing.utils import set_shared_by_cookie
-from sharing.messages import TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, TWITTER_BADGE_MSG, FACEBOOK_SPARK_TITLE, FACEBOOK_SPARK_MSG, FACEBOOK_BADGE_MSG 
+from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, TWITTER_BADGE_MSG, 
+                              FACEBOOK_SPARK_TITLE, FACEBOOK_SPARK_MSG, FACEBOOK_BADGE_MSG)
 
 from users.models import User, Profile
 
