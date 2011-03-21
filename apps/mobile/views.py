@@ -236,6 +236,7 @@ def shareqr(request):
 def sharelink(request):
     data = {'twitter_url': urllib.quote(request.user.profile.twitter_sharing_url),
             'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)),
+            'facebook_url': urllib.quote(request.user.profile.facebook_sharing_url),
             'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
             'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG))}
             

@@ -36,6 +36,7 @@ def home(request):
                                      'twitter_url': urllib.quote(profile.twitter_sharing_url),
                                      'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)),
                                      'twitter_badge_msg': TWITTER_BADGE_MSG,
+                                     'facebook_url': urllib.quote(profile.facebook_sharing_url),
                                      'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
                                      'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)),
                                      'facebook_badge_msg': FACEBOOK_BADGE_MSG })
@@ -61,6 +62,7 @@ def user(request, username):
             'twitter_url': urllib.quote(user.profile.twitter_sharing_url),
             'twitter_msg': urllib.quote(unicode(TWITTER_SHARE_MSG)),
             'twitter_badge_msg': TWITTER_BADGE_MSG,
+            'facebook_url': urllib.quote(user.profile.facebook_sharing_url),
             'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
             'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)),
             'facebook_badge_msg': FACEBOOK_BADGE_MSG }
