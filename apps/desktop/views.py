@@ -56,7 +56,13 @@ def user(request, username):
             'logged_in': request.user.is_authenticated(),
             'date_joined_delta': _total_seconds(delta),
             'is_user_page': True,
-            'countries': json.dumps(countries[request.locale]) }
+            'countries': json.dumps(countries[request.locale]),
+            'twitter_url': urllib.quote(user.profile.twitter_sharing_url),
+            'twitter_msg': urllib.quote(unicode(TWITTER_SHARE_MSG)),
+            'twitter_badge_msg': TWITTER_BADGE_MSG,
+            'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
+            'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)),
+            'facebook_badge_msg': FACEBOOK_BADGE_MSG }
 
     response = jingo.render(request, 'desktop/user.html', data)
     return set_shared_by_cookie(response, username)
