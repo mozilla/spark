@@ -364,3 +364,6 @@ RESPONSYS_URL = 'http://awesomeness.mozilla.org/pub/rf'
 
 # Mobile detection (django-mobility middleware)
 MOBILE_COOKIE = 'mobile'
+
+# Session cookies must not be sent over HTTP
+SESSION_COOKIE_SECURE = True
