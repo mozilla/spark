@@ -306,7 +306,7 @@ RaphaelZPD = function(raphaelPaper, o, container) {
     // end of constructor
   	me.setupHandlers(me.root);
 	me.initialized = true;
-}
+};
 
 Raphael.fn.ZPDPanTo = function(x, y) {
 	var me = this;
@@ -336,4 +336,4 @@ Raphael.fn.ZPDPanTo = function(x, y) {
 	element.setAttribute("transform", s);
 
 	return me;
-}
+};
