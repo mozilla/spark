@@ -20,6 +20,10 @@ class CleanNextUrlTestCase(TestCase):
         return clean_next_url(request)
 
 
+    def test_accepts_relative_path(self):
+        eq_('/m/about', self._clean_next_url('/m/about'))
+
+
     def test_prepends_a_slash(self):
         eq_('/m/about', self._clean_next_url('m/about'))
 
@@ -48,4 +52,8 @@ class CleanNextUrlTestCase(TestCase):
         eq_('/m/some_path/', self._clean_next_url('http://spark.mozilla.org/m/some_path/'))
 
 
-
+    @mock.patch.object(Site.objects, 'get_current')
+    def test_rejects_data_scheme(self, get_current):
+        get_current.return_value.domain = SITE_DOMAIN
+        eq_(None, self._clean_next_url('data:text/html,<html><script>alert(1)</script></html>'))
+        

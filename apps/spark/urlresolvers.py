@@ -148,7 +148,10 @@ def clean_next_url(request):
         parsed_url = urlparse.urlparse(url)
         site_domain = Site.objects.get_current().domain
         next_domain = parsed_url.netloc
-
+        
+        if url.startswith('data:'):
+            return None
+        
         if next_domain:
             if site_domain != next_domain:
                 # Don't let absolute or protocol relative URLs redirect outside of Spark.
@@ -159,7 +162,7 @@ def clean_next_url(request):
                                 ('path', 'query') if getattr(parsed_url, x)])
 
         # Prepend a '/' to the url if not present. We only want relative URLs.
-        if not parsed_url.scheme and not url.startswith('/'):
+        if not url.startswith('/'):
             url = '/' + url
 
         # Don't redirect right back to login or logout page
