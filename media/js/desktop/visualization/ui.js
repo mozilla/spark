@@ -154,13 +154,17 @@ var initUI = function() {
     });
     
     // shows the popup
-    $('#viewport1 g').mouseenter(function() {
+    $('#boundingBox').hover(function() {
         $tooltip.show();
-    });
-    
-    $('#viewport1 g').mouseleave(function() {
+    }, function() {
         $tooltip.hide();
     });
+
+    $('#viewport1 g').hover(function() {
+        $tooltip.show();
+    }, function() {
+        $tooltip.hide();
+    })
 
     // writes the name of the city in the tooltip
     $city.mouseenter(function() {

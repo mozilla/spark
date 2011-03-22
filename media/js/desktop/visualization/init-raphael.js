@@ -46,12 +46,15 @@ var initCityList = function() {
     for(var i = 0; i < nbCities; i += 1) {
         var x = i * (width / (nbCities - 1));
         var y = height - (height - 650) + textOffset;
-
+        
         citylist.push(r.text(x, y, cities[i]).attr(textStyle).rotate(90, x, y));
     }
-
-    var textGroup = r.group(0, citylist);
     
+    var style = {"fill": "rgba(0,0,0,0.01)", "stroke": "none"};
+    var node = r.rect(0, 650, width, 40).attr(style).node;
+    node.id = "boundingBox";
+    
+    var textGroup = r.group(0, citylist);
 };
 
 var initShapes = function() {
