@@ -108,7 +108,7 @@ var initUI = function() {
     });
 
     // triggers the play/pause and toggles the corresponding strings
-    $('#play').click(function() {
+    $('#play-pause').click(function() {
         togglePlay();
     });
 
@@ -230,11 +230,13 @@ var resetTimelapse = function() {
 };
 
 var showPlayButton = function() {
-    $('#play').html('Play timelapse');  
+    $('#play').show();
+    $('#pause').hide();
 };
 
 var showPauseButton = function() {
-    $('#play').html('Pause timelapse');  
+    $('#play').hide();
+    $('#pause').show();  
 };
 
 var disableSlider = function() {

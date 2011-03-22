@@ -123,6 +123,7 @@ div.ui-slider-range {
 
 #play-pause {
     margin-top:10px;
+    display:inline-block;
 }
 
 #play, #pause {
