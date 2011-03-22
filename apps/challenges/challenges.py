@@ -422,7 +422,7 @@ all_challenges[_id(6, 17)] = Brussels()
 class TheAmazon(ChallengeImpl):
     """ Share to or from Brazil """
     def is_completed_by(self, profile):
-        if profile.country_code = 'BR':
+        if profile.country_code == 'BR':
             return True
         for child in profile.children_profiles:
             if child.country_code and child.country_code == 'BR':
