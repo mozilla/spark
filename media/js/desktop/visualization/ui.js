@@ -45,10 +45,12 @@ var initMask = function() {
 
 var showYourSharesInfo = function() {
     $('#your-shares-info').show();
+    toggleFocus();
 };
 
 var hideYourSharesInfo = function() {
     $('#your-shares-info').hide();
+    toggleFocus();
 };
 
 var toggleFocusInfo = function(focus) {
@@ -57,6 +59,18 @@ var toggleFocusInfo = function(focus) {
     } else {
         $('#focus-info').hide();
     }  
+};
+
+var toggleFocus = function() {
+    var list = document.getElementById("cities-list");
+    
+    list.value = -1;
+    toggleFocusInfo(list.value);
+    if(list.disabled) {
+        list.disabled = false;
+    } else {
+        list.disabled = true;   
+    }
 };
 
 var initUI = function() {

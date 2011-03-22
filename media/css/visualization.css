@@ -300,6 +300,10 @@ a.ui-slider-handle:active, a.ui-slider-handle:focus {
     height:31px;
 }
 
+#cities-list:disabled {
+    opacity:0.5;
+}
+
 #cities-list option {
 padding:5px 10px;
 }
