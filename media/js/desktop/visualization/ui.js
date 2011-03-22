@@ -69,7 +69,7 @@ var toggleFocus = function() {
     if(list.disabled) {
         list.disabled = false;
     } else {
-        list.disabled = true;   
+        list.disabled = true;
     }
 };
 
