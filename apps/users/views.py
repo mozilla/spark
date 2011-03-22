@@ -27,13 +27,7 @@ from users.forms import (EmailConfirmationForm, EmailChangeForm, PasswordResetFo
 from users.models import Profile
 from users.utils import handle_login, handle_register
 
-try:
-    if True == settings.CELERY_ENABLED:
-        from responsys import responsys_async as responsys
-    else:
-        from responsys import responsys
-except AttributeError:
-    from responsys import responsys
+from responsys import responsys_async as responsys
 
 
 
