@@ -195,10 +195,9 @@ class Profile(models.Model):
     
     @property
     def qr_code_download(self):
-        """Returns the URL of a QR code which, when scanned, points to: http://[domain]/download?via=qr&user=[username]
+        """Returns the URL of a QR code which, when scanned, points to: https://[domain]/download?f=qr&user=[username]
         """
-        site = Site.objects.get_current()
-        url = 'http://%s%s' % (site, urlparams(reverse('sharing.download'), via='qr', user=self.user.username))
+        url = absolute_url(urlparams(django_reverse('sharing.download'), f='qr', user=self.user.username))
         return sharing_utils.url2qr(url)
     
     

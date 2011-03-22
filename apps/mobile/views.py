@@ -19,7 +19,7 @@ from challenges.utils import get_badge_name
 
 from desktop.views import home as desktop_home
 
-from sharing.utils import set_shared_by_cookie
+from sharing.utils import set_sharing_cookies
 from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, TWITTER_BADGE_MSG, 
                               FACEBOOK_SPARK_TITLE, FACEBOOK_SPARK_MSG, FACEBOOK_BADGE_MSG)
 
@@ -284,6 +284,7 @@ def non_firefox(request):
 
 def user(request, username):
     user = get_object_or_404(User, username=username, is_active=True)
+    via = request.GET.get('f')
     data = {'username': username,
             'profile': user.profile,
             'logged_in': request.user.is_authenticated(),
@@ -295,7 +296,7 @@ def user(request, username):
             'num_badges': 9}
 
     response = jingo.render(request, 'mobile/user.html', data)
-    return set_shared_by_cookie(response, username)
+    return set_sharing_cookies(response, username, via)
 
 
 def visualization(request):

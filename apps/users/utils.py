@@ -44,8 +44,11 @@ def user_node(user):
     try:
         user_node = user.node
     except UserNode.DoesNotExist:
-        user_node = UserNode(user=user)
-        user_node.save()
+        try:
+            user_node = UserNode.objects.create(user=user)
+        except IntegrityError:
+            # User Node was already created by a concurrent 'update_completed_challenges' task.
+            user_node = UserNode.objects.get(user=user)
     
     return user_node
 

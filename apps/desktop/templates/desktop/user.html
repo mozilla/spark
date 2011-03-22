@@ -75,7 +75,7 @@ $(document).ready(function() {
             url: '{{ url('sharing.download_from_market_desktop')}}',
             context: document.body,
             success: function(data) {
-                window.location.replace(data.next);
+                window.location=data.next;
           }
         });
         return false;

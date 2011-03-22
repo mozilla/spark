@@ -12,40 +12,42 @@ from spark.decorators import ajax_required
 
 from stats.models import SharingHistory
 
+from challenges.tasks import update_completed_challenges
+
 from users.models import User
 
 from .utils import set_parent_cookie
 
 
-DOWNLOAD_URL = 'market://details?id=org.mozilla.firefox'
+
+DESKTOP_DOWNLOAD_URL = 'http://market.android.com/details?id=org.mozilla.firefox'
+MOBILE_DOWNLOAD_URL = 'market://details?id=org.mozilla.firefox'
 
 
-def download(request):
-    username = request.GET.get('user')
-    via = request.GET.get('via')
+def download_from_qr_redirect(request):
+    username = request.GET.get('user', None)
     
-    if username:
-        try:
-            user = User.objects.get(username=username)
-            if via:
-                SharingHistory.add_share_from_qr_code(user.profile)
-        except User.DoesNotExist:
-            # Ignore unknown usernames
-            pass
+    response = HttpResponseRedirect(MOBILE_DOWNLOAD_URL)
     
-    return HttpResponseRedirect(DOWNLOAD_URL)
+    if not _has_parent_cookie(request):
+        parent_username = _add_share_to_user(request, username, 'qr')
+        if parent_username:
+            # Set a 'parent' cookie so that you can't trigger a +1 share for the parent more than once.
+            response = set_parent_cookie(response, parent_username)
+
+    return response
 
 
 @ajax_required
 def download_from_market_desktop(request):
-    response = HttpResponse(json.dumps({'next': 'http://market.android.com/details?id=org.mozilla.firefox'}),
+    response = HttpResponse(json.dumps({'next': DESKTOP_DOWNLOAD_URL}),
                             content_type='application/json')
     return _handle_tracking(request, response)
 
 
 @ajax_required
 def download_from_market_mobile(request):
-    response = HttpResponse(json.dumps({'next': 'market://details?id=org.mozilla.firefox'}),
+    response = HttpResponse(json.dumps({'next': MOBILE_DOWNLOAD_URL}),
                             content_type='application/json')
     return _handle_tracking(request, response)
 
@@ -54,7 +56,7 @@ def _handle_tracking(request, response):
     """Handles the share tracking logic so that users get their number of shares increased
        when someone downloads Firefox mobile via their user page."""
     if not _has_parent_cookie(request):
-        parent_username = _add_share_to_parent(request)
+        parent_username = _add_share_from_cookies(request)
         # Set a 'parent' cookie so that you can't trigger a +1 share for the parent more than once.
         response = set_parent_cookie(response, parent_username)
     
@@ -69,17 +71,35 @@ def _has_parent_cookie(request):
     return 'parent' in request.COOKIES
     
 
-def _add_share_to_parent(request):
+def _add_share_from_cookies(request):
     username = request.COOKIES.get('shared_by', None)
+    via = request.COOKIES.get('via', None)
     if username:
-        try:
-            user = User.objects.get(username=username)
-            SharingHistory.add_share(user.profile)
-            
-            return username
-        except User.DoesNotExist:
-            # Ignore 'shared_by' cookies if they have been tampered with
-            # or if the parent user has deleted their account in the meantime.
-            pass
+        return _add_share_to_user(request, username, via)
 
     return None
+
+
+def _add_share_to_user(request, username, via):
+    try:
+        user = User.objects.get(username=username)
+        
+        if via ==  't':
+            SharingHistory.add_share_from_twitter(user.profile)
+        elif via == 'fb':
+            SharingHistory.add_share_from_facebook(user.profile)
+        elif via == 'qr':
+            SharingHistory.add_share_from_qr_code(user.profile)
+        elif via == 'p':
+            SharingHistory.add_share_from_poster(user.profile)
+        else:
+            SharingHistory.add_share(user.profile)
+        
+        # Gaining a share triggers detection of completed challenges
+        update_completed_challenges.delay(user.id)
+        
+        return username
+    except User.DoesNotExist:
+        # Ignore 'shared_by' cookies if they have been tampered with
+        # or if the parent user has deleted their account in the meantime.
+        return None

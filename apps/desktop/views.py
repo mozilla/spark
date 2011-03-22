@@ -13,7 +13,7 @@ from spark.helpers import secure_url
 from spark.urlresolvers import reverse, absolute_reverse
 from spark.utils import get_city_fullname
 
-from sharing.utils import set_shared_by_cookie
+from sharing.utils import set_sharing_cookies
 from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, FACEBOOK_SPARK_TITLE, 
                               FACEBOOK_SPARK_MSG)
 
@@ -55,6 +55,7 @@ def home(request):
 @mobile_view('mobile.user')
 def user(request, username):
     user = get_object_or_404(User, username=username, is_active=True)
+    via = request.GET.get('f')
     delta = datetime.datetime.now() - user.date_joined
     data = {'username': username,
             'profile': user.profile,
@@ -72,7 +73,7 @@ def user(request, username):
         data.update({'login_next_url': request.path})
 
     response = jingo.render(request, 'desktop/user.html', data)
-    return set_shared_by_cookie(response, username)
+    return set_sharing_cookies(response, username, via)
 
 
 def visualization(request):
