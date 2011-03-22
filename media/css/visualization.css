@@ -188,8 +188,8 @@ a.ui-slider-handle:active, a.ui-slider-handle:focus {
     position:relative;
 }
 
-#zoom:hover, #zoom a.ui-slider-handle:hover {
-    cursor:ew-resize;
+#zoom a.ui-slider-handle {
+    pointer-events:none;
 }
 
 #zoom-out, #zoom-in {
