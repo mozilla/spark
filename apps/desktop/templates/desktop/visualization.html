@@ -1,10 +1,9 @@
 {% extends "desktop/base.html" %}
 {% set title = _('Global Visualizer') %}
 {% set body_id = 'visualizer' %}
-{% set scripts = ('jquery-ui', 'desktop', 'visualization') %}
+{% set scripts = ('jquery-ui', 'desktop', 'raphael', 'visualization') %}
 {% set stylesheets = ('visualization',) %}
-{% set user_shares = _("{username}'s shares")|f(username='FoxyBarbarian') %}
-{% set everyone = _("Show everyone's shares") %}
+{% set user_shares = _("{username}'s shares")|f(username=username) %}
 
 {% block content %}
 	<div id="wrapper">
@@ -14,43 +13,38 @@
 				<span>{{ _('powered by Firefox for mobile') }}</span>
 			</h1>
 			<ul id="main-menu">
-				<li>{{ _('Show your shares') }}
-					<span><a id="sign-in" href="#">{{ _('Sign in first >') }}</a></span>
-				</li>
+			    {% if logged_in %}
+			    <li class="logged-in">
+			        <a id="show-your-shares">{{ _('Show your shares') }}</a>
+			        <a id="show-everyone">{{ _("Show everyone's shares") }}</a>
+			    {% else %}
+			    <li class="logged-out">{{ _('Show your shares') }}
+					<span><a id="sign-in-first" class="popup-trigger" href="#">{{ _('Sign in first >') }}</a></span>
+			    {% endif %}
+			    </li>
 				{# L10n: Action verb placed next to a dropdown list of cities, allowing to filter the visualization on a specific city. #}
 				<li>{{ _('Focus on location') }}
 					<span>
                         <form action="">
                             <select id="cities-list" name="cities">
-                                <option value="Everywhere">{{ _('Everywhere') }}</option>
-                                <option value="Paris">Paris</option>
-                                <option value="Berlin">Berlin</option>
-                                <option value="London">London</option>
-
-                                <option value="Tokyo">Tokyo</option>
+                                <option value="-1">{{ _('Everywhere') }}</option>
+                                {% for position, city in cities %}
+                                <option value="{{ position }}">{{ city }}</option>
+                                {% endfor %}
                             </select>
                         </form>
-					    <!-- <input type="text" name="cities" id="cities-list" placeholder="Everywhere" list="cities-list">
-                           <datalist id="cities-list">
-                                  <option value="Paris"></option>
-                                  <option value="Berlin"></option>
-                                  <option value="San Fransisco"></option>
-                                  <option value="New York"></option>
-                                  <option value="Tokyo"></option>
-                                  <option value="London"></option>
-                           </datalist> -->
 					</span>
 				</li>
 			</ul>
 		</div> <!-- end masthead -->
 
-	    <div id="timelapse">
-	       <div id="dates">
-	           <span id="start-date">03.01.11 00:00:00</span>
-	           <span id="current-date">03.14.11 07:14:03</span>
+	    <div id="timelapse" class="">
+	       <div id="dates" class="">
+	           <span id="start-date"></span>
+	           <span id="current-date"></span>
 	       </div>
 	       <div id="time-wrapper">
-               <span id="current-time">03.05.11 10:27:44</span>
+               <span id="current-time"></span>
 	       </div>
 	       <div id="play-pause">
 	           {# L10n: Action verb on a button to start playing the global visualization. #}
@@ -61,14 +55,12 @@
 	    </div>
 	    
 		<div id="content">
-		    <div id="loading"></div>
+            <div id="visualization"></div>
         </div>
-        <div id="cities">
-            <img id="cities" src="img/cities.svg" alt="">
-        </div>
-        <!-- <div id="tooltip">
+        <div id="tooltip">
            <div id="tooltip-arrow"></div>
-        </div> -->
+           <span></span>
+        </div>
 	    
 		<div id="zoom-wrapper">
 		    <div id="zoom-out" class="off"></div>
@@ -76,7 +68,34 @@
 		    <div id="zoom-in"></div>
 		</div>
 		
-		<img src="{{ MEDIA_URL }}img/spinner.gif" class="preload">
+		{% include 'desktop/popups/logged-out.html' %}
+    	<div id="mask"></div>
 		
 	</div> <!-- end wrapper -->
+{% endblock %}
+
+{% block script %}
+<script>
+var cities = {{ citylist|safe }};
+
+var globalHistory = {{ share_history }};
+var globalFinalShares = {{ final_history }};
+{% if logged_in %}
+var userHistory = {{ user_history }};
+{% endif %}
+
+var shareHistory = globalHistory;
+var finalShares = globalFinalShares;
+
+$(document).ready(function() {
+    enableRaphaelGroups();
+    
+    initState();
+    initCityList();
+    initShapes();
+    initUI();
+
+    drawFinalState();
+});
+</script>
 {% endblock %}

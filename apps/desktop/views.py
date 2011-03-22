@@ -2,6 +2,7 @@ import datetime
 import json
 import urllib
 
+from django.http import HttpResponse
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 
@@ -9,7 +10,8 @@ from geo.countries import countries
 
 from spark.decorators import ssl_required, login_required, mobile_view
 from spark.helpers import secure_url
-from spark.urlresolvers import absolute_reverse
+from spark.urlresolvers import reverse, absolute_reverse
+from spark.utils import get_city_fullname
 
 from sharing.utils import set_shared_by_cookie
 from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, FACEBOOK_SPARK_TITLE, 
@@ -65,53 +67,44 @@ def user(request, username):
             'facebook_url': urllib.quote(user.profile.facebook_sharing_url),
             'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
             'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)) }
+    
+    if not request.user.is_authenticated():
+        data.update({'login_next_url': request.path})
 
     response = jingo.render(request, 'desktop/user.html', data)
     return set_shared_by_cookie(response, username)
 
 
-def visualization(request, ):
-    return jingo.render(request, 'desktop/visualization.html', {})
-
-
-@login_required
-def ajax_pwchange(request):
-    return jingo.render(request, 'desktop/home.html', {})
-
-
-@login_required
-def ajax_delaccount(request):
-    return jingo.render(request, 'desktop/home.html', {})
-
-
-def test_celery(request):
-    from django.http import HttpResponse
-    from .tasks import a_test_task
+def visualization(request):
+    from spark.models import City
+    from stats.tasks import _ordered_cities
+    from stats.tasks import update_aggregate_history, update_final_history, update_user_history
+    import json
     
-    try:
-        a_test_task.delay(1)
-    except Exception, e:
-        return HttpResponse("<html><body>Celery is not working<br>Error: %s</body></html>" % e)
+    cities_by_name = City.objects.order_by('city_name').all()
+    positions = _ordered_cities()
     
-    return HttpResponse("<html><body>Celery is working</body></html>")
-
-def test_celery2(request):
-    import sys, traceback
-    from django.http import HttpResponse
-    from challenges.tasks import update_completed_challenges
-    from users.models import User
-
-    try:
-        username = request.GET.get('user')
-        user = User.objects.get(username=username)
-        update_completed_challenges.delay(user.id)
-    except Exception, e:
-        type, value, tb = sys.exc_info()
-        stacktrace = '%s:%s<br>%s' % (type.__name__, value, '<br>'.join(traceback.format_tb(tb)))
-        return HttpResponse("<html><body>Error:<p>%s</body></html>" % stacktrace)
-
-    return HttpResponse("<html><body>Challenge completion task has been scheduled for %s</body></html>" % username)
+    cities_by_longitude = City.objects.order_by('longitude')
+    citylist = json.dumps([get_city_fullname(c.city_name, c.country_code, request.locale) for c in cities_by_longitude])
     
+    data = {'cities': [(positions[c.id], get_city_fullname(c.city_name, c.country_code, request.locale)) for c in cities_by_name],
+            'citylist': citylist,
+            'share_history': update_aggregate_history(),
+            'final_history': update_final_history()}
+    
+    if request.user.is_authenticated():
+        data.update({'logged_in': True,
+                     'user_history': update_user_history(request.user.id)})
+    else:
+        data.update({'login_next_url': reverse('desktop.visualization')})
+    
+    return jingo.render(request, 'desktop/visualization.html', data)
+
+
+def generate_history(request):
+    from stats.tasks import _generate_fake_history
+    _generate_fake_history()
+    return HttpResponse('History generated')
 
 
 def _total_seconds(td):

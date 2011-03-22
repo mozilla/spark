@@ -292,3 +292,11 @@ def user(request, username):
 
     response = jingo.render(request, 'mobile/user.html', data)
     return set_shared_by_cookie(response, username)
+
+
+def visualization(request):
+    from django.http import HttpResponse
+    from stats.tasks import update_aggregate_history
+    import json
+
+    return HttpResponse(json.dumps(update_aggregate_history()), mimetype='application/json')

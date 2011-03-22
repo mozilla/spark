@@ -25,4 +25,6 @@ urlpatterns = patterns('',
     url(r'^iphone$', views.iphone, name='mobile.home_iphone'),
     url(r'^non-android$', views.non_android, name='mobile.home_non_android'),
     url(r'^non-ff$', views.non_firefox, name='mobile.home_non_firefox'),
+    
+    url(r'^visualization$', views.visualization, name='mobile.visualization')
 )

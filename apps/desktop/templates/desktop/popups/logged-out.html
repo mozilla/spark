@@ -5,6 +5,9 @@
             <hr>
             <form id="login" action="{{ url('users.login')|secure_url }}" method="post" accept-charset="utf-8">
                 {{ csrf() }}
+                {% if login_next_url %}
+                <input type="hidden" name="next" value="{{ login_next_url }}">
+                {% endif %}
                 <fieldset class="section">
                     <div id="login-username" class="input-wrapper">
                         <input tabindex="1" type="text" name="username" value="" placeholder="{{ _('Username') }}" required>
@@ -20,7 +23,7 @@
         </form>
         <a id="forgot-password">{{ _('Forgot username or password? >') }}</a>
         <p class="download">
-            {% trans download_url='#download' %}
+            {% trans download_url='#download' if is_homepage else '%s%s' % (url('desktop.home'), '#download') %}
             Don't have Spark yet? <a href="{{ download_url }}">Download</a> Firefox on your Android to get started.
             {% endtrans %}
         </p>
