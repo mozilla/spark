@@ -1,6 +1,5 @@
 from tower import ugettext_lazy as _lazy
 
-
 # L10n: Spark sharing message (Twitter)
 TWITTER_SPARK_MSG = _lazy(u'Hey! Help me spread Firefox 4 for Android across the globe.'
                            'Check out my Spark & join in the fun.')
@@ -35,5 +34,9 @@ SMS_BADGE_MSG = _lazy(u'I just unlocked the Spark %(badge_name)s badge. '
                        'Check out all my badges %(short_url)s and join in the fun. '
                        'Start your own spark, take challenges, unlock badges + more.')
 
-# L10n: Sharing message (Twitter)
-TWITTER_SHARE_MSG = _lazy(u'Hey! Help me spread Firefox 4 for Android across the globe.')
+# L10n: Generic sharing message (Twitter) Do not localize #spark
+TWITTER_SHARE_MSG = _lazy(u'Hey! Help spread Firefox 4 for Android across the globe. #spark')
+
+# L10n: Generic sharing message (Facebook)
+FACEBOOK_SHARE_MSG = _lazy(u'Help spread Firefox 4 for Android across the globe and start your Spark! '
+                            'Gain points, start your own spark, unlock badges and earn some bragging rights.')

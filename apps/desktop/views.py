@@ -15,7 +15,7 @@ from spark.utils import get_city_fullname
 
 from sharing.utils import set_sharing_cookies
 from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, FACEBOOK_SPARK_TITLE, 
-                              FACEBOOK_SPARK_MSG)
+                              FACEBOOK_SPARK_MSG, FACEBOOK_SHARE_MSG)
 
 from spark.urlresolvers import absolute_url
 
@@ -47,6 +47,7 @@ def home(request):
         data = {'is_homepage': True,
                 'twitter_url': urllib.quote(absolute_reverse('desktop.home')),
                 'twitter_msg': urllib.quote(unicode(TWITTER_SHARE_MSG)),
+                'facebook_msg': urllib.quote(unicode(FACEBOOK_SHARE_MSG)),
                 'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE))}
         return jingo.render(request, 'desktop/home.html', data)
 
