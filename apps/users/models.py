@@ -19,6 +19,7 @@ from challenges.models import Challenge
 from challenges import utils
 
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, primary_key=True)
 
@@ -63,7 +64,6 @@ class Profile(models.Model):
     
     @property
     def twitter_sharing_url(self):
-        # django_reverse used instead of reverse because we don't want a locale preprended to sharing links.
         url = urlparams(django_reverse('desktop.user', args=[self.user.username]), 
                                                                 f='t') # ?f=t means 'from twitter'
         return absolute_url(url)
@@ -180,6 +180,35 @@ class Profile(models.Model):
         site = Site.objects.get_current()
         url = 'http://%s%s' % (site, urlparams(reverse('sharing.download'), via='qr', user=self.user.username))
         return sharing_utils.url2qr(url)
+    
+    
+    @property
+    def continent_code(self):
+        from geo.continents import countries_continents
+        code = ''
+        if self.country_code:
+            code = countries_continents[self.country_code]
+        
+        return code
+
+    
+    @property
+    def total_continents_sparked(self):
+        """Returns the total number of continents where the user's children are located."""
+        from geo.continents import countries_continents
+        from .utils import user_node
+        
+        node = user_node(self.user)
+        continents = set([countries_continents(child.user.profile.country_code) for child in node.get_children()])
+        return len(continents)
+    
+    
+    @property
+    def children_profiles(self):
+        """Returns a list of profiles of the user's children in the user tree."""
+        from .utils import user_node
+        
+        return [child.user.profile for child in user_node(self.user).get_children()]
     
     
     def clear_new_badges(self):
