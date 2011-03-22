@@ -5,7 +5,7 @@ import urllib
 import jingo
 
 from spark.models import City
-from spark.urlresolvers import reverse
+from spark.urlresolvers import reverse, absolute_reverse
 from spark.decorators import post_required
 from spark.utils import (get_city_fullname, is_android_non_firefox, is_iphone,
                          is_firefox_mobile, is_android, get_ua)
@@ -237,6 +237,7 @@ def sharelink(request):
     data = {'twitter_url': urllib.quote(request.user.profile.twitter_sharing_url),
             'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)),
             'facebook_url': urllib.quote(request.user.profile.facebook_sharing_url),
+            'facebook_redirect': urllib.quote(absolute_reverse('mobile.home')),
             'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
             'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG))}
             
@@ -251,6 +252,7 @@ def sharebadge(request):
                 'twitter_url': urllib.quote(request.user.profile.twitter_sharing_url),
                 'twitter_badge_msg': TWITTER_BADGE_MSG,
                 'facebook_url': urllib.quote(request.user.profile.facebook_sharing_url),
+                'facebook_redirect': urllib.quote(absolute_reverse('mobile.home')),
                 'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
                 'facebook_badge_msg': FACEBOOK_BADGE_MSG }
         return jingo.render(request, 'mobile/sharebadge.html', data)
