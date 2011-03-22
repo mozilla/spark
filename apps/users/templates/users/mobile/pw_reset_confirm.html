@@ -26,7 +26,7 @@
     <div class="buttons-wrapper">
         <div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
         {# L10n: Action verb on a form submit button. #}
-        <button ontouchstart="" tabindex="2" class="right-button" type="submit">{{ _('Update') }}</button>
+        <button tabindex="2" class="right-button" type="submit">{{ _('Update') }}</button>
     </div>
 </form>
 
@@ -35,7 +35,7 @@
 {{ _('The password reset link was invalid, possibly because it has already been used.') }}
 </p>
 <hr class="clear">
-<h2 class="cta twolines"><a ontouchstart="" href="{{ url('users.mobile_forgot_password') }}">{{ _('Request a new password reset') }}</a></h2>
+<h2 class="cta twolines"><a href="{{ url('users.mobile_forgot_password') }}">{{ _('Request a new password reset') }}</a></h2>
 <hr>
 {% endif %}
 {% endblock %}

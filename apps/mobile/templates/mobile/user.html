@@ -51,7 +51,7 @@
             {% if firefox %}
             {#  Compatible phone, viewing with Firefox, logged-out #}
             <hr>
-            <h2 class="cta"><a ontouchstart="" href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></h2>
+            <h2 class="cta"><a href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></h2>
             <hr>
             {% else %}
             {#  Incompatible phone (iPhone, other browsers), logged-out #}
@@ -61,8 +61,8 @@
             {% endif %}
             <div class="buttons-wrapper">
                 {# L10n: Space is limited here. The translation should be no longer than the English version, leave only the verb if needed #}
-                <a href="{{ url('users.mobile_register') }}"><button ontouchstart="" class="left-button">{{ _('Start a spark') }}</button></a>
-                <a href="{{ url('users.mobile_login') }}"><button ontouchstart="" class="right-button">{{ _('Sign in') }}</button></a>
+                <a href="{{ url('users.mobile_register') }}"><button class="left-button">{{ _('Start a spark') }}</button></a>
+                <a href="{{ url('users.mobile_login') }}"><button class="right-button">{{ _('Sign in') }}</button></a>
             </div>
             
             {# Not used anymore #}{# _('Share a spark') #}
@@ -93,7 +93,7 @@
              {{ _('Add features and functionality to customize Firefox exactly the way you like.') }}
          </p>
      </div>
-     <a href="http://www.mozilla.com/firefox/" class="button" ontouchstart="">{{ _('Learn more') }}</a>
+     <a href="http://www.mozilla.com/firefox/" class="button">{{ _('Learn more') }}</a>
 
      <hr>
      <div class="section">
@@ -107,7 +107,7 @@
              {% endtrans %}
          </p>
      </div>
-     <a href="{{ url('mobile.about') }}" class="button" ontouchstart="">{{ _('Learn more') }}</a>
+     <a href="{{ url('mobile.about') }}" class="button">{{ _('Learn more') }}</a>
 
      <div class="legal-links">
          <a href="http://www.mozilla.com/m/privacy.html">{{ _('Privacy Policy') }}</a>

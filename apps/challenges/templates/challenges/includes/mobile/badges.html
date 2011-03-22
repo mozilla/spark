@@ -1,4 +1,4 @@
-<ul ontouchstart="" id="badge-list" class="section" data-count="{{ badges|count }}">
+<ul id="badge-list" class="section" data-count="{{ badges|count }}">
 	{% for badge in profile.badges %}
     <li class="badge badge{{ badge.id|replace('_','-') }}" data-index="{{ loop.index }}" data-id="{{ badge.id }}" data-name="{{ badge.name|safe }}" data-description="{{ badge.description|safe }}">
         <a href="#"></a>

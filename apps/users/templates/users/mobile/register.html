@@ -36,21 +36,21 @@
         <fieldset id="newsletter">
                 <p class="sans">
                     <input tabindex="5" id="newsletter-cb" type="checkbox" name="newsletter" class="styled">
-                    <label ontouchstart="" for="newsletter-cb">{{ _("I'd like to subscribe to monthly updates and keep up-to-date with Mozilla news.") }}</label>
+                    <label for="newsletter-cb">{{ _("I'd like to subscribe to monthly updates and keep up-to-date with Mozilla news.") }}</label>
                 </p>
 				<p class="sans">
                     <input tabindex="6" id="spark-newsletter-cb" type="checkbox" name="spark_newsletter" class="styled">
-                    <label ontouchstart="" for="spark-newsletter-cb">{{ _("Send me updates about Spark.") }}</label>
+                    <label for="spark-newsletter-cb">{{ _("Send me updates about Spark.") }}</label>
                 </p>
         </fieldset>
 
 		<hr>
-	    <h2 id="disclaimer" class="cta"><a ontouchstart="" href="http://www.mozilla.com/m/privacy.html">{{ _('Privacy Policy') }}</a></h2>
+	    <h2 id="disclaimer" class="cta"><a href="http://www.mozilla.com/m/privacy.html">{{ _('Privacy Policy') }}</a></h2>
 	    <hr>
 
         <div class="buttons-wrapper">
 			<div class="button left-button"><a href="{{ url('mobile.home') }}">{{ _('Cancel') }}</a></div>
-            <button ontouchstart="" tabindex="5" class="right-button" type="submit">{{ _('Join') }}</button>
+            <button tabindex="5" class="right-button" type="submit">{{ _('Join') }}</button>
         </div>
     </form>
 {% endblock %}

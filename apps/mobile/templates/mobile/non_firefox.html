@@ -20,8 +20,8 @@
         {% endtrans %}
     </p>
     <div class="buttons-wrapper">
-        <a href="{{ url('users.mobile_register') }}"><button ontouchstart="" class="left-button">{{ _('Start a spark') }}</button></a>
-        <a href="{{ url('users.mobile_login') }}"><button ontouchstart="" class="right-button">{{ _('Sign in') }}</button></a>
+        <a href="{{ url('users.mobile_register') }}"><button class="left-button">{{ _('Start a spark') }}</button></a>
+        <a href="{{ url('users.mobile_login') }}"><button class="right-button">{{ _('Sign in') }}</button></a>
     </div>
     {% else %}
     <p class="section sans">
@@ -31,7 +31,7 @@
         start a spark.
         {% endtrans %}
     </p>
-    <a href="http://www.mozilla.com/m/" class="button" ontouchstart="">{{ _('Get Firefox for mobile') }}</a>
+    <a href="http://www.mozilla.com/m/" class="button">{{ _('Get Firefox for mobile') }}</a>
     {% endif %}
 
     <hr>
@@ -57,7 +57,7 @@
             {{ _('Add features and functionality to customize Firefox exactly the way you like.') }}
         </p>
     </div>
-    <a href="http://www.mozilla.com/m/" class="button" ontouchstart="">{{ _('Learn more') }}</a>
+    <a href="http://www.mozilla.com/m/" class="button">{{ _('Learn more') }}</a>
 
     <hr>
     <div class="section">
@@ -71,7 +71,7 @@
             {% endtrans %}
         </p>
     </div>
-    <a href="{{ url('mobile.about') }}" class="button" ontouchstart="">{{ _('Learn more') }}</a>
+    <a href="{{ url('mobile.about') }}" class="button">{{ _('Learn more') }}</a>
 
     <div id="non-ff-links">
         <a href="http://www.mozilla.com/m/privacy.html">{{ _('Privacy Policy') }}</a>
