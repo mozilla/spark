@@ -218,8 +218,12 @@ class Profile(models.Model):
         from geo.continents import countries_continents
         from .utils import user_node
         
+        continents = set()
         node = user_node(self.user)
-        continents = set([countries_continents(child.user.profile.country_code) for child in node.get_children()])
+        for child in node.get_children():
+            cc = child.user.profile.country_code
+            if cc:
+                continents.add(countries_continents[cc])
         return len(continents)
     
     
