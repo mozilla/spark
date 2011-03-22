@@ -32,7 +32,9 @@ from tower import ugettext_lazy as _lazy
 
 def home(request):
     if request.user.is_authenticated():
-        return jingo.render(request, 'mobile/myspark.html', {})
+        profile = request.user.profile
+        return jingo.render(request, 'mobile/myspark.html', 
+                                    {'profile': profile})
     
     print get_ua(request)
     
