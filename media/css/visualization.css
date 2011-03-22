@@ -341,3 +341,13 @@ img.preload {
 #visualizer #main-menu .logged-in a:hover {
     color:#ffd40d;
 }
+
+#focus-info, #your-shares-info {
+    color: #fff;
+    font-size: 1.846em;
+    font-weight: bold;
+    left: 0;
+    position: absolute;
+    top: 235px;
+    display:none;
+}

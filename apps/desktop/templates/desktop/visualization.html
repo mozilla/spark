@@ -55,8 +55,11 @@
 	    </div>
 	    
 		<div id="content">
-		    <span id="focus-info"></span>
-            <div id="visualization"></div>
+            <div id="visualization">
+                {% set username = request.user.username %}
+    		    <span id="your-shares-info">{{ username }}'s shares</span>
+    		    <span id="focus-info"></span>
+            </div>
         </div>
         <div id="tooltip">
            <div id="tooltip-arrow"></div>

@@ -43,6 +43,22 @@ var initMask = function() {
     $('#mask').css({'width' : windowWidth, 'height' : windowHeight});   
 };
 
+var showYourSharesInfo = function() {
+    $('#your-shares-info').show();
+};
+
+var hideYourSharesInfo = function() {
+    $('#your-shares-info').hide();
+};
+
+var toggleFocusInfo = function(focus) {
+    if(focus != -1) {
+        $('#focus-info').show();  
+    } else {
+        $('#focus-info').hide();
+    }  
+};
+
 var initUI = function() {
     $zoom = $('#zoom');
     $timelapse = $('#time-wrapper');
@@ -197,6 +213,7 @@ var initUI = function() {
         resetToCurrentTime();
         $(this).toggle();
         $('#show-your-shares').toggle();
+        hideYourSharesInfo();
     });
     
     $('#show-your-shares').click(function() {
@@ -204,13 +221,16 @@ var initUI = function() {
         resetToCurrentTime();
         $(this).toggle();
         $('#show-everyone').toggle();
+        showYourSharesInfo();
     });
     
     $("#cities-list").change(function () {
         $("select option:selected").each(function () {
             focusedCity = parseInt($(this).val());
+            $('#focus-info').text($(this).text());
         });
         resetToCurrentTime();
+        toggleFocusInfo(focusedCity);
     });
 
     $('#show-everyone').hide();
