@@ -9,7 +9,7 @@ from users.utils import user_node
 
 from geo.continents import (AFRICA, ASIA, EUROPE, NORTH_AMERICA, SOUTH_AMERICA,
                             OCEANIA, ANTARCTICA)
-from geo.groups import (european_countries, island_countries, countries_with_desert,
+from geo.groups import (european_countries, island_countries, countries_with_desert, french_speaking_countries,
                         original_eu_countries, original_us_states, continental_us_states, all_us_states)
 
 from stats.models import SharingHistory, VIA_TWITTER, VIA_FACEBOOK, VIA_QR, VIA_POSTER
@@ -187,7 +187,7 @@ class Euroflame(ChallengeImpl):
     def is_completed_by(self, profile):
         countries = set()
         for child in profile.children_profiles:
-            if child.country_code and country_continents[child.country_code] == EUROPE:
+            if child.continent_code and child.continent_code == EUROPE:
                 countries.add(child.country_code)
         return len(countries) >= 5
 
@@ -340,7 +340,7 @@ class IslandHopper(ChallengeImpl):
     """ Share your Spark with someone on an island (Hawaii, Japan, etc) """
     def is_completed_by(self, profile):
         for child in profile.children_profiles:
-            if child.country_code and child.country_code in countries_with_island:
+            if child.country_code and child.country_code in island_countries:
                 return True
         return False
 
@@ -350,7 +350,7 @@ class ViveLaLumiere(ChallengeImpl):
     """ Share your Spark to someone in a French-speaking country """
     def is_completed_by(self, profile):
         for child in profile.children_profiles:
-            if child.country_code and child.country_code in countries_with_island:
+            if child.country_code and child.country_code in french_speaking_countries:
                 return True
         return False
 

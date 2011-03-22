@@ -7,6 +7,8 @@ countries_with_desert = ['AE','AQ','AR','AU','AO','BW','CA','CN','CL','DZ','EG',
 
 original_eu_countries = ['DE','BE','FR','IT','LU','NL']
 
+french_speaking_countries = ['BE','BJ','SE','BF','BI','CM','CA','CF','KM','CD','CG','CI','DJ','SE','GA','GP','GN','GQ','GF','HT','LU','MG','ML','MQ','MR','MC','NE','NC','PF','FR','RE','RW','PM','MF','SN','SC','TD','TG']
+
 original_us_states = ['VA','MA','NH','MD','CT','RI','DE','NC','SC','NJ','NY','PA','GA']
 
 continental_us_states = ['NV','ID','MT','ND','WY','UT','AZ','NM','CO','SD','NE','KS','OK','MS','AR','MO','IA','MN','WI','IL','IN','KY','TN']

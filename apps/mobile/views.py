@@ -174,10 +174,14 @@ def boost2_confirm(request):
             try:
                 parent = User.objects.get(username=username)
                 created = create_relationship(parent, request.user)
+                
                 if created:
                     profile = request.user.profile
                     profile.no_parent = False
                     profile.save()
+                    
+                    # Trigger challenge completion for the parent user
+                    update_completed_challenges.delay(parent.id)
                 else:
                     error = True
             except User.DoesNotExist:
