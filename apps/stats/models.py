@@ -70,6 +70,10 @@ class SharingHistory(models.Model):
                     break
         
         return shares
+    
+    @classmethod
+    def has_gained_shares_via(cls, profile, service):
+        return SharingHistory.objects.filter(shared_via=service).count() >= 1
         
     @classmethod
     def add_share(cls, profile):
