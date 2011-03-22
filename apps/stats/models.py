@@ -43,7 +43,7 @@ class SharingHistory(models.Model):
         ordering = ('-date_shared',)
 
     def __unicode__(self):
-        return '%s on %s' % (profile, shared_via, date_shared)
+        return '%s via %s' % (self.parent, self.shared_via)
 
     @classmethod
     def get_num_shares(cls, profile):
@@ -73,7 +73,7 @@ class SharingHistory(models.Model):
     
     @classmethod
     def has_gained_shares_via(cls, profile, service):
-        return SharingHistory.objects.filter(shared_via=service).count() >= 1
+        return SharingHistory.objects.filter(parent=profile, shared_via=service).count() >= 1
         
     @classmethod
     def add_share(cls, profile):
