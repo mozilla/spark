@@ -12,6 +12,7 @@ var DURATION = 30,
     halfCircles = {},
     currentStrokes = {},
     currentRadii = {},
+    currentAnimations = [],
     currentScale,
     currentTime,
     isPlaying = false,
@@ -83,6 +84,7 @@ var refreshNodes = function() {
 };
 
 var fastForward = function(currentTime) {
+    clearAnimations();
     resetObjectValues(currentStrokes);
     resetObjectValues(currentRadii);
     

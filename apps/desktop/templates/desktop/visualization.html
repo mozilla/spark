@@ -16,7 +16,7 @@
 			    {% if logged_in %}
 			    <li class="logged-in">
 			        <a id="show-your-shares">{{ _('Show your shares') }}</a>
-			        <a id="show-everyone">{{ _("Show everyone's shares") }}</a>
+			        <a class="hidden" id="show-everyone">{{ _("Show everyone's shares") }}</a>
 			    {% else %}
 			    <li class="logged-out">{{ _('Show your shares') }}
 					<span><a id="sign-in-first" class="popup-trigger" href="#">{{ _('Sign in first >') }}</a></span>

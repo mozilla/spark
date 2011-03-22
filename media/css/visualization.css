@@ -328,3 +328,15 @@ img.preload {
     bottom:0;
     display:none;
 }
+
+.hidden {
+    display:none;
+}
+
+#visualizer #main-menu .logged-in a {
+    color:#fff;
+}
+
+#visualizer #main-menu .logged-in a:hover {
+    color:#ffd40d;
+}

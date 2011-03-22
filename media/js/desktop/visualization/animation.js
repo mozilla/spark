@@ -63,6 +63,7 @@ var animateCity = function(cityIndex, posCity, radius) {
                 }
 
             }, DURATION * 1000 / MAXVALUE);
+            currentAnimations.push(animation);
     } else {
             // no animation
             halfCircles[cityIndex].attr({arc: [posCity - radius, 650, posCity + radius, 650, 1]});   
@@ -98,5 +99,11 @@ var drawStep = function(s) {
                 }
             }
         }
+    }
+};
+
+var clearAnimations = function() {
+    for(var i = 0, nb = currentAnimations.length; i < nb; i += 1) {
+        clearInterval(currentAnimations[i]);
     }
 };

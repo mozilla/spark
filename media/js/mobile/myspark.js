@@ -35,7 +35,6 @@ var initSpark = function (level) {
     $(window).resize(function() {
         w = $('#wrapper').width();
         canvas.width = w;
-        console.log('resize');
     });
 
     canvas.height = h;
