@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     
     ### Temporary - Generate stage fake history
     url(r'^generate$', views.generate_history, name='desktop.generate'),
+    url(r'^trigger/(?P<username>[\w.@+-]+)$', views.trigger_challenges, name='desktop.trigger')
 )

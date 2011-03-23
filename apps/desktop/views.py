@@ -109,6 +109,15 @@ def generate_history(request):
     return HttpResponse('History generated')
 
 
+def trigger_challenges(request, username):
+    """Test view for stage debugging"""
+    from challenges.tasks import update_completed_challenges
+    
+    user = get_object_or_404(User, username=username, is_active=True)
+    update_completed_challenges.delay(user.id)
+    return HttpResponse('Triggered challenge completion for %s' % username)
+    
+    
 def _total_seconds(td):
     """Returns the total number of seconds in a given timedelta."""
     return (td.microseconds + (td.seconds + td.days * 24 * 3600) * 10**6) / 10**6
