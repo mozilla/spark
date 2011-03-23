@@ -117,6 +117,14 @@ class Profile(models.Model):
             return False
 
 
+    @property
+    def total_badges_earned(self):
+        """Returns the total number of badges earned by the user.
+           Doesn't include hidden unlocked badges from an upper level.
+        """
+        return CompletedChallenge.objects.filter(profile=self, date_badge_earned__isnull=False).count()
+
+
     def get_home_location(self, locale):
         """Returns a string containing the location determined by Google Location Services
            when Boost your Spark 1/2 was completed by the user.
@@ -159,7 +167,14 @@ class Profile(models.Model):
     @property
     def sparked_countries(self):
         """List of countries this user has shared their Spark with."""
-        return ['fr', 'br', 'us', 'pt', 'es', 'nz', 'jp', 'kr', 'se', 'ly', 'ro', 'bj', 'in', 'cm', 'ua']
+        from .utils import user_node
+
+        countries = set()
+        node = user_node(self.user)
+        for child in node.get_children():
+            countries.add(child.user.profile.country_code.lower())
+        
+        return list(countries)
     
 
     @property
@@ -218,6 +233,12 @@ class Profile(models.Model):
             code = countries_continents[self.country_code]
         
         return code
+
+
+    @property
+    def total_countries_sparked(self):
+        """Returns the total number of countries where the user's children are located."""
+        return len(self.sparked_countries)
 
     
     @property

@@ -312,10 +312,7 @@ def user(request, username):
             'logged_in': request.user.is_authenticated(),
             'android_non_ff': is_android_non_firefox(request),
             'iphone': is_iphone(request),
-            'firefox': is_firefox_mobile(request),
-            'num_people': 8,
-            'num_countries': 5,
-            'num_badges': 9}
+            'firefox': is_firefox_mobile(request)}
 
     response = jingo.render(request, 'mobile/user.html', data)
     return set_sharing_cookies(response, username, via)
