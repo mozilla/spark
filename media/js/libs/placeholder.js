@@ -62,7 +62,7 @@ var testinput = document.createElement('input');
 					cursor:		'text',
 					background:	'transparent',
 					position:	'absolute',
-					top:		el.position().top,
+					top:		0 + 'px',
 					left:		el.position().left,
 					lineHeight: el.height()+20+'px',
 					paddingLeft:parseFloat(el.css('paddingLeft'))+1+'px'
