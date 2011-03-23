@@ -12,8 +12,6 @@ from spark.decorators import ajax_required
 
 from stats.models import SharingHistory
 
-from challenges.tasks import update_completed_challenges
-
 from users.models import User
 
 from .utils import set_parent_cookie
@@ -80,6 +78,13 @@ def _add_share_from_cookies(request):
     return None
 
 
+def _trigger_challenge_detection(username):
+    from challenges.tasks import update_completed_challenges
+
+    user = User.objects.get(username=username, is_active=True)
+    update_completed_challenges.delay(user.id)
+
+
 def _add_share_to_user(request, username, via):
     try:
         user = User.objects.get(username=username)
@@ -96,10 +101,12 @@ def _add_share_to_user(request, username, via):
             SharingHistory.add_share(user.profile)
         
         # Gaining a share triggers detection of completed challenges
-        update_completed_challenges.delay(user.id)
+        _trigger_challenge_detection(username)
         
         return username
     except User.DoesNotExist:
         # Ignore 'shared_by' cookies if they have been tampered with
         # or if the parent user has deleted their account in the meantime.
         return None
+
+
