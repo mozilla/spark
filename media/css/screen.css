@@ -466,6 +466,14 @@ div.sub-section h4 {
     background:url('../img/spritesheet.png') no-repeat -100px -100px;
 }
 
+#copylink.hover {
+    cursor:pointer;
+}
+
+#copylink.active {
+    background:#fee779;
+}
+
 /*About us*/
 
 #about p {

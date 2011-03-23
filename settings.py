@@ -184,6 +184,7 @@ MINIFY_BUNDLES = {
             'js/desktop/dashboard.js',
             'js/desktop/sharehistory.js',
             'js/desktop/popups-youraccount.js',
+            'js/libs/ZeroClipboard.js',
         ),
         'user-logged-in': (
             'js/desktop/minimap.js',
