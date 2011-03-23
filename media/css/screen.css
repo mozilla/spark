@@ -345,6 +345,10 @@ ul#main-menu {
 	margin:40px 0;
 }
 
+#dashboard #globalmap {
+    background:url('../img/map.png') no-repeat 0 0;
+}
+
 #global-spark a.button {
     float:right;
     min-width:256px;
