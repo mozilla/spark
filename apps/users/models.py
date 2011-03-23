@@ -271,6 +271,14 @@ class Profile(models.Model):
                     # Challenge was already completed by another concurrent 'update_completed_challenges' task.
                     # In this case, fail silently.
                     pass
+    
+    def trigger_desktop_login_badge(self):
+        from challenges.tasks import update_completed_challenges
+        
+        if not self.login_desktop:
+            self.login_desktop = True
+            self.save()
+            update_completed_challenges.delay(self.user.id)
 
 
 # Retrieves or creates a Profile automatically whenever the profile property is accessed

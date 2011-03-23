@@ -53,6 +53,7 @@ def login(request, mobile=False):
                 return {'status': 'error',
                         'errors': dict(form.errors.iteritems())}
             else:
+                request.user.profile.trigger_desktop_login_badge()
                 return {'status': 'success',
                         'next': next or reverse('desktop.home')}
 
