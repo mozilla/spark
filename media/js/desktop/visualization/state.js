@@ -109,7 +109,7 @@ var fastForward = function(currentTime) {
                     }
                 } else {
                     if(nbShares >= MINSHARES) {
-                        currentStrokes[nodeId] = stroke;   
+                        currentStrokes[nodeId] = stroke;
                     }
                 }   
             }

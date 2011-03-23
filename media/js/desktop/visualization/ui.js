@@ -7,7 +7,8 @@ var $zoom,
     $city,
     $cityname,
     windowHeight,
-    windowWidth;
+    windowWidth
+    list = document.getElementById("cities-list");
 
 
 var initSliders = function() {
@@ -62,9 +63,8 @@ var toggleFocusInfo = function(focus) {
 };
 
 var toggleFocus = function() {
-    var list = document.getElementById("cities-list");
-    
     list.value = -1;
+    focusedCity = -1;
     toggleFocusInfo(list.value);
     if(list.disabled) {
         list.disabled = false;
@@ -223,19 +223,19 @@ var initUI = function() {
     });
     
     $('#show-everyone').click(function() {
+        hideYourSharesInfo();
         shareHistory = globalHistory;
         resetToCurrentTime();
         $(this).toggle();
         $('#show-your-shares').toggle();
-        hideYourSharesInfo();
     });
     
     $('#show-your-shares').click(function() {
+        showYourSharesInfo();
         shareHistory = userHistory;
         resetToCurrentTime();
         $(this).toggle();
         $('#show-everyone').toggle();
-        showYourSharesInfo();
     });
     
     $("#cities-list").change(function () {
@@ -248,6 +248,8 @@ var initUI = function() {
     });
 
     $('#show-everyone').hide();
+
+    list.disabled = false;
 
     initPopup();
     initMask();
