@@ -42,5 +42,12 @@
 {% endblock %}
 
 {% block script %}
-{% include 'desktop/includes/dashboard-script.html' %}
+<script type="text/javascript">
+$(document).ready(function() {
+    
+    {% include 'desktop/includes/clipboard-script.html' %}
+    {% include 'desktop/includes/dashboard-script.html' %}
+    
+});
+</script>
 {% endblock %}

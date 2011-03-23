@@ -65,10 +65,13 @@
 {% endblock %}
 
 {% block script %}
-{% include 'desktop/includes/dashboard-script.html' %}
 
 <script>
 $(document).ready(function() {
+
+    {% include 'desktop/includes/dashboard-script.html' %}
+    
+    
     $('#option-01 a').click(function() {
         $.ajax({
             type: 'GET',

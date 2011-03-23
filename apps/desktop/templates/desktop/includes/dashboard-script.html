@@ -1,5 +1,3 @@
-<script type="text/javascript">
-$(document).ready(function() {
    var $popups = $('div.badge-popup');
    
    // Show the badge popup when a badge is clicked and hides all others
@@ -23,16 +21,6 @@ $(document).ready(function() {
        }
      }
    });
-
-   // Enable copy to clipboard
-   ZeroClipboard.setMoviePath('{{ MEDIA_URL }}js/libs/ZeroClipboard10.swf');
-   
-   var clip = new ZeroClipboard.Client(),
-       url = $('#personal-link a').text();
-
-   clip.setText(url);
-   clip.setHandCursor(true);
-   clip.glue('copylink', 'copylink-container');
    
    // Localized country list
    countryNames = {{ countries|safe }};
@@ -42,6 +30,3 @@ $(document).ready(function() {
    initShareHistory({{ profile.shares_over_time }});
    initSpark({{ profile.level }});
    initSparkedCountries({{ profile.sparked_countries|safe }});
-
-});
-</script>
