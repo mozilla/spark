@@ -254,16 +254,29 @@ def sharelink(request):
 def sharebadge(request):
     badge_id = request.GET.get('id')
     try:
-        data = {'badge_name': get_badge_name(badge_id),
-                'twitter_url': urllib.quote(request.user.profile.twitter_sharing_url),
-                'twitter_badge_msg': TWITTER_BADGE_MSG,
-                'facebook_url': urllib.quote(request.user.profile.facebook_sharing_url),
-                'facebook_redirect': urllib.quote(absolute_reverse('mobile.home')),
-                'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
-                'facebook_badge_msg': FACEBOOK_BADGE_MSG }
-        return jingo.render(request, 'mobile/sharebadge.html', data)
+        # Verify that this badge exists
+        badge = Challenge.objects.get(pk=badge_id)
+        
+        # Verify also that this user has earned this badge
+        profile = request.user.profile
+        has_badge = profile.has_badge(badge_id)
+        
+        if has_badge:
+            data = {'badge_name': get_badge_name(badge.id),
+                    'twitter_url': urllib.quote(profile.twitter_sharing_url),
+                    'twitter_badge_msg': TWITTER_BADGE_MSG,
+                    'facebook_url': urllib.quote(profile.facebook_sharing_url),
+                    'facebook_redirect': urllib.quote(absolute_reverse('mobile.home')),
+                    'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
+                    'facebook_badge_msg': FACEBOOK_BADGE_MSG }
+            return jingo.render(request, 'mobile/sharebadge.html', data)
     except Challenge.DoesNotExist:
-        return HttpResponseRedirect(reverse('mobile.badges'))
+        # Ignore invalid badges
+        pass
+    
+    # Return to earned badges page if the querystring contains an invalid badge id
+    # or if the user tried to share a badge he/she has not earned yet.
+    return HttpResponseRedirect(reverse('mobile.badges'))
 
 
 def about(request):

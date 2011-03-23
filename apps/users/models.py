@@ -106,6 +106,15 @@ class Profile(models.Model):
                 'facebook_msg': urllib.quote(unicode(FACEBOOK_BADGE_MSG % {'badge_name':cc.challenge.badge_name}))
             })
         return badges
+    
+    
+    def has_badge(self, badge_id):
+        """Returns whether this user has earned the given badge."""
+        if badge_id:
+            return CompletedChallenge.objects.filter(profile=self, challenge__pk=badge_id,
+                                                date_badge_earned__isnull=False).count() == 1
+        else:
+            return False
 
 
     def get_home_location(self, locale):
