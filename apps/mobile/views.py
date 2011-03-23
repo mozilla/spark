@@ -23,6 +23,8 @@ from sharing.utils import set_sharing_cookies
 from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, TWITTER_BADGE_MSG, 
                               FACEBOOK_SPARK_TITLE, FACEBOOK_SPARK_MSG, FACEBOOK_BADGE_MSG)
 
+from stats.models import SharingHistory
+
 from .forms import BoostStep1Form, BoostStep2Form
 from .decorators import login_required, logout_required
 
@@ -180,7 +182,10 @@ def boost2_confirm(request):
                     profile.no_parent = False
                     profile.save()
                     
-                    # Trigger challenge completion for the parent user
+                    # Add a share for the parent
+                    SharingHistory.add_share(parent.profile)
+                    
+                    # Trigger challenge completion for the parent
                     update_completed_challenges.delay(parent.id)
                 else:
                     error = True
