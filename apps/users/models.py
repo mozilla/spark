@@ -172,7 +172,9 @@ class Profile(models.Model):
         countries = set()
         node = user_node(self.user)
         for child in node.get_children():
-            countries.add(child.user.profile.country_code.lower())
+            cc = child.user.profile.country_code
+            if cc:
+                countries.add(cc.lower())
         
         return list(countries)
     
