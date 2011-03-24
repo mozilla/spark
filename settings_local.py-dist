@@ -36,7 +36,7 @@ TEMPLATE_DEBUG = False
 DEFAULT_FROM_EMAIL = '<insert email here>'
 
 
-# Responsys dev/stage ID
+# Responsys ID
 RESPONSYS_ID = '<insert Responsys production key>'
 
 
