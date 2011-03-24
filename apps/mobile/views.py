@@ -182,6 +182,9 @@ def boost2_confirm(request):
                     profile.no_parent = False
                     profile.save()
                     
+                    # Update 'longest chain' stat of all ancestors if necessary
+                    profile.update_ancestors_longest_chain()
+                    
                     # Add a share for the parent
                     SharingHistory.add_share(parent.profile)
                     

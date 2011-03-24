@@ -49,11 +49,8 @@ class Profile(models.Model):
     login_desktop = models.BooleanField(default=False)
     is_non_android = models.BooleanField(default=False)
     
-    # Social sharing
-    short_url_twitter = models.CharField(max_length=64, blank=True, null=True)
-    short_url_facebook = models.CharField(max_length=64, blank=True, null=True)
-    short_url_qr = models.CharField(max_length=64, blank=True, null=True)
-    short_url_poster = models.CharField(max_length=64, blank=True, null=True)
+    # Personal stats
+    longest_chain = models.PositiveIntegerField(default=0)
 
 
     def __unicode__(self):
@@ -177,12 +174,6 @@ class Profile(models.Model):
                 countries.add(cc.lower())
         
         return list(countries)
-    
-
-    @property
-    def longest_chain(self):
-        """Longest chain stat displayed on desktop dashboard/user pages."""
-        return 0
 
 
     @property
@@ -295,6 +286,7 @@ class Profile(models.Model):
                     # In this case, fail silently.
                     pass
     
+    
     def trigger_desktop_login_badge(self):
         from challenges.tasks import update_completed_challenges
         
@@ -302,6 +294,23 @@ class Profile(models.Model):
             self.login_desktop = True
             self.save()
             update_completed_challenges.delay(self.user.id)
+    
+    
+    def update_ancestors_longest_chain(self):
+        """Updates 'longest chain' stat of all ancestors of this user when relevant.
+           Used after Boost step 2 confirmation so that all users involved have their longest chain stat updated.
+        """
+        from .utils import user_node
+
+        ancestors = user_node(self.user).get_ancestors()
+        chain_length = len(ancestors)
+        
+        for profile in (ancestor.user.profile for ancestor in ancestors):
+            if profile.longest_chain < chain_length:
+                profile.longest_chain = chain_length
+                profile.save()
+            chain_length -= 1
+
 
 
 # Retrieves or creates a Profile automatically whenever the profile property is accessed

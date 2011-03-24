@@ -7,18 +7,6 @@ from users.models import Profile
 from spark.models import City
 
 
-class PersonalStats(models.Model):
-    user = models.OneToOneField(Profile, primary_key=True,
-                                related_name='stats')
-    longest_chain = models.PositiveIntegerField(default=0)
-    total_shares = models.PositiveIntegerField(default=0)
-    
-    # TODO: other user-specific stats
-
-    def __unicode__(self):
-        return unicode(self.user)
-
-
 class GlobalStats(models.Model):
     name = models.CharField(max_length=255, primary_key=True)
     value = models.FloatField(blank=True, null=True)
