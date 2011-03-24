@@ -50,9 +50,11 @@ Stage installation
 * Refer to 'Getting started' above
 * cp settings_local.py-dist settings_local.py
 * Configure all required settings in settings_local.py for stage
+* Run migrations: ./vendor/src/schematic/schematic migrations/ 
 * Import test data in mysql: source lib/staging/test-data.sql
 * Set up the Celery server (Celery settings are in settings.py)
 * run celeryd
+* Set up a cron job: ./bin/update_site.py -e stage
 
 
 Production installation
@@ -61,6 +63,8 @@ Production installation
 * Refer to 'Getting started' above
 * cp settings_local.py-dist settings_local.py
 * Configure all required settings in settings_local.py for production
+* Run migrations: ./vendor/src/schematic/schematic migrations/ 
 * Set up the Celery server (Celery settings are in settings.py)
-* run celeryd
+* Run celeryd
+* Set up a cron job: ./bin/update_site.py -e prod
 
