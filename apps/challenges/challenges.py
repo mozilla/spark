@@ -320,6 +320,9 @@ all_challenges[_id(6, 6)] = PolarPower()
 class CapitalPower(ChallengeImpl):
     """ Share to the capital of any country """
     def is_completed_by(self, profile):
+        for child in profile.children_profiles:
+            if child.major_city and child.major_city.is_capital:
+                return True
         return False
 
 all_challenges[_id(6, 7)] = CapitalPower()

@@ -12,6 +12,7 @@ class City(models.Model):
     country_code = models.CharField(max_length=2)
     latitude = models.FloatField()
     longitude = models.FloatField(db_index=True)
+    is_capital = models.BooleanField(default=False)
     
     class Meta:
         ordering = ('-longitude',)
