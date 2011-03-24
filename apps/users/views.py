@@ -29,6 +29,8 @@ from users.utils import handle_login, handle_register
 
 from responsys import responsys_async as responsys
 
+from stats.utils import get_global_stats
+
 
 
 @ssl_required
@@ -242,7 +244,8 @@ def password_reset_confirm(request, uidb36=None, token=None):
         context.update({'uidb36': uidb36,
                         'token': token,
                         'is_pwreset': True,
-                        'is_homepage': True})
+                        'is_homepage': True,
+                        'stats': get_global_stats() })
         return jingo.render(request, 'desktop/home.html', context)
 
 
