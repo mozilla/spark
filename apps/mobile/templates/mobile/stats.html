@@ -9,25 +9,25 @@
     </p>
     <ul id="stats-list">
         <li>
-        439,203
+        {{ stats.total_sparks }}
         {# L10n: Global statistic representing the total number of Spark shares. #}
         <span>{{ _('Total Sparks') }}</span>
         </li>
         
         <li>
-        97
+        {{ stats.countries_sparked }}
         {# L10n: Global statistic representing the total number of countries where Sparks have been shared. #}
         <span>{{ _('Countries Sparked') }}</span>
         </li>
     
         <li>
-        6
+        {{ stats.continents_sparked }}
         {# L10n: Global statistic representing the total number of continents where Sparks have been shared. #}
         <span>{{ _('Continents Sparked') }}</span>
         </li>
 
         <li>
-        8,135
+        {{ stats.total_badges }}
         {# L10n: Global statistic representing the total number of Spark badges unlocked by all players. #}
         <span>{{ _('Badges Unlocked') }}</span>
         </li>

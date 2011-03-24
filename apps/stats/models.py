@@ -1,18 +1,98 @@
 from datetime import datetime, timedelta
 
-from django.db import models
+from django.db import models, IntegrityError
 from django.db.models import Count
 
 from users.models import Profile
 from spark.models import City
 
+from geo.continents import countries_continents
 
 class GlobalStats(models.Model):
     name = models.CharField(max_length=255, primary_key=True)
-    value = models.FloatField(blank=True, null=True)
+    value = models.PositiveIntegerField(blank=True, null=True)
     
     def __unicode__(self):
         return unicode(self.name)
+    
+    @classmethod
+    def increment_total_sparks(cls):
+        try:
+            stat = GlobalStats.objects.get(name='total_sparks')
+            stat.value += 1
+            stat.save()
+        except GlobalStats.DoesNotExist:
+            pass
+    
+    @classmethod
+    def increment_total_badges(cls):
+        try:
+            stat = GlobalStats.objects.get(name='total_badges')
+            stat.value += 1
+            stat.save()
+        except GlobalStats.DoesNotExist:
+            pass
+            
+    @classmethod
+    def get_total_sparks(cls):
+        try:
+            stat = GlobalStats.objects.get(name='total_sparks')
+            return stat.value
+        except GlobalStats.DoesNotExist:
+            return 0
+
+    @classmethod
+    def get_total_badges(cls):
+        try:
+            stat = GlobalStats.objects.get(name='total_badges')
+            return stat.value
+        except GlobalStats.DoesNotExist:
+            return 0
+
+
+class ContinentSparked(models.Model):
+    continent_code = models.CharField(max_length=2, primary_key=True)
+
+    def __unicode__(self):
+        return unicode(self.continent_code)
+
+    @classmethod
+    def get_total_continents_sparked(cls):
+        return ContinentSparked.objects.count()
+
+    @classmethod
+    def add_continent(cls, continent_code):
+        try:
+            ContinentSparked.objects.create(continent_code=continent_code)
+        except IntegrityError:
+            # Ignore already sparked continents
+            pass
+
+
+class CountrySparked(models.Model):
+    country_code = models.CharField(max_length=2, primary_key=True)
+
+    def __unicode__(self):
+        return unicode(self.country_code)
+
+    @classmethod
+    def get_total_countries_sparked(cls):
+        return CountrySparked.objects.count()
+
+    @classmethod
+    def add_country(cls, country_code):
+        try:
+            CountrySparked.objects.create(country_code=country_code)
+            
+            try:
+                continent_code = countries_continents[country_code]
+                ContinentSparked.add_continent(continent_code)
+            except KeyError:
+                pass
+        except IntegrityError:
+            # Ignore already sparked countries
+            pass
+
 
 
 VIA_TWITTER = 1

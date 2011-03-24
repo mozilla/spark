@@ -270,6 +270,8 @@ class Profile(models.Model):
 
     def complete_challenges(self, challenges):
         """Helper method to easily save the completion of given challenges for this user."""
+        from stats.models import GlobalStats
+        
         error = False
         if challenges:
             for challenge in challenges:
@@ -281,6 +283,9 @@ class Profile(models.Model):
                     CompletedChallenge.objects.create(profile=self, challenge=challenge, date_badge_earned=date, 
                                                       # Don't set new_badge to True if the badge is hidden.
                                                       new_badge=date is not None)
+
+                    GlobalStats.increment_total_badges()
+                        
                 except IntegrityError:
                     # Challenge was already completed by another concurrent 'update_completed_challenges' task.
                     # In this case, fail silently.

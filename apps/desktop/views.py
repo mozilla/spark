@@ -22,6 +22,8 @@ from spark.urlresolvers import absolute_url
 
 from users.models import User, Profile
 
+from stats.utils import get_global_stats
+
 import jingo
 
 
@@ -45,7 +47,8 @@ def home(request):
                                      'facebook_redirect': urllib.quote(absolute_url(django_reverse('desktop.close_popup'))),
                                      'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
                                      'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)),
-                                     'abs_url': profile.generic_sharing_url})
+                                     'abs_url': profile.generic_sharing_url,
+                                     'stats': get_global_stats()})
     else:
         data = {'is_homepage': True,
                 'twitter_url': urllib.quote(absolute_url(django_reverse('desktop.home'))),
@@ -53,7 +56,8 @@ def home(request):
                 'facebook_url': urllib.quote(absolute_url(django_reverse('desktop.home'))),
                 'facebook_redirect': urllib.quote(absolute_url(django_reverse('desktop.close_popup'))),
                 'facebook_msg': urllib.quote(unicode(FACEBOOK_SHARE_MSG)),
-                'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE))}
+                'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
+                'stats': get_global_stats()}
         return jingo.render(request, 'desktop/home.html', data)
 
 
@@ -75,7 +79,8 @@ def user(request, username):
             'facebook_url': urllib.quote(user.profile.facebook_sharing_url),
             'facebook_redirect': urllib.quote(absolute_url(django_reverse('desktop.home'))),
             'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
-            'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)) }
+            'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)),
+            'stats': get_global_stats()}
     
     if not request.user.is_authenticated():
         data.update({'login_next_url': request.path})

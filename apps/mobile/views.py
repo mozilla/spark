@@ -24,7 +24,8 @@ from sharing.utils import set_sharing_cookies
 from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, TWITTER_BADGE_MSG, 
                               FACEBOOK_SPARK_TITLE, FACEBOOK_SPARK_MSG, FACEBOOK_BADGE_MSG)
 
-from stats.models import SharingHistory
+from stats.models import SharingHistory, CountrySparked
+from stats.utils import get_global_stats
 
 from .forms import BoostStep1Form, BoostStep2Form
 from .decorators import login_required, logout_required
@@ -86,6 +87,8 @@ def boost1(request):
                 profile.us_state = data['us_state']
             profile.boost1_completed = True
             profile.save()
+            
+            CountrySparked.add_country(data['country_code'])
 
             update_completed_challenges.delay(profile.user.id)
             
@@ -123,6 +126,8 @@ def geolocation_fallback(request):
                 profile.country_code = city.country_code
                 profile.boost1_completed = True
                 profile.save()
+                
+                CountrySparked.add_country(city.country_code)
                 
                 update_completed_challenges.delay(profile.user.id)
         
@@ -241,7 +246,7 @@ def instructions(request):
 
 @login_required
 def stats(request):
-    return jingo.render(request, 'mobile/stats.html')
+    return jingo.render(request, 'mobile/stats.html', {'stats': get_global_stats()})
 
 
 @login_required
