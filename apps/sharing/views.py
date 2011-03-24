@@ -88,17 +88,18 @@ def _trigger_challenge_detection(username):
 def _add_share_to_user(request, username, via):
     try:
         user = User.objects.get(username=username)
+        tz_offset = request.GET.get('tz', None)
         
         if via ==  't':
-            SharingHistory.add_share_from_twitter(user.profile)
+            SharingHistory.add_share_from_twitter(user.profile, tz_offset)
         elif via == 'fb':
-            SharingHistory.add_share_from_facebook(user.profile)
+            SharingHistory.add_share_from_facebook(user.profile, tz_offset)
         elif via == 'qr':
-            SharingHistory.add_share_from_qr_code(user.profile)
+            SharingHistory.add_share_from_qr_code(user.profile, tz_offset)
         elif via == 'p':
-            SharingHistory.add_share_from_poster(user.profile)
+            SharingHistory.add_share_from_poster(user.profile, tz_offset)
         else:
-            SharingHistory.add_share(user.profile)
+            SharingHistory.add_share(user.profile, tz_offset)
         
         # Gaining a share triggers detection of completed challenges
         _trigger_challenge_detection(username)

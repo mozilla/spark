@@ -8,19 +8,22 @@ def is_mobile_request(request):
     return mobile_url.match(request.path) != None
 
 
-# Author: Wayne Dyck
+# Slightly modified version of function by Wayne Dyck
 # http://www.platoscave.net/blog/2009/oct/5/calculate-distance-latitude-longitude-python/
 def distance(origin, destination):
     lat1, lon1 = origin
     lat2, lon2 = destination
     radius = 6371 # km
 
-    dlat = math.radians(lat2-lat1)
-    dlon = math.radians(lon2-lon1)
-    a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(math.radians(lat1)) \
-        * math.cos(math.radians(lat2)) * math.sin(dlon/2) * math.sin(dlon/2)
-    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
-    d = radius * c
+    if lat1 and lon1 and lat2 and lon2:
+        dlat = math.radians(lat2-lat1)
+        dlon = math.radians(lon2-lon1)
+        a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(math.radians(lat1)) \
+            * math.cos(math.radians(lat2)) * math.sin(dlon/2) * math.sin(dlon/2)
+        c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+        d = radius * c
+    else:
+        d = -1
 
     return d
 

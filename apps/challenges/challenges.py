@@ -119,6 +119,11 @@ all_challenges[_id(2, 7)] = BakersDozen()
 class DawnPatrol(ChallengeImpl):
     """ Share with someone between 6am and 10am (Local time for the recipient.) """
     def is_completed_by(self, profile):
+        shares = SharingHistory.objects.filter(parent=profile)
+        for share in shares:
+            if share.local_hour:
+                if share.local_hour >= 6 and share.local_hour <= 10:
+                    return True
         return False
 
 all_challenges[_id(3, 1)] = DawnPatrol()
@@ -170,6 +175,11 @@ all_challenges[_id(3, 6)] = XXSparks()
 class NightShift(ChallengeImpl):
     """ Share with someone between 2am and 4am. (Local time for the recipient.) """
     def is_completed_by(self, profile):
+        shares = SharingHistory.objects.filter(parent=profile)
+        for share in shares:
+            if share.local_hour:
+                if share.local_hour >= 2 and share.local_hour <= 4:
+                    return True
         return False
 
 all_challenges[_id(4, 1)] = NightShift()
@@ -332,7 +342,9 @@ all_challenges[_id(6, 8)] = PuddleJumper()
 class TimeWarp(ChallengeImpl):
     """ Share with someone in each of the 10 different timezones """
     def is_completed_by(self, profile):
-        return False
+        shares = SharingHistory.objects.filter(parent=profile)
+        timezones = set([share.timezone for share in shares if share.timezone])
+        return len(timezones) >= 10
 
 all_challenges[_id(6, 9)] = TimeWarp()
 
@@ -359,6 +371,16 @@ all_challenges[_id(6, 11)] = ViveLaLumiere()
 class EarthSandwich(ChallengeImpl):
     """ Share with someone roughly on the other side of the globe """
     def is_completed_by(self, profile):
+        from spark.utils import distance
+        
+        if profile.boost1_completed:
+            for child in profile.children_profiles:
+                if child.boost1_completed:
+                    d = distance((profile.latitude, profile.longitude), (child.latitude, child.longitude))
+                    # Earth's circumference is 40,075 km.
+                    # Check if the child is located farther than 40,000 km divided by 2, with a 2,000 km tolerance
+                    if d > 18000:
+                        return True
         return False
 
 all_challenges[_id(6, 12)] = EarthSandwich()
@@ -392,30 +414,33 @@ all_challenges[_id(6, 14)] = FeelTheHeat()
 class TheColonial(ChallengeImpl):
     """ Share to a friend in each of the original 13 US states """
     def is_completed_by(self, profile):
+        states = set()
         for child in profile.children_profiles:
             if child.us_state and child.us_state in original_us_states:
-                return True
-        return False
+                states.add(child.us_state)
+        return len(states) == len(original_us_states)
 
 all_challenges[_id(6, 15)] = TheColonial()
 
 class AllAmerican(ChallengeImpl):
     """ Share to someone in each continental state """
     def is_completed_by(self, profile):
+        states = set()
         for child in profile.children_profiles:
             if child.us_state and child.us_state in continental_us_states:
-                return True
-        return False
+                states.add(child.us_state)
+        return len(states) == len(continental_us_states)
 
 all_challenges[_id(6, 16)] = AllAmerican()
 
 class Brussels(ChallengeImpl):
     """ Share with someone in each original EU country """
     def is_completed_by(self, profile):
+        countries = set()
         for child in profile.children_profiles:
             if child.country_code and child.country_code in original_eu_countries:
-                return True
-        return False
+                countries.add(child.country_code)
+        return len(countries) == len(original_eu_countries)
 
 all_challenges[_id(6, 17)] = Brussels()
 
@@ -434,6 +459,8 @@ all_challenges[_id(6, 18)] = TheAmazon()
 class HallOfFamer(ChallengeImpl):
     """ Person with the most shares """
     def is_completed_by(self, profile):
-        return False
+        max_share_count = SharingHistory.get_max_share_count()
+        profile_share_count = SharingHistory.get_num_shares(profile)
+        return max_share_count == profile_share_count
 
 all_challenges[_id(6, 19)] = HallOfFamer()

@@ -71,14 +71,16 @@ $(document).ready(function() {
 
     {% include 'desktop/includes/dashboard-script.html' %}
     
-    
     $('#option-01 a').click(function() {
+        var d = new Date(),
+            hoursOffset = d.getTimezoneOffset() / 60;
+        
         $.ajax({
             type: 'GET',
-            url: '{{ url('sharing.download_from_market_desktop')}}',
+            url: '{{ url('sharing.download_from_market_desktop') }}?tz='+hoursOffset,
             context: document.body,
             success: function(data) {
-                window.location=data.next;
+                window.location = data.next;
           }
         });
         return false;

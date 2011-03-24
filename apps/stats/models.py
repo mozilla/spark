@@ -25,7 +25,7 @@ class SharingHistory(models.Model):
     parent = models.ForeignKey(Profile, db_index=True)
     date_shared = models.DateTimeField(auto_now_add=True)
     shared_via = models.PositiveIntegerField(default=UNKNOWN)
-    timezone = models.CharField(max_length=6, blank=True, null=True)
+    timezone = models.IntegerField(blank=True, null=True)
 
     class Meta:
         ordering = ('-date_shared',)
@@ -36,6 +36,13 @@ class SharingHistory(models.Model):
     @classmethod
     def get_num_shares(cls, profile):
         return SharingHistory.objects.filter(parent=profile).count()
+    
+    @classmethod
+    def get_max_share_count(cls):
+        shares = SharingHistory.objects.values('parent').annotate(num_shares=Count('parent')).order_by('-num_shares')
+        if shares:
+            return shares[0]['num_shares']
+        return 0
 
     @classmethod
     def get_shares_over_time(cls, profile):
@@ -64,25 +71,38 @@ class SharingHistory(models.Model):
         return SharingHistory.objects.filter(parent=profile, shared_via=service).count() >= 1
         
     @classmethod
-    def add_share(cls, profile):
-        SharingHistory.objects.create(parent=profile)
+    def add_share(cls, profile, tz_offset=None):
+        SharingHistory.objects.create(parent=profile, timezone=tz_offset)
 
     @classmethod
-    def add_share_from_twitter(cls, profile):
-        SharingHistory.objects.create(parent=profile, shared_via=VIA_TWITTER)
+    def add_share_from_twitter(cls, profile, tz_offset=None):
+        SharingHistory.objects.create(parent=profile, shared_via=VIA_TWITTER, timezone=tz_offset)
 
     @classmethod
-    def add_share_from_facebook(cls, profile):
-        SharingHistory.objects.create(parent=profile, shared_via=VIA_FACEBOOK)
+    def add_share_from_facebook(cls, profile, tz_offset=None):
+        SharingHistory.objects.create(parent=profile, shared_via=VIA_FACEBOOK, timezone=tz_offset)
 
     @classmethod
-    def add_share_from_qr_code(cls, profile):
-        SharingHistory.objects.create(parent=profile, shared_via=VIA_QR)
+    def add_share_from_qr_code(cls, profile, tz_offset=None):
+        SharingHistory.objects.create(parent=profile, shared_via=VIA_QR, timezone=tz_offset)
 
     @classmethod
-    def add_share_from_poster(cls, profile):
-        SharingHistory.objects.create(parent=profile, shared_via=VIA_POSTER)
-
+    def add_share_from_poster(cls, profile, tz_offset=None):
+        SharingHistory.objects.create(parent=profile, shared_via=VIA_POSTER, timezone=tz_offset)
+    
+    @property
+    def local_hour(self):
+        """Returns the hour at which the visitor triggered the share (local time).
+           This is needed by challenges like "Share with someone between 6am and 10am".
+        """
+        if self.timezone:
+            PDT_offset = timedelta(hours=7)
+            visitor_utc_offset = timedelta(hours=-self.timezone)
+            local_dt = self.date_shared + PDT_offset + visitor_utc_offset
+        
+            return local_dt.hour
+        else:
+            return None
 
 
 class CitySharingHistory(models.Model):
