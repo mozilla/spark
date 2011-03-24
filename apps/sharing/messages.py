@@ -17,7 +17,7 @@ FACEBOOK_SPARK_MSG = _lazy(u'Hi there, wanna help me light up the world? Help sp
 SMS_SPARK_MSG = _lazy(u'Hi! Help me spread Firefox 4 for Android across the globe. Check out my Spark '
                        'and join in the fun. Start your own Spark, take challenges, unlock badges and more.')
 
-# L10n: Badge sharing message (Twitter) - This must not exceed 70 characters excluding %(badge_name)s and %(short_url)s
+# L10n: Badge sharing message (Twitter) - Please make sure that this string is no longer than 98 charaters (spaces inluded) with the longest badge name in your language (excluding '%(short_url)s')
 TWITTER_BADGE_MSG = _lazy(u'I just unlocked the Spark %(badge_name)s badge. '
                            'Check out all my badges %(short_url)s')
 
