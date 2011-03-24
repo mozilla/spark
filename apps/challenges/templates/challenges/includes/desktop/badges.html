@@ -4,7 +4,7 @@
     {% set position = 12 if position == 0 else position %}
     {% set class = ' nb%s' % position if position >= 8 else '' %}
     <li class="badge{% if badge.new %} new{% endif %}{{ class }}">
-        {% if badge.new %}
+        {% if badge.new and not is_user_page %}
         <div class="star"></div>
         {% endif %}
         <div class="badge-icon">
