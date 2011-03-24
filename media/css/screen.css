@@ -242,12 +242,27 @@ a:active, a:focus {
     top:0px;
 }
 
-#have-account {
-    display:block;
+#have-account, #js-warning {
     margin-bottom:2.5em;
     font-size:1.231em;
     color:#a9aaaa;
     text-align:center;
+}
+
+#have-account {
+    display:none;
+}
+
+#js-warning {
+    display:block;
+}
+
+.js #js-warning {
+    display:none;
+}
+
+.js #have-account {
+    display:block;
 }
 
 #logo {
