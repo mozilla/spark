@@ -105,6 +105,9 @@ def visualization(request):
     return jingo.render(request, 'desktop/visualization.html', data)
 
 
+def close(request):
+    return jingo.render(request, 'desktop/close.html')
+
 def generate_history(request):
     from stats.tasks import _generate_fake_history
     _generate_fake_history()
