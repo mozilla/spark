@@ -5,12 +5,13 @@ import urllib
 from django.http import HttpResponse
 from django.conf import settings
 from django.shortcuts import get_object_or_404
+from django.core.urlresolvers import reverse as django_reverse
 
 from geo.countries import countries
 
 from spark.decorators import ssl_required, login_required, mobile_view
 from spark.helpers import secure_url
-from spark.urlresolvers import reverse, absolute_reverse
+from spark.urlresolvers import reverse, absolute_url
 from spark.utils import get_city_fullname
 
 from sharing.utils import set_sharing_cookies
@@ -41,13 +42,16 @@ def home(request):
                                      'twitter_url': urllib.quote(profile.twitter_sharing_url),
                                      'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)),
                                      'facebook_url': urllib.quote(profile.facebook_sharing_url),
+                                     'facebook_redirect': urllib.quote(absolute_url(django_reverse('desktop.close_popup'))),
                                      'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
                                      'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)),
                                      'abs_url': profile.generic_sharing_url})
     else:
         data = {'is_homepage': True,
-                'twitter_url': urllib.quote(absolute_reverse('desktop.home')),
+                'twitter_url': urllib.quote(absolute_url(django_reverse('desktop.home'))),
                 'twitter_msg': urllib.quote(unicode(TWITTER_SHARE_MSG)),
+                'facebook_url': urllib.quote(absolute_url(django_reverse('desktop.home'))),
+                'facebook_redirect': urllib.quote(absolute_url(django_reverse('desktop.close_popup'))),
                 'facebook_msg': urllib.quote(unicode(FACEBOOK_SHARE_MSG)),
                 'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE))}
         return jingo.render(request, 'desktop/home.html', data)
@@ -69,6 +73,7 @@ def user(request, username):
             'twitter_url': urllib.quote(user.profile.twitter_sharing_url),
             'twitter_msg': urllib.quote(unicode(TWITTER_SHARE_MSG)),
             'facebook_url': urllib.quote(user.profile.facebook_sharing_url),
+            'facebook_redirect': urllib.quote(absolute_url(django_reverse('desktop.home'))),
             'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
             'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)) }
     
