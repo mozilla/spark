@@ -108,7 +108,8 @@ $(document).ready(function() {
 
     //opens video player
     $('a.video-launcher').click(function() {
-       showVideoPlayer(); 
+       showVideoPlayer();
+       video.play();
     });
 
     //Your account links
