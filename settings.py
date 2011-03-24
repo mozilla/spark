@@ -351,9 +351,6 @@ CELERY_ENABLED = True
 # Addresses email comes from
 DEFAULT_FROM_EMAIL = 'test@localhost.spark'
 
-# Email backend
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 # Profile Model retrieved via user.get_profile()
 AUTH_PROFILE_MODULE = 'users.Profile'
 

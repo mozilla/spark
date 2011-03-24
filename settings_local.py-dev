@@ -88,6 +88,9 @@ TEMPLATE_DEBUG = True
 
 SESSION_COOKIE_SECURE = False
 
+# Email backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Celery
 CARROT_BACKEND = 'ghettoq.taproot.Database'
 
