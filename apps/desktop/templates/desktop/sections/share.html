@@ -32,16 +32,10 @@
     </div>
     <div class="sub-section">
         <h4>{{ _('Personal link') }}</h4>
-        <p>
-            <div id="copylink-container">
-                <a id="copylink" class="button">{{ _('Copy your URL') }}</a>
-                {% set alternate_copy = _('Share your URL') %}
-            </div>
-            <span id="personal-link">
+        <p id="personal-link">
             {% trans share_url=abs_url %}
             Rack up your 'shares' by pointing your friends to: <a href="{{ share_url }}">{{ share_url }}</a>
             {% endtrans %}
-            </span>
         </p>
     </div>
     <div class="sub-section">

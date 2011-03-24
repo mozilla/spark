@@ -1,9 +1,0 @@
-    // Enable copy to clipboard
-    ZeroClipboard.setMoviePath('{{ MEDIA_URL }}js/libs/ZeroClipboard10.swf');
-
-    var clip = new ZeroClipboard.Client(),
-        url = $('#personal-link a').text();
-
-    clip.setText(url);
-    clip.setHandCursor(true);
-    clip.glue('copylink', 'copylink-container');

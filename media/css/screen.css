@@ -1318,6 +1318,11 @@ div.level.locked:hover {
     min-width:188px;
 }
 
+#personal-link a {
+    float:right;
+    display:block;
+}
+
 /* Personal Page - logged out*/
 
 #personal #stats {
