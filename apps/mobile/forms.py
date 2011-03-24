@@ -20,6 +20,7 @@ class BoostStep1Form(forms.Form):
     city = forms.CharField()
     country_code = forms.CharField(min_length=2, max_length=2)
     country = forms.CharField()
+    us_state = forms.CharField(min_length=2, max_length=2, required=False)
 
 
 class BoostStep2Form(forms.Form):

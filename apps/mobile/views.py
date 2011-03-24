@@ -82,6 +82,8 @@ def boost1(request):
             profile.longitude = data['long']
             profile.city_name = data['city']
             profile.country_code = data['country_code']
+            if data['country_code'] == 'US':
+                profile.us_state = data['us_state']
             profile.boost1_completed = True
             profile.save()
 
