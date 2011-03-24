@@ -40,8 +40,8 @@ Dev installation
 * For optional test data, run from mysql: source lib/staging/test-data.sql
 
 When the dev installation is complete:
-Access desktop version: http://localhost:8000/
-Accessing mobile version: http://localhost:8000/m/
+* Access desktop version: http://localhost:8000/
+* Accessing mobile version: http://localhost:8000/m/
 
 
 Stage installation
@@ -53,7 +53,7 @@ Stage installation
 * Run migrations: ./vendor/src/schematic/schematic migrations/ 
 * Import test data in mysql: source lib/staging/test-data.sql
 * Set up the Celery server (Celery settings are in settings.py)
-* run celeryd
+* Run celeryd
 * Set up a cron job: ./bin/update_site.py -e stage
 
 
