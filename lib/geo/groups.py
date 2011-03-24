@@ -1,7 +1,7 @@
 
 european_countries = ['DE','AT','BE','BG','CY','DK','ES','EE','FI','FR','GR','HU','IE','IT','LV','LT','LU','MT','NL','PT','PL','CZ','RO','GB','SI','SK','SE']
 
-island_countries = ['MU','LK','AU','BM','CY','JP','IS','PH','GL','GN','NZ','ID','MG','MY','IE','GB','CU']
+island_countries = ['MU','LK','BM','CY','JP','IS','PH','GL','GN','NZ','ID','MG','MY','IE','GB','CU']
 
 countries_with_desert = ['AE','AQ','AR','AU','AO','BW','CA','CN','CL','DZ','EG','EH','FI','GL','KW','IN','IQ','IS','JO','KZ','LY','NA','NE','NO','MA','ML','MR','MN','MX','OM','PK','QA','RU','SA','SD','SE','SY','TD','TM','TN','US','UZ','YE','ZA']
 
