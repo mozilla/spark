@@ -54,6 +54,10 @@ ul#main-menu {
     color:#ffd40d;
 }
 
+#dropdown {
+    margin-top:0.4em;
+}
+
 /* Slider */
 
 #slider {

@@ -24,16 +24,14 @@
 			    </li>
 				{# L10n: Action verb placed next to a dropdown list of cities, allowing to filter the visualization on a specific city. #}
 				<li>{{ _('Focus on location') }}
-					<span>
-                        <form action="">
-                            <select id="cities-list" name="cities">
-                                <option value="-1">{{ _('Everywhere') }}</option>
-                                {% for position, city in cities %}
-                                <option value="{{ position }}">{{ city }}</option>
-                                {% endfor %}
-                            </select>
-                        </form>
-					</span>
+                    <form id="dropdown">
+                        <select id="cities-list" name="cities">
+                            <option value="-1">{{ _('Everywhere') }}</option>
+                            {% for position, city in cities %}
+                            <option value="{{ position }}">{{ city }}</option>
+                            {% endfor %}
+                        </select>
+                    </form>
 				</li>
 			</ul>
 		</div> <!-- end masthead -->
