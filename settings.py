@@ -236,8 +236,6 @@ MIDDLEWARE_CLASSES = (
     'spark.middleware.RemoveSlashMiddleware',
     
     'django.middleware.common.CommonMiddleware',
-    # Dev environment - settings_local.py will add
-    # 'mobile.middleware.DetectMobileMiddleware' here
     'mobility.middleware.XMobileMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -353,11 +351,14 @@ CELERY_ENABLED = True
 # Addresses email comes from
 DEFAULT_FROM_EMAIL = 'test@localhost.spark'
 
+# Email backend
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Profile Model retrieved via user.get_profile()
 AUTH_PROFILE_MODULE = 'users.Profile'
 
-# Responsys
-RESPONSYS_ID = '<insert prod responsys key here>'
+# Responsys: dev/stage key
+RESPONSYS_ID = 'X0Gzc2X%3DUQpglLjHJlTQTtQ1vQ2rQ0bQQzgQvQy8KVwjpnpgHlpgneHmgJoXX0Gzc2X%3DUQpglLjHJlTQTtQ1vQ2rQ0aQQGQvQwPD'
 MOZILLA_CAMPAIGN = 'MOZILLA_AND_YOU'
 SPARK_CAMPAIGN = 'SPARK_2011'
 RESPONSYS_URL = 'http://awesomeness.mozilla.org/pub/rf'

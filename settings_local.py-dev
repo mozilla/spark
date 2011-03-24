@@ -1,0 +1,100 @@
+from settings import *
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+        'OPTIONS': {
+            'init_command': 'SET storage_engine=InnoDB',
+            'charset' : 'utf8',
+            'use_unicode' : True,
+        },
+        'TEST_CHARSET': 'utf8',
+        'TEST_COLLATION': 'utf8_general_ci',
+    },
+}
+
+ADMINS = (
+    ('Dev admin', 'admin@localhost')
+)
+
+MIDDLEWARE_CLASSES = (
+    'spark.middleware.LocaleURLMiddleware',
+    'spark.middleware.Forbidden403Middleware',
+    'spark.middleware.RemoveSlashMiddleware',
+    
+    'django.middleware.common.CommonMiddleware',
+    'mobility.middleware.DetectMobileMiddleware', # Needed in dev environment only
+    'mobility.middleware.XMobileMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+
+    'commonware.middleware.FrameOptionsHeader',
+)
+
+INSTALLED_APPS = (
+    # Third-party apps
+    'commonware.response.cookies',
+    'djcelery',
+    'django_nose',
+
+    # Django contrib apps
+    'django.contrib.auth',
+    'django_sha2',  # Load after auth to monkey-patch it.
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    # 'django.contrib.messages',
+    # Uncomment the next line to enable the admin:
+    'django.contrib.admin',
+    # Uncomment the next line to enable admin documentation:
+    # 'django.contrib.admindocs',
+
+    # L10n
+    'product_details',
+
+    # Local apps
+    'jingo_minify',
+    'tower',  # for ./manage.py extract (L10n)
+
+    # We need this so the jsi18n view will pick up our locale directory.
+    ROOT_PACKAGE,
+
+    # Newsletter
+    'responsys',
+
+    # Spark apps
+    'spark',
+    'users',
+    'desktop',
+    'mobile',
+    'sharing',
+    'challenges',
+    'stats',
+    'sharing',
+    'ghettoq' # Needed in dev environment only
+)
+
+MANAGERS = ADMINS
+
+DEBUG = True
+TEMPLATE_DEBUG = True
+
+SESSION_COOKIE_SECURE = False
+
+# Celery
+CARROT_BACKEND = 'ghettoq.taproot.Database'
+
+if DEBUG:
+    # Zeus populates X-Mobile in staging and production
+    # Add DetectMobileMiddleware for mobile development.
+    mwc = MIDDLEWARE_CLASSES
+    xmobile = mwc.index('mobility.middleware.XMobileMiddleware')
+    detect = ('mobility.middleware.DetectMobileMiddleware',)
+    MIDDLEWARE_CLASSES = mwc[:xmobile] + detect + mwc[xmobile:]

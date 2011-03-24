@@ -16,3 +16,6 @@ pyquery==0.5
 
 # L10n
 translate-toolkit==1.8.0
+
+# Celery
+ghettoq==0.4.5
