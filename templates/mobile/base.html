@@ -16,7 +16,12 @@
 </head>
 <!-- Language class must be dynamically applied to the body in order to create language-specific CSS rules -->
 <body class="lang-en {{ body_class }}" id="{{ body_id }}">
-<!-- We could also use real HTML5 tags by using HTML5Shiv . See Boilterplate for more info -->
+    <noscript>
+        <div id="js-warning">
+            <span>{{ _('You will need to enable JavaScript in order to use this site') }}</span>
+        </div>
+    </noscript>
+    
 	{% block flame %}
 	<img id="flame-bg" src="{{ MEDIA_URL }}img/mobile/flame480.jpg" alt="">
 	{% endblock %}

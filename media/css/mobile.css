@@ -1023,3 +1023,18 @@ body#user-share {
     position:relative;
     z-index:10000;
 }
+
+#js-warning {
+    width:100%;
+    background:#dd322a;
+    text-align:center;
+    padding:10px 0;
+    position:relative;
+    z-index:10000;
+}
+
+#js-warning span {
+    width:80%;
+    display:block;
+    margin:0 auto;
+}
