@@ -176,6 +176,10 @@ def boost2_confirm(request):
     """ Boost your Spark step 2/2 confirmation.
         This view saves the parent-child relationship in the user tree.
     """
+    profile = request.user.profile
+    if profile.boost2_completed:
+        return HttpResponseRedirect(reverse('mobile.home'))
+    
     username = request.POST.get('parent')
     no_parent = request.POST.get('no_parent')
     if username or no_parent:
@@ -186,7 +190,6 @@ def boost2_confirm(request):
                 created = create_relationship(parent, request.user)
                 
                 if created:
-                    profile = request.user.profile
                     profile.no_parent = False
                     profile.save()
                     
