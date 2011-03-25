@@ -17,7 +17,7 @@
     </p>
 </div>
 {{ error_msg(form) }}
-<form action="" method="post" accept-charset="utf-8">
+<form method="post" accept-charset="utf-8">
 	{{ csrf() }}
     <fieldset id="identifier" class="section">
         <div class="input-wrapper">
@@ -33,7 +33,7 @@
     <hr>
     <fieldset id="from-website">
 	    <p class="sans">
-	        <input tabindex="2" type="checkbox" name="from_website" class="styled">
+	        <input id="from-website-cb" tabindex="2" type="checkbox" name="from_website" class="styled">
 	        <label for="from-website-cb">{{ _('I started a new Spark on my own.') }}</label>
 	    </p>
     </fieldset>
