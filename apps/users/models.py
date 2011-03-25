@@ -298,7 +298,7 @@ class Profile(models.Model):
         if not self.login_desktop:
             self.login_desktop = True
             self.save()
-            update_completed_challenges.delay(self.user.id)
+            update_completed_challenges(self.user.id)
     
     
     def update_ancestors_longest_chain(self):
