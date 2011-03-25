@@ -10,22 +10,6 @@
     </p>
     <hr>
     {% include "challenges/includes/mobile/badges.html" %}
-    <li id="badge-label-tmpl" style="display:none">
-        <div>
-            <div>
-                <div>
-                    <img src="{{ MEDIA_URL }}img/mobile/badge-label-arrow.png">
-                    <h2></h2>
-                    <p class="sans"></p>
-                </div>
-            </div>
-        </div>
-        <div class="button-wrapper">
-            <a href="{{ url('mobile.sharebadge') }}">
-                <button>{{ _('Share my badge') }}</button>
-            </a>
-        </div>
-    </li>
     <img src="{{ MEDIA_URL }}img/mobile/badge-label-bg.png" alt="" class="preload">
     <img src="{{ MEDIA_URL }}img/mobile/badge-label-arrow.png" alt="" class="preload">
 {% endblock %}

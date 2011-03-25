@@ -246,6 +246,10 @@ a.button {
     margin-bottom:18px;
 }
 
+#badges a.button {
+    margin-bottom:0;
+}
+
 a.button:active {
     border-top:1px solid #feed9b;
     background:#fee779;
@@ -599,18 +603,10 @@ li.badge:active, li.badge.current {
     border:2px solid #fff;
 }
 
-/*li.badge .badge-wrapper {
-    height:72px;
-    width:72px;
-    border:2px solid #000;
-    border-radius:50%;
-    -webkit-border-radius:38px;
-}*/
-
 #badge-label {
     clear:both;
     border-top:1px solid #ffe56e;
-    margin-bottom:4.896em;
+    margin-bottom:1em;
     position:relative;
 }
 
