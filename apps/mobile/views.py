@@ -258,8 +258,8 @@ def shareqr(request):
 def sharelink(request):
     data = {'twitter_url': urllib.quote(request.user.profile.twitter_sharing_url),
             'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)),
-            'facebook_url': urllib.quote(request.user.profile.facebook_sharing_url),
-            'facebook_redirect': urllib.quote(absolute_url(django_reverse('mobile.home'))),
+            'facebook_url': request.user.profile.facebook_sharing_url,
+            'facebook_redirect': absolute_url(django_reverse('mobile.home')),
             'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
             'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG))}
             
@@ -281,8 +281,8 @@ def sharebadge(request):
             data = {'badge_name': get_badge_name(badge.id),
                     'twitter_url': urllib.quote(profile.twitter_sharing_url),
                     'twitter_badge_msg': TWITTER_BADGE_MSG,
-                    'facebook_url': urllib.quote(profile.facebook_sharing_url),
-                    'facebook_redirect': urllib.quote(absolute_url(django_reverse('mobile.home'))),
+                    'facebook_url': profile.facebook_sharing_url,
+                    'facebook_redirect': absolute_url(django_reverse('mobile.home')),
                     'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
                     'facebook_badge_msg': FACEBOOK_BADGE_MSG }
             return jingo.render(request, 'mobile/sharebadge.html', data)
