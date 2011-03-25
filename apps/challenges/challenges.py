@@ -187,8 +187,11 @@ all_challenges[_id(4, 1)] = NightShift()
 class OctoSparker(ChallengeImpl):
     """ Share your Spark to 8 different U.S. states """
     def is_completed_by(self, profile):
-        children_states = set([child.us_state for child in profile.children_profiles])
-        return len(children_states) >= 8
+        states = set()
+        for child in profile.children_profiles:
+            if child.us_state and child.us_state in all_us_states:
+                states.add(child.us_state)
+        return len(states) >= 8
 
 all_challenges[_id(4, 2)] = OctoSparker()
 
