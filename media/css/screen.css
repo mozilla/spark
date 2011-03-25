@@ -1436,3 +1436,10 @@ div.level.locked:hover {
 #video-player img:hover {
     cursor:pointer;
 }
+
+/*Error pages*/
+
+#error-page {
+    position:relative;
+    z-index:10000;
+}

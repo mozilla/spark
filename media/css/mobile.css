@@ -1020,3 +1020,10 @@ body#user-share {
 #city-list li span:active {
     background-color:rgba(255,255,255,0.16);
 }
+
+/*Error pages*/
+
+#error-page {
+    position:relative;
+    z-index:10000;
+}
