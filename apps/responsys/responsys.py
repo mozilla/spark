@@ -2,11 +2,7 @@ from datetime import date
 import urllib2
 
 from django.utils.http import urlencode
-
-try:
-    from django.conf import settings
-except ImportError:
-    settings = {}
+from django.conf import settings
 
 
 def make_source_url(request):
@@ -25,12 +21,11 @@ def subscribe(campaigns, address, format='html', source_url='', lang=''):
         data['%s_DATE' % campaign] = date.today().strftime('%Y-%m-%d')
         data['_ri_'] = settings.RESPONSYS_ID
 
-        if not settings.DEBUG:
-            try:            
-                res = urllib2.urlopen(settings.RESPONSYS_URL, data=urlencode(data))
-                if res.code != 200:
-                    return False
-            except urllib2.URLError, e:
+        try:
+            res = urllib2.urlopen(settings.RESPONSYS_URL, data=urlencode(data))
+            if res.code != 200:
                 return False
+        except urllib2.URLError, e:
+            return False
 
     return True
