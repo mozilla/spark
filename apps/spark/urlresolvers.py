@@ -142,7 +142,7 @@ def clean_next_url(request):
     elif 'next' in request.GET:
         url = request.GET.get('next')
     else:
-        url = request.META.get('HTTP_REFERER')
+        url = None
 
     if url:
         parsed_url = urlparse.urlparse(url)
