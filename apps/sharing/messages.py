@@ -1,7 +1,7 @@
 from tower import ugettext_lazy as _lazy
 
 # L10n: Spark sharing message (Twitter) - This must not exceed 98 characters including spaces.
-TWITTER_SPARK_MSG = _lazy(u'Hey! Help me spread Firefox 4 for Android across the globe.'
+TWITTER_SPARK_MSG = _lazy(u'Hey! Help me spread Firefox 4 for Android across the globe. '
                            'Check out my Spark and join in the fun.')
 
 # L10n: Spark sharing message title (Facebook)
