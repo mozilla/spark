@@ -12,6 +12,9 @@ from users.models import Profile
 
 USERNAME_INVALID = _lazy(u'Username may contain only letters, '
                          'numbers and @/./+/-/_ characters.')
+# See bug 643759
+USERNAME_INVALID_2 = _lazy(u'Username may contain only letters, '
+                            'numbers and ./+/-/_ characters.')
 USERNAME_REQUIRED = _lazy(u'Please enter a username.')
 USERNAME_SHORT = _lazy(u'Username is too short (%(show_value)s characters). '
                        'It must be at least %(limit_value)s characters.')
@@ -37,8 +40,8 @@ class RegisterForm(forms.ModelForm):
     for usernames.
     """
     username = forms.RegexField(max_length=30, min_length=4,
-        regex=r'^[\w.@+-]+$',
-        error_messages={'invalid': USERNAME_INVALID,
+        regex=r'^[\w.+-]+$',
+        error_messages={'invalid': USERNAME_INVALID_2,
                         'required': USERNAME_REQUIRED,
                         'min_length': USERNAME_SHORT,
                         'max_length': USERNAME_LONG})
@@ -79,7 +82,7 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
     """ Redefines AuthenticationForm to provide a new error message
         when authentication has failed. 
     """
-    username = forms.CharField(error_messages={'invalid': USERNAME_INVALID,
+    username = forms.CharField(error_messages={'invalid': USERNAME_INVALID_2,
                                             'required': USERNAME_REQUIRED})
     password = forms.CharField(error_messages={'required': PASSWD_REQUIRED})
 
