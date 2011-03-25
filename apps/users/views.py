@@ -27,7 +27,7 @@ from users.forms import (EmailConfirmationForm, EmailChangeForm, PasswordResetFo
 from users.models import Profile
 from users.utils import handle_login, handle_register
 
-from responsys import responsys_async as responsys
+from responsys import responsys
 
 from stats.utils import get_global_stats
 
