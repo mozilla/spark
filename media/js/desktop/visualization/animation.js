@@ -83,8 +83,8 @@ var drawStep = function(s) {
                 nodeId = city1 + ":" + city2,
                 node = document.getElementById(nodeId),
                 nbShares = step[i][2],
-                stroke = nbShares / STROKEFACTOR,
-                radius = nbShares / RADIUSFACTOR;
+                stroke = nbShares * strokeFactor,
+                radius = nbShares * radiusFactor;
             
             if(city1 === focusedCity || city2 === focusedCity || focusedCity === -1) {
                 if(city1 != city2) {

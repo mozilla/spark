@@ -113,10 +113,38 @@ RaphaelZPD = function(raphaelPaper, o, container) {
 	 * Sets the current transform matrix of an element.
 	 */
 	me.setCTM = function(element, matrix) {
+	    if(matrix.e >= 10) {
+	        matrix.e = 10;
+	    };
+
+        if(currentScale === 1) {
+            if(matrix.e <= -950) {
+    	        matrix.e = -950;
+    	    };
+        }
+        
+        if(currentScale === 2) {
+            if(matrix.e <= -2855) {
+    	        matrix.e = -2855;
+    	    };
+        }
+        
+        if(currentScale === 3) {
+            if(matrix.e <= -6655) {
+    	        matrix.e = -6655;
+    	    };
+        }
+        
 		var s = "matrix(" + matrix.a + "," + matrix.b + "," + matrix.c + "," + matrix.d + "," + matrix.e + "," + matrix.f + ")";
 
 		element.setAttribute("transform", s);
 	}
+
+    me.resetPos = function(element, matrix) {
+        matrix.e = 0;
+		var s = "matrix(" + matrix.a + "," + matrix.b + "," + matrix.c + "," + matrix.d + "," + matrix.e + "," + matrix.f + ")";
+		element.setAttribute("transform", s);
+    }
 
 	/**
 	 * Dumps a matrix to a string (useful for debug).
@@ -188,10 +216,6 @@ RaphaelZPD = function(raphaelPaper, o, container) {
 
     var g = document.getElementById("viewport"+me.id),
         previousValue = 0;
-    
-    var updateCurrentZoom = function() {
-        currentZoom = $('#zoom').slider('value');
-    };
 
     var zoomIn = function() {
         var k = me.root.createSVGMatrix().translate(0, 660).scale(2).translate(-0, -660);
@@ -200,6 +224,7 @@ RaphaelZPD = function(raphaelPaper, o, container) {
     
     var zoomOut = function() {
         var k = me.root.createSVGMatrix().translate(0, 660).scale(0.5).translate(-0, -660);
+		me.resetPos(g, g.getCTM());
 		me.setCTM(g, g.getCTM().multiply(k));
     };
 
@@ -227,13 +252,15 @@ RaphaelZPD = function(raphaelPaper, o, container) {
 
 		var g = svgDoc.getElementById("viewport"+me.id);
 
+        var xPos = g.getCTM().e;
+
 		if (me.state == 'pan') {
 			// Pan mode
 			if (!me.opts.pan) return;
 
 			var p = me.getEventPoint(evt).matrixTransform(me.stateTf);
 
-            if($zoom.slider('value') > 0) {
+            if(currentScale > 0) {
                  me.setCTM(g, me.stateTf.inverse().translate(p.x - me.stateOrigin.x, p.y - me.stateOrigin.y));
             }
 		} else if (me.state == 'move') {

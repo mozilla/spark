@@ -2,8 +2,8 @@ var DURATION = 30,
     MINVALUE = 0,
     MAXVALUE = 3000,
     GRANULARITY = 10,
-    STROKEFACTOR = 12,
-    RADIUSFACTOR = 1.5,
+    MAXSTROKE = 20,
+    MAXRADIUS = 200,
     MINSHARES = 0,
     nbCities,
     nbNodes,
@@ -16,12 +16,51 @@ var DURATION = 30,
     currentScale,
     currentTime,
     isPlaying = false,
-    focusedCity = -1;
+    focusedCity = -1,
+    maxShareCount,
+    strokeFactor = 0,
+    radiusFactor = 0;
 
 var initState = function() {
     nbCities = cities.length;
     nbNodes = finalShares.length;
     nbSteps = shareHistory.length;
+    
+    findMaxShareCount();
+};
+
+var findMaxShareCount = function() {
+    maxShareCount = 0;
+    
+    for(var i = 0; i < finalShares.length; i += 1) {
+        if(finalShares[i][2] > maxShareCount) {
+            maxShareCount = finalShares[i][2];
+        }
+    }
+    
+    console.log(maxShareCount);
+    strokeFactor = MAXSTROKE / maxShareCount;
+    radiusFactor = MAXRADIUS / maxShareCount;
+};
+
+var switchToUserHistory = function() {
+    shareHistory = userHistory;
+    finalShares = userFinalShares;
+
+    MAXSTROKE /= 2;
+    MAXRADIUS /= 2;
+    
+    findMaxShareCount();
+};
+
+var switchToGlobalHistory = function() {
+    shareHistory = globalHistory;
+    finalShares = globalFinalShares;
+
+    MAXSTROKE *=2;
+    MAXRADIUS *=2;
+    
+    findMaxShareCount();
 };
 
 // gets the current value of the time slider
@@ -99,8 +138,16 @@ var fastForward = function(currentTime) {
                 nbShares = shareHistory[i][j][2],
                 nodeId = city1 + ":" + city2,
                 node = document.getElementById(nodeId),
-                stroke = nbShares / STROKEFACTOR,
-                radius = nbShares / RADIUSFACTOR;
+                stroke = nbShares * strokeFactor,
+                radius = nbShares * radiusFactor;
+            
+            if((city2 - city1) <= 5) {
+                stroke /= 4;
+            }
+
+            if((city2 - city1) === 1) {
+                stroke /= 8;
+            }
 
             if(city1 === focusedCity || city2 === focusedCity || focusedCity === -1) {
                 if(city1 === city2) {

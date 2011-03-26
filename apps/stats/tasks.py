@@ -108,4 +108,3 @@ def get_ordered_cities():
     return cities_ordered
 
 
-

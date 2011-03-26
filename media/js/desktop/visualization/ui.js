@@ -224,7 +224,7 @@ var initUI = function() {
     
     $('#show-everyone').click(function() {
         hideYourSharesInfo();
-        shareHistory = globalHistory;
+        switchToGlobalHistory();
         resetToCurrentTime();
         $(this).toggle();
         $('#show-your-shares').toggle();
@@ -232,7 +232,7 @@ var initUI = function() {
     
     $('#show-your-shares').click(function() {
         showYourSharesInfo();
-        shareHistory = userHistory;
+        switchToUserHistory();
         resetToCurrentTime();
         $(this).toggle();
         $('#show-everyone').toggle();
