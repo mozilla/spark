@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 
+from django.conf import settings
 from django.db import models, IntegrityError
 from django.db.models import Count
 
@@ -129,7 +130,7 @@ class SharingHistory(models.Model):
 
     @classmethod
     def get_shares_over_time(cls, profile):
-        start = datetime(2011, 3, 8)
+        start = settings.CAMPAIGN_STARTING_DATE
         num_days = (datetime.now() + timedelta(days=1) - start).days
         shares = [0 for i in range(num_days)]
         date_range = (start + timedelta(days=i) for i in range(num_days))
