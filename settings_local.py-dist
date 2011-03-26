@@ -1,5 +1,6 @@
-# This is an example settings_local.py file.
-# Copy it and add your local settings here.
+# This is a local settings example file for stage/prod instances.
+
+import datetime
 
 from settings import *
 
@@ -38,6 +39,10 @@ DEFAULT_FROM_EMAIL = '<insert email here>'
 
 # Responsys ID
 RESPONSYS_ID = '<insert Responsys production key>'
+
+
+# Campaign starting date used by the visualization
+CAMPAIGN_STARTING_DATE = datetime.datetime(2011, 3, 29)
 
 
 # Uncomment and update with stage/prod settings if necessary

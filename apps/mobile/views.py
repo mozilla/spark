@@ -9,7 +9,7 @@ from spark.models import City
 from spark.urlresolvers import reverse, absolute_url
 from spark.decorators import post_required
 from spark.utils import (get_city_fullname, is_android_non_firefox, is_iphone,
-                         is_firefox_mobile, is_android, get_ua)
+                         is_firefox_mobile, is_android, get_ua, approximate_major_city)
 
 from users.models import User, UserNode
 from users.utils import create_relationship
@@ -24,7 +24,7 @@ from sharing.utils import set_sharing_cookies
 from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, TWITTER_BADGE_MSG, 
                               FACEBOOK_SPARK_TITLE, FACEBOOK_SPARK_MSG, FACEBOOK_BADGE_MSG)
 
-from stats.models import SharingHistory, CountrySparked
+from stats.models import SharingHistory, CountrySparked, CitySharingHistory
 from stats.utils import get_global_stats
 
 from .forms import BoostStep1Form, BoostStep2Form
@@ -88,9 +88,13 @@ def boost1(request):
             profile.boost1_completed = True
             profile.save()
             
+            approximate_major_city(profile, 1000)
+            
             CountrySparked.add_country(data['country_code'])
 
             update_completed_challenges.delay(profile.user.id)
+            
+            profile.add_city_shares_for_children()
             
             return HttpResponseRedirect(reverse('mobile.boost1_complete'))
         else:
@@ -130,6 +134,8 @@ def geolocation_fallback(request):
                 CountrySparked.add_country(city.country_code)
                 
                 update_completed_challenges.delay(profile.user.id)
+                
+                profile.add_city_shares_for_children()
         
                 return HttpResponseRedirect(reverse('mobile.boost1_complete'))
             except City.DoesNotExist:
@@ -198,6 +204,9 @@ def boost2_confirm(request):
                     
                     # Add a share for the parent
                     SharingHistory.add_share(parent.profile)
+                    
+                    # Add a share between cities of this user and the parent user
+                    CitySharingHistory.add_share_from_profiles(parent.profile, profile)
                     
                     # Trigger challenge completion for the parent
                     update_completed_challenges.delay(parent.id)

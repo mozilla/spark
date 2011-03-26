@@ -16,8 +16,8 @@ def distance(origin, destination):
     radius = 6371 # km
 
     if lat1 and lon1 and lat2 and lon2:
-        dlat = math.radians(lat2-lat1)
-        dlon = math.radians(lon2-lon1)
+        dlat = math.radians(float(lat2) - float(lat1))
+        dlon = math.radians(float(lon2) - float(lon1))
         a = math.sin(dlat/2) * math.sin(dlat/2) + math.cos(math.radians(lat1)) \
             * math.cos(math.radians(lat2)) * math.sin(dlon/2) * math.sin(dlon/2)
         c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
@@ -28,26 +28,25 @@ def distance(origin, destination):
     return d
 
 
-def approximate_city(profile, radius):
+def approximate_major_city(profile, radius):
     """
-    Finds the closest major city to the user's lat/long in a given km radius.
+    Finds the closest major city to the user's lat/long within a given km radius.
     Updates the user profile if a major city is found.
     """
-    from geo.cities import cities
     from spark.models import City
     
     nearest = None
     min_distance = 0
-    for (name, props) in cities.iteritems():
+    for city in City.objects.all():
         user_pos = (profile.latitude, profile.longitude)
-        city_pos = (props['lat'], props['lng'])
+        city_pos = (city.latitude, city.longitude)
         d = abs(distance(user_pos, city_pos))
         if (d < min_distance or not nearest) and d <= radius:
             min_distance = d
-            nearest = name
+            nearest = city
     
     if nearest:
-        profile.major_city = City.objects.get(pk=nearest)
+        profile.major_city = nearest
         profile.save()
 
 

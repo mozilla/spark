@@ -8,6 +8,9 @@ from spark.models import City
 
 from geo.continents import countries_continents
 
+
+
+
 class GlobalStats(models.Model):
     name = models.CharField(max_length=255, primary_key=True)
     value = models.PositiveIntegerField(blank=True, null=True)
@@ -200,9 +203,16 @@ class CitySharingHistory(models.Model):
 
     @classmethod
     def add_share_from_profiles(cls, sharer, sharee):
+        from .tasks import get_ordered_cities
+        
         city1 = sharer.major_city
         city2 = sharee.major_city
         
         if city1 and city2:
-            CitySharingHistory.add_share(city1, city2, sharer)
+            city_positions = get_ordered_cities()
 
+            # City pairs are sorted by longitude in CitySharingHistory
+            if city_positions[city1.id] < city_positions[city2.id]:
+                CitySharingHistory.add_share(city1, city2, sharer)
+            else:
+                CitySharingHistory.add_share(city2, city1, sharer)

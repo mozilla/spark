@@ -1,3 +1,5 @@
+# This is a local settings example file for development.
+
 from settings import *
 
 DATABASES = {

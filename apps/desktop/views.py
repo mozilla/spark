@@ -91,24 +91,25 @@ def user(request, username):
 
 def visualization(request):
     from spark.models import City
-    from stats.tasks import _ordered_cities
-    from stats.tasks import update_aggregate_history, update_final_history, update_user_history
+    from stats.tasks import get_ordered_cities
+    from stats.tasks import get_aggregate_history, get_final_history
     import json
     
     cities_by_name = City.objects.order_by('city_name').all()
-    positions = _ordered_cities()
+    positions = get_ordered_cities()
     
     cities_by_longitude = City.objects.order_by('longitude')
     citylist = json.dumps([get_city_fullname(c.city_name, c.country_code, request.locale) for c in cities_by_longitude])
     
     data = {'cities': [(positions[c.id], get_city_fullname(c.city_name, c.country_code, request.locale)) for c in cities_by_name],
             'citylist': citylist,
-            'share_history': update_aggregate_history(),
-            'final_history': update_final_history()}
+            'share_history': get_aggregate_history(-1),
+            'final_history': get_final_history(-1)}
     
     if request.user.is_authenticated():
         data.update({'logged_in': True,
-                     'user_history': update_user_history(request.user.id)})
+                     'user_history': get_aggregate_history(request.user.id),
+                     'user_final_history': get_final_history(request.user.id) })
     else:
         data.update({'login_next_url': reverse('desktop.visualization')})
     
@@ -117,20 +118,6 @@ def visualization(request):
 
 def close(request):
     return jingo.render(request, 'desktop/close.html')
-
-def generate_history(request):
-    from stats.tasks import _generate_fake_history
-    _generate_fake_history()
-    return HttpResponse('History generated')
-
-
-def trigger_challenges(request, username):
-    """Test view for stage debugging"""
-    from challenges.tasks import update_completed_challenges
-    
-    user = get_object_or_404(User, username=username, is_active=True)
-    update_completed_challenges.delay(user.id)
-    return HttpResponse('Triggered challenge completion for %s' % username)
     
     
 def _total_seconds(td):

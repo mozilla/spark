@@ -317,6 +317,17 @@ class Profile(models.Model):
             chain_length -= 1
 
 
+    def add_city_shares_for_children(self):
+        """Creates city shares in the CitySharingHistory for the global visualization.
+           This is useful when a user already has children when he completes boost 1 (geolocation).
+           As soon as it's completed, city shares are created for all geolocated children.
+        """
+        from stats.models import CitySharingHistory
+        
+        for child in self.children_profiles:
+            if child.boost1_completed:
+                CitySharingHistory.add_share_from_profiles(self, child)
+
 
 # Retrieves or creates a Profile automatically whenever the profile property is accessed
 User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])

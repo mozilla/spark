@@ -1,6 +1,7 @@
 # Django settings file for a project based on the playdoh template.
 
 import os
+import datetime
 
 from django.utils.functional import lazy
 
@@ -365,3 +366,6 @@ MOBILE_COOKIE = 'mobile'
 
 # Session cookies must not be sent over HTTP
 SESSION_COOKIE_SECURE = True
+
+# Campaign starting date used by the visualization -- to be changed in settings_local.py
+CAMPAIGN_STARTING_DATE = datetime.datetime(2011, 3, 24)

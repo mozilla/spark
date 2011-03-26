@@ -9,8 +9,4 @@ urlpatterns = patterns('',
     url(r'^user/(?P<username>[\w.+-]+)$', views.user, name='desktop.user'),
     url(r'^global$', views.visualization, name='desktop.visualization'),
     url(r'^close$', views.close, name='desktop.close_popup'),
-    
-    ### Temporary - Generate stage fake history
-    url(r'^generate$', views.generate_history, name='desktop.generate'),
-    url(r'^trigger/(?P<username>[\w.+-]+)$', views.trigger_challenges, name='desktop.trigger')
 )
