@@ -24,7 +24,7 @@ var createHalfCircle = function(posCity, hue, opacity, city, radius) {
     var style = {"stroke": 0, "fill": "hsla(" + hue + ", 100, 55, "+ opacity + ")", "stroke-linecap": "butt"};
     
     radius /= 2;
-    halfCircles[city] = r.path().attr(style).attr({arc: [posCity - radius, 650, posCity + radius, 650, 1] });
+    halfCircles[city] = r.path().attr(style);
     currentRadii[city] = radius;
 };
 
@@ -44,7 +44,7 @@ var initCityList = function() {
         citylist = r.set();
 
     for(var i = 0; i < nbCities; i += 1) {
-        var x = i * (width / (nbCities - 1));
+        var x = i * (width / (nbCities));
         var y = height - (height - 650) + textOffset;
         
         citylist.push(r.text(x, y, cities[i]).attr(textStyle).rotate(90, x, y));

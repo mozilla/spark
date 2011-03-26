@@ -115,7 +115,7 @@ var refreshNodes = function() {
     for(var key in currentRadii) {
         if(currentRadii[key] !== 0) {
             radius = currentRadii[key];
-            xPos = key * (width / (nbCities - 1));
+            xPos = (key - 1) * (width / nbCities);
             
             halfCircles[key].attr({arc: [xPos - radius, 650, xPos + radius, 650, 1]})
         }
