@@ -37,8 +37,7 @@ var findMaxShareCount = function() {
             maxShareCount = finalShares[i][2];
         }
     }
-    
-    console.log(maxShareCount);
+
     strokeFactor = MAXSTROKE / maxShareCount;
     radiusFactor = MAXRADIUS / maxShareCount;
 };
