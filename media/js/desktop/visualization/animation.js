@@ -78,8 +78,8 @@ var drawStep = function(s) {
         for(var i = 0; i < nbPairs; i += 1) {
             var city1 = step[i][0],
                 city2 = step[i][1],
-                posCity1 = city1 * (width / (nbCities - 1)),
-                posCity2 = city2 * (width / (nbCities - 1)),
+                posCity1 = (city1 - 1) * (width / nbCities),
+                posCity2 = (city2 - 1) * (width / nbCities),
                 nodeId = city1 + ":" + city2,
                 node = document.getElementById(nodeId),
                 nbShares = step[i][2],
