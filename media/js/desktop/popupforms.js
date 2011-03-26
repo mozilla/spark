@@ -23,6 +23,8 @@ function popupForm(formId, errorCallback, successCallback) {
 
         processResponse = function(data) {
             if (data) {
+                $submitButton.removeAttr("disabled");
+                
         		if(data.status === 'error') {
         			$.each(data.errors, function(fieldname, errmsg) {
         			    if(fieldname === '__all__') {
@@ -37,8 +39,6 @@ function popupForm(formId, errorCallback, successCallback) {
                 		    }
         			    }
         			});
-
-		            $submitButton.removeAttr("disabled");
         		} else if(data.status === 'success') {
         		    if(successCallback) {
             		    successCallback($form, data);   
