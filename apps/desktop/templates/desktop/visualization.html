@@ -90,6 +90,9 @@ var userFinalShares = {{ user_final_history }};
 var shareHistory = globalHistory;
 var finalShares = globalFinalShares;
 
+var startingDate = {{ starting_date }},
+    endDate = new Date();
+
 $(document).ready(function() {
     enableRaphaelGroups();
     

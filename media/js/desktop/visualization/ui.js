@@ -149,7 +149,7 @@ var initUI = function() {
 
     var updateTimeLabel = function(currentTime) {
         $time.css('left', (currentTime / MAXVALUE) * timerWidth);
-        updateDelta(x, currentTime);
+        updateDelta(startingDate, currentTime);
     };
 
     // stops playing when the slider is manually changed
@@ -254,6 +254,7 @@ var initUI = function() {
     initPopup();
     initMask();
     initSliders();
+    initDates();
 };
  
 // increments the value of the time slider

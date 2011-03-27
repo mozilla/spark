@@ -104,7 +104,8 @@ def visualization(request):
     data = {'cities': [(positions[c.id], get_city_fullname(c.city_name, c.country_code, request.locale)) for c in cities_by_name],
             'citylist': citylist,
             'share_history': get_aggregate_history(-1),
-            'final_history': get_final_history(-1)}
+            'final_history': get_final_history(-1),
+            'starting_date': _timestamp(settings.CAMPAIGN_STARTING_DATE)}
     
     if request.user.is_authenticated():
         data.update({'logged_in': True,
@@ -123,3 +124,6 @@ def close(request):
 def _total_seconds(td):
     """Returns the total number of seconds in a given timedelta."""
     return (td.microseconds + (td.seconds + td.days * 24 * 3600) * 10**6) / 10**6
+    
+def _timestamp(d):
+    return _total_seconds(d - datetime.datetime(1970, 1, 1)) * 1000
