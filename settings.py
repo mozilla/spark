@@ -368,4 +368,4 @@ MOBILE_COOKIE = 'mobile'
 SESSION_COOKIE_SECURE = True
 
 # Campaign starting date used by the visualization -- to be changed in settings_local.py
-CAMPAIGN_STARTING_DATE = datetime.datetime(2011, 3, 27)
+CAMPAIGN_STARTING_DATE = datetime.datetime(2011, 3, 26, 18)
