@@ -105,3 +105,20 @@ class RemoveSlashMiddleware(object):
                     newurl += '?' + request.META['QUERY_STRING']
             return HttpResponsePermanentRedirect(newurl)
         return response
+
+
+@contextlib.contextmanager
+def safe_query_string(request):
+    """
+    Turn the QUERY_STRING into a unicode- and ascii-safe string.
+
+    We need unicode so it can be combined with a reversed URL, but it has to be
+    ascii to go in a Location header.  iri_to_uri seems like a good compromise.
+    """
+    qs = request.META['QUERY_STRING']
+    try:
+        request.META['QUERY_STRING'] = iri_to_uri(qs)
+        yield
+    finally:
+        request.META['QUERY_STRING'] = qs
+
