@@ -50,8 +50,15 @@ TEXT_DOMAIN = 'messages'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-US'
 
+
+KNOWN_LANGUAGES_STAGE = ('en-US', 'ca', 'de', 'el', 'es', 'eu', 'fr', 'fy', 'hu',
+                         'it', 'ko', 'nl', 'pl', 'si', 'sl', 'sq', 'th', 'vi',
+                         'zh-TW')
+KNOWN_LANGUAGES_PROD = ('en-US','ca','fr','de','it','ja','pl','sl','es','vi',)
+
 # Accepted locales
-KNOWN_LANGUAGES = ('en-US','ca','fr','de','it','ja','pl','sl','es','vi',)
+KNOWN_LANGUAGES = KNOWN_LANGUAGES_PROD
+
 
 # List of RTL locales known to this project. Subset of LANGUAGES.
 RTL_LANGUAGES = ()  # ('ar', 'fa', 'fa-IR', 'he')

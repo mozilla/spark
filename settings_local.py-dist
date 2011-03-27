@@ -41,6 +41,10 @@ DEFAULT_FROM_EMAIL = '<insert email here>'
 RESPONSYS_ID = '<insert Responsys production key>'
 
 
+# Uncomment on stage
+#KNOWN_LANGUAGES = KNOWN_LANGUAGES_STAGE
+
+
 # Campaign starting date used by the visualization
 CAMPAIGN_STARTING_DATE = datetime.datetime(2011, 3, 29)
 
