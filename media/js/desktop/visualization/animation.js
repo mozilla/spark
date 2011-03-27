@@ -7,6 +7,8 @@ var playTimelapse = function() {
 
         if(currentTime === 1) {
             clearAll();
+            resetObjectValues(currentStrokes);
+            resetObjectValues(currentRadii);
         }
     
         if(currentTime % GRANULARITY === 0) {
@@ -31,6 +33,7 @@ var animateArc = function(arc, stroke) {
     var counter = 0,
         oldStroke = arc.style.strokeWidth,
         strokeAnimation;
+
                 
     // creates an animation between changes of size
     strokeAnimation = setInterval(function() {
@@ -54,8 +57,8 @@ var animateCity = function(cityIndex, posCity, radius) {
                 counter += 1;
                 var oldRadius = currentRadii[cityIndex],
                     r = oldRadius + ((radius - oldRadius) / 10 * counter);
-
-                if(r < oldRadius || counter === 10) {
+                    
+                if(counter > 10) {
                     currentRadii[cityIndex] = radius;
                     clearInterval(animation);
                 } else {
