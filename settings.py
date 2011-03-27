@@ -54,7 +54,7 @@ LANGUAGE_CODE = 'en-US'
 KNOWN_LANGUAGES_STAGE = ('en-US', 'ca', 'de', 'el', 'es', 'eu', 'fr', 'fy', 'hu',
                          'it', 'ko', 'nl', 'pl', 'si', 'sl', 'sq', 'th', 'vi',
                          'zh-TW')
-KNOWN_LANGUAGES_PROD = ('en-US','ca','fr','de','it','ja','pl','sl','es','vi',)
+KNOWN_LANGUAGES_PROD = ('en-US','ca','fr','de','it','ja','pl','es','vi',)
 
 # Accepted locales
 KNOWN_LANGUAGES = KNOWN_LANGUAGES_PROD
