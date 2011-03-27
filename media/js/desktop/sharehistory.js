@@ -24,11 +24,11 @@ var initShareHistory = function(values) {
     c.beginPath();
     c.moveTo(x, (h - values[0] * m));
 
-    for(i = 0; i <= nbValues - 1; i += 1) {
+    for(i = 0; i < nbValues; i += 1) {
         var y = (h - values[i] * m);
 
         x = i * (w / (nbValues - 1));
-
+        
         c.lineTo(x, y);
     }
 

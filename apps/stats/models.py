@@ -130,7 +130,7 @@ class SharingHistory(models.Model):
 
     @classmethod
     def get_shares_over_time(cls, profile):
-        start = settings.CAMPAIGN_STARTING_DATE
+        start = settings.CAMPAIGN_STARTING_DATE - timedelta(days=1)
         num_days = (datetime.now() + timedelta(days=1) - start).days
         shares = [0 for i in range(num_days)]
         date_range = (start + timedelta(days=i) for i in range(num_days))
