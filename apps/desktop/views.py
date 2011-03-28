@@ -1,11 +1,11 @@
 import datetime
 import json
-import urllib
 
 from django.http import HttpResponse
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse as django_reverse
+from django.utils.http import urlquote
 
 from geo.countries import countries
 
@@ -41,22 +41,22 @@ def home(request):
                                      'date_joined_delta': _total_seconds(delta),
                                      'countries': json.dumps(countries[request.locale]),
                                      'sparked_countries': json.dumps(profile.sparked_countries),
-                                     'twitter_url': urllib.quote(profile.twitter_sharing_url),
-                                     'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)),
+                                     'twitter_url': urlquote(profile.twitter_sharing_url),
+                                     'twitter_msg': urlquote(unicode(TWITTER_SPARK_MSG)),
                                      'facebook_url': profile.facebook_sharing_url,
                                      'facebook_redirect': absolute_url(django_reverse('desktop.close_popup')),
-                                     'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
-                                     'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)),
+                                     'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
+                                     'facebook_spark_msg': urlquote(unicode(FACEBOOK_SPARK_MSG)),
                                      'abs_url': profile.generic_sharing_url,
                                      'stats': get_global_stats()})
     else:
         data = {'is_homepage': True,
-                'twitter_url': urllib.quote(absolute_url(django_reverse('desktop.home'))),
-                'twitter_msg': urllib.quote(unicode(TWITTER_SHARE_MSG)),
+                'twitter_url': urlquote(absolute_url(django_reverse('desktop.home'))),
+                'twitter_msg': urlquote(unicode(TWITTER_SHARE_MSG)),
                 'facebook_url': absolute_url(django_reverse('desktop.home')),
                 'facebook_redirect': absolute_url(django_reverse('desktop.close_popup')),
-                'facebook_msg': urllib.quote(unicode(FACEBOOK_SHARE_MSG)),
-                'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
+                'facebook_msg': urlquote(unicode(FACEBOOK_SHARE_MSG)),
+                'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
                 'stats': get_global_stats()}
         return jingo.render(request, 'desktop/home.html', data)
 
@@ -74,12 +74,12 @@ def user(request, username):
             'is_user_page': True,
             'countries': json.dumps(countries[request.locale]),
             'sparked_countries': json.dumps(user.profile.sparked_countries),
-            'twitter_url': urllib.quote(user.profile.twitter_sharing_url),
-            'twitter_msg': urllib.quote(unicode(TWITTER_SHARE_MSG)),
+            'twitter_url': urlquote(user.profile.twitter_sharing_url),
+            'twitter_msg': urlquote(unicode(TWITTER_SHARE_MSG)),
             'facebook_url': user.profile.facebook_sharing_url,
             'facebook_redirect': absolute_url(django_reverse('desktop.home')),
-            'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
-            'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG)),
+            'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
+            'facebook_spark_msg': urlquote(unicode(FACEBOOK_SPARK_MSG)),
             'stats': get_global_stats()}
     
     if not request.user.is_authenticated():

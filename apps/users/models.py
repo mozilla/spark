@@ -1,10 +1,10 @@
 import datetime
-import urllib
 
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse as django_reverse
+from django.utils.http import urlquote
 
 from tower import ugettext as _, ugettext_lazy as _lazy
 
@@ -99,8 +99,8 @@ class Profile(models.Model):
                 'description': cc.challenge.badge_description,
                 'date_earned': cc.date_badge_earned,
                 'new': cc.new_badge,
-                'twitter_msg': urllib.quote(unicode(TWITTER_BADGE_MSG % {'badge_name':cc.challenge.badge_name, 'short_url':''})),
-                'facebook_msg': urllib.quote(unicode(FACEBOOK_BADGE_MSG % {'badge_name':cc.challenge.badge_name}))
+                'twitter_msg': urlquote(unicode(TWITTER_BADGE_MSG % {'badge_name':cc.challenge.badge_name, 'short_url':''})),
+                'facebook_msg': urlquote(unicode(FACEBOOK_BADGE_MSG % {'badge_name':cc.challenge.badge_name}))
             })
         return badges
     

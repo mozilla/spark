@@ -1,8 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse as django_reverse
+from django.utils.http import urlquote
 
-import urllib
 import jingo
 
 from spark.models import City
@@ -268,12 +268,12 @@ def shareqr(request):
 
 @login_required
 def sharelink(request):
-    data = {'twitter_url': urllib.quote(request.user.profile.twitter_sharing_url),
-            'twitter_msg': urllib.quote(unicode(TWITTER_SPARK_MSG)),
+    data = {'twitter_url': urlquote(request.user.profile.twitter_sharing_url),
+            'twitter_msg': urlquote(unicode(TWITTER_SPARK_MSG)),
             'facebook_url': request.user.profile.facebook_sharing_url,
             'facebook_redirect': absolute_url(django_reverse('mobile.home')),
-            'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
-            'facebook_spark_msg': urllib.quote(unicode(FACEBOOK_SPARK_MSG))}
+            'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
+            'facebook_spark_msg': urlquote(unicode(FACEBOOK_SPARK_MSG))}
             
     return jingo.render(request, 'mobile/sharelink.html', data)
 
@@ -291,11 +291,11 @@ def sharebadge(request):
         
         if has_badge:
             data = {'badge_name': get_badge_name(badge.id),
-                    'twitter_url': urllib.quote(profile.twitter_sharing_url),
+                    'twitter_url': urlquote(profile.twitter_sharing_url),
                     'twitter_badge_msg': TWITTER_BADGE_MSG,
                     'facebook_url': profile.facebook_sharing_url,
                     'facebook_redirect': absolute_url(django_reverse('mobile.home')),
-                    'facebook_title': urllib.quote(unicode(FACEBOOK_SPARK_TITLE)),
+                    'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
                     'facebook_badge_msg': FACEBOOK_BADGE_MSG }
             return jingo.render(request, 'mobile/sharebadge.html', data)
     except Challenge.DoesNotExist:

@@ -6,6 +6,7 @@ import urlparse
 from django.conf import settings
 from django.template import defaultfilters
 from django.utils.html import strip_tags
+from django.utils.http import urlquote_plus
 
 from jingo import register
 import jinja2
@@ -65,4 +66,4 @@ def _urlencode(items):
 @register.filter
 def urlencode(txt):
     """Url encode a path."""
-    return urllib.quote_plus(txt)
+    return urlquote_plus(txt)
