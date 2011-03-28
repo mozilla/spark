@@ -77,7 +77,7 @@ def user(request, username):
             'twitter_url': urlquote(user.profile.twitter_sharing_url),
             'twitter_msg': urlquote(unicode(TWITTER_SHARE_MSG)),
             'facebook_url': user.profile.facebook_sharing_url,
-            'facebook_redirect': absolute_url(django_reverse('desktop.home')),
+            'facebook_redirect': absolute_url(django_reverse('desktop.close_popup')),
             'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
             'facebook_spark_msg': urlquote(unicode(FACEBOOK_SPARK_MSG)),
             'stats': get_global_stats()}
