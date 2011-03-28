@@ -12,7 +12,7 @@
 {% block widecolumn %}
 	<p>
 	    {# L10n: Global Spark visualization description #}
-	    {% trans download_url='#download' %}
+	    {% trans download_url='#download' if is_homepage else 'http://market.android.com/details?id=org.mozilla.firefox' %}
 	    <span class="title">See the Sparks fly.</span>
 	    Here's what's going on in the rest of the world. 
 	    Start sharing your Spark, get your stats on the map and be a part some something big. 
