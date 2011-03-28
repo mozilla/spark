@@ -26,7 +26,7 @@
     <p class="section sans">
         {# L10n: This is the 'countries_part' used in the string : "<span>{username}</span> shared to <span>{n} person</span> {countries_part}" #}
         {% set countries_part = ngettext('in <span>{n} country</span> around the world.',
-                                         'in <span>{n} different countries</span> around the world.', num_countries)|fe(n=profile.total_countries_sparked) %}
+                                         'in <span>{n} different countries</span> around the world.', profile.total_countries_sparked)|fe(n=profile.total_countries_sparked) %}
         
         {{ ngettext('<span>{username}</span> shared to <span>{n} person</span> {countries_part}',
                     '<span>{username}</span> shared to <span>{n} people</span> {countries_part}', num_people)|fe(n=profile.total_shares, username=username, countries_part=countries_part) }}
