@@ -316,6 +316,8 @@ ul#main-menu {
 	color:#ffd40d;
 	font-size:4.615em;
 	font-weight:bold;
+	line-height:50%;
+	margin:0.35em 0 0.2em 0;
 }
 
 #headline h1 span {
@@ -819,6 +821,9 @@ img.spinner {
     font-size:3.692em;
     color:#ffd40d;
     font-weight:bold;
+    line-height:50%;
+    margin:0.4em 0 0.15em 0;
+    max-width:55%;
 }
 
 #user-info {
@@ -957,6 +962,7 @@ span.label {
 
 #activation {
     margin-bottom:50px;
+    clear:both;
 }
 
 #activation div {
