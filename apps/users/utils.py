@@ -38,6 +38,7 @@ def handle_register(request):
             new_user = User.objects.create_user(username, email, password)
             new_user.save()
             Profile.objects.create(user=new_user)
+            UserNode.objects.create(user=new_user)
             
             GlobalStats.increment_total_sparks()
         return form
