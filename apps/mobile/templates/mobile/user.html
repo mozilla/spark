@@ -29,11 +29,11 @@
                                          'in <span>{n} different countries</span> around the world.', profile.total_countries_sparked)|fe(n=profile.total_countries_sparked) %}
         
         {{ ngettext('<span>{username}</span> shared to <span>{n} person</span> {countries_part}',
-                    '<span>{username}</span> shared to <span>{n} people</span> {countries_part}', num_people)|fe(n=profile.total_shares, username=username, countries_part=countries_part) }}
+                    '<span>{username}</span> shared to <span>{n} people</span> {countries_part}', profile.total_shares)|fe(n=profile.total_shares, username=username, countries_part=countries_part) }}
 
         {# L10n: 'they' is referring to the user who shared to {n} people in the previous string. #}
         {{ ngettext('And, they unlocked <span>{n} cool badge</span> in the process.',
-                    'And, they unlocked <span>{n} cool badges</span> in the process.', num_badges)|fe(n=profile.total_badges_earned) }}
+                    'And, they unlocked <span>{n} cool badges</span> in the process.', profile.total_badges_earned)|fe(n=profile.total_badges_earned) }}
     
         {{ _('How far will your Spark go?') }}
     </p>
