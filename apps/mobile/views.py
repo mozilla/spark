@@ -8,7 +8,7 @@ import jingo
 from spark.models import City
 from spark.urlresolvers import reverse, absolute_url
 from spark.decorators import post_required
-from spark.utils import (get_city_fullname, is_android_non_firefox, is_iphone,
+from spark.utils import (get_city_fullname, is_supported_non_firefox, is_iphone,
                          is_firefox_mobile, is_android, get_ua, approximate_major_city)
 
 from users.models import User, UserNode
@@ -39,16 +39,14 @@ def home(request):
         profile = request.user.profile
         return jingo.render(request, 'mobile/myspark.html', 
                                     {'profile': profile})
-    
-    print get_ua(request)
-    
+
     data = {}
     if is_firefox_mobile(request):
         template = 'mobile/home.html'
     elif is_iphone(request):
         template = 'mobile/iphone.html'
     else:
-        data.update({'non_android': not is_android_non_firefox(request)})
+        data.update({'non_supported': not is_supported_non_firefox(request)})
         template = 'mobile/non_firefox.html'
     
     return jingo.render(request, template, data)
@@ -320,7 +318,7 @@ def iphone(request):
 
 
 def non_android(request):
-    return jingo.render(request, 'mobile/non_firefox.html', {'non_android': True})
+    return jingo.render(request, 'mobile/non_firefox.html', {'non_supported': True})
 
 
 def non_firefox(request):
@@ -333,7 +331,7 @@ def user(request, username):
     data = {'username': username,
             'profile': user.profile,
             'logged_in': request.user.is_authenticated(),
-            'android_non_ff': is_android_non_firefox(request),
+            'supported_non_ff': is_supported_non_firefox(request),
             'iphone': is_iphone(request),
             'firefox': is_firefox_mobile(request)}
 

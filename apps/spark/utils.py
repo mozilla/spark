@@ -80,19 +80,19 @@ def is_android(request):
     return False
 
 
-def is_android_non_firefox(request):
+def is_supported_non_firefox(request):
     ua = get_ua(request)
-    if 'Android' in ua and not 'Firefox' in ua:
+    if ('Android' in ua or 'Maemo' in ua) and not 'Firefox' in ua:
         return True
     return False
 
 
 def is_firefox_mobile(request):
     ua = get_ua(request)
-    if 'Android' in ua and 'Firefox' in ua:
+    if ('Android' in ua or 'Maemo' in ua) and 'Firefox' in ua:
         return True
     return False
 
 
 def is_mobile(request):
-    return is_iphone(request) or is_android_non_firefox(request) or is_firefox_mobile(request)
+    return is_iphone(request) or is_supported_non_firefox(request) or is_firefox_mobile(request)
