@@ -27,7 +27,7 @@ def download_from_qr_redirect(request):
     
     response = HttpResponseRedirect(MOBILE_DOWNLOAD_URL)
     
-    if not _has_parent_cookie(request):
+    if username and not _has_parent_cookie(request):
         parent_username = _add_share_to_user(request, username, 'qr')
         if parent_username:
             # Set a 'parent' cookie so that you can't trigger a +1 share for the parent more than once.
