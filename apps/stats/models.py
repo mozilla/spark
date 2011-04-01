@@ -109,7 +109,7 @@ class SharingHistory(models.Model):
     parent = models.ForeignKey(Profile, db_index=True)
     date_shared = models.DateTimeField(auto_now_add=True)
     shared_via = models.PositiveIntegerField(default=UNKNOWN)
-    timezone = models.IntegerField(blank=True, null=True)
+    timezone = models.FloatField(blank=True, null=True)
 
     class Meta:
         ordering = ('-date_shared',)
