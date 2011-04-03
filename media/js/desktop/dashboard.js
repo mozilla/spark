@@ -143,15 +143,15 @@ var initSpark = function (level) {
     
     initShapes();
 
-    update();
+    // update();
+    // 
+    // drawShapes(shapes, level);
     
-    drawShapes(shapes, level);
-    
-    // setInterval(function() {
-    //     update();
-    //     ctx.clearRect(0, 0, w, h);
-    //     drawShapes(shapes, level);
-    // }, 1000 / 30);
+    setInterval(function() {
+        update();
+        ctx.clearRect(0, 0, w, h);
+        drawShapes(shapes, level);
+    }, 1000 / 30);
 };
 
 var $tooltip = $('#tooltip'),
