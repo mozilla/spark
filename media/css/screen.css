@@ -286,12 +286,21 @@ ul#main-menu {
 	width:190px;
 	border-top:3px solid #ffd40d;
 	margin-left:10px;
-	padding-top:10px;
 	font-size:1.385em;
 }
 
 #main-menu li a {
     color:#fff;
+    display:block;
+    padding-top:10px;
+}
+
+#main-menu li a:hover, #main-menu li a:hover span {
+    color:#ffd40d;
+}
+
+#main-menu li a:active, #main-menu li a:active span {
+    color:#fee779;
 }
 
 #main-menu li span {
