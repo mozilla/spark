@@ -263,6 +263,8 @@ a:active, a:focus {
 
 .js #have-account {
     display:block;
+    text-align:left;
+    padding-left:360px;
 }
 
 #logo {
