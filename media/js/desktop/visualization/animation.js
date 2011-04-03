@@ -1,6 +1,10 @@
 var timelapseInterval;
 
 var playTimelapse = function() {
+        if(currentScale > 0) {
+            resetZoom();
+        }
+        
         timelapseInterval = setInterval(function() {
         updateCurrentTime();
         updateTimelapse();

@@ -233,7 +233,11 @@ RaphaelZPD = function(raphaelPaper, o, container) {
             zoomIn();
         } else {
             if(previousValue > 0 && ui.value < 3) {
-                zoomOut();   
+                var delta = previousValue - ui.value;
+                console.log(delta);
+                for(var i = 0; i < delta; i += 1) {
+                    zoomOut();
+                }
             }
         }
         previousValue = ui.value;

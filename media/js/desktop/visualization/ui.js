@@ -73,6 +73,11 @@ var toggleFocus = function() {
     }
 };
 
+var resetZoom = function() {
+    $zoom.slider("value", 0);
+    updateCurrentScale();
+};
+
 var initUI = function() {
     $zoom = $('#zoom');
     $timelapse = $('#time-wrapper');
