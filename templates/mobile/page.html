@@ -44,6 +44,8 @@
 		        <ul>
 		            {% if not profile.boost1_completed or not profile.boost2_completed %}
 		            <li><a href="{{ url('mobile.boost') }}">{{ _('Boost your Spark') }}</a></li>
+		            {% else %}
+		            <li><a href="{{ url('mobile.home') }}">{{ _('My Firefox Spark') }}</a></li>
 		            {% endif %}
 		            <li><a href="{{ url('mobile.stats') }}">{{ _('Stats') }}</a></li>
 		            <li><a href="{{ url('mobile.challenges') }}">{{ _('Challenges') }}
