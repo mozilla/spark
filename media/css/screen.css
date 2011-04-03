@@ -228,7 +228,7 @@ a:active, a:focus {
 /* Masthead */
 
 #masthead {
-	padding:25px 0;
+	padding:20px 0;
 	position:relative;
 }
 
@@ -242,11 +242,15 @@ a:active, a:focus {
     top:0px;
 }
 
-#have-account, #js-warning {
-    margin-bottom:2.5em;
+#have-account, #js-warning, #create-account {
     font-size:1.231em;
     color:#a9aaaa;
     text-align:center;
+    line-height:150%;
+}
+
+#js-warning, #create-account {
+    margin-bottom:0.5em;
 }
 
 #have-account {
@@ -261,7 +265,7 @@ a:active, a:focus {
     display:none;
 }
 
-.js #have-account {
+.js #have-account, .js #create-account {
     display:block;
     text-align:left;
     padding-left:360px;
