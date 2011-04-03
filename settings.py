@@ -184,6 +184,7 @@ MINIFY_BUNDLES = {
         ),
         'home': (
             'js/desktop/popups-loggedout.js',
+            'js/desktop/customforms.js',
         ),
         'dashboard': (
             'js/desktop/minimap.js',

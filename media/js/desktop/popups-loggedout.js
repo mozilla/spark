@@ -3,7 +3,7 @@ function initLoginForm() {
        swap('#sign-in', '#password-recovery');
     });
     
-    $('#sign-in p.download a').click(function() {
+    $('#popup p.download a').click(function() {
        hidePopup();
     });
     

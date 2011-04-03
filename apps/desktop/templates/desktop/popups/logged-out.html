@@ -28,6 +28,51 @@
             {% endtrans %}
         </p>
     </div>
+    <div id="register">
+        <h3>{{ _('Register') }}</h3>
+            <p class="legend">{{ _('All fields are required. Your email address allows you to retrieve a lost password.') }}</p>
+            <hr>
+            <form id="signup" action="{{ url('users.login')|secure_url }}" method="post" accept-charset="utf-8">
+                {{ csrf() }}
+                {% if register_next_url %}
+                <input type="hidden" name="next" value="{{ register_next_url }}">
+                {% endif %}
+                <fieldset class="section">
+                    <div id="register-username" class="input-wrapper">
+                        <input tabindex="1" type="text" name="username" value="" placeholder="{{ _('Username') }}" required>
+                    </div>
+                    <div id="register-password" class="input-wrapper">
+                        <input tabindex="2" type="password" name="password" value="" placeholder="{{ _('Password') }}" required>
+                    </div>
+                    <div id="register-confirm-password" class="input-wrapper">
+                        <input tabindex="3" type="password" name="confirm-password" value="" placeholder="{{ _('Confirm password') }}" required>
+                    </div>
+                    <div id="register-confirm-password" class="input-wrapper">
+                        <input tabindex="4" type="email" name="email" value="" placeholder="{{ _('Email address') }}" required>
+                    </div>
+                </fieldset>
+                <fieldset id="newsletter">
+                        <p class="sans">
+                            <input tabindex="5" id="newsletter-cb" type="checkbox" name="newsletter" class="styled">
+                            <label for="newsletter-cb">{{ _("I'd like to subscribe to monthly updates and keep up-to-date with Mozilla news.") }}</label>
+                        </p>
+        				<p class="sans">
+                            <input tabindex="6" id="spark-newsletter-cb" type="checkbox" name="spark_newsletter" class="styled">
+                            <label for="spark-newsletter-cb">{{ _("Send me updates about Spark.") }}</label>
+                        </p>
+                </fieldset>
+            <div class="buttons-wrapper">
+                <a class="button left-button close">{{ _('Cancel') }}</a>
+                <button tabindex="7" class="right-button" type="submit"><span>{{ _('Sign in') }}</span></button>
+            </div>
+        </form>
+        <p class="download">
+            {% trans download_url='#download' if is_homepage else '%s%s' % (url('desktop.home'), '#download') %}
+            Don't have the mobile browser yet? <a href="{{ download_url }}">Download</a> Firefox on your Android or Maemo to get started, then log-in to Spark with the 
+            username and password created here.
+            {% endtrans %}
+        </p>
+    </div>
     <div id="password-recovery">
         <h3>{{ _('Forgot my info') }}</h3>
         <p class="legend">

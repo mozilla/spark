@@ -76,8 +76,13 @@ var showVideoPlayer = function() {
 
 $(document).ready(function() {
     // displays the sign-in modal popup
-    $('.popup-trigger').click(function() {
+    $('#have-account .popup-trigger').click(function() {
         $('#sign-in').show();
+        showPopup();
+    });
+    
+    $('#create-account .popup-trigger').click(function() {
+        $('#register').show();
         showPopup();
     });
     

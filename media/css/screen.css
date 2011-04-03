@@ -745,8 +745,32 @@ span.error {
     font-size:1.231em;
 }
 
-#sign-in, #your-account, #password-recovery, #success, #change-email, #change-password, #delete-account {
+#sign-in, #your-account, #password-recovery, #success, #change-email, #change-password, #delete-account, #register {
     display:none;
+}
+
+#popup .checkbox {
+    width: 24px;
+    height: 24px;
+    padding: 0 15px 0 0;
+    background: url('../img/checkbox.png') no-repeat;
+    display: block;
+    clear: left;
+    float: left;
+    position:relative;
+    top:0px;
+}
+
+#newsletter {
+    margin:10px 0;
+}
+
+#newsletter label{
+    line-height:150%;
+}
+
+#newsletter .checkbox:hover, #newsletter label:hover {
+    cursor:pointer;
 }
 
 #popup p.download {
