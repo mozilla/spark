@@ -3,28 +3,7 @@ var initSpark = function (level) {
         ctx = canvas.getContext("2d"),
         h = $('#spark-graphic').height(),
     	w = $('#spark-graphic').width(),
-    	shapes = [],
-    	ignorelist = [];
-
-    if(level === 1) {
-      ignorelist = [1, 3, 4, 5, 7, 9 ];
-    }
-
-    if(level === 2) {
-      ignorelist = [1, 4, 7, 9];
-    }
-
-    if(level === 3) {
-      ignorelist = [4, 7];
-    }
-
-    if(level === 4) {
-      ignorelist = [7];  
-    }
-
-    if(level === 5) {
-      ignorelist = [];
-    }
+    	shapes = [];
 
     canvas.height = h;
     canvas.width = w;
@@ -39,39 +18,37 @@ var initSpark = function (level) {
 
     var drawShapes = function(shapes, level) {
 
-        var multiplier = 1 + (level / 10);
-
-        for(i = 0, nb = shapes.length; i < nb; i += 1) {
-            var shape = shapes[i];
+        for(i = 0, nb = shapes[level - 1].length; i < nb; i += 1) {
+            var shape = shapes[level - 1][i];
             
-            if(ignorelist.indexOf(i) === -1) {
-             	ctx.save();
-                    ctx.shadowBlur = 30;
-                    ctx.shadowColor = "rgba(0,0,0,0.2)";
-        	    	ctx.fillStyle = "rgba("+shape.rgb+", 0.6)";
-        		    ctx.translate(w / 2, h);
-        	        ctx.rotate(deg2rad(shape.angle));
-        	        ctx.beginPath();
-        	        ctx.moveTo(0, 0);
-        	        ctx.arc(0, 0, 100 * multiplier * shape.scale, 0, -deg2rad(shape.arcAngle), true);
-        	        ctx.fill();
-        	    ctx.restore();
-            }
+         	ctx.save();
+                ctx.shadowBlur = 30;
+                ctx.shadowColor = "rgba(0,0,0,0.3)";
+    	    	ctx.fillStyle = "rgba("+shape.rgb+", 0.6)";
+    		    ctx.translate(w / 2, h);
+    	        ctx.rotate(deg2rad(shape.angle));
+    	        ctx.beginPath();
+    	        ctx.moveTo(0, 0);
+    	        ctx.arc(0, 0, 100 * shape.scale, 0, -deg2rad(shape.arcAngle), true);
+    	        ctx.fill();
+    	    ctx.restore();
         }
     };
 
     var update = function() {
-        for(var i = 0, nb = shapes.length; i < nb; i += 1) {
-            var s = shapes[i];
+        var dice;
+        for(var i = 0, nb = shapes[level - 1].length; i < nb; i += 1) {
+            var s = shapes[level - 1][i],
+                dice = rand(1, 6);
 
             s.moveFactor = 1-(i/6);
-
-            if(Math.abs(s.angle) > (s.maxAngle - s.arcAngle) || Math.abs(s.angle) < s.minAngle) {
+            
+            if(Math.abs(s.angle) > (s.maxAngle - s.arcAngle) || Math.abs(s.angle) < s.minAngle || dice === 6) {
                 s.angleStep *= -1;
             } 
             s.angle += s.angleStep * rand(1, 2);
 
-            if(s.scale > s.maxScale || s.scale < s.minScale) {
+            if(s.scale > s.maxScale || s.scale < s.minScale || dice === 1) {
                 s.scaleStep *= -1;
             }
             s.scale += s.scaleStep * rand(1, 2);
@@ -79,19 +56,54 @@ var initSpark = function (level) {
     };
 
     var initShapes = function() {
-        shapes = [ { arcAngle: 100, angle: -90, angleStep: -0.1, minAngle: 80, maxAngle: 190, rgb: '255, 0, 60', scale: 0.95, scaleStep: 0.01, minScale: 0.8, maxScale: 0.95 },
-                    { arcAngle: 35, angle: -100, angleStep: -0.3, minAngle: 70, maxAngle: 160, rgb: '255, 0, 60', scale: 1.1, scaleStep: 0.015, minScale: 0.9, maxScale: 1.1 },
-                    { arcAngle: 120, angle: -0, angleStep: -0.3, minAngle: 180, maxAngle: -20, rgb: '255, 0, 60', scale: 1, scaleStep: 0.01, minScale: 0.95, maxScale: 1 },
-                    { arcAngle: 155, angle: -10, angleStep: -0.5, minAngle: -30, maxAngle: 170, rgb: '255, 0, 60', scale: 0.9, scaleStep: 0.02, minScale: 0.65, maxScale: 0.9 },
-                    { arcAngle: 45, angle: -77, angleStep: -1, minAngle: 50, maxAngle: 120, rgb: '255, 155, 0', scale: 0.7, scaleStep: 0.01, minScale: 0.5, maxScale: 0.7 },
-                    { arcAngle: 65, angle: -95, angleStep: -0.8, minAngle: 80, maxAngle: 200, rgb: '255, 155, 0', scale: 0.6, scaleStep: 0.018, minScale: 0.5, maxScale: 0.6 },
-                    { arcAngle: 95, angle: 0, angleStep: -1, minAngle: -5, maxAngle: 110, rgb: '255, 155, 0', scale: 0.7, scaleStep: 0.015, minScale: 0.65, maxScale: 0.85 },
-                    { arcAngle: 45, angle: -45, angleStep: -0.6, minAngle: 40, maxAngle: 140, rgb: '255, 155, 0', scale: 0.75, scaleStep: 0.01, minScale: 0.55, maxScale: 0.75 },
-                    { arcAngle: 55, angle: -90, angleStep: -0.7, minAngle: 90, maxAngle: 170, rgb: '255, 255, 0', scale: 0.55, scaleStep: 0.01, minScale: 0.4, maxScale: 0.65 },
-                    { arcAngle: 35, angle: -120, angleStep: -0.8, minAngle: 100, maxAngle: 180, rgb: '255, 255, 0', scale: 0.4, scaleStep: 0.015, minScale: 0.3, maxScale: 0.5 },
-                    { arcAngle: 30, angle: -40, angleStep: -0.9, minAngle: 15, maxAngle: 75, rgb: '255, 255, 0', scale: 0.4, scaleStep: 0.018, minScale: 0.3, maxScale: 0.5 },
-                    { arcAngle: 90, angle: -0, angleStep: -0.005, minAngle: 0, maxAngle: 95, rgb: '255, 255, 0', scale: 0.25, scaleStep: 0.02, minScale: 0.15, maxScale: 0.25 } 
-                    ];
+        shapes = [ 
+                    //level 1
+                    [
+                        { arcAngle: 80, angle: -20, angleStep: -0.2, minAngle: 20, maxAngle: 110, rgb: '255, 0, 60', scale: 0.75, scaleStep: 0.005, minScale: 0.7, maxScale: 0.8 },
+                        { arcAngle: 80, angle: -40, angleStep: -0.3, minAngle: -15, maxAngle: -50, rgb: '255, 0, 60', scale: 0.65, scaleStep: 0.005, minScale: 0.6, maxScale: 0.7 },
+                        { arcAngle: 80, angle: -65, angleStep: -0.2, minAngle: -40, maxAngle: -80, rgb: '255, 155, 0', scale: 0.55, scaleStep: 0.005, minScale: 0.5, maxScale: 0.6 },
+                        { arcAngle: 95, angle: -2, angleStep: -0.2, minAngle: 0, maxAngle: -20, rgb: '255, 155, 0', scale: 0.45, scaleStep: 0.005, minScale: 0.4, maxScale: 0.5 },
+                        { arcAngle: 105, angle: -55, angleStep: -0.25, minAngle: -50, maxAngle: -75, rgb: '255, 255, 0', scale: 0.35, scaleStep: 0.005, minScale: 0.3, maxScale: 0.4 },
+                        { arcAngle: 105, angle: -75, angleStep: -0.005, minAngle: -60, maxAngle: -100, rgb: '255, 255, 0', scale: 0.25, scaleStep: 0.005, minScale: 0.2, maxScale: 0.3 }
+                    ],
+                    //level 2
+                    [
+                        { arcAngle: 85, angle: -60, angleStep: -0.2, minAngle: 45, maxAngle: 140, rgb: '255, 0, 60', scale: 0.95, scaleStep: 0.005, minScale: 0.9, maxScale: 1 },
+                        { arcAngle: 85, angle: -15, angleStep: -0.2, minAngle: 15, maxAngle: 110, rgb: '255, 0, 60', scale: 0.85, scaleStep: 0.005, minScale: 0.8, maxScale: 0.9 },
+                        { arcAngle: 80, angle: -50, angleStep: -0.2, minAngle: 35, maxAngle: 120, rgb: '255, 0, 60', scale: 0.75, scaleStep: 0.005, minScale: 0.7, maxScale: 0.8 },
+                        { arcAngle: 80, angle: -80, angleStep: -0.2, minAngle: 60, maxAngle: 150, rgb: '255, 155, 0', scale: 0.65, scaleStep: 0.005, minScale: 0.6, maxScale: 0.7 },
+                        { arcAngle: 105, angle: -35, angleStep: -0.25, minAngle: 25, maxAngle: 145, rgb: '255, 255, 0', scale: 0.45, scaleStep: 0.005, minScale: 0.4, maxScale: 0.5 },
+                        { arcAngle: 95, angle: -2, angleStep: -0.2, minAngle: 0, maxAngle: -20, rgb: '255, 155, 0', scale: 0.55, scaleStep: 0.005, minScale: 0.5, maxScale: 0.6 },
+                        { arcAngle: 105, angle: -75, angleStep: -0.005, minAngle: -60, maxAngle: -100, rgb: '255, 255, 0', scale: 0.35, scaleStep: 0.005, minScale: 0.3, maxScale: 0.4 }
+                    ],
+                    //level 3
+                    [
+                        { arcAngle: 88, angle: -55, angleStep: -0.2, minAngle: 30, maxAngle: 160, rgb: '255, 0, 60', scale: 1.2, scaleStep: 0.005, minScale: 1.1, maxScale: 1.25 },
+                        { arcAngle: 85, angle: -85, angleStep: -0.2, minAngle: 60, maxAngle: 170, rgb: '255, 0, 60', scale: 0.95, scaleStep: 0.005, minScale: 0.9, maxScale: 1.1 },
+                        { arcAngle: 60, angle: -10, angleStep: -0.2, minAngle: 5, maxAngle: 90, rgb: '255, 0, 60', scale: 0.92, scaleStep: 0.005, minScale: 0.85, maxScale: 1.0 },
+                        { arcAngle: 90, angle: -90, angleStep: -0.2, minAngle: 80, maxAngle: 180, rgb: '255, 155, 0', scale: 0.55, scaleStep: 0.005, minScale: 0.45, maxScale: 0.6 },
+                        { arcAngle: 95, angle: 0, angleStep: -0.2, minAngle: -10, maxAngle: 100, rgb: '255, 155, 0', scale: 0.4, scaleStep: 0.005, minScale: 0.35, maxScale: 0.5 },
+                        { arcAngle: 50, angle: -110, angleStep: -0.2, minAngle: 90, maxAngle: 170, rgb: '255, 155, 0', scale: 0.7, scaleStep: 0.005, minScale: 0.6, maxScale: 0.75 },
+                        { arcAngle: 90, angle: -12, angleStep: -0.2, minAngle: 0, maxAngle: 130, rgb: '255, 155, 0', scale: 0.75, scaleStep: 0.005, minScale: 0.7, maxScale: 0.8 },
+                        { arcAngle: 80, angle: -50, angleStep: -0.25, minAngle: 25, maxAngle: 145, rgb: '255, 255, 0', scale: 0.32, scaleStep: 0.005, minScale: 0.3, maxScale: 0.4 },
+                        { arcAngle: 90, angle: -90, angleStep: -0.005, minAngle: 80, maxAngle: 200, rgb: '255, 255, 0', scale: 0.2, scaleStep: 0.005, minScale: 0.2, maxScale: 0.3 },
+                        { arcAngle: 30, angle: -22, angleStep: -0.005, minAngle: 15, maxAngle: 80, rgb: '255, 255, 0', scale: 0.28, scaleStep: 0.005, minScale: 0.2, maxScale: 0.3 }
+                    ],
+                    //level 4
+                    [
+                        { arcAngle: 32, angle: -90, angleStep: -0.4, minAngle: 80, maxAngle: 140, rgb: '255, 0, 60', scale: 1.8, scaleStep: 0.005, minScale: 1.7, maxScale: 1.85 },
+                        { arcAngle: 88, angle: -55, angleStep: -0.4, minAngle: 30, maxAngle: 160, rgb: '255, 0, 60', scale: 1.5, scaleStep: 0.005, minScale: 1.4, maxScale: 1.6 },
+                        { arcAngle: 60, angle: 0, angleStep: -0.4, minAngle: -5, maxAngle: 90, rgb: '255, 0, 60', scale: 1.2, scaleStep: 0.005, minScale: 1.1, maxScale: 1.3 },
+                        { arcAngle: 90, angle: -90, angleStep: -0.4, minAngle: 80, maxAngle: 190, rgb: '255, 0, 60', scale: 1.3, scaleStep: 0.005, minScale: 1.2, maxScale: 1.4 },
+                        { arcAngle: 90, angle: 0, angleStep: -0.4, minAngle: 0, maxAngle: 120, rgb: '255, 155, 0', scale: 0.7, scaleStep: 0.005, minScale: 0.7, maxScale: 0.8 },
+                        { arcAngle: 90, angle: -90, angleStep: -0.4, minAngle: -80, maxAngle: 185, rgb: '255, 155, 0', scale: 0.55, scaleStep: 0.005, minScale: 0.5, maxScale: 0.6 },
+                        { arcAngle: 60, angle: 0, angleStep: -0.5, minAngle: 0, maxAngle: 100, rgb: '255, 155, 0', scale: 0.9, scaleStep: 0.005, minScale: 0.8, maxScale: 1 },
+                        { arcAngle: 85, angle: -75, angleStep: -0.4, minAngle: 65, maxAngle: 170, rgb: '255, 155, 0', scale: 1, scaleStep: 0.005, minScale: 0.9, maxScale: 1.1 },
+                        { arcAngle: 80, angle: -40, angleStep: -0.5, minAngle: 30, maxAngle: 155, rgb: '255, 255, 0', scale: 0.45, scaleStep: 0.005, minScale: 0.4, maxScale: 0.5 },
+                        { arcAngle: 90, angle: 0, angleStep: -0.2, minAngle: -5, maxAngle: 120, rgb: '255, 255, 0', scale: 0.3, scaleStep: 0.005, minScale: 0.25, maxScale: 0.35 },
+                        { arcAngle: 30, angle: -120, angleStep: -0.2, minAngle: 100, maxAngle: 170, rgb: '255, 255, 0', scale: 0.35, scaleStep: 0.005, minScale: 0.3, maxScale: 0.4 }
+                    ],
+                ];
     };
     
     initShapes();
