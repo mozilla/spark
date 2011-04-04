@@ -252,16 +252,16 @@ var initUI = function() {
         toggleFocusInfo(focusedCity);
     });
     
-    $('svg text').click(function() {
+    $city.click(function() {
         var focus = parseInt(this.id);
         
         if(focus != focusedCity) {
             focusedCity = focus;
             $('#focus-info').text($(this).text());
-            document.querySelector('select').value = focusedCity;
+            list.value = focusedCity;
         } else {
             focusedCity = -1;
-            document.querySelector('select').value = focusedCity;
+            list.value = focusedCity;
         }
         resetToCurrentTime();
         toggleFocusInfo(focusedCity);
@@ -270,6 +270,7 @@ var initUI = function() {
     $('#show-everyone').hide();
 
     list.disabled = false;
+    list.value = -1;
 
     initPopup();
     initMask();
