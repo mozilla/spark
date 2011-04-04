@@ -19,6 +19,12 @@
         {{ _("To learn how Firefox's geolocation capabilities protect your personal information, please review our privacy policy.") }}
     </p>
     <p class="section sans">
-        {{ _('Mozilla Firefox Spark content is licensed under the Creative Commons Attribution Share-Alike License v3.0 or any later version.') }}
+    	{% trans noted_url='http://www.mozilla.com/en-US/about/legal.html#site', license_url='http://creativecommons.org/licenses/by-sa/3.0/' %}
+    	Except where otherwise <a href="{{ noted_url }}">noted</a>, content of this site is licensed under the
+    	<a href="{{ license_url }}">Creative Commons Attribution Share-Alike License v3.0</a> or any later version.
+    	{% endtrans %}
+    	
+        {# Unused strings for this release #}
+        {% set s = _('Mozilla Firefox Spark content is licensed under the Creative Commons Attribution Share-Alike License v3.0 or any later version.') %}
     </p>
 {% endblock %}
