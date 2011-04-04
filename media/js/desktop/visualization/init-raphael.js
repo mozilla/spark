@@ -44,10 +44,12 @@ var initCityList = function() {
         citylist = r.set();
 
     for(var i = 0; i < nbCities; i += 1) {
-        var x = i * (width / (nbCities));
-        var y = height - (height - 650) + textOffset;
+        var x = i * (width / (nbCities)),
+            y = height - (height - 650) + textOffset,
+            city = r.text(x, y, cities[i]).attr(textStyle).rotate(90, x, y);
         
-        citylist.push(r.text(x, y, cities[i]).attr(textStyle).rotate(90, x, y));
+        city.node.id = i + 1;
+        citylist.push(city);
     }
     
     var style = {"fill": "rgba(0,0,0,0.01)", "stroke": "none"};
