@@ -905,13 +905,14 @@ img.spinner {
 
 #stats, #badges {
     border-top:1px solid #403c3c;
-    overflow:auto;
     padding:35px 0 30px 0;
     position:relative;
 }
 
 #stats {
     z-index:100;
+    overflow:visible;
+    min-height:420px;
 }
 
 #badges {
@@ -947,6 +948,14 @@ div.section-header p {
     height:229px;
     background:url('../img/ruler.png') no-repeat 0 0;
     margin-bottom:35px;
+    overflow:visible;
+    position:relative;
+}
+
+#spark-graphic canvas {
+    position:absolute;
+    top:-170px;
+    left:-50%;
 }
 
 #spark-graphic .placeholder {
