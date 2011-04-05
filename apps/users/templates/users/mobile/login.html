@@ -1,4 +1,5 @@
 {% extends "mobile/page.html" %}
+{% from "macros/fielderror.html" import fielderror %}
 {% set pagetitle = _('Sign in') %}
 {% set body_id = 'login' %}
 {% set scripts = ('menu',) %}
@@ -9,9 +10,9 @@
 	        {{ _('Welcome back! Ready to keep your Spark going strong? Just fill your details in below.') }}
 	    </p>
 	    <hr>
-		{% if form.errors %}
-		<span class="error">{{ _('Oops! Please try again') }}</span>
-		{% endif %}
+		{% for error in form.non_field_errors() %}
+    	    <span class="error">{{ error }}</span>
+    	{% endfor %}
 	    <form method="post" accept-charset="utf-8">
 			{{ csrf() }}
 	        <fieldset id="account" class="section">
@@ -19,9 +20,11 @@
 	            <div class="input-wrapper">
 	                <input tabindex="1" type="text" name="username" value="{{ form.username.data }}" placeholder="{{ _('Username') }}" required>
 	            </div>
+	            {{ fielderror(form.username) }}
 	            <div class="input-wrapper">
 	                <input tabindex="2" type="password" name="password" value="" placeholder="{{ _('Password') }}" required>
 	            </div>
+	            {{ fielderror(form.password) }}
 	        </fieldset>
 	        <hr>
 	        <div class="buttons-wrapper">
