@@ -854,6 +854,8 @@ img.spinner {
     clear:both;
     border-top:1px solid #403c3c;
     padding:25px 0;
+    position:relative;
+    z-index:200;
 }
 
 #main-info h1 {
@@ -950,6 +952,7 @@ div.section-header p {
     margin-bottom:35px;
     overflow:visible;
     position:relative;
+    z-index:0;
 }
 
 #spark-graphic canvas {
