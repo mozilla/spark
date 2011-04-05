@@ -705,6 +705,10 @@ li.badge:active, li.badge.current {
     overflow:visible;
 }
 
+#spark-wrapper {
+    margin-top:-50px;
+}
+
 /* Home */
 
 #home #header, #user-share #header {

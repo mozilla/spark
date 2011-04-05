@@ -6,7 +6,6 @@ var initSpark = function (level) {
     	shapes = [],
     	smokeCircles = [],
     	colors = [],
-		radgrad = ctx.createRadialGradient(0,0,0,0,0,80),
 		NB_CIRCLES = 200;
 
     canvas.height = h;
