@@ -22,16 +22,6 @@ var initMenu = function () {
             $('html').toggleClass('openmenu');
         }
     });
-    
-    $('#logout').click(function() {
-       $('#menu-content').fadeOut('fast');
-       $('#logout-confirmation').fadeIn('fast');
-    });
-    
-    $('#logout-confirmation .left-button').click(function() {
-        $('#logout-confirmation').fadeOut('fast');
-        $('#menu-content').fadeIn('fast');
-    });
 };
 
 var hintMenu = function() {
