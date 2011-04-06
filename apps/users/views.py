@@ -104,7 +104,7 @@ def register(request):
         profile.new_challenges = True
         profile.save()
         
-        return HttpResponseRedirect(reverse('mobile.home'))
+        return HttpResponseRedirect(reverse('mobile.boost'))
     return jingo.render(request, 'users/mobile/register.html',
                         {'form': form})
 
