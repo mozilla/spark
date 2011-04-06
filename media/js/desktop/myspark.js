@@ -46,7 +46,7 @@ var initSpark = function (level) {
         var dice;
         for(var i = 0, nb = shapes[level - 1].length; i < nb; i += 1) {
             var s = shapes[level - 1][i],
-                dice = rand(1, 6);
+                dice = rand(1, 20);
 
             s.moveFactor = 1-(i/6);
             
@@ -98,17 +98,17 @@ var initSpark = function (level) {
                     ],
                     //level 4
                     [
-                        { arcAngle: 32, angle: -90, angleStep: -0.4, minAngle: 80, maxAngle: 140, rgb: '237, 33, 37', scale: 1.8, scaleStep: 0.005, minScale: 1.7, maxScale: 1.85 },
-                        { arcAngle: 88, angle: -55, angleStep: -0.4, minAngle: 30, maxAngle: 160, rgb: '237, 33, 37', scale: 1.5, scaleStep: 0.005, minScale: 1.4, maxScale: 1.6 },
-                        { arcAngle: 60, angle: 0, angleStep: -0.4, minAngle: -5, maxAngle: 90, rgb: '237, 33, 37', scale: 1.2, scaleStep: 0.005, minScale: 1.1, maxScale: 1.3 },
-                        { arcAngle: 90, angle: -90, angleStep: -0.4, minAngle: 80, maxAngle: 190, rgb: '237, 33, 37', scale: 1.3, scaleStep: 0.005, minScale: 1.2, maxScale: 1.4 },
-                        { arcAngle: 90, angle: 0, angleStep: -0.4, minAngle: 0, maxAngle: 120, rgb: '255, 171, 13', scale: 0.7, scaleStep: 0.005, minScale: 0.7, maxScale: 0.8 },
-                        { arcAngle: 90, angle: -90, angleStep: -0.4, minAngle: -80, maxAngle: 185, rgb: '255, 171, 13', scale: 0.55, scaleStep: 0.005, minScale: 0.5, maxScale: 0.6 },
-                        { arcAngle: 60, angle: 0, angleStep: -0.5, minAngle: 0, maxAngle: 100, rgb: '255, 171, 13', scale: 0.9, scaleStep: 0.005, minScale: 0.8, maxScale: 1 },
-                        { arcAngle: 85, angle: -75, angleStep: -0.4, minAngle: 65, maxAngle: 170, rgb: '255, 171, 13', scale: 1, scaleStep: 0.005, minScale: 0.9, maxScale: 1.1 },
-                        { arcAngle: 80, angle: -40, angleStep: -0.5, minAngle: 30, maxAngle: 155, rgb: '255, 255, 40', scale: 0.45, scaleStep: 0.005, minScale: 0.4, maxScale: 0.5 },
-                        { arcAngle: 90, angle: 0, angleStep: -0.2, minAngle: -5, maxAngle: 120, rgb: '255, 255, 40', scale: 0.3, scaleStep: 0.005, minScale: 0.25, maxScale: 0.35 },
-                        { arcAngle: 30, angle: -120, angleStep: -0.2, minAngle: 100, maxAngle: 170, rgb: '255, 255, 40', scale: 0.35, scaleStep: 0.005, minScale: 0.3, maxScale: 0.4 }
+                        { arcAngle: 32, angle: -90, angleStep: -1, minAngle: 80, maxAngle: 140, rgb: '237, 33, 37', scale: 1.8, scaleStep: 0.005, minScale: 1.7, maxScale: 1.85 },
+                        { arcAngle: 88, angle: -55, angleStep: -1, minAngle: 30, maxAngle: 160, rgb: '237, 33, 37', scale: 1.5, scaleStep: 0.005, minScale: 1.4, maxScale: 1.6 },
+                        { arcAngle: 60, angle: 0, angleStep: -1, minAngle: -5, maxAngle: 120, rgb: '237, 33, 37', scale: 1.2, scaleStep: 0.005, minScale: 1.1, maxScale: 1.3 },
+                        { arcAngle: 90, angle: -90, angleStep: -1, minAngle: 80, maxAngle: 190, rgb: '237, 33, 37', scale: 1.3, scaleStep: 0.005, minScale: 1.2, maxScale: 1.4 },
+                        { arcAngle: 90, angle: 0, angleStep: -1, minAngle: 0, maxAngle: 120, rgb: '255, 171, 13', scale: 0.7, scaleStep: 0.005, minScale: 0.7, maxScale: 0.8 },
+                        { arcAngle: 90, angle: -90, angleStep: -1, minAngle: -80, maxAngle: 185, rgb: '255, 171, 13', scale: 0.55, scaleStep: 0.005, minScale: 0.5, maxScale: 0.6 },
+                        { arcAngle: 60, angle: 0, angleStep: -1.1, minAngle: 0, maxAngle: 100, rgb: '255, 171, 13', scale: 0.9, scaleStep: 0.005, minScale: 0.8, maxScale: 1 },
+                        { arcAngle: 85, angle: -75, angleStep: -1, minAngle: 65, maxAngle: 170, rgb: '255, 171, 13', scale: 1, scaleStep: 0.005, minScale: 0.9, maxScale: 1.1 },
+                        { arcAngle: 80, angle: -40, angleStep: -1.1, minAngle: 30, maxAngle: 155, rgb: '255, 255, 40', scale: 0.45, scaleStep: 0.005, minScale: 0.4, maxScale: 0.5 },
+                        { arcAngle: 90, angle: 0, angleStep: -0.8, minAngle: -5, maxAngle: 120, rgb: '255, 255, 40', scale: 0.3, scaleStep: 0.005, minScale: 0.25, maxScale: 0.35 },
+                        { arcAngle: 30, angle: -120, angleStep: -0.8, minAngle: 100, maxAngle: 170, rgb: '255, 255, 40', scale: 0.35, scaleStep: 0.005, minScale: 0.3, maxScale: 0.4 }
                     ]
                 ];
     };
@@ -159,10 +159,14 @@ var initSpark = function (level) {
                 c.alphaStep = randSpecial(0.0025, 0.01) * -1;
             }
             if(c.yPos < -150) {
-                c.yStep = randSpecial(1, 2);
+                c.yStep = randSpecial(1, 4);
             }
             if(c.alpha < 0) {
                 c = smokeCircles[i] = spawnCircle();
+            }
+            if(c.xPos < -100 || c.xPos > 100) {
+                c.yStep = -2;
+                c.alphaStep *= 1.2;
             }
         }
     };
