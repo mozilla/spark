@@ -11,9 +11,6 @@ var initSpark = function (level) {
     canvas.height = h;
     canvas.width = w;
 
-	radgrad.addColorStop(0, 'rgba(255,255,255,0.1)');
-	radgrad.addColorStop(1, 'rgba(255,255,255,0)');
-
     var deg2rad = function(degrees) {
     	return degrees * Math.PI/180;
     };
