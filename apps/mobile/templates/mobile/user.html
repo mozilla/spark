@@ -42,6 +42,9 @@
     <a href="{{ url('mobile.home') }}" class="button">{{ _('Go to My Spark') }}</a>
     {% else %}
         {% if supported_non_ff %}
+        <hr>
+        <div class="cta"><a href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></div>
+        <hr>
         {#  Compatible phone, non-firefox, logged-out #}
         <p class="section sans">
             {{ _("Don't have a spark yet? Get Firefox 4 for Android then start a spark.") }}
@@ -54,6 +57,9 @@
             <h2 class="cta"><a href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></h2>
             <hr>
             {% else %}
+            <hr>
+            <div class="cta"><a href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></div>
+            <hr>
             {#  Incompatible phone (iPhone, other browsers), logged-out #}
             <p class="section sans">
                 {{ _("Aww, too bad your phone isn't compatible. Want to help light up the world anyway?") }}

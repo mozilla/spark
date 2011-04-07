@@ -975,6 +975,10 @@ body#user-share {
     border-bottom:1px solid #404040;
 }
 
+.getfirefox {
+    margin-top:20px;
+}
+
 /*Choose your city*/
 
 #city-list li {
