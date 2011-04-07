@@ -27,43 +27,6 @@ body{font:13px/1.231 arial,helvetica,clean,sans-serif;*font-size:small;*font:x-s
 
 }
 
-/*Sticky footer*/
-
-html, body {
-    height: 100%;
-    }
-
-#wrapper {
-    min-height: 100%;
-    }
-
-#content {
-    overflow:auto;
-    margin-bottom:10px;
-    padding-bottom:50px;
-	}  /* must be same height as the footer */
-
-#menu-wrapper {
-    position: relative;
-	margin-top: -50px; /* negative value of footer height */
-	height: 50px;
-	clear:both;
-	}
-
-#menu-wrapper.closed {
-/*    top:-50px;*/
-}
-
-/*Opera Fix*/
-body:before {
-	content:"";
-	height:100%;
-	float:left;
-	width:0;
-	margin-top:-32767px;/
-}
-
-
 /*Common rules*/
 
 html {
@@ -72,12 +35,18 @@ html {
 
 html.openmenu, html.openmenu body {
     height:500px;
+    overflow:hidden;
 }
 
 body {
     font-family:'Helvetica Neue', Helvetica, 'MgOpenModerna', Arial, sans-serif;
     color:#fff;
     background:url('../img/mobile/bg.png') repeat top right;
+}
+
+#content {
+    overflow:auto;
+    padding-bottom:50px;
 }
 
 #wrapper {
@@ -91,11 +60,15 @@ body {
 
 #flame-bg {
     position:absolute;
-    top:0;
+    top:50px;
     right:0;
     width:258px;
     height:181.33px;
     z-index:1;
+}
+
+#login #flame-bg, #getstarted #flame-bg, #whatisspark #flame-bg {
+    top:0px;
 }
 
 #header {
@@ -165,6 +138,8 @@ div.back {
     margin-left:6px;
     background:url('../img/mobile/back480.png') no-repeat 0 0;
     background-size:100%;
+    -webkit-background-size:100%;
+    -o-background-size:100%;
 }
 
 div.back:active {
@@ -278,9 +253,20 @@ p.license {
 }
 
 #menu-wrapper {
+	height: 53px;
+	clear:both;
+	box-shadow:0px 1px 3px rgba(0,0,0,0.4);
+	-webkit-box-shadow:0px 1px 3px rgba(0,0,0,0.4);
+	-o-box-shadow:0px 1px 3px rgba(0,0,0,0.4);
     position:relative;
     overflow:visible;
     pointer-events:none;
+    z-index:4;
+    margin-bottom:30px;
+}
+
+#myspark #menu-wrapper {
+    margin-bottom:0;
 }
 
 #menu-wrapper.closed {
@@ -294,12 +280,11 @@ p.license {
     width:100%;
     z-index:10;
     position:absolute;
-    bottom:0px;
     background:url('../img/mobile/badge-label-bg.png') repeat;
 }
 
 #menu.closed {
-    bottom:-450px;
+    top:0;
 }
 
 #menu-header {
@@ -308,6 +293,8 @@ p.license {
     background:url('../img/mobile/menu-button-hd.png') no-repeat 14px -99px, -moz-linear-gradient(90deg, #ffd825, #e5bf0c);
     background:url('../img/mobile/menu-button-hd.png') no-repeat 14px -99px, -webkit-gradient(linear, center top, center bottom, from(#ffd825), to(#e5bf0c));
     background-size:28px auto, auto;
+    -webkit-background-size:28px auto, auto;
+    -o-background-size:28px auto, auto;
     color:#000;
     font-weight:bold;
     line-height:49px;
@@ -321,6 +308,8 @@ p.license {
     background:url('../img/mobile/menu-button-hd.png') no-repeat 14px -155px, -moz-linear-gradient(90deg, #ffec92, #f2df86);
     background:url('../img/mobile/menu-button-hd.png') no-repeat 14px -155px, -webkit-gradient(linear, center top, center bottom, from(#ffec92), to(#f2df86));
     background-size:28px auto, auto;
+    -webkit-background-size:28px auto, auto;
+    -o-background-size:28px auto, auto;
     border-top:1px solid #fff4be;
 }
 
@@ -328,20 +317,24 @@ p.license {
     background:url('../img/mobile/menu-button-hd.png')  no-repeat 14px 9px, -moz-linear-gradient(90deg, #ffd825, #e5bf0c);
     background:url('../img/mobile/menu-button-hd.png')  no-repeat 14px 9px, -webkit-gradient(linear, center top, center bottom, from(#ffd825), to(#e5bf0c));
     background-size:28px auto, auto;
+    -webkit-background-size:28px auto, auto;
+    -o-background-size:28px auto, auto;
 }
 
 #menu.closed #menu-header:active {
     background:url('../img/mobile/menu-button-hd.png')  no-repeat 14px -50px, -moz-linear-gradient(90deg, #ffec92, #f2df86);
     background:url('../img/mobile/menu-button-hd.png')  no-repeat 14px -50px, -webkit-gradient(linear, center top, center bottom, from(#ffec92), to(#f2df86));
     background-size:28px auto, auto;
+    -webkit-background-size:28px auto, auto;
+    -o-background-size:28px auto, auto;
     border-top:1px solid #fff4be;
 }
 
 #menu-hr {
     height:3px;
     background:#dfdfdf;
-    box-shadow:inset 0 -1px 1px #888888;
-    -webkit-box-shadow:inset 0 -1px 1px #888888;
+    box-shadow:inset 0 1px 1px #888888;
+    -webkit-box-shadow:inset 0 1px 1px #888888;
 }
 
 #menu ul {
@@ -349,8 +342,11 @@ p.license {
 }
 
 #menu ul li {
-    border-top:1px solid #4d4d4d;
     border-bottom:1px solid #4d4d4d;
+}
+
+#menu ul li:first-child {
+    border-top:1px solid #4d4d4d;
 }
 
 #menu ul li a {
@@ -362,6 +358,8 @@ p.license {
     font-weight:bold;
     background:url('../img/mobile/big-arrow.png') no-repeat right center;
     background-size:auto 30px;
+    -webkit-background-size:auto 30px;
+    -o-background-size:auto 30px;
 }
 
 #menu ul li a:active {
@@ -394,6 +392,8 @@ p.license {
     position:relative;
     background:url('../img/mobile/notifications-bg.png') no-repeat 39px  center;
     background-size:auto 16px;
+    -webkit-background-size:auto 16px;
+    -o-background-size:auto 16px;
 }
 
 #notifications:before {
@@ -479,6 +479,8 @@ form.section {
     clear: left;
     float: left;
     background-size:24px auto;
+    -webkit-background-size:24px auto;
+    -o-background-size:24px auto;
     position:relative;
     top:0px;
 }
@@ -508,6 +510,8 @@ button:active, button:focus {
     padding:0 0 0 8px;
     background:url('../img/mobile/big-arrow.png') no-repeat center right;
     background-size:auto 30px;
+    -webkit-background-size:auto 30px;
+    -o-background-size:auto 30px;
 }
 
 .cta a:active {
@@ -546,6 +550,8 @@ button:active, button:focus {
     background:url('../img/mobile/checkmark.png') no-repeat 15px center rgba(119,225,24,0.5);
     margin-bottom:20px;
     background-size:22px auto;
+    -webkit-background-size:22px auto;
+    -o-background-size:22px auto;
 }
 
 #your-location {
@@ -676,10 +682,8 @@ li.badge:active, li.badge.current {
     width:21px;
     background:url('../img/mobile/down-arrow.png') no-repeat center center;
     background-size:20px auto;
-}
-
-#about #content {
-    margin-bottom:30px;
+    -webkit-background-size:20px auto;
+    -o-background-size:20px auto;
 }
 
 /* Log in */
@@ -721,6 +725,8 @@ li.badge:active, li.badge.current {
 body#home {
     background:url('../img/mobile/spark.jpg') no-repeat center 0;
     background-size:320px auto;
+    -webkit-background-size:320px auto;
+    -o-background-size:320px auto;
     min-height:400px;
 }
 
@@ -769,16 +775,22 @@ body#home {
 #sharing .cta:nth-child(1) {
     background:url('../img/mobile/share-icons.png') no-repeat 0 24px;
     background-size:48px auto;
+    -webkit-background-size:48px auto;
+    -o-background-size:48px auto;
 }
 
 #sharing .cta:nth-child(2) {
     background:url('../img/mobile/share-icons.png') no-repeat 0 -83px;
     background-size:48px auto;
+    -webkit-background-size:48px auto;
+    -o-background-size:48px auto;
 }
 
 #sharing .cta:nth-child(3) {
     background:url('../img/mobile/share-icons.png') no-repeat 0 -183px;
     background-size:48px auto;
+    -webkit-background-size:48px auto;
+    -o-background-size:48px auto;
 }
 
 /*Challenges*/
@@ -835,6 +847,8 @@ div.lock {
     float:right;
     background:url('../img/mobile/lock.png') no-repeat 0 0;
     background-size:100%;
+    -webkit-background-size:100%;
+    -o-background-size:100%;
     margin-top:13px;
 }
 
@@ -887,11 +901,15 @@ div.challenge .check {
     background:url('../img/mobile/checkbox.png') no-repeat 0px 0px;
     margin:12px 10px 0 0;
     background-size:24px auto;
+    -webkit-background-size:24px auto;
+    -o-background-size:24px auto;
 }
 
 div.challenge.complete .check {
     background:url('../img/mobile/checkbox.png') no-repeat 0px -27px;
     background-size:26px auto;
+    -webkit-background-size:26px auto;
+    -o-background-size:26px auto;
 }
 
 /*User-share*/
@@ -899,6 +917,8 @@ div.challenge.complete .check {
 #user-share {
     background:url('../img/mobile/spark.png') no-repeat center 45px;
     background-size:320px auto;
+    -webkit-background-size:320px auto;
+    -o-background-size:320px auto;
 }
 
 #user-share #header h2 {
@@ -926,6 +946,8 @@ div.challenge.complete .check {
 body#user-share {
     background:url('../img/mobile/spark.jpg') no-repeat center 40px;
     background-size:320px auto;
+    -webkit-background-size:320px auto;
+    -o-background-size:320px auto;
     min-height:400px;
 }
 
@@ -991,6 +1013,10 @@ body#user-share {
 
 .legal-links a.last {
     border-bottom:1px solid #404040;
+}
+
+.getfirefox {
+    margin-top:20px;
 }
 
 /*Choose your city*/

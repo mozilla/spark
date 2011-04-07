@@ -11,6 +11,8 @@
 	<script>
     $(document).ready(function() {
        initMenu(); 
+
+       $('li.open').children('ul').show();
        
        // Displays the level details
 	   $('div.level:not(.locked)').click(function() {

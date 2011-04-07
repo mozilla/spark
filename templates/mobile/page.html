@@ -10,10 +10,62 @@
 {% endif %}
 
 {% block content %}
+{% if user.is_authenticated() and not hide_menu %}
+<div id="menu-wrapper" class="closed">
+    <div id="menu" class="closed">
+        <div id="menu-header" class="closed">
+			{% if num_notifications %}
+            <div id="notifications">{{ num_notifications }}</div>
+			{% endif %}
+			{# L10n: Name of the mobile navigation menu #}
+            {{ _('Menu') }}
+        </div>
+        <div id="menu-hr"></div>
+		<div id="menu-content">
+	        <ul>
+	            {% if not profile.boost1_completed or not profile.boost2_completed %}
+	            <li><a href="{{ url('mobile.boost') }}">{{ _('Boost your Spark') }}</a></li>
+	            {% else %}
+	            <li><a href="{{ url('mobile.home') }}">{{ _('My Firefox Spark') }}</a></li>
+	            {% endif %}
+	            <li><a href="{{ url('mobile.stats') }}">{{ _('Stats') }}</a></li>
+	            <li><a href="{{ url('mobile.challenges') }}">{{ _('Challenges') }}
+						{% if num_new_challenges %}
+						{# L10n: {n} is the number of recently completed challenges. #}
+						<span>{{ ungettext('+{n} new','+{n} new', num_new_challenges, "new_challenges")|f(n=num_new_challenges) }}</span>
+						{% endif %}
+					</a>
+				</li>
+	            <li><a href="{{ url('mobile.badges') }}">{{ _('Badges') }}
+						{% if num_new_badges %}
+						{# L10n: {n} is the number of recently obtained badges. #}
+						<span>{{ ungettext('+{n} new','+{n} new', num_new_badges, "new_badges")|f(n=num_new_badges) }}</span>
+						{% endif %}
+					</a>
+				</li>
+	            <li><a href="{{ url('mobile.about') }}">{{ _('About Mozilla') }}</a></li>
+        
+	        </ul>
+			<a href="{{ url('users.mobile_logout') }}" id="logout">{{ _('Do you wanna sign out?') }}</a>
+		</div>
+		<div id="logout-confirmation">
+            <p class="section sans confirmation">
+                {{ _('Are you sure you want to sign out?') }}
+            </p>
+            <div class="buttons-wrapper">
+				<div class="button left-button"><a>{{ _('Cancel') }}</a></div>
+				<div class="button right-button"><a href="{{ url('users.mobile_logout') }}">{{ _('Yes') }}</a></div>
+            </div>
+        </div>
+    </div>
+</div> <!-- end menu wrapper -->
+<img src="{{ MEDIA_URL }}img/mobile/badge-label-bg.png" alt="" class="preload">
+{% endif %}
+
 
 	<div id="wrapper">
 	    <div id="header">
-	        {% if body_id not in ['home', 'myspark', 'user-share'] %}
+	        {% if body_id not in ['home', 'myspark', 'user-share'] and hide_menu %}
 			<div class="back" onclick="history.back()">
 	        </div>
 			{% endif %}
@@ -28,59 +80,6 @@
 		</div> <!-- end content -->
 	
 	</div> <!-- end wrapper -->
-
-	{% if user.is_authenticated() and not hide_menu %}
-	<div id="menu-wrapper" class="closed">
-	    <div id="menu" class="closed">
-	        <div id="menu-hr"></div>
-	        <div id="menu-header" class="closed">
-				{% if num_notifications %}
-	            <div id="notifications">{{ num_notifications }}</div>
-				{% endif %}
-				{# L10n: Name of the mobile navigation menu #}
-	            {{ _('Menu') }}
-	        </div>
-			<div id="menu-content">
-		        <ul>
-		            {% if not profile.boost1_completed or not profile.boost2_completed %}
-		            <li><a href="{{ url('mobile.boost') }}">{{ _('Boost your Spark') }}</a></li>
-		            {% else %}
-		            <li><a href="{{ url('mobile.home') }}">{{ _('My Firefox Spark') }}</a></li>
-		            {% endif %}
-		            <li><a href="{{ url('mobile.stats') }}">{{ _('Stats') }}</a></li>
-		            <li><a href="{{ url('mobile.challenges') }}">{{ _('Challenges') }}
-							{% if num_new_challenges %}
-							{# L10n: {n} is the number of recently completed challenges. #}
-							<span>{{ ungettext('+{n} new','+{n} new', num_new_challenges, "new_challenges")|f(n=num_new_challenges) }}</span>
-							{% endif %}
-						</a>
-					</li>
-		            <li><a href="{{ url('mobile.badges') }}">{{ _('Badges') }}
-							{% if num_new_badges %}
-							{# L10n: {n} is the number of recently obtained badges. #}
-							<span>{{ ungettext('+{n} new','+{n} new', num_new_badges, "new_badges")|f(n=num_new_badges) }}</span>
-							{% endif %}
-						</a>
-					</li>
-		            <li><a href="{{ url('mobile.about') }}">{{ _('About Mozilla') }}</a></li>
-	        
-		        </ul>
-				<a href="{{ url('users.mobile_logout') }}" id="logout">{{ _('Do you wanna sign out?') }}</a>
-			</div>
-			<div id="logout-confirmation">
-                <p class="section sans confirmation">
-                    {{ _('Are you sure you want to sign out?') }}
-                </p>
-                <div class="buttons-wrapper">
-					<div class="button left-button"><a>{{ _('Cancel') }}</a></div>
-					<div class="button right-button"><a href="{{ url('users.mobile_logout') }}">{{ _('Yes') }}</a></div>
-                </div>
-            </div>
-	    </div>
-	</div> <!-- end menu wrapper -->
-	<img src="{{ MEDIA_URL }}img/mobile/badge-label-bg.png" alt="" class="preload">
-	{% endif %}
-
 {% endblock %}
 
 {% block script %}

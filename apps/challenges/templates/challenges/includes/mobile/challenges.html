@@ -1,6 +1,10 @@
 <ol id="challenges-list">
     {% for level in levels %}
+    {% if profile.level == loop.index %}
+    <li class="open">
+    {% else %}
     <li>
+    {% endif %}
         <div class="level {% if level.locked %}locked{% endif %}">
             {{ level.legend }}
             <span class="challenges-count {% if level.completed %}complete{% endif %}">
