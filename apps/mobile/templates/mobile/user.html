@@ -10,6 +10,12 @@
     {% else %}
         {% set body_class = 'ff logged-in' %}
     {% endif %}
+{% else %}
+    {% if iphone or supported_non_ff %}
+        {% set body_class = 'non-ff' %}
+    {% else %}
+        {% set body_class = 'ff' %}
+    {% endif %}
 {% endif %}
 
 {% block flame %}{% endblock %}
