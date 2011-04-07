@@ -1,12 +1,16 @@
+var success = function($form, data) {
+    $form.find('button').attr("disabled", "disabled");
+    setTimeout(function() {
+        // Redirect to logged-in user home page
+        window.location.replace(data.next);
+    }, 200);
+};
+
 function initLoginForm() {
     $('#forgot-password').click(function() {
        swap('#sign-in', '#password-recovery');
     });
-    
-    $('#popup p.download a').click(function() {
-       hidePopup();
-    });
-    
+
     $('#login .close').click(function() {
         resetForm('#login');
     });
@@ -16,16 +20,23 @@ function initLoginForm() {
             resetField('#login-password input');
         }
     };
-    
-    var success = function($form, data) {
-        $form.find('button').attr("disabled", "disabled");
-        setTimeout(function() {
-            // Redirect to logged-in user home page
-            window.location.replace(data.next);
-        }, 200);
-    };
-    
+
     popupForm('#login', error, success);
+}
+
+function initRegisterForm() {
+    $('#signup .close').click(function() {
+        resetForm('#signup');
+    });
+    
+    var error = function(fieldname) {
+        if(fieldname === 'all') {
+            resetField('#register-password input');
+            resetField('#register-confirm-password input');
+        }
+    };
+
+    popupForm('#signup', error, success);
 }
 
 function initPasswordRecoverForm() {
@@ -45,5 +56,6 @@ function initPasswordRecoverForm() {
 $(document).ready(function() {
     initPlaceholders();
     initLoginForm();
+    initRegisterForm();
     initPasswordRecoverForm();
 });

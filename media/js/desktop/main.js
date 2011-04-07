@@ -100,6 +100,11 @@ $(document).ready(function() {
     $('#video-player img').click(function() {
        hidePopup(); 
     });
+    
+    // Download link closes popup
+    $('#popup p.download a').click(function() {
+       hidePopup();
+    });
 
     // All elements with the class 'close' will close the popup when clicked
     $('#popup .close').click(function() {

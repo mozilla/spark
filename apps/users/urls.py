@@ -8,6 +8,9 @@ desktop_patterns = patterns('',
     #  Login/logout (ajax)
     url(r'^login$', views.login, name='users.login'),
     url(r'^logout$', views.logout, name='users.logout'),
+
+    # Sign up
+    url(r'^register$', views.register, name='users.register'),
     
     # Forgot password (ajax)
     url(r'^forgotinfo$', views.forgot_password, name='users.forgot_password'),
@@ -28,7 +31,7 @@ mobile_patterns = patterns('',
     url(r'^logout$', views.logout, opts, name='users.mobile_logout'),
     
     # Sign up
-    url(r'^register$', views.register, name='users.mobile_register'),
+    url(r'^register$', views.register, opts, name='users.mobile_register'),
     
     # Forgot password
     url(r'^forgotinfo$', views.forgot_password, opts,

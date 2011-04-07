@@ -74,10 +74,12 @@ def logout(request, mobile=False):
 @ssl_required
 @logout_required
 @require_http_methods(['GET', 'POST'])
-def register(request):
+@json_view
+def register(request, mobile=False):
     """Register a new user."""
     form = handle_register(request)
-    if form.is_valid():
+    valid = form.is_valid()
+    if valid:
         # User is logged-in automatically after registration
         new_user = auth.authenticate(username=form.cleaned_data['username'],
                                      password=form.cleaned_data['password'])
@@ -103,10 +105,20 @@ def register(request):
         profile = User.objects.get(username=form.cleaned_data['username']).profile
         profile.new_challenges = True
         profile.save()
-        
-        return HttpResponseRedirect(reverse('mobile.boost'))
-    return jingo.render(request, 'users/mobile/register.html',
-                        {'form': form})
+    
+    if mobile:
+        if valid:
+            return HttpResponseRedirect(reverse('mobile.boost'))
+        else:
+            return jingo.render(request, 'users/mobile/register.html',
+                                {'form': form})
+    else: # ajax desktop registration
+        if valid:
+            return {'status': 'success',
+                    'next': reverse('desktop.home')}
+        else:
+            return {'status': 'error',
+                    'errors': dict(form.errors.iteritems())}
 
 
 @login_required

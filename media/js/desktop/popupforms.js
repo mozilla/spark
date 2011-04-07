@@ -9,7 +9,7 @@ function popupForm(formId, errorCallback, successCallback) {
         },
         
         showError = function(msg) {
-            $form.find('fieldset').prepend('<span class="error">'+msg+'</span>');
+            $form.find('fieldset:first').prepend('<span class="error">'+msg+'</span>');
             $form.find('.input-wrapper').each(function() {
                 $(this).addClass('error');
             });
