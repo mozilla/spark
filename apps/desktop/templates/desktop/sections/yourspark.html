@@ -35,7 +35,7 @@
             {{ _('Sign in with Firefox 4 for Android to see your Spark come alive.') }}
         </p>
     </div>
-    {% if profile.total_shares == 0 %}
+    {% if not is_user_page and profile.total_shares == 0 %}
     </div>
     <div id="instructions" class="column">
         <div class="section-header">

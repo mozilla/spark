@@ -197,12 +197,14 @@ MINIFY_BUNDLES = {
             'js/desktop/minimap.js',
             'js/desktop/dashboard.js',
             'js/desktop/sharehistory.js',
+            'js/desktop/myspark.js',
         ),
         'user-logged-out': (
             'js/desktop/minimap.js',
             'js/desktop/dashboard.js',
             'js/desktop/sharehistory.js',
             'js/desktop/popups-loggedout.js',
+            'js/desktop/myspark.js',
         ),
         'pwreset': (
             'js/desktop/popup-pwreset.js',
