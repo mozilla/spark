@@ -25,8 +25,12 @@
    // Localized country list
    countryNames = {{ countries|safe }};
    
+  {% if profile.total_shares != 0 %}
    // Init all dashboard components
    countUp({{ date_joined_delta }});
    initShareHistory({{ profile.shares_over_time }});
    initSpark({{ profile.level }});
    initSparkedCountries({{ sparked_countries|safe }});
+   {% else %}
+   initSpark({{ profile.level }});
+   {% endif %}
