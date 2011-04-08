@@ -894,6 +894,10 @@ img.spinner {
     color:#999;
 }
 
+#parent-user, #home-location {
+    display:block;
+}
+
 #parent-user span {
     color:#999;
 }
