@@ -1,5 +1,9 @@
 {% set num_badges = profile.total_badges_earned %}
+{% if is_user_page and num_badges == 0 %}
+<div id="badges" class="no-badges">
+{% else %}
 <div id="badges">
+{% endif %}
     <div class="section-header">
         {% if is_user_page %}
         <h3>{{ _('Earned badges') }}</h3>

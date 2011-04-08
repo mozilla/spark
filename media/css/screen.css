@@ -919,6 +919,10 @@ img.spinner {
     overflow:visible;
 }
 
+#badges.no-badges {
+    display:none;
+}
+
 div.section-header {
     margin-bottom:23px;
 }
