@@ -1,16 +1,25 @@
+{% set num_badges = profile.total_badges_earned %}
+{% if is_user_page and num_badges == 0 %}
+<div id="badges" class="no-badges">
+{% else %}
 <div id="badges">
+{% endif %}
     <div class="section-header">
         {% if is_user_page %}
         <h3>{{ _('Earned badges') }}</h3>
         {% else %}
         <h3>{{ _('Your badges') }}</h3>
         <p>
+            {% if num_badges == 0 %}
+            {{ _("You don't have any badges yet. Check out the challenge list below to start earning badges.") }}
+            {% else %}
             {{ _('Share your Spark and complete challenges to earn more badges.') }}
+            {% endif %}
         </p>
         {% endif %}
     </div>
     {% include "challenges/includes/desktop/badges.html" %}
-    {% if not is_user_page %}
+    {% if not is_user_page and num_badges > 0 %}
     <div id="badges-legend" class="">
         <div id="new-icon"></div>
         {# L10n: Legend next to the new badge notification icon. #}

@@ -14,6 +14,9 @@
     {% if not logged_in %}
     {% include "desktop/includes/backtotop.html" %}
     {% endif %}
+    {% if profile.total_shares == 0 %}
+    <div class="column first">
+    {% endif %}        
     <div class="section-header">
         <h3>{{ _('Your Spark') }}</h3>
         <p>
@@ -32,6 +35,32 @@
             {{ _('Sign in with Firefox 4 for Android to see your Spark come alive.') }}
         </p>
     </div>
+    {% if not is_user_page and profile.total_shares == 0 %}
+    </div>
+    <div id="instructions" class="column">
+        <div class="section-header">
+            <h3>{{ _('How it works') }}</h2>
+        </div>
+        <div class="instruction step1">
+            <p>
+                {{ _('Each player starts with their own spark.') }}
+            </p>
+        </div>
+        <div class="instruction step2">
+            <p>
+                {{ _('The more you share it, the more it grows and evolves.') }}
+            </p>
+        </div>
+        <div class="instruction step3">
+            <p>
+                {{ _("There are 4 levels of sharing challenges to get through, and for each challenge you complete, you'll earn yourself a sweet little badge.") }}
+            </p>
+        </div>
+        <p class="step4">
+            {{ _('So do you have what it takes to light up the world? Then get to it!') }}
+        </p>
+    </div>
+    {% else %}
     <div id="user-stats" class="column">
         <div id="total-shares">
             <span class="count">{{ profile.total_shares }}</span>
@@ -86,4 +115,5 @@
             {% endif %}
         </div>
     </div>
+    {% endif %}
 </div> <!-- end stats -->

@@ -7,6 +7,9 @@
         $('body').addClass('clickable');
    });
    
+   // current level is already open at page load
+   $('li.open').children('ul').show();
+   
    // Displays the level details
    $('div.level:not(.locked)').click(function() {
          $(this).parent().toggleClass('open');
@@ -25,8 +28,10 @@
    // Localized country list
    countryNames = {{ countries|safe }};
    
+{% if profile.total_shares > 0 or is_user_page %}
    // Init all dashboard components
    countUp({{ date_joined_delta }});
    initShareHistory({{ profile.shares_over_time }});
-   initSpark({{ profile.level }});
    initSparkedCountries({{ sparked_countries|safe }});
+{% endif %}
+   initSpark({{ profile.level }});

@@ -919,6 +919,10 @@ img.spinner {
     overflow:visible;
 }
 
+#badges.no-badges {
+    display:none;
+}
+
 div.section-header {
     margin-bottom:23px;
 }
@@ -1487,4 +1491,44 @@ div.level.locked:hover {
 #error-page {
     position:relative;
     z-index:10000;
+}
+
+/*Dashboard instructions*/
+
+#instructions.column {
+    width:530px;
+    margin-right:0;
+    margin-left:100px;
+}
+
+#instructions .section-header {
+    margin-bottom:0;
+}
+
+#instructions p {
+    font-size:1.231em;
+    line-height:150%;
+}
+
+.instruction {
+   background:url('../img/instructions.png') no-repeat;
+}
+
+.step1 {
+    background-position:0 34px;
+    height:80px;
+}
+
+.step2 {
+    background-position:0 -47px;
+    height:100px;
+}
+
+.step3 {
+    background-position:0 -143px;
+    height:140px;
+}
+
+.step4 {
+    color:#fff;
 }
