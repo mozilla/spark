@@ -7,6 +7,9 @@
         $('body').addClass('clickable');
    });
    
+   // current level is already open at page load
+   $('li.open').children('ul').show();
+   
    // Displays the level details
    $('div.level:not(.locked)').click(function() {
          $(this).parent().toggleClass('open');
