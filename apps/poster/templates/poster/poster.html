@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>My Title</title>
+        <style type="text/css">
+            @page {
+                size: letter landscape;
+                margin: 0cm;
+                @frame footer {
+                    -pdf-frame-content: footerContent;
+                    bottom: 0cm;
+                    margin-left: 9cm;
+                    margin-right: 9cm;
+                    height: 1cm;
+                }
+            }
+            
+            body {
+                font-family: Helvetica;
+                font-size: 15px;
+            }
+            
+            #user-qr {
+                display: block;
+                margin-left: 300px;
+            }
+            
+            #ff-home-qr {
+                display: block;
+                margin-left: 300px;
+            }
+            
+            ul {
+                margin-top: -600px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <img id='user-qr' src="{{ user_qr }}">
+            <img id='ff-home-qr' src="{{ ff_home_qr }}">
+            <ul>
+                <li>Get Firefox on your Android</li>
+                <li>{{ user_url }}</li>
+                <li>{{ _('Remember <span>{username}</span> when you get Firefox for mobile and boost your Spark.')|fe(username=username) }}</li>
+                <li>{{ _('Firefox is available for Android phones (2.0 and above) and the Nokia N900.') }}</li>
+            </ul>
+        </div>
+        
+        <div id="footerContent">
+        </div>
+    </body>
+</html>
