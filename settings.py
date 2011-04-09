@@ -191,6 +191,7 @@ MINIFY_BUNDLES = {
             'js/desktop/dashboard.js',
             'js/desktop/sharehistory.js',
             'js/desktop/popups-youraccount.js',
+            'js/desktop/customforms.js',
             'js/desktop/myspark.js',
         ),
         'user-logged-in': (
