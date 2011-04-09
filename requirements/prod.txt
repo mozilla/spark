@@ -26,3 +26,10 @@ django-mptt
 
 # Timezones
 pytz
+
+# Poster generation
+html5lib==0.90
+pisa==3.0.33
+pyPdf==1.13
+reportlab==2.5
+PIL==1.1.7
