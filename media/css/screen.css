@@ -1426,14 +1426,14 @@ div.level.locked:hover {
 
 /* Personal Page - logged in */
 
-.logged-in .user-info {
+.logged-in .user-info, .error404 .user-info {
     font-size:1.231em;
     color:#fff;
     padding-left:360px;
     line-height:1.125em;
 }
 
-.logged-in .user-info span {
+.logged-in .user-info span, .error404 .user-info span {
     color:#999;
     font-size:75%;
     display:block;
@@ -1531,4 +1531,10 @@ div.level.locked:hover {
 
 .step4 {
     color:#fff;
+}
+
+/*404 page*/
+
+.error404 h3 {
+    margin-top:1em;
 }
