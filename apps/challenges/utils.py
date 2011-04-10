@@ -286,8 +286,14 @@ def get_locked_legend(count, level):
     return msg % {'count': count, 'level': level}
 
 
+# L10n: Legend associated to the locked level 2. This invites users to complete one challenge in level 1 in order to access level 2.
+FIRST_CHALLENGE = _lazy(u'Complete your first challenge to unlock.')
+
 def get_locked_legend_alternate(count, level):
-    # L10n: Legend associated to a locked challenge. Example: "Complete 4 more challenges in Level 3 to unlock.."
+    if level == 1:
+        return FIRST_CHALLENGE
+    
+    # L10n: Legend associated to a locked challenge. Example: "Complete 4 more challenges in Level 3 to unlock."
     msg = ungettext('Complete %(count)d more challenge in Level %(level)d to unlock.',
                     'Complete %(count)d more challenges in Level %(level)d to unlock.', count)
 
