@@ -11,6 +11,7 @@ from django.core.cache import cache, parse_backend_uri
 from django.http import (HttpResponsePermanentRedirect, HttpResponseRedirect,
                          HttpResponse)
 from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_protect
 
 import celery.task
 import jingo
@@ -28,6 +29,7 @@ def handle403(request):
     return jingo.render(request, template, status=403)
 
 
+@csrf_protect
 def handle404(request):
     """A handler for 404s."""
     if(is_mobile_request(request)):
