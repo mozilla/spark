@@ -32,10 +32,21 @@
             			</h1>
             			<h3>{{ _('Ready to light up the world?') }}</h3>
             			<p>
-            			    {% trans %}
-            			    To celebrate Mozilla Firefox going mobile, we've created Spark, a game that challenges you to share with friends to help the flame of the open Web glow bright. 
-            			    So get Spark, take challenges, unlock badges and support Mozilla's mission for a better Web in the process. All good stuff!
+            			    {# L10n: this is the first paragraph on the Spark home page #}
+            			    {% trans %}            			    
+            			    To celebrate Mozilla Firefox going mobile, we've created Spark, a game that 
+            			    lets you share Firefox with friends and help the flame of the open Web glow 
+                            bright. So get Spark, engage in challenges, unlock badges and support Mozilla's 
+            			    mission for a better Web in the process. All good stuff!
             			    {% endtrans %}
+            			    
+            			    {# L10n: Former version of this paragraph. Not used anymore #}
+            			    {% if False %}
+                            {% trans %}
+                            To celebrate Mozilla Firefox going mobile, we've created Spark, a game that challenges you to share with friends to help the flame of the open Web glow bright.
+                            So get Spark, take challenges, unlock badges and support Mozilla's mission for a better Web in the process. All good stuff!
+                            {% endtrans %}
+            			    {% endif %}
             			    <a href="#download">{{ _('Get Firefox and start a spark >') }}</a>
             			</p>
         		</div> <!-- end headline -->
