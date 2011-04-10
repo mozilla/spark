@@ -12,13 +12,13 @@
 
 
 {% block content %}
-{% if not logged_in %}
 <div id="container">
     <div id="top-bg">
         <div id="spark-bg"></div>
         <div id="wrapper">
     	    <div id="masthead">
     		    <a href="http://www.mozilla.com/" id="visit-mozilla"></a>
+                {% if not logged_in %}
     		    <span id="have-account">{{ _('Already got Spark?') }} <a class="popup-trigger">{{ _('Sign in >') }}</a></span>
     		    <span id="create-account">{{ _('Start a new Spark.') }} <a class="popup-trigger">{{ _('Register >') }}</a></span>
     		    <span id="js-warning">{{ _('You will need to enable JavaScript in order to use this site') }}</span>
@@ -28,8 +28,20 @@
     				</a>
     			</div>
     			{% include 'desktop/menus/404-loggedout.html' %}
-    		</div> <!-- end masthead -->
-
+    			
+                {% else %}
+                <div class="user-info">
+                {% include "desktop/includes/hello.html" %}
+                </div>
+                <div id="logo">
+                    <a href="{{ url('desktop.home') }}">
+                	<img src="{{ MEDIA_URL }}img/lockup.png" alt="{{ _('Mozilla Firefox') }}">
+                	</a>
+                </div>
+                {% include 'desktop/menus/404-loggedin.html' %}
+                {% endif %}
+                </div> <!-- end masthead -->
+                
             <div id="headline">
         			<h1>
         				{{ _('Whoops!') }}
@@ -46,48 +58,9 @@
         </div> <!-- end wrapper -->
     </div> <!-- end top-bg -->
 </div> <!-- end container -->
-
+{% if not logged_in %}
 {% include 'desktop/popups/logged-out.html' %}
-{% include 'desktop/popups/video-player.html' %}
-<div id="mask"></div>
-<div id="mask-noclick"></div>
-
-{% else %}
-<div id="container">
-    <div id="wrapper">
-	    <div id="masthead">
-    		    <a href="http://www.mozilla.com/" id="visit-mozilla"></a>
-    		    <div class="user-info">
-    		    {% include "desktop/includes/hello.html" %}
-    		    </div>
-    			<div id="logo">
-			        <a href="{{ url('desktop.home') }}">
-    				<img src="{{ MEDIA_URL }}img/lockup.png" alt="{{ _('Mozilla Firefox') }}">
-    				</a>
-    			</div>
-    			{% include 'desktop/menus/404-loggedin.html' %}
-    		</div> <!-- end masthead -->
-
-            <div id="headline">
-        			<h1>
-        				{{ _('Whoops!') }}
-        			</h1>
-        			<h3>{{ _('Error 404') }}</h3>
-        			<p>
-        			    {{ _("It looks like the page you were looking for doesn't exist.") }} 
-        			    <a href="{{ url('desktop.home') }}">{{ _('Go to the homepage') }} ></a>
-        			</p>
-    		</div> <!-- end headline -->
-            
-            {% include 'desktop/includes/footer.html' %}
-
-        </div> <!-- end wrapper -->
-    </div> <!-- end top-bg -->
-</div> <!-- end container -->
-
-{% include 'desktop/popups/logged-out.html' %}
-{% include 'desktop/popups/video-player.html' %}
-<div id="mask"></div>
-<div id="mask-noclick"></div>
 {% endif %}
+<div id="mask"></div>
+<div id="mask-noclick"></div>
 {% endblock %}
