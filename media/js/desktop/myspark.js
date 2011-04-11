@@ -79,26 +79,26 @@ var initSpark = function (level) {
                     ],
                     //level 2
                     [
-                        { arcAngle: 85, angle: -60, angleStep: -0.2, minAngle: 45, maxAngle: 140, rgb: red, scale: 0.95, scaleStep: 0.005, minScale: 0.9, maxScale: 1 },
-                        { arcAngle: 85, angle: -15, angleStep: -0.2, minAngle: 15, maxAngle: 110, rgb: red, scale: 0.85, scaleStep: 0.005, minScale: 0.8, maxScale: 0.9 },
-                        { arcAngle: 80, angle: -50, angleStep: -0.2, minAngle: 35, maxAngle: 120, rgb: red, scale: 0.75, scaleStep: 0.005, minScale: 0.7, maxScale: 0.8 },
-                        { arcAngle: 80, angle: -80, angleStep: -0.2, minAngle: 60, maxAngle: 150, rgb: orange, scale: 0.65, scaleStep: 0.005, minScale: 0.6, maxScale: 0.7 },
-                        { arcAngle: 105, angle: -35, angleStep: -0.25, minAngle: 25, maxAngle: 145, rgb: yellow, scale: 0.45, scaleStep: 0.005, minScale: 0.4, maxScale: 0.5 },
-                        { arcAngle: 95, angle: -2, angleStep: -0.2, minAngle: 0, maxAngle: -20, rgb: orange, scale: 0.55, scaleStep: 0.005, minScale: 0.5, maxScale: 0.6 },
-                        { arcAngle: 105, angle: -75, angleStep: -0.005, minAngle: -60, maxAngle: -100, rgb: yellow, scale: 0.35, scaleStep: 0.005, minScale: 0.3, maxScale: 0.4 }
+                        { arcAngle: 85, angle: -60, angleStep: -0.4, minAngle: 50, maxAngle: 180, rgb: red, scale: 0.95, scaleStep: 0.005, minScale: 0.9, maxScale: 1 },
+                        { arcAngle: 85, angle: -15, angleStep: -0.4, minAngle: 30, maxAngle: 110, rgb: red, scale: 0.85, scaleStep: 0.005, minScale: 0.8, maxScale: 0.9 },
+                        { arcAngle: 80, angle: -50, angleStep: -0.4, minAngle: 0, maxAngle: 180, rgb: red, scale: 0.75, scaleStep: 0.005, minScale: 0.7, maxScale: 0.8 },
+                        { arcAngle: 80, angle: -80, angleStep: -0.4, minAngle: 30, maxAngle: 180, rgb: orange, scale: 0.65, scaleStep: 0.005, minScale: 0.6, maxScale: 0.7 },
+                        { arcAngle: 105, angle: -35, angleStep: -0.5, minAngle: 10, maxAngle: 145, rgb: yellow, scale: 0.45, scaleStep: 0.005, minScale: 0.4, maxScale: 0.5 },
+                        { arcAngle: 95, angle: -2, angleStep: -0.5, minAngle: 20, maxAngle: 180, rgb: orange, scale: 0.55, scaleStep: 0.005, minScale: 0.5, maxScale: 0.6 },
+                        { arcAngle: 105, angle: -75, angleStep: -0.4, minAngle: 20, maxAngle: 180, rgb: yellow, scale: 0.35, scaleStep: 0.005, minScale: 0.3, maxScale: 0.4 }
                     ],
                     //level 3
                     [
-                        { arcAngle: 88, angle: -55, angleStep: -0.2, minAngle: 30, maxAngle: 160, rgb: red, scale: 1.2, scaleStep: 0.005, minScale: 1.1, maxScale: 1.25 },
-                        { arcAngle: 85, angle: -85, angleStep: -0.2, minAngle: 60, maxAngle: 170, rgb: red, scale: 0.95, scaleStep: 0.005, minScale: 0.9, maxScale: 1.1 },
-                        { arcAngle: 60, angle: -10, angleStep: -0.2, minAngle: 5, maxAngle: 90, rgb: red, scale: 0.92, scaleStep: 0.005, minScale: 0.85, maxScale: 1.0 },
-                        { arcAngle: 90, angle: -90, angleStep: -0.2, minAngle: 80, maxAngle: 180, rgb: orange, scale: 0.55, scaleStep: 0.005, minScale: 0.45, maxScale: 0.6 },
-                        { arcAngle: 95, angle: 0, angleStep: -0.2, minAngle: -10, maxAngle: 100, rgb: orange, scale: 0.4, scaleStep: 0.005, minScale: 0.35, maxScale: 0.5 },
-                        { arcAngle: 50, angle: -110, angleStep: -0.2, minAngle: 90, maxAngle: 170, rgb: orange, scale: 0.7, scaleStep: 0.005, minScale: 0.6, maxScale: 0.75 },
-                        { arcAngle: 90, angle: -12, angleStep: -0.2, minAngle: 0, maxAngle: 130, rgb: orange, scale: 0.75, scaleStep: 0.005, minScale: 0.7, maxScale: 0.8 },
-                        { arcAngle: 80, angle: -50, angleStep: -0.25, minAngle: 25, maxAngle: 145, rgb: yellow, scale: 0.32, scaleStep: 0.005, minScale: 0.3, maxScale: 0.4 },
-                        { arcAngle: 90, angle: -90, angleStep: -0.005, minAngle: 80, maxAngle: 200, rgb: yellow, scale: 0.2, scaleStep: 0.005, minScale: 0.2, maxScale: 0.3 },
-                        { arcAngle: 30, angle: -22, angleStep: -0.005, minAngle: 15, maxAngle: 80, rgb: yellow, scale: 0.28, scaleStep: 0.005, minScale: 0.2, maxScale: 0.3 }
+                        { arcAngle: 88, angle: -55, angleStep: -0.6, minAngle: 30, maxAngle: 160, rgb: red, scale: 1.2, scaleStep: 0.005, minScale: 1.1, maxScale: 1.25 },
+                        { arcAngle: 85, angle: -85, angleStep: -0.6, minAngle: 60, maxAngle: 170, rgb: red, scale: 0.95, scaleStep: 0.005, minScale: 0.9, maxScale: 1.1 },
+                        { arcAngle: 60, angle: -10, angleStep: -0.6, minAngle: 5, maxAngle: 90, rgb: red, scale: 0.92, scaleStep: 0.005, minScale: 0.85, maxScale: 1.0 },
+                        { arcAngle: 90, angle: -90, angleStep: -0.6, minAngle: 80, maxAngle: 180, rgb: orange, scale: 0.55, scaleStep: 0.005, minScale: 0.45, maxScale: 0.6 },
+                        { arcAngle: 95, angle: 0, angleStep: -0.6, minAngle: -10, maxAngle: 100, rgb: orange, scale: 0.4, scaleStep: 0.005, minScale: 0.35, maxScale: 0.5 },
+                        { arcAngle: 50, angle: -110, angleStep: -0.6, minAngle: 90, maxAngle: 170, rgb: orange, scale: 0.7, scaleStep: 0.005, minScale: 0.6, maxScale: 0.75 },
+                        { arcAngle: 90, angle: -12, angleStep: -0.6, minAngle: 5, maxAngle: 130, rgb: orange, scale: 0.75, scaleStep: 0.005, minScale: 0.7, maxScale: 0.8 },
+                        { arcAngle: 80, angle: -50, angleStep: -0.75, minAngle: 25, maxAngle: 145, rgb: yellow, scale: 0.32, scaleStep: 0.005, minScale: 0.3, maxScale: 0.4 },
+                        { arcAngle: 90, angle: -90, angleStep: -0.015, minAngle: 80, maxAngle: 200, rgb: yellow, scale: 0.2, scaleStep: 0.005, minScale: 0.2, maxScale: 0.3 },
+                        { arcAngle: 30, angle: -22, angleStep: 1, minAngle: 10, maxAngle: 160, rgb: yellow, scale: 0.28, scaleStep: 0.005, minScale: 0.2, maxScale: 0.3 }
                     ],
                     //level 4
                     [
@@ -189,6 +189,10 @@ var initSpark = function (level) {
                     window.setTimeout(callback, 1000 / 30);
                   };
         })();
+  
+    if(level > 4) {
+        level = 4;
+    }
     
     var animate = function() {
         requestAnimFrame(animate);
