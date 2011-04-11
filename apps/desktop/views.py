@@ -9,10 +9,11 @@ from django.utils.http import urlquote
 
 from geo.countries import countries
 
-from spark.decorators import ssl_required, login_required, mobile_view
+from spark.decorators import ssl_required, login_required, mobile_view, json_view, ajax_required
 from spark.helpers import secure_url
 from spark.urlresolvers import reverse, absolute_url
 from spark.utils import get_city_fullname
+from spark.models import City
 
 from sharing.utils import set_sharing_cookies
 from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, FACEBOOK_SPARK_TITLE, 
@@ -119,8 +120,17 @@ def visualization(request):
 
 def close(request):
     return jingo.render(request, 'desktop/close.html')
-    
-    
+
+
+
+@json_view
+def cities(request):
+    cities = City.objects.order_by('city_name')
+    citylist = [(city.id, get_city_fullname(city.city_name, city.country_code, request.locale)) for city in cities]
+    print 'hop'
+    return citylist
+
+
 def _total_seconds(td):
     """Returns the total number of seconds in a given timedelta."""
     return (td.microseconds + (td.seconds + td.days * 24 * 3600) * 10**6) / 10**6

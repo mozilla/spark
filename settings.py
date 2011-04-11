@@ -184,14 +184,15 @@ MINIFY_BUNDLES = {
         ),
         'home': (
             'js/desktop/popups-loggedout.js',
-            'js/desktop/customforms.js',
+            'js/libs/customforms.js',
         ),
         'dashboard': (
             'js/desktop/minimap.js',
             'js/desktop/dashboard.js',
             'js/desktop/sharehistory.js',
             'js/desktop/popups-youraccount.js',
-            'js/desktop/customforms.js',
+            'js/desktop/popups-boost.js',
+            'js/libs/customforms.js',
             'js/desktop/myspark.js',
         ),
         'user-logged-in': (
@@ -227,10 +228,10 @@ MINIFY_BUNDLES = {
             'js/mobile/badges.js',
         ),
         'geolocation': (
-            'js/mobile/geolocation.js',
+            'js/libs/geolocation.js',
         ),
         'customforms': (
-            'js/mobile/customforms.js',
+            'js/libs/customforms.js',
         ),
         'myspark': (
             'js/mobile/myspark.js',

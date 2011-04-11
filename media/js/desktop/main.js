@@ -91,6 +91,12 @@ $(document).ready(function() {
         $('#your-account').show();
         showPopup(); 
     });
+    
+    // displays the boost popups
+    $('#user-details .popup-trigger').click(function() {
+        $('#boost').show();
+        showPopup();
+    });
 
     // hides the sign-in modal popup (and resets it to sign-in state)
     $mask.click(function() {

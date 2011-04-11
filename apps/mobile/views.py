@@ -7,7 +7,7 @@ import jingo
 
 from spark.models import City
 from spark.urlresolvers import reverse, absolute_url
-from spark.decorators import post_required
+from spark.decorators import post_required, json_view
 from spark.utils import (get_city_fullname, is_supported_non_firefox, is_iphone,
                          is_firefox_mobile, is_android, get_ua, approximate_major_city)
 
@@ -64,6 +64,7 @@ def boost(request):
 
 
 @login_required
+@json_view
 def boost1(request):
     """ Boost your Spark step 1/2 :
         Allows a Spark user to be geolocated by the application."""

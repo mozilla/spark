@@ -65,3 +65,19 @@
     </div>
 </form>
 {% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function() {
+    var callback = function() {
+        $('form').submit();
+    };
+    var onLocateMe = function() {
+        $('#geolocate a').hide();
+    	$('#geolocate img').show();
+    	$('ul.errorlist').hide();
+    };
+    initGeolocation(onLocateMe, callback, callback);
+});
+</script>
+{% endblock %}

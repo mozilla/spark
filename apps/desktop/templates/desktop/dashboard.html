@@ -1,7 +1,7 @@
 {% extends "desktop/base.html" %}
 {% set title = _('Your Spark dashboard') %}
 {% set body_id = 'dashboard' %}
-{% set scripts = ('desktop', 'raphael', 'dashboard') %}
+{% set scripts = ('desktop', 'raphael', 'dashboard', 'geolocation') %}
 
 {% block content %}
 	    <div id="container">
@@ -47,6 +47,9 @@ $(document).ready(function() {
     
     {% include 'desktop/includes/dashboard-script.html' %}
     
+    initPlaceholders();
+    initYourAccountPopups();
+    initBoostPopups();
 });
 </script>
 {% endblock %}

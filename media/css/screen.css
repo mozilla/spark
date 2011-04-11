@@ -745,7 +745,8 @@ span.error {
     font-size:1.231em;
 }
 
-#sign-in, #your-account, #password-recovery, #success, #change-email, #change-password, #delete-account, #register {
+#sign-in, #your-account, #password-recovery, #success, #change-email, #change-password, #delete-account, #register,
+#boost, #boost1, #boost1-confirm, #boost2, #boost2-confirm, #select-location {
     display:none;
 }
 

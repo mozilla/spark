@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^user/(?P<username>[\w.+-]+)$', views.user, name='desktop.user'),
     url(r'^global$', views.visualization, name='desktop.visualization'),
     url(r'^close$', views.close, name='desktop.close_popup'),
+    url(r'^cities$', views.cities, name='desktop.cities')
 )
