@@ -66,5 +66,5 @@ Production installation
 * Run migrations: ./vendor/src/schematic/schematic migrations/ 
 * Set up the Celery server (Celery settings are in settings.py)
 * Run celeryd
-* Set up a cron job: ./bin/update_site.py -e prod
+* Run: ./bin/update_site.py -e prod
 
