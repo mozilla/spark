@@ -962,7 +962,8 @@ div.section-header p {
 }
 
 #spark-graphic .placeholder {
-    padding-top:55px;
+    padding-top:225px;
+    margin-left:150px;
     width:300px;
     height:173px;
 }
@@ -984,7 +985,7 @@ div.section-header p {
 }
 
 .placeholder.level-5 {
-    background:url('../img/ie/your-spark-5.png') no-repeat center bottom;
+    background:url('../img/ie/your-spark-4.png') no-repeat center bottom;
 }
 
 p.legend {
