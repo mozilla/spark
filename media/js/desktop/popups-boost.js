@@ -65,6 +65,7 @@ var initBoost = function() {
         $.get(resp.url, function(html) {
             $('#user-location').html(html);
             $('#user-location-link').hide();
+            $('#boost').data('status', 1);
         });
         swap('#boost1-confirm', '#boost2');
     });

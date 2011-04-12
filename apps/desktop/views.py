@@ -147,7 +147,11 @@ def home_location_info(request):
 @login_required
 def parent_user_info(request):
     profile = request.user.profile
-    return HttpResponse(_(u'Spark started with: <span>{parent}</span>').format(parent=profile.spark_started_with))
+    parent = profile.spark_started_with
+    if parent:
+        return HttpResponse(_(u'Spark started with: <span>{parent}</span>').format(parent=parent))
+    else:
+        return HttpResponse(_(u'Congrats! You started a new Spark.'))
 
 
 def _total_seconds(td):
