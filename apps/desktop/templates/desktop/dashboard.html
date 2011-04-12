@@ -50,6 +50,11 @@ $(document).ready(function() {
     initPlaceholders();
     initYourAccountPopups();
     initBoostPopups();
+    
+    {% if open_boost_popup %}
+    $('#boost').show();
+    showPopup();
+    {% endif %}
 });
 </script>
 {% endblock %}

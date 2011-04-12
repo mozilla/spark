@@ -40,6 +40,7 @@ def home(request):
             boost_status = 2
         elif profile.boost1_completed:
             boost_status = 1
+        just_registered = request.GET.get('n')
         return jingo.render(request, 'desktop/dashboard.html',
                                     {'username': profile.user.username,
                                      'profile': profile,
@@ -56,7 +57,8 @@ def home(request):
                                      'facebook_spark_msg': urlquote(unicode(FACEBOOK_SPARK_MSG)),
                                      'abs_url': profile.generic_sharing_url,
                                      'stats': get_global_stats(),
-                                     'boost_status': boost_status})
+                                     'boost_status': boost_status,
+                                     'open_boost_popup': just_registered})
     else:
         data = {'is_homepage': True,
                 'twitter_url': urlquote(absolute_url(django_reverse('desktop.home'))),
