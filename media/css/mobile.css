@@ -1064,3 +1064,21 @@ body#user-share {
     display:block;
     margin:0 auto;
 }
+
+/*404 page*/
+
+#home.error404 {
+    background:none;
+}
+
+#home.error404 #header {
+    margin-bottom:0;
+}
+
+.error404 h3 {
+    font-weight:bold;
+}
+
+.logged-out #flame-bg {
+    top:0;
+}

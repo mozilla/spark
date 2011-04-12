@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>My Title</title>
+        <style type="text/css">
+            @page {
+                size: letter landscape;
+                margin: 0cm;
+            }
+            
+            body {
+                font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
+                font-size: 16pt;
+            }
+            
+            #logo {
+                display:block;
+                margin-left:16cm;
+                margin-bottom:-12cm;
+            }
+            
+            ul {
+                display:block;
+                margin-top:-400px;
+            }
+            
+            #content {
+                display:block;
+                margin-top:-400px;
+            }
+            
+            h1 {
+                font-size:48pt;
+                color:#f56b05;
+                font-weight:bold;
+                margin:0;
+                padding:0;
+                margin:-400px 0 0 1cm;
+                line-height:100%;
+            }
+            
+            h1 span {
+                display:block;
+                color:#000;
+                padding-top:0;
+            }
+            
+            #sub-header {
+                color:#666666;
+                font-size:16pt;
+                line-height:150%;
+                margin-left:1cm;
+                width:5cm;
+                display:block;
+            }
+            
+            #your-url {
+                background:#000;
+                font-size:24pt;
+                color:#fff;
+                display:block;
+                font-weight:bold;
+                margin-left:0.75cm;
+                padding-left:0.25cm;
+                padding-top:0.25cm;
+                padding-bottom:-0.25cm;
+                margin-right:9cm;
+                margin-top:4.75cm;
+            }
+            
+            #sub-url {
+                color:#666666;
+                font-size:12pt;
+                line-height:150%;
+                margin-left:1cm;
+                width:5cm;
+                display:block;
+            }
+            
+            table {
+                font-size:14pt;
+                font-weight:normal;
+                display:block;
+            }
+            
+            table thead th {
+                width:4.5cm;
+                border-top:3px solid #000;
+                text-align:left;
+                padding:0;
+                padding-top:10px;
+            }
+            
+            table tbody tr td {
+                text-align:left;
+                padding:0;
+                margin-left:-0.5cm;
+                margin-right:0;
+            }
+            
+            .separator {
+                width:24px;
+                border-top:0px;
+            }
+            
+            .margin {
+                width:1cm;
+                border-top:0;
+            }
+            
+            table tbody span {
+                font-weight:bold;
+                display: block;
+                margin-top:30px;
+                margin-left:20px;
+            }
+            
+            #spark-img {
+                display:block;
+                margin-left:20px;
+            }
+             
+        </style>
+    </head>
+    <body>
+        <div>
+            <img id="logo" src="{{ base_url }}{{ MEDIA_URL }}img/poster/ff-logo.jpg" alt="">
+            
+            <div id="content">
+                <h1>
+                    {% trans %}
+                        Get Firefox <span>on your Android</span>
+                    {% endtrans %}
+                </h1>
+                
+                <p id="sub-header">
+                    {% trans %}
+                        Firefox is available for Android phones (2.0 and above) <br>and the Nokia N900.
+                    {% endtrans %}
+                </p>
+                
+                <div id="your-url">
+                    {{ user_url }}
+                </div>
+                
+                <p id="sub-url">
+                    {{ _('Remember <span>{username}</span> when you get Firefox for mobile and boost your Spark.')|fe(username=username) }}
+                </p>
+            </div>
+            
+            <div id="links">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="margin"></th>
+                            <th>{{ _('Get Firefox on your Android') }}</th>
+                            <th class="separator"></th>
+                            <th>{{ _('Get Firefox Home on your iPhone') }}</th>
+                            <th class="separator"></th>
+                            <th>{{ _('Play Spark, share and earn badges') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td><img id='user-qr' src="{{ user_qr }}" alt=""></td>
+                            <td></td>
+                            <td><img id='ff-home-qr' src="{{ ff_home_qr }}" alt=""></td>
+                            <td></td>
+                            <td><img id='spark-img' src="{{ base_url }}{{ MEDIA_URL }}img/poster/spark.jpg" alt=""><span>spark.mozilla.org</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

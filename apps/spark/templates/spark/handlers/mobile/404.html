@@ -1,10 +1,29 @@
-{% extends "mobile/base.html" %}
-{% set pagetitle = _('Page Not Found') %}
+{% extends "mobile/page.html" %}
+{% set pagetitle = _('Firefox Spark') %}
+{% set logged_in = request.user.is_authenticated() %}
+{% set body_id = 'home' %}
 
-{% block content %}
-<article id="error-page" class="main">
-  <h1>{{ pagetitle }}</h1>
+{% if logged_in %}
+{% set scripts = ('menu',) %}
+{% set body_class = 'error404' %}
+{% else %}
+{% set hide_menu = True %}
+{% set body_class = 'logged-out error404' %}
+{% endif %}
 
-  <p>{{ _("Sorry, we couldn't find the page you were looking for.") }}</p>
-</article>
+
+{% block pagecontent %}
+<div class="section">
+    <h3>{{ _('Whoops!') }}</h3>
+    <p class="sans">{{ _("It looks like the page you were looking for doesn't exist.") }}</p>
+</div>
+<hr>
+<div class="cta">
+    {% if logged_in %}
+    <a href="{{ url('mobile.home') }}">{{ _('Go to My Spark') }}</a>
+    {% else %}
+    <a href="{{ url('mobile.home') }}">{{ _('Go to the homepage') }}</a>
+    {% endif %}
+</div>
+<hr>
 {% endblock %}

@@ -62,7 +62,7 @@ class RegisterForm(forms.ModelForm):
         super(RegisterForm, self).clean()
         password = self.cleaned_data.get('password')
         password2 = self.cleaned_data.get('password2')
-        if not password == password2:
+        if self.is_valid() and not password == password2:
             raise forms.ValidationError(_('Passwords do not match.'))
 
         return self.cleaned_data

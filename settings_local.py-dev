@@ -80,6 +80,7 @@ INSTALLED_APPS = (
     'challenges',
     'stats',
     'sharing',
+    'poster',
     'ghettoq' # Needed in dev environment only
 )
 

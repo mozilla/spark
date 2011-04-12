@@ -51,9 +51,13 @@
             {% endtrans %}
         </p>
     </div>
+    <div class="sub-section">
+        <h4>{{ _('QR code poster') }}</h4>
+        <a href="{{ url('poster.userposter', username) }}" class="button" id="print-poster">{{ _('Create a poster') }}</a>
+        <p id="poster">
+            {{ _('Print your QR code onto a poster.') }}
+        </p>
+    </div>
     {# Unused strings for this release #}
     {% set s = _('Copy your URL') %}
-    {% set s = _('QR code poster') %}
-    {% set s = _('Create a poster') %}
-    {% set s = _('Print your QR code onto a poster.') %}
 {% endblock %}
