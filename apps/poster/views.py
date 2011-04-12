@@ -11,8 +11,6 @@ def userposter(request, username):
     profile = user.profile
     base_url = u'https://%s' % Site.objects.get_current()
     
-    print base_url
-    
     return render_to_pdf(request,
             'poster/poster.html',
             {
