@@ -7,7 +7,6 @@ function initGeolocation(clickCallback, successCallback, errorCallback) {
 		if(info.address) {
 		    $('#city').attr('value', info.address.city);
 		    $('#country-code').attr('value', info.address.countryCode);
-		    $('#country').attr('value', info.address.country);
 		    if(info.address.countryCode === 'US' && info.address.postalCode) {
 		        $('#us-state').attr('value', zipToState(info.address.postalCode));
 		    }

@@ -19,7 +19,15 @@ class BoostStep1Form(forms.Form):
     long = forms.DecimalField()
     city = forms.CharField()
     country_code = forms.CharField(min_length=2, max_length=2)
-    country = forms.CharField()
+    us_state = forms.CharField(min_length=2, max_length=2, required=False)
+
+
+class BoostStep1ConfirmForm(forms.Form):
+    lat = forms.DecimalField()
+    long = forms.DecimalField()
+    city_id = forms.CharField()
+    city = forms.CharField()
+    country_code = forms.CharField(min_length=2, max_length=2)
     us_state = forms.CharField(min_length=2, max_length=2, required=False)
 
 

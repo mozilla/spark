@@ -28,7 +28,7 @@ from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, TWITTER_BADG
 from stats.models import SharingHistory, CountrySparked, CitySharingHistory
 from stats.utils import get_global_stats
 
-from .forms import BoostStep1Form, BoostStep2Form
+from .forms import BoostStep1Form, BoostStep1ConfirmForm, BoostStep2Form
 from .decorators import login_required, logout_required
 
 from tower import ugettext as _, ugettext_lazy as _lazy
@@ -70,6 +70,7 @@ def boost1(request):
     """ Boost your Spark step 1/2 :
         Allows a Spark user to be geolocated by the application."""
     profile = request.user.profile
+    ajax = request.is_ajax()
     
     if profile.boost1_completed:
         return HttpResponseRedirect(reverse('mobile.boost2'))
@@ -79,38 +80,19 @@ def boost1(request):
         form = BoostStep1Form(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            profile.latitude = data['lat']
-            profile.longitude = data['long']
-            profile.city_name = data['city']
-            profile.country_code = data['country_code']
-            if data['country_code'] == 'US':
-                profile.us_state = data['us_state']
-            profile.boost1_completed = True
-            profile.save()
+            data.update({'city_id': 0,
+                         'geo_result': get_city_fullname(data['city'], data['country_code'], request.locale)})
             
-            approximate_major_city(profile, 1000)
-            
-            CountrySparked.add_country(data['country_code'])
-
-            update_completed_challenges.delay(profile.user.id)
-            
-            profile.add_city_shares_for_children()
-            
-            return HttpResponseRedirect(reverse('mobile.boost1_complete'))
+            if ajax:
+                return {'status': 'success', 
+                        'data': {'cityName': profile.city_name,
+                                 'countryName': get_country_name(profile.country_code, request.locale)}}
+            else:
+                return jingo.render(request, 'mobile/boost_step1_found.html', data)
         else:
             data.update({'geolocation': 'error'})
 
     return jingo.render(request, 'mobile/boost_step1.html', data)
-
-
-@login_required
-def boost1_complete(request):
-    profile = request.user.profile
-    if not profile.boost1_completed:
-        return HttpResponseRedirect(reverse('mobile.boost1'))
-    
-    return jingo.render(request, 'mobile/boost_step1.html', {'geolocation': 'success',
-                'geo_result': get_city_fullname(profile.city_name, profile.country_code, request.locale)})
 
 
 @login_required
@@ -125,31 +107,26 @@ def geolocation_fallback(request):
     
             try:
                 city = City.objects.get(pk=city_id)
-                profile.major_city = city
-                profile.latitude = city.latitude
-                profile.longitude = city.longitude
-                profile.city_name = city.city_name
-                profile.country_code = city.country_code
-                profile.boost1_completed = True
-                profile.save()
-                
-                CountrySparked.add_country(city.country_code)
-                
-                update_completed_challenges.delay(profile.user.id)
-                
-                profile.add_city_shares_for_children()
+                data = {
+                    'lat': city.latitude,
+                    'long': city.longitude,
+                    'city_id': city_id,
+                    'city': city.city_name,
+                    'country_code': city.country_code,
+                    'us_state': '',
+                    'geo_result': get_city_fullname(city.city_name, city.country_code, request.locale)
+                }
                 
                 if ajax:
-                    return {'status': 'success', 
-                            'data': {'cityName': profile.city_name,
-                                     'countryName': get_country_name(profile.country_code, request.locale)}}
+                    return {'status': 'success',
+                            'data': data}
                 else:
-                    return HttpResponseRedirect(reverse('mobile.boost1_complete'))
+                    return jingo.render(request, 'mobile/boost_step1_found.html', data)
             except City.DoesNotExist:
                 # Wrong city in the POST data
                 if ajax:
                     return {'status': 'error',
-                            'errors': {'citylist': [_('Select your location manually')]}}
+                            'errors': {'citylist': [_(u'Select your location manually')]}}
     
         cities = City.objects.order_by('city_name')
         citylist = [(city.id, get_city_fullname(city.city_name, city.country_code, request.locale)) for city in cities]
@@ -158,6 +135,47 @@ def geolocation_fallback(request):
     
     # Ignore chosen city and redirect if user has already completed Boost step 1.
     return HttpResponseRedirect(reverse('mobile.boost1_complete'))
+
+
+@login_required
+@post_required
+@json_view
+def boost1_confirm(request):
+    ajax = request.is_ajax()
+    profile = request.user.profile
+
+    form = BoostStep1ConfirmForm(request.POST)
+    if form.is_valid():
+        data = form.cleaned_data
+        profile.latitude = data['lat']
+        profile.longitude = data['long']
+        if data['city_id'] != '0':
+            try:
+                city = City.objects.get(pk=data['city_id'])
+                profile.major_city = city
+            except City.DoesNotExist:
+                # Wrong city in the POST data, redirect to manual geolocation page
+                return HttpResponseRedirect(reverse('mobile.yourlocation'))
+        profile.city_name = data['city']
+        profile.country_code = data['country_code']
+        if data['country_code'] == 'US':
+            profile.us_state = data['us_state']
+        profile.boost1_completed = True
+        profile.save()
+
+        if not profile.major_city:
+            approximate_major_city(profile, 1000)
+
+        CountrySparked.add_country(data['country_code'])
+
+        update_completed_challenges.delay(profile.user.id)
+
+        profile.add_city_shares_for_children()
+
+        if ajax:
+            return {'status': 'success', 'url': reverse('desktop.location_info')}
+        else:
+            return HttpResponseRedirect(reverse('mobile.boost2'))
 
 
 @login_required
