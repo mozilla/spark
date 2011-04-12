@@ -9,5 +9,7 @@ urlpatterns = patterns('',
     url(r'^user/(?P<username>[\w.+-]+)$', views.user, name='desktop.user'),
     url(r'^global$', views.visualization, name='desktop.visualization'),
     url(r'^close$', views.close, name='desktop.close_popup'),
-    url(r'^cities$', views.cities, name='desktop.cities')
+    url(r'^cities$', views.cities, name='desktop.cities'),
+    url(r'^location_info$', views.home_location_info, name='desktop.location_info'),
+    url(r'^parent_info$', views.parent_user_info, name='desktop.parent_info')
 )

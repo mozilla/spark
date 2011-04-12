@@ -1,5 +1,5 @@
 <div id="popup">
-    <div id="boost">
+    <div id="boost" data-status="{{ boost_status }}">
         <h3>{{ _('Boost your Spark') }}</h3>
         <p class="legend">
             {{ _('Wanna share a few more details?') }}<br>
@@ -55,8 +55,8 @@
             </div>
             <div class="buttons-wrapper">
                 {# L10n: Space is limited here, the translation should be no longer than ~15 latin characters #}
-                <a class="button left-button close">{{ _('Cancel') }}</a>
-                <a class="button right-button">{{ _('Next step') }}</a>
+                <a class="button left-button">{{ _('Cancel') }}</a>
+                <a class="button right-button">{{ _('Confirm') }}</a>
             </div>
         </div>
         
@@ -77,16 +77,15 @@
         <h3>{{ _('Boost your Spark') }}</h3>
         <h4>{{ _('Step 1 of 2') }}</h4>
         
-        <!-- Choose your location manually -->
         <p class="legend">
             {{ _("Select your location manually") }}
         </p>
-        <form id="select-location-form" method="post">
+        <form action="{{ url('mobile.yourlocation')|secure_url }}" id="select-location-form" method="post">
             {{ csrf() }}
             <fieldset>
-                <select tabindex="1" name="chosen_city" id="citylist">
-                    <option value="">{{ _("Your location") }}</option>
-                </select> 
+                <select tabindex="1" name="city" id="select-location-form-citylist">
+                    <option value="0">{{ _("Your location") }}</option>
+                </select>
             </fieldset>
             <div class="buttons-wrapper">
                 {# L10n: Space is limited here, the translation should be no longer than ~15 latin characters #}
@@ -108,16 +107,16 @@
             {% endtrans %}
         </p>
         
-        <form method="post" accept-charset="utf-8">
+        <form id="boost2-form" action="{{ url('mobile.boost2')|secure_url }}" method="post" accept-charset="utf-8">
             {{ csrf() }}
             <fieldset id="identifier" class="section">
-                <div class="input-wrapper">
-                    <input tabindex="1" type="text" name="identifier" value="" placeholder="{{ _('Username/email address') }}">
+                <div id="boost2-form-identifier" class="input-wrapper">
+                    <input tabindex="1" type="text" name="identifier" value="" placeholder="{{ _('Username/email address') }}" required>
                 </div>
                 <p class="disclaimer sans">
-                {% trans policy_url='http://www.mozilla.com/m/privacy.html' %}
-                Email address is only used to connect to you. See our <a href="{{ policy_url }}">Privacy Policy.</a>
-                {% endtrans %}
+                {% trans %}
+        		Your friend's email address is only used to connect the two of you.
+        		{% endtrans %}
                 </p>
             </fieldset>
             <hr>
@@ -131,41 +130,38 @@
             <div class="buttons-wrapper">
                 {# L10n: Space is limited here. The translation should be no longer than the English version, leave only "Later" if needed #}
                 <a class="button left-button close">{{ _('Maybe later') }}</a>
-                <a tabindex="3" class="button right-button" type="submit">{{ _('Find') }}</a>
+                <button tabindex="3" class="right-button" type="submit">{{ _('Find') }}</button>
             </div>
         </form>
     </div>
     
-    <form id="boost2-form" action="{{ url('mobile.boost2_confirm')|secure_url }}" method="post" accept-charset="utf-8">
-    	{{ csrf() }}
-    	<input type="hidden" name="no_parent" value="">
-    	<input type="hidden" name="parent" value="">
-    </form>
-    
     <div id="boost2-confirm">
-        <div id="boost2-result">
+        <h3>{{ _('Boost your Spark') }}</h3>
+        <h4>{{ _('Step 2 of 2') }}</h4>
+        
+        <div id="boost2-result-solo">
             <div id="checkmark"></div>
             <span>
                 {{ _('Congrats! You started a new Spark.') }}
             </span>
         </div>
-        <div id="boost2-result">
+        <div id="boost2-result-parent">
             <div id="checkmark"></div>
             <span>
                 {{ _('Your Spark was started by:') }}
-                <span></span>
+                <span id="parent-name"></span>
             </span>
         </div>
 
-        <form action="{{ url('mobile.boost2_confirm') }}" method="POST">
+        <form id="boost2-confirm-form" action="{{ url('mobile.boost2_confirm')|secure_url }}" method="POST" accept-charset="utf-8">
             {{ csrf() }}
-            <input id="no-parent" type="hidden" name="no_parent" value="1">
+            <input id="no-parent" type="hidden" name="no_parent" value="">
             <input id="has-parent" type="hidden" name="parent" value="">
 
             <div class="buttons-wrapper">
-                <a class="button left-button close">{{ _('Cancel') }}</a>
+                <a class="button left-button">{{ _('Cancel') }}</a>
                 {# L10n: Action verb on a form submit button. #}
-                <a class="button right-button" type="submit">{{ _('Complete') }}</a>
+                <button tabindex="1" class="right-button" type="submit">{{ _('Complete') }}</button>
             </div>
         </form>
     </div>

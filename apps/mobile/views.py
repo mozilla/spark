@@ -9,7 +9,8 @@ from spark.models import City
 from spark.urlresolvers import reverse, absolute_url
 from spark.decorators import post_required, json_view
 from spark.utils import (get_city_fullname, is_supported_non_firefox, is_iphone,
-                         is_firefox_mobile, is_android, get_ua, approximate_major_city)
+                         is_firefox_mobile, is_android, get_ua, approximate_major_city,
+                         get_country_name)
 
 from users.models import User, UserNode
 from users.utils import create_relationship
@@ -30,7 +31,7 @@ from stats.utils import get_global_stats
 from .forms import BoostStep1Form, BoostStep2Form
 from .decorators import login_required, logout_required
 
-from tower import ugettext_lazy as _lazy
+from tower import ugettext as _, ugettext_lazy as _lazy
 
 
 
@@ -113,7 +114,9 @@ def boost1_complete(request):
 
 
 @login_required
+@json_view
 def geolocation_fallback(request):
+    ajax = request.is_ajax()
     profile = request.user.profile
     if not profile.boost1_completed:
         
@@ -135,11 +138,18 @@ def geolocation_fallback(request):
                 update_completed_challenges.delay(profile.user.id)
                 
                 profile.add_city_shares_for_children()
-        
-                return HttpResponseRedirect(reverse('mobile.boost1_complete'))
+                
+                if ajax:
+                    return {'status': 'success', 
+                            'data': {'cityName': profile.city_name,
+                                     'countryName': get_country_name(profile.country_code, request.locale)}}
+                else:
+                    return HttpResponseRedirect(reverse('mobile.boost1_complete'))
             except City.DoesNotExist:
-                # Wrong city in the POST data, ignore it and display the city list again.
-                pass
+                # Wrong city in the POST data
+                if ajax:
+                    return {'status': 'error',
+                            'errors': {'citylist': [_('Select your location manually')]}}
     
         cities = City.objects.order_by('city_name')
         citylist = [(city.id, get_city_fullname(city.city_name, city.country_code, request.locale)) for city in cities]
@@ -151,10 +161,12 @@ def geolocation_fallback(request):
 
 
 @login_required
+@json_view
 def boost2(request):
     """ Boost your Spark step 2/2 :
         Allows a Spark user to find a parent user by username or email address."""
     profile = request.user.profile
+    ajax = request.is_ajax()
 
     if profile.boost2_completed:
         return HttpResponseRedirect(reverse('mobile.home'))
@@ -168,7 +180,14 @@ def boost2(request):
             else: # User just checked the 'I started a new Spark on my own' box
                 data.update({'no_parent': True})
             
-            return jingo.render(request, 'mobile/boost_step2_found.html', data)
+            if ajax:
+                return {'status': 'success', 'data': data}
+            else:
+                return jingo.render(request, 'mobile/boost_step2_found.html', data)
+        else:
+            if ajax:
+                return {'status': 'error',
+                        'errors': dict([(k, [unicode(e) for e in v]) for k,v in form.errors.items()])}
     else:
         form = BoostStep2Form(request.user)
     
@@ -177,11 +196,14 @@ def boost2(request):
 
 @login_required
 @post_required
+@json_view
 def boost2_confirm(request):
     """ Boost your Spark step 2/2 confirmation.
         This view saves the parent-child relationship in the user tree.
     """
     profile = request.user.profile
+    ajax = request.is_ajax()
+    
     if profile.boost2_completed:
         return HttpResponseRedirect(reverse('mobile.home'))
     
@@ -225,7 +247,13 @@ def boost2_confirm(request):
             # This requires to award badges synchronously for this particular step.
             update_completed_challenges(profile.user.id)
             
-            return HttpResponseRedirect(reverse('mobile.home'))
+            if ajax:
+                return {'status': 'success', 'url': reverse('desktop.parent_info')}
+            else:
+                return HttpResponseRedirect(reverse('mobile.home'))
+        else:
+            if ajax:
+                return {'status': 'error'}
     
     return jingo.render(request, 'spark/handlers/mobile/400.html', status=400)
 

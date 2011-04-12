@@ -1600,7 +1600,7 @@ div.level.locked:hover {
     color:#fff;
 }
 
-#citylist {
+#select-location-form-citylist {
     width:100%;
     border-radius:2px;
     -moz-border-radius:2px;
@@ -1615,7 +1615,7 @@ div.level.locked:hover {
     height:34px;
 }
 
-#citylist option {
+#select-location-form-citylist option {
 padding:5px 10px;
 }
 

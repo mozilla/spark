@@ -25,6 +25,7 @@ from users.models import User, Profile
 
 from stats.utils import get_global_stats
 
+from tower import ugettext as _
 import jingo
 
 
@@ -34,6 +35,11 @@ def home(request):
     if request.user.is_authenticated():
         profile = request.user.profile
         delta = datetime.datetime.now() - profile.user.date_joined
+        boost_status = 0
+        if profile.boost2_completed:
+            boost_status = 2
+        elif profile.boost1_completed:
+            boost_status = 1
         return jingo.render(request, 'desktop/dashboard.html',
                                     {'username': profile.user.username,
                                      'profile': profile,
@@ -49,7 +55,8 @@ def home(request):
                                      'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
                                      'facebook_spark_msg': urlquote(unicode(FACEBOOK_SPARK_MSG)),
                                      'abs_url': profile.generic_sharing_url,
-                                     'stats': get_global_stats()})
+                                     'stats': get_global_stats(),
+                                     'boost_status': boost_status})
     else:
         data = {'is_homepage': True,
                 'twitter_url': urlquote(absolute_url(django_reverse('desktop.home'))),
@@ -129,6 +136,18 @@ def cities(request):
     citylist = [(city.id, get_city_fullname(city.city_name, city.country_code, request.locale)) for city in cities]
     print 'hop'
     return citylist
+
+
+@login_required
+def home_location_info(request):
+    profile = request.user.profile
+    return HttpResponse(_(u'Home location: <span>{location}</span>').format(location=profile.get_home_location(request.locale)))
+
+
+@login_required
+def parent_user_info(request):
+    profile = request.user.profile
+    return HttpResponse(_(u'Spark started with: <span>{parent}</span>').format(parent=profile.spark_started_with))
 
 
 def _total_seconds(td):
