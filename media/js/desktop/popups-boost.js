@@ -150,7 +150,7 @@ var refreshYourLocation = function(geo_result) {
 
 var populateConfirmForm = function(data) {
     $('#confirm-lat').val(data.lat);
-    $('#confirm-long').val(data.long);
+    $('#confirm-long').val(data.lon);
     $('#confirm-city-id').val(0);
     $('#confirm-city').val(data.city);
     $('#confirm-country-code').val(data.country_code);

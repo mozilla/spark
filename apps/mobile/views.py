@@ -86,6 +86,7 @@ def boost1(request):
                          'geo_result': get_city_fullname(data['city'], data['country_code'], request.locale)})
             
             if ajax:
+                data.update({'lon': data['long']}) # JS compression bug fix
                 return {'status': 'success', 
                         'data': data}
             else:
@@ -119,6 +120,7 @@ def geolocation_fallback(request):
                 }
                 
                 if ajax:
+                    data.update({'lon': data['long']}) # JS compression bug fix
                     return {'status': 'success',
                             'data': data}
                 else:
