@@ -15,6 +15,21 @@ var initBoost = function() {
         swap('#boost', '#boost1');
     });
     
+    // Boost 1 form
+    var boost1Error = function() {
+        
+    };
+    var boost1Success = function($form, resp) {
+        var data = resp.data;
+        refreshYourLocation(data.geo_result);
+        populateConfirmForm(data);
+        
+        swap('#boost1', '#boost1-confirm');
+        $('#location-error').hide();
+        $('#location-result').show();
+    };
+    popupForm('#boost1-form', boost1Error, boost1Success);
+    
     // Try again (boost 1)
     $('#location-error .right-button').click(function() {
         swap('#boost1-confirm', '#boost1');
@@ -22,7 +37,8 @@ var initBoost = function() {
     
     // Manual geolocation form
     popupForm('#select-location-form', null, function($form, resp) {
-        refreshYourLocation(resp.data.cityName, resp.data.countryName);
+        refreshYourLocation(resp.data.geo_result);
+        populateConfirmForm(resp.data);
         swap('#select-location', '#boost1-confirm');
         $('#location-error').hide();
         $('#location-result').show();
@@ -46,19 +62,17 @@ var initBoost = function() {
     
     // Boost 1 Confirm
     popupForm('#boost1-confirm-form', null, function($form, resp) {
-        if(resp.status === 'success') {
-            $.get(resp.url, function(html) {
-                $('#user-location').html(html);
-                $('#user-location-link').hide();
-            });
-            swap('#boost1-confirm', '#boost2');
-        }
+        $.get(resp.url, function(html) {
+            $('#user-location').html(html);
+            $('#user-location-link').hide();
+        });
+        swap('#boost1-confirm', '#boost2');
     });
     
     // Boost 1 Confirm - Cancel button
     $('#location-result .left-button').click(function(e) {
         $('#select-location-form-citylist').val('0');
-        swap('#boost1-confirm', '#select-location');
+        swap('#boost1-confirm', '#boost1');
     });
     
     // Boost 2 form
@@ -98,22 +112,10 @@ var initBoost = function() {
         resetForm('#boost2-form');
         swap('#boost2-confirm', '#boost2');
     });
-    
-    /*
-    var boost1Error = function() {
-        alert('error');
-    };
-    var boost1Success = function() {
-        alert('success');
-    };
-    popupForm('#boost1-form', boost1Error, boost1Success);*/
 };
 
 var geoSuccess = function() {
-    swap('#boost1', '#boost1-confirm');
-    refreshYourLocation($('#city').val(), $('#country').val());
-    $('#location-error').hide();
-    $('#location-result').show();
+    $('#boost1-form').submit();
 };
 
 var geoError = function() {
@@ -123,8 +125,13 @@ var geoError = function() {
 };
 
 var onLocateClick = function() {
-    $('#geolocate a').hide();
-	$('#geolocate img').show();
+    //$('#geolocate a').hide();
+	//$('#geolocate img').show();
+	$('#lat').val('');
+	$('#long').val('');
+	$('#city').val('');
+	$('#country-code').val('');
+	$('#us-state').val('');
 	$('ul.errorlist').hide();
 };
 
@@ -136,7 +143,16 @@ var initBoostPopups = function() {
 
 // Helper functions
 
-var refreshYourLocation = function(city, country) {
-    $('#your-location').find('span').html(city+', '+country);
+var refreshYourLocation = function(geo_result) {
+    $('#your-location').find('span').html(geo_result);
+};
+
+var populateConfirmForm = function(data) {
+    $('#confirm-lat').val(data.lat);
+    $('#confirm-long').val(data.long);
+    $('#confirm-city-id').val(0);
+    $('#confirm-city').val(data.city);
+    $('#confirm-country-code').val(data.country_code);
+    $('#confirm-us-state').val(data.us_state);
 };
 

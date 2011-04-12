@@ -20,6 +20,15 @@
             {{ _('Click on the button below so we can find out where you are.') }}
         </p>
         
+        <form id="boost1-form" action="{{ url('mobile.boost1')|secure_url }}" method="post" accept-charset="utf-8">
+        	{{ csrf() }}
+        	<input type="hidden" id="lat" name="lat" value="">
+        	<input type="hidden" id="long" name="long" value="">
+        	<input type="hidden" id="city" name="city" value="">
+        	<input type="hidden" id="country-code" name="country_code" value="">
+        	<input type="hidden" id="us-state" name="us_state" value="">
+        </form>
+        
         <!-- Initial state -->
         <div class="disclaimer">
             <a href="http://www.mozilla.com/en-US/privacy-policy.html" target="_blank">{{ _('Learn how Mozilla protects your geolocation data') }} ></a>
@@ -32,16 +41,6 @@
         </div>
     </div>
     
-    <form id="boost1-form" action="{{ url('mobile.boost1')|secure_url }}" method="post" accept-charset="utf-8">
-    	{{ csrf() }}
-    	<input type="hidden" id="lat" name="lat" value="">
-    	<input type="hidden" id="long" name="long" value="">
-    	<input type="hidden" id="city" name="city" value="">
-    	<input type="hidden" id="country-code" name="country_code" value="">
-    	<input type="hidden" id="country" name="country" value="">
-    	<input type="hidden" id="us-state" name="us_state" value="">
-    </form>
-    
     <div id="boost1-confirm">
         <h3>{{ _('Boost your Spark') }}</h3>
         <h4>{{ _('Step 1 of 2') }}</h4>
@@ -53,11 +52,21 @@
                 {{ _('Your location') }}
                 <span></span>
             </div>
-            <div class="buttons-wrapper">
-                {# L10n: Space is limited here, the translation should be no longer than ~15 latin characters #}
-                <a class="button left-button">{{ _('Cancel') }}</a>
-                <a class="button right-button">{{ _('Confirm') }}</a>
-            </div>
+            
+            <form id="boost1-confirm-form" action="{{ url('mobile.boost1_confirm')|secure_url }}" method="post" accept-charset="utf-8">
+            	{{ csrf() }}
+            	<input type="hidden" id="confirm-lat" name="lat" value="">
+            	<input type="hidden" id="confirm-long" name="long" value="">
+            	<input type="hidden" id="confirm-city-id" name="city_id" value="">
+            	<input type="hidden" id="confirm-city" name="city" value="">
+            	<input type="hidden" id="confirm-country-code" name="country_code" value="">
+            	<input type="hidden" id="confirm-us-state" name="us_state" value="">
+                <div class="buttons-wrapper">
+                    {# L10n: Space is limited here, the translation should be no longer than ~15 latin characters #}
+                    <a class="button left-button">{{ _('Cancel') }}</a>
+                    <button tabindex="2" class="right-button" type="submit">{{ _('Confirm') }}</button>
+                </div>
+            </form>
         </div>
         
         <div id="location-error">

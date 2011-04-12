@@ -80,13 +80,14 @@ def boost1(request):
         form = BoostStep1Form(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            data.update({'city_id': 0,
+            data.update({'lat': str(data['lat']),
+                         'long': str(data['long']),
+                         'city_id': 0,
                          'geo_result': get_city_fullname(data['city'], data['country_code'], request.locale)})
             
             if ajax:
                 return {'status': 'success', 
-                        'data': {'cityName': profile.city_name,
-                                 'countryName': get_country_name(profile.country_code, request.locale)}}
+                        'data': data}
             else:
                 return jingo.render(request, 'mobile/boost_step1_found.html', data)
         else:
