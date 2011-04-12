@@ -1,0 +1,179 @@
+<div id="popup">
+    <div id="boost" data-status="{{ boost_status }}">
+        <h3>{{ _('Boost your Spark') }}</h3>
+        <p class="legend">
+            {{ _('Wanna share a few more details?') }}<br>
+            {{ _("If you do, you'll get to unlock even more cool challenges and get to see your Spark transform.") }}
+        </p>
+        <hr>
+        <div class="buttons-wrapper">
+            {# L10n: Space is limited here, the translation should be no longer than ~15 latin characters #}
+            <a class="button left-button close">{{ _('Maybe later') }}</a>
+            <button tabindex="2" class="right-button" type="submit">{{ _("Let's boost") }}</button>
+        </div>
+    </div>
+    
+    <div id="boost1">
+        <h3>{{ _('Boost your Spark') }}</h3>
+        <h4>{{ _('Step 1 of 2') }}</h4>
+        <p class="legend">
+            {{ _('Click on the button below so we can find out where you are.') }}
+        </p>
+        
+        <form id="boost1-form" action="{{ url('mobile.boost1')|secure_url }}" method="post" accept-charset="utf-8">
+        	{{ csrf() }}
+        	<input type="hidden" id="lat" name="lat" value="">
+        	<input type="hidden" id="long" name="long" value="">
+        	<input type="hidden" id="city" name="city" value="">
+        	<input type="hidden" id="country-code" name="country_code" value="">
+        	<input type="hidden" id="us-state" name="us_state" value="">
+        </form>
+        
+        <!-- Initial state -->
+        <div class="disclaimer">
+            <a href="http://www.mozilla.com/en-US/privacy-policy.html" target="_blank">{{ _('Learn how Mozilla protects your geolocation data') }} ></a>
+        </div>
+        <hr>
+        <div class="buttons-wrapper">
+            {# L10n: Space is limited here, the translation should be no longer than ~15 latin characters #}
+            <a class="button left-button close">{{ _('Maybe later') }}</a>
+            <div id="geolocate"><a class="button right-button">{{ _('Locate me') }}</a><img src="{{ MEDIA_URL }}img/mobile/spinner.gif" alt="" class="preload spinner"></div>
+        </div>
+    </div>
+    
+    <div id="boost1-confirm">
+        <h3>{{ _('Boost your Spark') }}</h3>
+        <h4>{{ _('Step 1 of 2') }}</h4>
+
+        <div id="location-result">
+            <div id="checkmark"></div>
+            <div id="your-location">
+                {# L10n: Placed before the location where the user has been geolocated. #}
+                {{ _('Your location') }}
+                <span></span>
+            </div>
+            
+            <form id="boost1-confirm-form" action="{{ url('mobile.boost1_confirm')|secure_url }}" method="post" accept-charset="utf-8">
+            	{{ csrf() }}
+            	<input type="hidden" id="confirm-lat" name="lat" value="">
+            	<input type="hidden" id="confirm-long" name="long" value="">
+            	<input type="hidden" id="confirm-city-id" name="city_id" value="">
+            	<input type="hidden" id="confirm-city" name="city" value="">
+            	<input type="hidden" id="confirm-country-code" name="country_code" value="">
+            	<input type="hidden" id="confirm-us-state" name="us_state" value="">
+                <div class="buttons-wrapper">
+                    {# L10n: Space is limited here, the translation should be no longer than ~15 latin characters #}
+                    <a class="button left-button">{{ _('Cancel') }}</a>
+                    <button tabindex="2" class="right-button" type="submit">{{ _('Confirm') }}</button>
+                </div>
+            </form>
+        </div>
+        
+        <div id="location-error">
+            <span class="error">{{ _("Sorry, we couldn't determine your location.") }}</span>
+            <hr>
+            <div class="cta"><a href="{{ url('desktop.cities') }}">{{ _('Select your location manually') }}</a></div>
+            <hr>
+            <div class="buttons-wrapper">
+                {# L10n: Space is limited here, the translation should be no longer than ~15 latin characters #}
+                <a class="button left-button close">{{ _('Cancel') }}</a>
+                <div id="geolocate"><a class="button right-button">{{ _('Try again') }}</a><img src="{{ MEDIA_URL }}img/mobile/spinner.gif" alt="" class="preload spinner"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="select-location">
+        <h3>{{ _('Boost your Spark') }}</h3>
+        <h4>{{ _('Step 1 of 2') }}</h4>
+        
+        <p class="legend">
+            {{ _("Select your location manually") }}
+        </p>
+        <form action="{{ url('mobile.yourlocation')|secure_url }}" id="select-location-form" method="post">
+            {{ csrf() }}
+            <fieldset>
+                <select tabindex="1" name="city" id="select-location-form-citylist">
+                    <option value="0">{{ _("Your location") }}</option>
+                </select>
+            </fieldset>
+            <div class="buttons-wrapper">
+                {# L10n: Space is limited here, the translation should be no longer than ~15 latin characters #}
+                <a class="button left-button close">{{ _('Cancel') }}</a>
+                <button tabindex="2" class="right-button" type="submit">{{ _('OK') }}</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="boost2">
+        <h3>{{ _('Boost your Spark') }}</h3>
+        <h4>{{ _('Step 2 of 2') }}</h4>
+        
+        <p class="legend">
+            {% trans %}
+            Did someone send you a spark? Enter their username or email address 
+            below so you guys can be connected, help visualize where your Spark 
+            has travelled and make cool stuff happen.
+            {% endtrans %}
+        </p>
+        
+        <form id="boost2-form" action="{{ url('mobile.boost2')|secure_url }}" method="post" accept-charset="utf-8">
+            {{ csrf() }}
+            <fieldset id="identifier" class="section">
+                <div id="boost2-form-identifier" class="input-wrapper">
+                    <input tabindex="1" type="text" name="identifier" value="" placeholder="{{ _('Username/email address') }}">
+                </div>
+                <p class="disclaimer sans">
+                {% trans %}
+        		Your friend's email address is only used to connect the two of you.
+        		{% endtrans %}
+                </p>
+            </fieldset>
+            <hr>
+            <fieldset id="from-website">
+                <p class="sans">
+                    <input id="from-website-cb" tabindex="2" type="checkbox" name="from_website" class="styled">
+                    <label for="from-website-cb">{{ _('I started a new Spark on my own.') }}</label>
+                </p>
+            </fieldset>
+            <hr>
+            <div class="buttons-wrapper">
+                {# L10n: Space is limited here. The translation should be no longer than the English version, leave only "Later" if needed #}
+                <a class="button left-button close">{{ _('Maybe later') }}</a>
+                <button tabindex="3" class="right-button" type="submit">{{ _('Find') }}</button>
+            </div>
+        </form>
+    </div>
+    
+    <div id="boost2-confirm">
+        <h3>{{ _('Boost your Spark') }}</h3>
+        <h4>{{ _('Step 2 of 2') }}</h4>
+        
+        <div id="boost2-result-solo">
+            <div id="checkmark"></div>
+            <span>
+                {{ _('Congrats! You started a new Spark.') }}
+            </span>
+        </div>
+        <div id="boost2-result-parent">
+            <div id="checkmark"></div>
+            <span>
+                {{ _('Your Spark was started by:') }}
+                <span id="parent-name"></span>
+            </span>
+        </div>
+
+        <form id="boost2-confirm-form" action="{{ url('mobile.boost2_confirm')|secure_url }}" method="POST" accept-charset="utf-8">
+            {{ csrf() }}
+            <input id="no-parent" type="hidden" name="no_parent" value="">
+            <input id="has-parent" type="hidden" name="parent" value="">
+
+            <div class="buttons-wrapper">
+                <a class="button left-button">{{ _('Cancel') }}</a>
+                {# L10n: Action verb on a form submit button. #}
+                <button tabindex="1" class="right-button" type="submit">{{ _('Complete') }}</button>
+            </div>
+        </form>
+    </div>
+    
+    {% include 'desktop/popups/your-account.html' %}
+</div>

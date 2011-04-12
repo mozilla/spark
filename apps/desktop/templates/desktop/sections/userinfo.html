@@ -6,17 +6,24 @@
 	{% include "desktop/includes/hello.html" %}
 	</div>
 	<div id="user-details">
-	    {# L10n: Name of the parent user who shared Spark with you via a link/QR code. #}
-	    <span id="parent-user">{{ _('Spark started with: <span>{parent}</span>')|fe(parent=profile.spark_started_with) }}</span>
+	    {% if profile.boost1_completed %}
 	    {# L10n: City and country of the logged-in user. #}
 	    <span id="user-location">{{ _('Home location: <span>{location}</span>')|fe(location=profile.get_home_location(LANG)) }}</span>
+	    {% else %}
+	    <span id="user-location"></span>
+	    <a id="user-location-link" class="popup-trigger">{{ _('Tell us your home location >') }}</a>
+	    {% endif %}
+	    {% if profile.boost2_completed %}
+	    {# L10n: Name of the parent user who shared Spark with you via a link/QR code. #}
+	        {% if profile.spark_started_with %}
+    	    <span id="parent-user">{{ _('Spark started with: <span>{parent}</span>')|fe(parent=profile.spark_started_with) }}</span>
+    	    {% else %}
+    	    <span id="parent-user">{{ _('Congrats! You started a new Spark.') }}</span>
+    	    {% endif %}
+	    {% else %}
+	    <span id="parent-user"></span>
+	    <a id="parent-user-link" class="popup-trigger">{{ _('Tell us where you got your Spark >') }}</a>
+	    {% endif %}
 	    <span id="edit-account">{{ _('Edit <a href="#">your account ></a>')|safe }}</span>
 	</div>
 </div><!-- end main-info -->
-
-{% if False %}
-{{ _('Click on the button below so we can find out where you are.') }}
-{{ _('Confirm') }}
-{{ _('Tell us your home location >') }}
-{{ _('Tell us where you got your Spark >') }}
-{% endif %}

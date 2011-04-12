@@ -1,0 +1,31 @@
+{% extends "mobile/page.html" %}
+{% set pagetitle = _('Boost your Spark') %}
+{% set body_id = 'boost' %}
+{% set scripts = ('menu', 'geolocation') %}
+
+{% block pagecontent %}
+<div id="location-result">
+    <div id="checkmark"></div>
+    <div id="your-location">
+        {# L10n: Placed before the location where the user has been geolocated. #}
+        {{ _('Your location') }}
+        <span>{{ geo_result }}</span>
+    </div>
+</div>
+
+<form action="{{ url('mobile.boost1_confirm') }}" method="post" accept-charset="utf-8">
+	{{ csrf() }}
+	<input type="hidden" id="lat" name="lat" value="{{ lat }}">
+	<input type="hidden" id="long" name="long" value="{{ long }}">
+	<input type="hidden" id="city_id" name="city_id" value="{{ city_id }}">
+	<input type="hidden" id="city" name="city" value="{{ city }}">
+	<input type="hidden" id="country-code" name="country_code" value="{{ country_code }}">
+	<input type="hidden" id="us-state" name="us_state" value="{{ us_state }}">
+    <div class="buttons-wrapper">
+        <input type="hidden" name="next" value="1">
+        <div class="button left-button"><a href="{{ url('mobile.boost1') }}">{{ _('Cancel') }}</a></div>
+        {# L10n: Action verb on a form submit button. #}
+		<button class="right-button" type="submit">{{ _('Confirm') }}</button>
+    </div>
+</form>
+{% endblock %}

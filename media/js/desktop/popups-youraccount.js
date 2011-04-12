@@ -44,9 +44,8 @@ function initDeleteAccountForm() {
     });
 }
 
-$(document).ready(function() {
-    initPlaceholders();
+function initYourAccountPopups() {
     initChangePasswordForm();
     initChangeEmailForm();
     initDeleteAccountForm();
-});
+}

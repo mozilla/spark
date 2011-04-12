@@ -1,6 +1,4 @@
-$(document).ready(function() {
-    var timer = null;
-    
+function initGeolocation(clickCallback, successCallback, errorCallback) {
 	var process = function(info) {
 		if(info.coords) {
 		    $('#lat').attr('value', info.coords.latitude);
@@ -9,28 +7,29 @@ $(document).ready(function() {
 		if(info.address) {
 		    $('#city').attr('value', info.address.city);
 		    $('#country-code').attr('value', info.address.countryCode);
-		    $('#country').attr('value', info.address.country);
 		    if(info.address.countryCode === 'US' && info.address.postalCode) {
 		        $('#us-state').attr('value', zipToState(info.address.postalCode));
 		    }
 		}
-		$('form').submit();
-	}
+		if(successCallback) {
+    		successCallback();
+		}
+	};
 	
 	var error = function() {
-	    $('form').submit();
-	}
-	
-	var geolocateMe = function() {
+	    if(errorCallback) {
+    	    errorCallback();
+	    }
+	};
+    
+    $('#geolocate').click(function() {
     	navigator.geolocation.getCurrentPosition(process, error, {timeout: 8000});
     	
-    	$('#geolocate a').hide();
-    	$('#geolocate img').show();
-    	$('ul.errorlist').hide();
-    };
-    
-    $('#geolocate').click(geolocateMe);
-});
+    	if(clickCallback) {
+    	    clickCallback();
+    	}
+    });
+}
 
 // Borrowed from http://zacharyburt.com/2010/02/javascript-zip-code-to-state-conversion/
 function zipToState(zip) {

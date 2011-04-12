@@ -745,7 +745,8 @@ span.error {
     font-size:1.231em;
 }
 
-#sign-in, #your-account, #password-recovery, #success, #change-email, #change-password, #delete-account, #register {
+#sign-in, #your-account, #password-recovery, #success, #change-email, #change-password, #delete-account, #register,
+#boost, #boost1, #boost1-confirm, #boost2, #boost2-confirm, #select-location {
     display:none;
 }
 
@@ -769,7 +770,7 @@ span.error {
     line-height:150%;
 }
 
-#newsletter .checkbox:hover, #newsletter label:hover {
+#popup .checkbox:hover, #popup label:hover {
     cursor:pointer;
 }
 
@@ -894,6 +895,10 @@ img.spinner {
 #user-details span span {
     display:inline;
     color:#999;
+}
+
+#parent-user, #home-location {
+    display:block;
 }
 
 #parent-user span {
@@ -1544,6 +1549,104 @@ div.level.locked:hover {
 
 .step4 {
     color:#fff;
+}
+
+/*Desktop boost*/
+
+#popup h4 {
+    font-size:1.231em;
+    color:#fff;
+    padding-top:20px;
+    margin-bottom:-10px;
+}
+
+#popup .cta {
+    font-weight:bold;
+    font-size:1.077em;
+    padding-top:0;
+    margin-bottom:0;
+    background:url('../img/big-arrow.png') no-repeat 97% center;
+}
+
+#popup .cta a {
+    color:#fff;
+    padding:20px 0;
+    display:block;
+    margin:2px 0;
+    padding-left:10px;
+}
+
+#popup .cta a:active {
+    background:rgba(255,255,255,0.2);
+}
+
+#popup a.right-button {
+    float:left;
+    width:44%;
+}
+
+#popup .disclaimer {
+    margin:10px 0;
+}
+
+#location-result {
+    padding:20px 0;
+    border-top:1px solid #404040;
+    border-bottom:1px solid #404040;
+}
+
+#checkmark {
+    height:50px;
+    background:url('../img/checkmark.png') no-repeat 15px center rgba(119,225,24,0.5);
+    margin-bottom:20px;
+}
+
+#your-location {
+    font-size:1.005em;
+    font-weight:bold;
+    color:#b2b2b2;
+}
+
+#your-location span {
+    display:block;
+    font-size:125%;
+    color:#fff;
+}
+
+#select-location-form-citylist {
+    width:100%;
+    border-radius:2px;
+    -moz-border-radius:2px;
+    -webkit-border-radius:2px;
+    border:1px solid #6b6767;
+    background:#100e0e;
+    color:#fff;
+    font-size:1.077em;
+    font-weight:normal;
+    padding:8px 5px;
+    margin:10px 0;
+    height:34px;
+}
+
+#select-location-form-citylist option {
+padding:5px 10px;
+}
+
+#popup form#choose-location {
+    margin-top:0;
+}
+
+#from-website {
+    margin:10px 0;
+}
+
+#from-website label {
+    position:relative;
+    top:3px;
+}
+
+#boost2-result-parent, #boost2-result-solo, #location-error, #location-result {
+    margin-top:30px;
 }
 
 /*404 page*/

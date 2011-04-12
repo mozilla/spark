@@ -50,17 +50,25 @@ def approximate_major_city(profile, radius):
         profile.save()
 
 
-def get_city_fullname(city_name, country_code, locale):
+def get_country_name(country_code, locale):
     from geo.countries import countries
-    
-    if locale not in countries:
-        locale = 'en-US'
     
     cc = country_code.lower()
     if cc in countries[locale]:
         country_name = countries[locale][cc]
     else:
         country_name = '?'
+    
+    return country_name
+
+
+def get_city_fullname(city_name, country_code, locale):
+    from geo.countries import countries
+    
+    if locale not in countries:
+        locale = 'en-US'
+    
+    country_name = get_country_name(country_code, locale)
     
     return '%s, %s' % (city_name, country_name)
 

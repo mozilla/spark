@@ -9,10 +9,11 @@ from django.utils.http import urlquote
 
 from geo.countries import countries
 
-from spark.decorators import ssl_required, login_required, mobile_view
+from spark.decorators import ssl_required, login_required, mobile_view, json_view, ajax_required
 from spark.helpers import secure_url
 from spark.urlresolvers import reverse, absolute_url
 from spark.utils import get_city_fullname
+from spark.models import City
 
 from sharing.utils import set_sharing_cookies
 from sharing.messages import (TWITTER_SHARE_MSG, TWITTER_SPARK_MSG, FACEBOOK_SPARK_TITLE, 
@@ -24,6 +25,7 @@ from users.models import User, Profile
 
 from stats.utils import get_global_stats
 
+from tower import ugettext as _
 import jingo
 
 
@@ -33,6 +35,12 @@ def home(request):
     if request.user.is_authenticated():
         profile = request.user.profile
         delta = datetime.datetime.now() - profile.user.date_joined
+        boost_status = 0
+        if profile.boost2_completed:
+            boost_status = 2
+        elif profile.boost1_completed:
+            boost_status = 1
+        just_registered = request.GET.get('n')
         return jingo.render(request, 'desktop/dashboard.html',
                                     {'username': profile.user.username,
                                      'profile': profile,
@@ -48,7 +56,9 @@ def home(request):
                                      'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
                                      'facebook_spark_msg': urlquote(unicode(FACEBOOK_SPARK_MSG)),
                                      'abs_url': profile.generic_sharing_url,
-                                     'stats': get_global_stats()})
+                                     'stats': get_global_stats(),
+                                     'boost_status': boost_status,
+                                     'open_boost_popup': just_registered})
     else:
         data = {'is_homepage': True,
                 'twitter_url': urlquote(absolute_url(django_reverse('desktop.home'))),
@@ -119,8 +129,33 @@ def visualization(request):
 
 def close(request):
     return jingo.render(request, 'desktop/close.html')
-    
-    
+
+
+
+@json_view
+def cities(request):
+    cities = City.objects.order_by('city_name')
+    citylist = [(city.id, get_city_fullname(city.city_name, city.country_code, request.locale)) for city in cities]
+    print 'hop'
+    return citylist
+
+
+@login_required
+def home_location_info(request):
+    profile = request.user.profile
+    return HttpResponse(_(u'Home location: <span>{location}</span>').format(location=profile.get_home_location(request.locale)))
+
+
+@login_required
+def parent_user_info(request):
+    profile = request.user.profile
+    parent = profile.spark_started_with
+    if parent:
+        return HttpResponse(_(u'Spark started with: <span>{parent}</span>').format(parent=parent))
+    else:
+        return HttpResponse(_(u'Congrats! You started a new Spark.'))
+
+
 def _total_seconds(td):
     """Returns the total number of seconds in a given timedelta."""
     return (td.microseconds + (td.seconds + td.days * 24 * 3600) * 10**6) / 10**6

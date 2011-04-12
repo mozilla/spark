@@ -1,7 +1,7 @@
 {% extends "desktop/base.html" %}
 {% set title = _('Your Spark dashboard') %}
 {% set body_id = 'dashboard' %}
-{% set scripts = ('desktop', 'raphael', 'dashboard') %}
+{% set scripts = ('desktop', 'raphael', 'dashboard', 'geolocation') %}
 
 {% block content %}
 	    <div id="container">
@@ -35,7 +35,7 @@
             <span></span>
         </div>
 
-    	{% include 'desktop/popups/your-account.html' %}
+    	{% include 'desktop/popups/logged-in.html' %}
     	
 		<div id="mask"></div>
 		<img src="{{ MEDIA_URL }}img/badge-popup-bg.png" class="preload" alt="">
@@ -47,6 +47,14 @@ $(document).ready(function() {
     
     {% include 'desktop/includes/dashboard-script.html' %}
     
+    initPlaceholders();
+    initYourAccountPopups();
+    initBoostPopups();
+    
+    {% if open_boost_popup %}
+    $('#boost').show();
+    showPopup();
+    {% endif %}
 });
 </script>
 {% endblock %}
