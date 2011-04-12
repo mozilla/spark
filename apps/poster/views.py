@@ -17,7 +17,7 @@ def userposter(request, username):
                 'base_url': base_url,
                 'username': user.username,
                 'user_url': profile.generic_sharing_url.replace('https://',''),
-                'user_qr': profile.qr_code_download,
+                'user_qr': url2qr(profile.poster_sharing_url),
                 'ff_home_qr': url2qr('http://www.mozilla.com/mobile/home/')
             }
         )

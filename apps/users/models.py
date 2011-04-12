@@ -85,6 +85,11 @@ class Profile(models.Model):
 
 
     @property
+    def poster_sharing_url(self):
+        return self._social_sharing_url('p')
+
+
+    @property
     def badges(self):
         """Returns a list of dicts used for badge list rendering.
            They represent all badges earned by the user in the Spark game.
