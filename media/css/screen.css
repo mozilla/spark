@@ -1632,6 +1632,10 @@ padding:5px 10px;
     top:3px;
 }
 
+#boost2-result-parent, #boost2-result-solo, #location-error, #location-result {
+    margin-top:30px;
+}
+
 /*404 page*/
 
 .error404 h3 {
