@@ -28,22 +28,28 @@ def distance(origin, destination):
     return d
 
 
-def approximate_major_city(profile, radius):
-    """
-    Finds the closest major city to the user's lat/long within a given km radius.
-    Updates the user profile if a major city is found.
-    """
+def get_nearest_city(lat, lon, radius):
     from spark.models import City
     
     nearest = None
     min_distance = 0
     for city in City.objects.all():
-        user_pos = (profile.latitude, profile.longitude)
+        user_pos = (lat, lon)
         city_pos = (city.latitude, city.longitude)
         d = abs(distance(user_pos, city_pos))
         if (d < min_distance or not nearest) and d <= radius:
             min_distance = d
             nearest = city
+    
+    return nearest
+    
+
+def approximate_major_city(profile, radius):
+    """
+    Finds the closest major city to the user's lat/long within a given km radius.
+    Updates the user profile if a major city is found.
+    """
+    nearest = get_nearest_city(profile.latitude, profile.longitude, radius)
     
     if nearest:
         profile.major_city = nearest

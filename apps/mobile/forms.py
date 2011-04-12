@@ -17,8 +17,8 @@ PART_OF_A_CHAIN = _lazy(u'This user is already part of a sharing chain that you 
 class BoostStep1Form(forms.Form):
     lat = forms.DecimalField()
     long = forms.DecimalField()
-    city = forms.CharField()
-    country_code = forms.CharField(min_length=2, max_length=2)
+    city = forms.CharField(required=False)
+    country_code = forms.CharField(min_length=2, max_length=2, required=False)
     us_state = forms.CharField(min_length=2, max_length=2, required=False)
 
 
