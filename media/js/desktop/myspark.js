@@ -6,7 +6,8 @@ var initSpark = function (level) {
     	shapes = [],
     	smokeCircles = [],
     	colors = [],
-		NB_CIRCLES = 200;
+		NB_CIRCLES = 200,
+		smoke = false;
 
     canvas.height = h;
     canvas.width = w;
@@ -176,7 +177,9 @@ var initSpark = function (level) {
     };
     
     initShapes();
-    // initSmokeCircles();
+    if(level >= 4 && smoke) {
+         initSmokeCircles();
+    }
     
     // requestAnim shim layer by Paul Irish
         window.requestAnimFrame = (function(){
@@ -197,14 +200,14 @@ var initSpark = function (level) {
     var animate = function() {
         requestAnimFrame(animate);
         updateSpark();
-        // if(level >= 4) {
-        //      updateSmoke();
-        // }
+        if(level >= 4 && smoke) {
+             updateSmoke();
+        }
         ctx.clearRect(0, 0, w, h);
         drawShapes(shapes, level);
-        // if(level >= 4) {
-        //      drawSmoke(smokeCircles);   
-        // }
+        if(level >= 4 && smoke) {
+             drawSmoke(smokeCircles);   
+        }
     };
     
     animate();

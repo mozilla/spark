@@ -58,9 +58,10 @@ var initSpark = function (level) {
         var dice;
         for(var i = 0, nb = shapes[level - 1].length; i < nb; i += 1) {
             var s = shapes[level - 1][i],
-                dice = rand(1, 20);
+                dice = rand(1, 20),
+                nbShapes = shapes[level -1].length;
                 
-            s.moveFactor = 1-(i/6);
+            s.moveFactor = (nbShapes - i)/8;
             
             if(Math.abs(s.angle) > (s.maxAngle - s.arcAngle) || Math.abs(s.angle) < s.minAngle || dice === 6) {
                 s.angleStep *= -1;
@@ -141,16 +142,20 @@ var initSpark = function (level) {
 
 	function setPosition(o) {
 	    if(window.innerHeight > window.innerWidth) {
-	     	posx = o.x * 100;
+	     	posx = o.x * 150;
 			posy = (o.y - 0.6) * 100;
 	    } else {
 	        posy = (o.x - 0.6) * -100;
-			posx = o.y * -100;
+			posx = o.y * -150;
 	    }
 	}
 	
 	initShapes();
     initMove();
+
+    if(level > 4) {
+        level = 4;
+    }
 
     setInterval(function() {
         updateSpark();
