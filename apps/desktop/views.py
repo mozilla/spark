@@ -136,7 +136,6 @@ def close(request):
 def cities(request):
     cities = City.objects.order_by('city_name')
     citylist = [(city.id, get_city_fullname(city.city_name, city.country_code, request.locale)) for city in cities]
-    print 'hop'
     return citylist
 
 

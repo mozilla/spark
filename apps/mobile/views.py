@@ -10,7 +10,7 @@ from spark.urlresolvers import reverse, absolute_url
 from spark.decorators import post_required, json_view
 from spark.utils import (get_city_fullname, is_supported_non_firefox, is_iphone,
                          is_firefox_mobile, is_android, get_ua, approximate_major_city,
-                         get_country_name)
+                         get_country_name, get_nearest_city)
 
 from users.models import User, UserNode
 from users.utils import create_relationship
@@ -76,15 +76,32 @@ def boost1(request):
         return HttpResponseRedirect(reverse('mobile.boost2'))
     
     data = {}
+    invalid = False
     if request.method == 'POST':
         form = BoostStep1Form(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            data.update({'lat': str(data['lat']),
-                         'long': str(data['long']),
-                         'city_id': 0,
-                         'geo_result': get_city_fullname(data['city'], data['country_code'], request.locale)})
-            
+            invalid = data['city'] == '' or data['country_code'] == ''
+            if not invalid:
+                data.update({'lat': str(data['lat']),
+                             'long': str(data['long']),
+                             'city_id': 0,
+                             'geo_result': get_city_fullname(data['city'], data['country_code'], request.locale)})
+
+            if invalid:
+                from decimal import *
+                city = get_nearest_city(Decimal(data['lat']), Decimal(data['long']), 1000)
+                data.update({
+                    'geo_fallback': True,
+                    'lat': city.latitude,
+                    'long': city.longitude,
+                    'city_id': city.id,
+                    'city': city.city_name,
+                    'country_code': city.country_code,
+                    'us_state': '',
+                    'geo_result': get_city_fullname(city.city_name, city.country_code, request.locale)
+                })
+
             if ajax:
                 data.update({'lon': data['long']}) # JS compression bug fix
                 return {'status': 'success', 
