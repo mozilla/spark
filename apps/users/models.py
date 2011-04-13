@@ -47,6 +47,7 @@ class Profile(models.Model):
 
     # Flags
     login_desktop = models.BooleanField(default=False)
+    login_mobile = models.BooleanField(default=False)
     is_non_android = models.BooleanField(default=False)
     
     # Personal stats
@@ -297,12 +298,10 @@ class Profile(models.Model):
                     pass
     
     
-    def trigger_desktop_login_badge(self):
+    def trigger_multisparker_badge(self):
         from challenges.tasks import update_completed_challenges
         
-        if not self.login_desktop:
-            self.login_desktop = True
-            self.save()
+        if self.login_desktop and self.login_mobile:
             update_completed_challenges(self.user.id)
     
     

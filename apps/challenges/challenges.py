@@ -67,7 +67,7 @@ all_challenges[_id(2, 2)] = TwitterThreat()
 class Multisparker(ChallengeImpl):
     """ Sign in on both your phone and your desktop Web browser """
     def is_completed_by(self, profile):
-        return profile.login_desktop
+        return profile.login_desktop and profile.login_mobile
 
 all_challenges[_id(2, 3)] = Multisparker()
 

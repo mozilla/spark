@@ -45,6 +45,11 @@ def login(request, mobile=False):
         next_url = next or reverse('mobile.home')
         
         if request.user.is_authenticated():
+            profile = request.user.profile
+            if not profile.login_mobile:
+                profile.login_mobile = True
+                profile.save()
+                profile.trigger_multisparker_badge()
             return HttpResponseRedirect(next_url)
 
         return jingo.render(request, 'users/mobile/login.html',
@@ -55,7 +60,12 @@ def login(request, mobile=False):
                 return {'status': 'error',
                         'errors': dict(form.errors.iteritems())}
             else:
-                request.user.profile.trigger_desktop_login_badge()
+                profile = request.user.profile
+                if not profile.login_desktop:
+                    profile.login_desktop = True
+                    profile.save()
+                    profile.trigger_multisparker_badge()
+                
                 return {'status': 'success',
                         'next': next or reverse('desktop.home')}
 
@@ -103,7 +113,12 @@ def register(request, mobile=False):
         
         # Set a flag for mobile menu notifications
         profile = User.objects.get(username=form.cleaned_data['username']).profile
-        profile.new_challenges = True
+        profile.new_challenges = True        
+        # Set desktop or mobile login flag
+        if mobile:
+            profile.login_mobile = True
+        else:
+            profile.login_desktop = True
         profile.save()
     
     if mobile:
