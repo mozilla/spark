@@ -67,7 +67,7 @@ var initBoost = function() {
             $('#user-location-link').hide();
             $('#boost').data('status', 1);
         });
-        swap('#boost1-confirm', '#boost2');
+        swapAndReset('#boost1-confirm', '#boost2');
     });
     
     // Boost 1 Confirm - Cancel button

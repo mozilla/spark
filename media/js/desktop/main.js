@@ -14,10 +14,19 @@ var initMask = function() {
 };
 
 var resizePopup = function() {
-    $popup.css( {
-        'marginLeft' : -(($popup.width() + 52)/2),
-        'marginTop' : -(($popup.height() + 42)/2)
-    });
+    if($(window).height() < $popup.height()) {
+        $popup.css({
+          'marginLeft' : -(($popup.width() + 52)/2),
+          'top' : 0,
+          'marginTop' : 0,
+          'position' : 'absolute'
+        });
+    } else {
+        $popup.css({
+            'marginLeft' : -(($popup.width() + 52)/2),
+            'marginTop' : -(($popup.height() + 42)/2)
+        });
+    }
 };
 
 var positionVideoPlayer = function() {

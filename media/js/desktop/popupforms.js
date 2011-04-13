@@ -81,6 +81,15 @@ function swap(fromId, toId) {
     $(toId).delay(160).fadeIn(150);
 }
 
+function swapAndReset(fromId, toId) {
+    $popup.fadeOut(150);
+    setTimeout(function() {
+        $(fromId).hide();
+        $(toId).show();
+        showPopup();
+    }, 200);
+}
+
 function resetForm(formId) {
     $(formId).resetFormAfter(150);
 }
