@@ -40,8 +40,7 @@ def home(request):
             boost_status = 2
         elif profile.boost1_completed:
             boost_status = 1
-        just_registered = request.GET.get('n')
-        return jingo.render(request, 'desktop/dashboard.html',
+        response = jingo.render(request, 'desktop/dashboard.html',
                                     {'username': profile.user.username,
                                      'profile': profile,
                                      'logged_in': True,
@@ -58,7 +57,9 @@ def home(request):
                                      'abs_url': profile.generic_sharing_url,
                                      'stats': get_global_stats(),
                                      'boost_status': boost_status,
-                                     'open_boost_popup': just_registered})
+                                     'open_boost_popup': 'new_user' in request.COOKIES})
+        response.delete_cookie('new_user')
+        return response
     else:
         data = {'is_homepage': True,
                 'twitter_url': urlquote(absolute_url(django_reverse('desktop.home'))),

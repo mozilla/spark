@@ -1,5 +1,10 @@
 var success = function($form, data) {
     $form.find('button').attr("disabled", "disabled");
+    
+    if($form[0].id === 'signup') {
+        $.cookie('new_user', '1', {expires: 3, path:'/'});
+    }
+    
     setTimeout(function() {
         // Redirect to logged-in user home page
         window.location.replace(data.next);

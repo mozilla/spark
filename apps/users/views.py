@@ -16,7 +16,7 @@ from django.utils.http import base36_to_int
 import jingo
 
 from spark.urlresolvers import reverse, clean_next_url
-from spark.helpers import url, urlparams
+from spark.helpers import url
 from spark.utils import is_mobile
 from spark.decorators import (ssl_required, logout_required, login_required, 
                               post_required, json_view, ajax_required)
@@ -130,7 +130,7 @@ def register(request, mobile=False):
     else: # ajax desktop registration
         if valid:
             return {'status': 'success',
-                    'next': urlparams(reverse('desktop.home'), n=1)}
+                    'next': reverse('desktop.home')}
         else:
             return {'status': 'error',
                     'errors': dict(form.errors.iteritems())}
