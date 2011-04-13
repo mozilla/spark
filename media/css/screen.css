@@ -1408,8 +1408,9 @@ div.level.locked:hover {
 /* Personal Page - logged out*/
 
 #personal #stats {
-    padding-top:0px;
+    padding-top:1px;
     border-top:0px;
+    min-height:450px;
 }
 
 #personal #main-info {
@@ -1463,6 +1464,7 @@ div.level.locked:hover {
 
 #personal.logged-in #stats {
     padding-top:35px;
+    min-height:390px;
 }
 
 /*Video player*/
