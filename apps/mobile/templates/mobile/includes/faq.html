@@ -1,0 +1,39 @@
+<hr>
+<div id="faq" class="section">
+    <h2>{{ _('FAQ') }}</h2>
+    <ol>
+        <li>
+            <span>{{ _('1. How do I earn badges?') }}</span>
+            <p class="sans">
+            	{% trans %}
+                Share your unique URL via Facebook, Twitter, email, text message and more. When 
+                someone clicks on your unique URL they will be directed to Spark and reminded 
+                to add your username during their login process. This gives you credit for 
+                sharing Spark and if they click to download Firefox for Android, you may also 
+                receive a badge depending on where and when you shared Spark. You also have a 
+                unique QR code that behaves the same way, but is best for phone-to-phone sharing.
+            	{% endtrans %}
+            </p>
+        </li>
+        <li>
+            <span>{{ _('2. How do I boost my Spark?') }}</span>
+            <p class="sans">
+            	{% trans %}
+                You can join our global map and earn a special badge if you boost your spark. 
+                You can do this by tapping "Locate Me" and Spark will find the nearest city to 
+                you. If you can't be found you can manually select the city closest to your 
+                location from the drop-down list. The second boost you perform is adding the 
+                username or email of the person that sent you Spark, or you can select "I started my own Spark".
+            	{% endtrans %}
+            </p>
+        </li>
+        <li>
+            <span>{{ _('3. Need help?') }}</span>
+            <p class="sans">
+            	{% trans mailto_url = 'mailto:sparksupport@mozilla.com', mail_url = 'sparksupport@mozilla.com' %}
+                If you have a question or need support, please contact <a href="{{ mailto_url }}">{{ mail_url }}</a>
+                {% endtrans %}
+            </p>
+        </li>
+    </ol>
+</div>
