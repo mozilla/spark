@@ -77,7 +77,9 @@ var initSparkedCountries = function(countryList) {
         var cc = list[i];
         cc = cc === 'in' ? 'in_' : cc;
 
-        countries[cc].show();
+        if(cc in countries) {
+            countries[cc].show();
+        }
     }
 };
 
