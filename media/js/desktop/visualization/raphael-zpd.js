@@ -104,7 +104,7 @@ RaphaelZPD = function(raphaelPaper, o, container) {
 		var p = me.root.createSVGPoint();
 
 		p.x = evt.clientX;
-		p.y = 0;
+		p.y = evt.clientY;
 
 		return p;
 	}
@@ -113,6 +113,7 @@ RaphaelZPD = function(raphaelPaper, o, container) {
 	 * Sets the current transform matrix of an element.
 	 */
 	me.setCTM = function(element, matrix) {
+	    updateCurrentScale();
 	    if(matrix.e >= 10) {
 	        matrix.e = 10;
 	    };
@@ -121,17 +122,35 @@ RaphaelZPD = function(raphaelPaper, o, container) {
             if(matrix.e <= -950) {
     	        matrix.e = -950;
     	    };
+    	    if(matrix.f >= -120) {
+    	        matrix.f = -120;
+    	    };
+    	    if(matrix.f <= -660) {
+    	        matrix.f = -660;
+    	    };
         }
         
         if(currentScale === 2) {
             if(matrix.e <= -2855) {
     	        matrix.e = -2855;
     	    };
+    	    if(matrix.f >= -475) {
+    	        matrix.f = -475;
+    	    };
+    	    if(matrix.f <= -2025) {
+    	        matrix.f = -2025;
+    	    };
         }
         
         if(currentScale === 3) {
             if(matrix.e <= -6655) {
     	        matrix.e = -6655;
+    	    };
+    	    if(matrix.f >= -1170) {
+    	        matrix.f = -1170;
+    	    };
+    	    if(matrix.f <= -4820) {
+    	        matrix.f = -4820;
     	    };
         }
         
@@ -142,6 +161,16 @@ RaphaelZPD = function(raphaelPaper, o, container) {
 
     me.resetPos = function(element, matrix) {
         matrix.e = 0;
+        updateCurrentScale();
+        if(currentScale === 0) {
+            matrix.f = -660;
+        }
+        if(currentScale === 1) {
+            matrix.f = -1980;
+        }
+        if(currentScale === 2) {
+            matrix.f = -4620;
+        }
 		var s = "matrix(" + matrix.a + "," + matrix.b + "," + matrix.c + "," + matrix.d + "," + matrix.e + "," + matrix.f + ")";
 		element.setAttribute("transform", s);
     }
@@ -218,7 +247,7 @@ RaphaelZPD = function(raphaelPaper, o, container) {
         previousValue = 0;
 
     var zoomIn = function() {
-        var k = me.root.createSVGMatrix().translate(0, 660).scale(2).translate(-0, -660);
+        var k = me.root.createSVGMatrix().translate(0, 680).scale(2).translate(-0, -680);
 		me.setCTM(g, g.getCTM().multiply(k));
     };
     
@@ -234,7 +263,6 @@ RaphaelZPD = function(raphaelPaper, o, container) {
         } else {
             if(previousValue > 0 && ui.value < 3) {
                 var delta = previousValue - ui.value;
-                console.log(delta);
                 for(var i = 0; i < delta; i += 1) {
                     zoomOut();
                 }
@@ -265,8 +293,9 @@ RaphaelZPD = function(raphaelPaper, o, container) {
 			var p = me.getEventPoint(evt).matrixTransform(me.stateTf);
 
             if(currentScale > 0) {
-                 me.setCTM(g, me.stateTf.inverse().translate(p.x - me.stateOrigin.x, p.y - me.stateOrigin.y));
+                me.setCTM(g, me.stateTf.inverse().translate(p.x - me.stateOrigin.x, p.y - me.stateOrigin.y));
             }
+            
 		} else if (me.state == 'move') {
 			// Move mode
 			if (!me.opts.drag) return;
@@ -356,11 +385,12 @@ Raphael.fn.ZPDPanTo = function(x, y) {
 	var p = svg.createSVGPoint();
 
 	p.x = x;
+	p.y = y;
 
 	p = p.matrixTransform(stateTf);
 
 	var element = me.canvas;
-	var matrix = stateTf.inverse().translate(p.x);
+	var matrix = stateTf.inverse().translate(p.x, p.y);
 
 	var s = "matrix(" + matrix.a + "," + matrix.b + "," + matrix.c + "," + matrix.d + "," + matrix.e + "," + matrix.f + ")";
 
