@@ -1392,6 +1392,10 @@ div.level.locked:hover {
     margin:-43px 14px 0 0;
 }
 
+#challenges-list .easter-eggs span.title, #challenges-list .level-details.easter-eggs p  {
+    color:#ffd40d;
+}
+
 /* Share your Spark*/
 
 #share a.button {
