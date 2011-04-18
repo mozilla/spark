@@ -255,7 +255,7 @@ var initUI = function() {
     $city.click(function() {
         var focus = parseInt(this.id);
         
-        if(focus != focusedCity) {
+        if(!list.disabled && focus != focusedCity) {
             focusedCity = focus;
             $('#focus-info').text($(this).text());
             list.value = focusedCity;
@@ -266,8 +266,6 @@ var initUI = function() {
         resetToCurrentTime();
         toggleFocusInfo(focusedCity);
     });
-
-    $('#show-everyone').hide();
 
     list.disabled = false;
     list.value = -1;

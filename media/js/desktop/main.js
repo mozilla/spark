@@ -95,6 +95,11 @@ $(document).ready(function() {
         showPopup();
     });
     
+    $('#visualizer .popup-trigger').click(function() {
+        $('#sign-in').show();
+        showPopup();
+    });
+    
     // displays the account manager popup
     $('#edit-account a').click(function() {
         $('#your-account').show();

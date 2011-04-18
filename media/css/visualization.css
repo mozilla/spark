@@ -51,6 +51,10 @@ ul#main-menu {
     display:inline;
 }
 
+#visualizer #main-menu a.hidden {
+    display:none;
+}
+
 #visualizer #main-menu a:hover {
     color:#ffd40d;
 }
