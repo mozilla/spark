@@ -58,6 +58,14 @@ body {
     overflow:auto;
 }
 
+.no-menu #wrapper {
+    padding-top:30px;
+}
+
+#home #wrapper, #user-share #wrapper {
+    padding-top:0;
+}
+
 #flame-bg {
     position:absolute;
     top:50px;
