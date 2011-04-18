@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse as django_reverse
 from django.utils.http import urlquote
+from django.conf import settings
 
 from tower import ugettext as _, ugettext_lazy as _lazy
 
@@ -99,14 +100,18 @@ class Profile(models.Model):
         completed_challenges = CompletedChallenge.objects.filter(profile=self,
                                                                  date_badge_earned__isnull=False)
         for cc in completed_challenges:
+            badge_id = utils.get_challenge_id(cc.challenge.level, cc.challenge.number)
+            badge_description = cc.challenge.badge_description
             badges.append({
-                'id': utils.get_challenge_id(cc.challenge.level, cc.challenge.number),
+                'id': badge_id,
                 'name': cc.challenge.badge_name,
-                'description': cc.challenge.badge_description,
+                'description': badge_description,
                 'date_earned': cc.date_badge_earned,
                 'new': cc.new_badge,
                 'twitter_msg': urlquote(unicode(TWITTER_BADGE_MSG % {'badge_name':cc.challenge.badge_name, 'short_url':''})),
-                'facebook_msg': urlquote(unicode(FACEBOOK_BADGE_MSG % {'badge_name':cc.challenge.badge_name}))
+                'facebook_msg': urlquote(unicode(FACEBOOK_BADGE_MSG % {'badge_name':cc.challenge.badge_name})),
+                'facebook_img': absolute_url(settings.MEDIA_URL+'img/badges/fb/'+badge_id.replace('_','-')+'.png'),
+                'facebook_desc': urlquote(badge_description)
             })
         return badges
     

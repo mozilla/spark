@@ -9,6 +9,6 @@
     </p>
     <ul id="sharing">
         <li class="cta"><a href="https://twitter.com/share?url={{twitter_url}}&amp;text={{ twitter_badge_msg % {'badge_name':badge_name, 'short_url':''} }}%20%23spark&amp;via=mozmobile" target="_blank">{{ _('Share on Twitter') }}</a></li>
-        <li class="cta"><a href="https://m.facebook.com/dialog/feed?display=touch&amp;app_id=100139296738213&amp;redirect_uri={{facebook_redirect}}&amp;link={{facebook_url}}&amp;name={{facebook_title}}&amp;message={{ facebook_badge_msg % {'badge_name':badge_name} }}">{{ _('Share on Facebook') }}</a></li>
+        <li class="cta"><a href="https://m.facebook.com/dialog/feed?display=touch&amp;app_id={{ FB_APP_ID }}&amp;redirect_uri={{facebook_redirect}}&amp;link={{facebook_url}}&amp;name={{facebook_title}}&amp;message={{ facebook_badge_msg % {'badge_name':badge_name} }}&amp;picture={{ facebook_img }}&amp;description={{ facebook_desc }}">{{ _('Share on Facebook') }}</a></li>
     </ul>
 {% endblock %}
