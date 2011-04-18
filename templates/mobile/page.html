@@ -1,5 +1,9 @@
 {% extends "mobile/base.html" %}
 
+{% if body_id not in ['user-share'] and hide_menu %}
+{% set body_class = 'no-menu' %}
+{% endif %}
+
 {% if user.is_authenticated() %}
 {% if not profile %}
 {% set profile = user.get_profile() %}

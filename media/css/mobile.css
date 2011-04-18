@@ -67,7 +67,7 @@ body {
     z-index:1;
 }
 
-#login #flame-bg, #getstarted #flame-bg, #whatisspark #flame-bg, #yourlocation #flame-bg {
+.no-menu #flame-bg {
     top:0px;
 }
 

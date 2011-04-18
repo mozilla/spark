@@ -6,15 +6,15 @@
 
 {% if logged_in %}
     {% if iphone or supported_non_ff %}
-        {% set body_class = 'non-ff logged-in' %}
+        {% set body_class = 'non-ff logged-in no-menu' %}
     {% else %}
-        {% set body_class = 'ff logged-in' %}
+        {% set body_class = 'ff logged-in no-menu' %}
     {% endif %}
 {% else %}
     {% if iphone or supported_non_ff %}
-        {% set body_class = 'non-ff' %}
+        {% set body_class = 'non-ff no-menu' %}
     {% else %}
-        {% set body_class = 'ff' %}
+        {% set body_class = 'ff no-menu' %}
     {% endif %}
 {% endif %}
 
