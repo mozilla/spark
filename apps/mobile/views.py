@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.core.urlresolvers import reverse as django_reverse
 from django.utils.http import urlquote
+from django.conf import settings
 
 import jingo
 
@@ -338,7 +339,8 @@ def sharelink(request):
             'facebook_url': request.user.profile.facebook_sharing_url,
             'facebook_redirect': absolute_url(django_reverse('mobile.home')),
             'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
-            'facebook_spark_msg': urlquote(unicode(FACEBOOK_SPARK_MSG))}
+            'facebook_spark_msg': urlquote(unicode(FACEBOOK_SPARK_MSG)),
+            'FB_APP_ID': settings.FB_APP_ID}
             
     return jingo.render(request, 'mobile/sharelink.html', data)
 
@@ -361,7 +363,8 @@ def sharebadge(request):
                     'facebook_url': profile.facebook_sharing_url,
                     'facebook_redirect': absolute_url(django_reverse('mobile.home')),
                     'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
-                    'facebook_badge_msg': FACEBOOK_BADGE_MSG }
+                    'facebook_badge_msg': FACEBOOK_BADGE_MSG,
+                    'FB_APP_ID': settings.FB_APP_ID}
             return jingo.render(request, 'mobile/sharebadge.html', data)
     except Challenge.DoesNotExist:
         # Ignore invalid badges

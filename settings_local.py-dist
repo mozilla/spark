@@ -49,6 +49,10 @@ RESPONSYS_ID = '<insert Responsys production key>'
 CAMPAIGN_STARTING_DATE = datetime.datetime(2011, 3, 29)
 
 
+# Facebook App ID
+FB_APP_ID = 100139296738213
+
+
 # Uncomment and update with stage/prod settings if necessary
 #MEDIA_URL = '/media/'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

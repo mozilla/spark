@@ -57,7 +57,8 @@ def home(request):
                                      'abs_url': profile.generic_sharing_url,
                                      'stats': get_global_stats(),
                                      'boost_status': boost_status,
-                                     'open_boost_popup': 'new_user' in request.COOKIES})
+                                     'open_boost_popup': 'new_user' in request.COOKIES,
+                                     'FB_APP_ID': settings.FB_APP_ID})
         response.delete_cookie('new_user')
         return response
     else:
@@ -68,7 +69,8 @@ def home(request):
                 'facebook_redirect': absolute_url(django_reverse('desktop.close_popup')),
                 'facebook_msg': urlquote(unicode(FACEBOOK_SHARE_MSG)),
                 'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
-                'stats': get_global_stats()}
+                'stats': get_global_stats(),
+                'FB_APP_ID': settings.FB_APP_ID}
         return jingo.render(request, 'desktop/home.html', data)
 
 
@@ -91,7 +93,8 @@ def user(request, username):
             'facebook_redirect': absolute_url(django_reverse('desktop.close_popup')),
             'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
             'facebook_spark_msg': urlquote(unicode(FACEBOOK_SPARK_MSG)),
-            'stats': get_global_stats()}
+            'stats': get_global_stats(),
+            'FB_APP_ID': settings.FB_APP_ID}
     
     if not request.user.is_authenticated():
         data.update({'login_next_url': request.path})
