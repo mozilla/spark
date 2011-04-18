@@ -364,6 +364,8 @@ def sharebadge(request):
                     'facebook_redirect': absolute_url(django_reverse('mobile.home')),
                     'facebook_title': urlquote(unicode(FACEBOOK_SPARK_TITLE)),
                     'facebook_badge_msg': FACEBOOK_BADGE_MSG,
+                    'facebook_img': absolute_url(settings.MEDIA_URL+'img/badges/fb/'+badge.id.replace('_','-')+'.png'),
+                    'facebook_desc': urlquote(badge.badge_description),
                     'FB_APP_ID': settings.FB_APP_ID}
             return jingo.render(request, 'mobile/sharebadge.html', data)
     except Challenge.DoesNotExist:
