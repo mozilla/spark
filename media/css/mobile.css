@@ -1021,6 +1021,7 @@ body#user-share {
     font-weight:bold;
     color:#ffd40d;
     line-height:48px;
+    padding-left:8px;
 }
 
 .legal-links a.last {
