@@ -263,6 +263,9 @@ LEVEL_GENERIC = _lazy(u'Level %(num)d')
 # L10n: Name of the 'Super Sparker' secret level.
 LEVEL_5 = _lazy(u'The Super Sparker')
 
+# L10n: This is a section title that appears above the list of completed hidden challenges
+EASTER_EGGS = _lazy(u'Easter Eggs')
+
 CHALLENGE_COUNT_PER_LVL = [3, 7, 6, 6, 5]
 UNLOCKING_COUNT_PER_LVL = [0, 1, 4, 4]
 
