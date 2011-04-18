@@ -1095,3 +1095,8 @@ body#user-share {
 .logged-out #flame-bg {
     top:0;
 }
+
+/* FAQ */
+#faq ol span {
+    font-weight:bold;
+}

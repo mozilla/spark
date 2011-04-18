@@ -60,7 +60,7 @@
             {% if firefox %}
             {#  Compatible phone, viewing with Firefox, logged-out #}
             <hr>
-            <h2 class="cta"><a href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></h2>
+            <div class="cta"><a href="{{ url('mobile.instructions') }}">{{ _('What is Firefox Spark?') }}</a></div>
             <hr>
             {% else %}
             <hr>
@@ -106,6 +106,8 @@
          </p>
      </div>
      <a href="http://www.mozilla.com/firefox/" class="button">{{ _('Learn more') }}</a>
+
+     {% include 'mobile/includes/faq.html' %}
 
      <hr>
      <div class="section">

@@ -1656,3 +1656,27 @@ padding:5px 10px;
 .error404 h3 {
     margin-top:1em;
 }
+
+/* FAQ */
+
+#faq ol {
+    font-size:1.231em;
+}
+
+#faq ol li {
+    margin-top:20px;
+}
+
+#faq ol li:first-child {
+    margin-top:0px;
+}
+
+#faq ol p {
+    color:#999;
+    line-height:1.6em;
+}
+
+#faq ol span {
+    font-weight:bold;
+    color:#fff;
+}
