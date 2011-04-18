@@ -5,7 +5,7 @@
     {% else %}
     <li>
     {% endif %}
-        <div class="level {% if level.locked %}locked{% endif %}">
+        <div class="level{% if level.locked %} locked{% endif %}">
             <div class="arrow"></div>
             {{ level.legend }}
             <span class="challenges-count {% if level.completed %}complete{% endif %}">
@@ -16,7 +16,7 @@
             <span class="locked-message">{{ level.locked_message }}</span>
             {% endif %}
         </div>
-        <ul class="level-details">
+        <ul class="level-details{% if level.num == 6 %} easter-eggs{% endif %}">
             {% for challenge in level.challenges %}
             <li {% if challenge.completed %}class="complete"{% endif %}>
                 <div class="checkbox"></div>

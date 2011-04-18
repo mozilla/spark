@@ -275,6 +275,8 @@ def get_level_description(level):
     desc = ''
     if level == 5:
         desc = unicode(LEVEL_5)
+    elif level == 6:
+        desc = unicode(EASTER_EGGS)
     elif level >= 1 and level < 5:
         desc = unicode(LEVEL_GENERIC) % dict(num=level)
     
@@ -339,6 +341,7 @@ def get_profile_levels(profile):
         challenge_count = get_challenge_count(i)
         completed_count = len(completed_at_this_level)
         level = {
+            'num': i,
             'legend': get_level_description(i),
             'completed': completed_count == challenge_count,
             'completed_count': pad(completed_count),
@@ -362,6 +365,30 @@ def get_profile_levels(profile):
         
         levels.append(level)
         previous_level_completed_count = completed_count
+    
+    # Hidden section for easter-eggs
+    easter_eggs = [unicode(c) for c in all_completed_challenges if c.level == 6]
+    easter_eggs_count = len(easter_eggs)
+    if easter_eggs_count > 0:
+        hidden_level = {
+            'num': 6,
+            'legend': get_level_description(6),
+            'completed': False,
+            'completed_count': pad(easter_eggs_count),
+            'max_count': '??',
+            'locked': False
+        }
+        challenges = []
+        for i in range(1, easter_eggs_count+1):
+            id = get_challenge_id(6, i)
+            challenges.append({
+                'id': id,
+                'name': get_badge_name(id),
+                'description': get_instructions(id),
+                'completed': True
+            })
+        hidden_level['challenges'] = challenges
+        levels.append(hidden_level)
     
     return levels
 
