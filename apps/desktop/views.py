@@ -35,11 +35,6 @@ def home(request):
     if request.user.is_authenticated():
         profile = request.user.profile
         delta = datetime.datetime.now() - profile.user.date_joined
-        boost_status = 0
-        if profile.boost2_completed:
-            boost_status = 2
-        elif profile.boost1_completed:
-            boost_status = 1
         response = jingo.render(request, 'desktop/dashboard.html',
                                     {'username': profile.user.username,
                                      'profile': profile,
@@ -56,7 +51,7 @@ def home(request):
                                      'facebook_spark_msg': urlquote(unicode(FACEBOOK_SPARK_MSG)),
                                      'abs_url': profile.generic_sharing_url,
                                      'stats': get_global_stats(),
-                                     'boost_status': boost_status,
+                                     'boost2_status': 1 if profile.boost2_completed else 0,
                                      'open_boost_popup': 'new_user' in request.COOKIES,
                                      'FB_APP_ID': settings.FB_APP_ID})
         response.delete_cookie('new_user')

@@ -1,12 +1,12 @@
 var initBoost = function() {
     // Open the correct Boost popup
-    $('#user-details .popup-trigger').click(function() {
-        var status = parseInt($('#boost').data('status'));
-        if(status === 0) {
-            $('#boost').show();
-        } else if(status === 1) {
-            $('#boost2').show();
-        }
+    $('#user-location-link').click(function() {
+        $('#boost1').show();
+        showPopup();
+    });
+    
+    $('#parent-user-link').click(function() {
+        $('#boost2').show();
         showPopup();
     });
     
@@ -65,10 +65,13 @@ var initBoost = function() {
         $.get(resp.url, function(html) {
             $('#user-location').html(html);
             $('#user-location-link').hide();
-            $('#boost').data('status', 1);
             updateBadgesAndChallenges();
         });
-        swapAndReset('#boost1-confirm', '#boost2');
+        if($('#boost').data('boost2') === 0) {
+            swapAndReset('#boost1-confirm', '#boost2');
+        } else {
+            hidePopup();
+        }
     });
     
     // Boost 1 Confirm - Cancel button
@@ -104,6 +107,7 @@ var initBoost = function() {
             $.get(resp.url, function(html) {
                 $('#parent-user').html(html);
                 $('#parent-user-link').hide();
+                $('#boost').data('boost2', 1);
                 updateBadgesAndChallenges();
             });
             hidePopup();

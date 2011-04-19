@@ -92,16 +92,20 @@ def boost1(request):
             if invalid:
                 from decimal import *
                 city = get_nearest_city(Decimal(data['lat']), Decimal(data['long']), 1000)
-                data.update({
-                    'geo_fallback': True,
-                    'lat': city.latitude,
-                    'long': city.longitude,
-                    'city_id': city.id,
-                    'city': city.city_name,
-                    'country_code': city.country_code,
-                    'us_state': '',
-                    'geo_result': get_city_fullname(city.city_name, city.country_code, request.locale)
-                })
+                if city:
+                    data.update({
+                        'geo_fallback': True,
+                        'lat': city.latitude,
+                        'long': city.longitude,
+                        'city_id': city.id,
+                        'city': city.city_name,
+                        'country_code': city.country_code,
+                        'us_state': '',
+                        'geo_result': get_city_fullname(city.city_name, city.country_code, request.locale)
+                    })
+                elif not ajax:
+                    data.update({'geolocation': 'error'})
+                    return jingo.render(request, 'mobile/boost_step1.html', data)
 
             if ajax:
                 data.update({'lon': data['long']}) # JS compression bug fix
@@ -155,7 +159,7 @@ def geolocation_fallback(request):
         return jingo.render(request, 'mobile/citylist.html', {'cities': citylist})
     
     # Ignore chosen city and redirect if user has already completed Boost step 1.
-    return HttpResponseRedirect(reverse('mobile.boost1_complete'))
+    return HttpResponseRedirect(reverse('mobile.boost2'))
 
 
 @login_required
