@@ -108,6 +108,10 @@ $(document).ready(function() {
 
     // hides the sign-in modal popup (and resets it to sign-in state)
     $mask.click(function() {
+        var $signInForm = $('#login');
+        if($signInForm) {
+            resetForm('#login');
+        }
         hidePopup();
     });
 
