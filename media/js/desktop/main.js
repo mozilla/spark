@@ -181,14 +181,14 @@ $(document).ready(function() {
        return false;
     });
 
-    $('a.twitter').click(function() {
+    $('a.twitter').live('click', function() {
         var url = $(this).attr('href');
         
        tweetPopup(url);
        return false;
     });
 
-    $('.facebook').click(function() {
+    $('.facebook').live('click', function() {
         var url = $(this).attr('href');
         
        fbPopup(url);

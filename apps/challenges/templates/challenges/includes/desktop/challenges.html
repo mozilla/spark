@@ -1,4 +1,4 @@
-<ol id="challenges-list">
+<ol id="challenges-list" data-url="{{ url('desktop.ajax_challenges') }}">
     {% for level in levels %}
     {% if profile.level == loop.index %}
     <li class="open">

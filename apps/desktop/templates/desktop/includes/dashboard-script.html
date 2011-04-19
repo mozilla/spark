@@ -1,7 +1,7 @@
-   var $popups = $('div.badge-popup');
+   $popups = $('div.badge-popup');
    
    // Show the badge popup when a badge is clicked and hides all others
-   $('div.badge-icon').click(function() {
+   $('div.badge-icon').live('click', function() {
         $(this).parent().siblings().children('div.badge-popup').hide();
         $(this).siblings('div.badge-popup').fadeToggle(200);
         $('body').addClass('clickable');
@@ -11,7 +11,7 @@
    $('li.open').children('ul').show();
    
    // Displays the level details
-   $('div.level:not(.locked)').click(function() {
+   $('div.level:not(.locked)').live('click', function() {
          $(this).parent().toggleClass('open');
          $(this).next('ul').slideToggle('fast');
    });

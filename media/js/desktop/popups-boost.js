@@ -66,6 +66,7 @@ var initBoost = function() {
             $('#user-location').html(html);
             $('#user-location-link').hide();
             $('#boost').data('status', 1);
+            updateBadgesAndChallenges();
         });
         swapAndReset('#boost1-confirm', '#boost2');
     });
@@ -103,6 +104,7 @@ var initBoost = function() {
             $.get(resp.url, function(html) {
                 $('#parent-user').html(html);
                 $('#parent-user-link').hide();
+                updateBadgesAndChallenges();
             });
             hidePopup();
         }
@@ -156,4 +158,19 @@ var populateConfirmForm = function(data) {
     $('#confirm-country-code').val(data.country_code);
     $('#confirm-us-state').val(data.us_state);
 };
+
+var updateBadgesAndChallenges = function() {
+    var badgeUrl = $('#badges').data('url'),
+        challengeUrl = $('#challenges-list').data('url');
+
+    $.get(badgeUrl, function(html) {
+        $('#badges').replaceWith(html);
+        $popups = $('div.badge-popup');
+    });
+    
+    $.get(challengeUrl, function(html) {
+        $('#challenges-list').replaceWith(html);
+        $('li.open').children('ul').show();
+    });
+}
 

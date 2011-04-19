@@ -159,6 +159,23 @@ def parent_user_info(request):
         return HttpResponse(_(u'Congrats! You started a new Spark.'))
 
 
+@ajax_required
+@login_required
+def ajax_challenges(request):
+    profile = request.user.profile
+    data = {'profile': profile,
+            'levels': profile.challenge_info}
+    return jingo.render(request, 'challenges/includes/desktop/challenges.html', data)
+
+
+@ajax_required
+@login_required
+def ajax_badges(request):
+    data = {'profile': request.user.profile,
+            'logged_in': request.user.is_authenticated()}
+    return jingo.render(request, 'desktop/sections/yourbadges.html', data)
+
+
 def _total_seconds(td):
     """Returns the total number of seconds in a given timedelta."""
     return (td.microseconds + (td.seconds + td.days * 24 * 3600) * 10**6) / 10**6

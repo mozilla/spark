@@ -189,7 +189,7 @@ def boost1_confirm(request):
 
         CountrySparked.add_country(data['country_code'])
 
-        update_completed_challenges.delay(profile.user.id)
+        update_completed_challenges(profile.user.id)
 
         profile.add_city_shares_for_children()
 
