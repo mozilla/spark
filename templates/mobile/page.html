@@ -5,12 +5,20 @@
 {% endif %}
 
 {% if user.is_authenticated() %}
-{% if not profile %}
-{% set profile = user.get_profile() %}
-{% endif %}
-{% set num_new_challenges = profile.new_challenge_count %}
-{% set num_new_badges = profile.new_badge_count %}
-{% set num_notifications = num_new_challenges + num_new_badges %}
+    {% if not profile %}
+        {% set profile = user.get_profile() %}
+    {% endif %}
+
+    {% if not profile.boost1_completed and not profile.boost2_completed %}
+        {% set num_boost_steps = 2 %}
+    {% elif not profile.boost1_completed or not profile.boost2_completed %}
+        {% set num_boost_steps = 1 %}
+    {% else %}
+        {% set num_boost_steps = 0 %}
+    {% endif %}
+    {% set num_new_challenges = profile.new_challenge_count %}
+    {% set num_new_badges = profile.new_badge_count %}
+    {% set num_notifications = num_new_challenges + num_new_badges + num_boost_steps %}
 {% endif %}
 
 {% block content %}
@@ -28,7 +36,13 @@
 		<div id="menu-content">
 	        <ul>
 	            {% if not profile.boost1_completed or not profile.boost2_completed %}
-	            <li><a href="{{ url('mobile.boost') }}">{{ _('Boost your Spark') }}</a></li>
+	            <li><a href="{{ url('mobile.boost') }}">{{ _('Boost your Spark') }}
+    	            {% if num_boost_steps %}
+    	            {# L10n: {n} is the number of recently completed challenges. #}
+    				<span>{{ ungettext('+{n} new','+{n} new', num_boost_steps, "new_challenges")|f(n=num_boost_steps) }}</span>
+    				{% endif %}
+    				</a>
+    			</li>
 	            {% else %}
 	            <li><a href="{{ url('mobile.home') }}">{{ _('My Firefox Spark') }}</a></li>
 	            {% endif %}
